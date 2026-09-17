@@ -18,7 +18,7 @@ export function Footer() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-gold-soft">Pesquisa</p>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl">O que você deseja conhecer sobre a Ortodoxia?</h2>
-          <form onSubmit={onSearch} className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <form onSubmit={onSearch} className="search-form mt-8">
             <label className="sr-only" htmlFor="footer-search">
               Pesquisar
             </label>
@@ -27,9 +27,9 @@ export function Footer() {
               name="q"
               type="search"
               placeholder="Ex.: O que é a Divina Liturgia?"
-              className="h-14 flex-1 rounded-full border-0 px-6 text-ink outline-none ring-2 ring-white/20"
+              className="search-field flex-1 border-0 text-ink outline-none ring-2 ring-white/20"
             />
-            <button className="btn btn-gold h-14 px-8" type="submit">
+            <button className="btn btn-gold px-10" type="submit">
               Pesquisar
             </button>
           </form>
@@ -38,7 +38,7 @@ export function Footer() {
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-4">
         <div>
-          <img src="/media/brasao-goc.png" alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil" className="mb-4 h-20 w-20 object-contain" />
+          <img src="/media/brasao-goc.jpg" alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil" className="mb-4 h-28 w-28 object-contain" />
           <h3 className="text-xl leading-tight">
             Igreja Ortodoxa
             <br />

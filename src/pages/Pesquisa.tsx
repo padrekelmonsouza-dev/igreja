@@ -24,14 +24,15 @@ export function Pesquisa() {
         crumbs={[{ href: "/pesquisa", label: "Pesquisa" }]}
       />
       <section className="mx-auto max-w-3xl px-4 py-12">
-        <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row">
+        <form onSubmit={onSubmit} className="search-form">
           <input
             name="q"
+            type="search"
             defaultValue={q}
             placeholder="Ex.: O que é a Divina Liturgia?"
-            className="h-14 flex-1 rounded-full border border-[rgba(90,13,24,.18)] px-6"
+            className="search-field flex-1 border border-[rgba(90,13,24,.18)] outline-none"
           />
-          <button className="btn btn-burgundy" type="submit">
+          <button className="btn btn-burgundy px-10" type="submit">
             Pesquisar
           </button>
         </form>

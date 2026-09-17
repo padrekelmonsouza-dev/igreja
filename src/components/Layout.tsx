@@ -54,7 +54,7 @@ export function Layout() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream text-ink">
+    <div className="min-h-screen max-w-full overflow-x-hidden bg-cream text-ink">
       <Seo
         title={seo.title}
         description={seo.description}
