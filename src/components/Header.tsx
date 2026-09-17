@@ -28,10 +28,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40">
       <div className="bg-burgundy text-parchment">
-        <div className="mx-auto flex max-w-6xl items-center justify-center gap-6 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.28em] sm:text-[11px]">
-          <span>Portal de referência</span>
-          <span className="hidden opacity-80 sm:inline">Igreja Ortodoxa no Brasil</span>
-          <span>G.O.C.</span>
+        <div className="mx-auto max-w-6xl px-4 py-2 text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] sm:text-[11px] sm:tracking-[0.28em]">
+          Portal da Igreja Ortodoxa Grega no Brasil
         </div>
       </div>
       <div className="border-b border-[rgba(90,13,24,.14)] bg-cream/96 backdrop-blur-md">
