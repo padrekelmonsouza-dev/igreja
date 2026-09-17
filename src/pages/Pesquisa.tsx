@@ -37,7 +37,28 @@ export function Pesquisa() {
         </form>
         <div className="mt-8 space-y-3">
           {!q ? (
-            <p className="text-muted">Digite um termo para começar.</p>
+            <div>
+              <p className="text-muted">Digite um termo para começar, ou escolha uma busca frequente:</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  "Igreja Ortodoxa",
+                  "Católica e Ortodoxa",
+                  "Divina Liturgia",
+                  "ícones",
+                  "jejum",
+                  "primeira visita",
+                  "paróquias",
+                ].map((term) => (
+                  <Link
+                    key={term}
+                    to={`/pesquisa?q=${encodeURIComponent(term)}`}
+                    className="rounded-full border border-[rgba(90,13,24,.14)] bg-white px-4 py-2 text-sm hover:border-burgundy/40"
+                  >
+                    {term}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ) : results.length === 0 ? (
             <p className="text-muted">Nenhum resultado para “{q}”.</p>
           ) : (

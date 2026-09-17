@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CLERGY } from "../data/clergy";
 import { MENU_LINKS } from "../data/content";
+import { FAQ_ITEMS } from "../data/faq";
 
 const STEPS = [
-  { n: "01", title: "O que é a Ortodoxia?", href: "/fe" },
+  { n: "01", title: "O que é a Ortodoxia?", href: "/o-que-e-igreja-ortodoxa" },
   { n: "02", title: "Quem é Jesus Cristo?", href: "/formacao/jesus-cristo" },
   { n: "03", title: "O que é a Igreja?", href: "/formacao/igreja" },
   { n: "04", title: "Os Santos e os Ícones", href: "/santos" },
@@ -19,7 +21,7 @@ const INTROS = [
     icon: "✝",
     title: "O que é a Ortodoxia?",
     text: "Uma introdução à Igreja, sua fé, história e Tradição Apostólica.",
-    href: "/fe",
+    href: "/o-que-e-igreja-ortodoxa",
   },
   {
     icon: "🕯",
@@ -38,6 +40,18 @@ const INTROS = [
     title: "Calendário Patrístico",
     text: "Explore festas, santos, leituras e períodos de jejum do calendário litúrgico.",
     href: "/calendario",
+  },
+  {
+    icon: "⚖",
+    title: "Católica e Ortodoxa",
+    text: "As diferenças e o que há em comum, explicadas com respeito.",
+    href: "/catolica-e-ortodoxa",
+  },
+  {
+    icon: "🚪",
+    title: "Primeira visita",
+    text: "O que vestir, se pode comungar e o que esperar na liturgia.",
+    href: "/primeira-visita",
   },
 ];
 
@@ -72,6 +86,32 @@ const featuredClergy = ["padre-kelmon-luis", "padre-joao-damasceno", "dom-leonti
   .map((slug) => CLERGY.find((person) => person.slug === slug))
   .filter(Boolean);
 
+function HomeSearch() {
+  const navigate = useNavigate();
+  function onSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const q = String(new FormData(event.currentTarget).get("q") || "").trim();
+    navigate(q ? `/pesquisa?q=${encodeURIComponent(q)}` : "/pesquisa");
+  }
+  return (
+    <form onSubmit={onSearch} className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row">
+      <label className="sr-only" htmlFor="home-search">
+        Pesquisar Igreja Ortodoxa
+      </label>
+      <input
+        id="home-search"
+        name="q"
+        type="search"
+        placeholder="Ex.: diferença entre católica e ortodoxa"
+        className="h-14 flex-1 rounded-full border-0 px-6 text-ink outline-none"
+      />
+      <button className="btn btn-gold h-14 px-8" type="submit">
+        Pesquisar
+      </button>
+    </form>
+  );
+}
+
 export function Home() {
   return (
     <div>
@@ -85,16 +125,17 @@ export function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(239,213,138,.22),rgba(0,0,0,0)_34%)]" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 sm:pb-24">
           <p className="text-[11px] font-bold uppercase tracking-[0.32em] text-gold-soft">
-            Igreja Ortodoxa Grega · G.O.C. no Brasil
+            Portal de referência da Igreja Ortodoxa no Brasil
           </p>
           <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-tight sm:text-7xl">Vinde e vede.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-parchment/95 sm:text-xl">
-            Descubra a fé, a tradição e a vida da Igreja Ortodoxa. Um portal para conhecer a Tradição Apostólica, a
-            Divina Liturgia, os Santos, os Ícones e a presença da Igreja no Brasil.
+            O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os Santos,
+            os ícones, o jejum e onde encontrar uma comunidade no Brasil.
           </p>
-          <div className="mt-10 flex max-w-xl flex-col gap-3">
-            <Link className="btn btn-gold w-full" to="/fe">
-              Começar a descobrir
+          <HomeSearch />
+          <div className="mt-6 flex max-w-xl flex-col gap-3">
+            <Link className="btn btn-outline w-full" to="/o-que-e-igreja-ortodoxa">
+              O que é a Igreja Ortodoxa
             </Link>
             <Link className="btn btn-outline w-full" to="/paroquias">
               Encontrar uma comunidade
@@ -109,13 +150,13 @@ export function Home() {
       <section id="portal" className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-2">
         <div>
           <p className="kicker">Uma tradição viva</p>
-          <h2 className="mt-3 font-serif text-4xl leading-tight sm:text-5xl">Uma porta de entrada para a Ortodoxia no Brasil.</h2>
+          <h2 className="mt-3 font-serif text-4xl leading-tight sm:text-5xl">A referência da Ortodoxia em português.</h2>
           <p className="mt-5 text-lg leading-8 text-muted">
-            O projeto foi pensado como um grande portal de evangelização, formação e memória: para quem nunca ouviu
-            falar da Ortodoxia e para quem já vive a fé e deseja aprofundá-la.
+            Este portal foi feito para quem pesquisa “Igreja Ortodoxa” no Brasil: explicações profundas, vocabulário
+            claro, guias de primeira visita e caminhos até uma comunidade viva.
           </p>
           <Link className="btn btn-burgundy mt-8" to="/enciclopedia">
-            Explorar conteúdos
+            Abrir a enciclopédia
           </Link>
         </div>
         <img
@@ -148,7 +189,7 @@ export function Home() {
           <p className="mt-4 max-w-3xl text-lg text-muted">
             Conteúdo organizado para explicar a fé com profundidade, clareza e respeito.
           </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {INTROS.map((item) => (
               <Link
                 key={item.href}
@@ -165,6 +206,29 @@ export function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-20">
+        <p className="kicker">O que as pessoas perguntam</p>
+        <h2 className="mt-3 font-serif text-4xl">Perguntas sobre a Igreja Ortodoxa.</h2>
+        <p className="mt-4 max-w-3xl text-lg text-muted">
+          Respostas prontas para as buscas mais comuns em português — da diferença com a Igreja Católica à primeira visita.
+        </p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {FAQ_ITEMS.slice(0, 6).map((item) => (
+            <Link
+              key={item.question}
+              to={item.href || "/perguntas-frequentes"}
+              className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6 hover:shadow-card"
+            >
+              <h3 className="text-xl">{item.question}</h3>
+              <p className="mt-2 text-muted">{item.answer}</p>
+            </Link>
+          ))}
+        </div>
+        <Link className="btn btn-burgundy mt-8" to="/perguntas-frequentes">
+          Ver todas as perguntas
+        </Link>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-20">
         <p className="kicker">Primeiros passos</p>
         <h2 className="mt-3 font-serif text-4xl">Descubra a Ortodoxia em 9 passos.</h2>
         <p className="mt-4 max-w-3xl text-lg text-muted">

@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { NAV_MORE, NAV_PRIMARY, SITE } from "../data/content";
+import { NAV_KNOWLEDGE, NAV_MORE, NAV_PRIMARY, SITE } from "../data/content";
 
 export function Footer() {
   const navigate = useNavigate();
@@ -36,19 +36,31 @@ export function Footer() {
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-4">
         <div>
           <img src="/media/brasao-goc.png" alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil" className="mb-4 h-20 w-20 object-contain" />
           <h3 className="text-xl leading-tight">
-            Igreja Ortodoxa Grega
+            Igreja Ortodoxa
             <br />
-            G.O.C. no Brasil
+            no Brasil
           </h3>
-          <p className="mt-3 text-muted">Portal de fé, formação, história e missão da Igreja no Brasil.</p>
+          <p className="mt-3 text-muted">Portal de referência da fé, da liturgia, da história e das comunidades ortodoxas.</p>
           <p className="mt-4 text-sm text-burgundy">{SITE.synod}</p>
         </div>
         <div>
-          <h3 className="text-lg">Páginas</h3>
+          <h3 className="text-lg">Conhecer</h3>
+          <ul className="mt-4 space-y-2">
+            {NAV_KNOWLEDGE.map((link) => (
+              <li key={link.href}>
+                <Link className="hover:text-burgundy" to={link.href}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg">Igreja</h3>
           <ul className="mt-4 space-y-2">
             {NAV_PRIMARY.map((link) => (
               <li key={link.href}>

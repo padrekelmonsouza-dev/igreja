@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { ArticleBody, PageHero } from "../components/Article";
+import { Related } from "../components/Related";
 import { getArticle } from "../data/content";
 
 export function ArticlePage() {
@@ -19,6 +20,7 @@ export function ArticlePage() {
         crumbs={[{ href: page.path, label: page.title }]}
       />
       <ArticleBody page={page} />
+      <Related paths={page.related} />
     </>
   );
 }

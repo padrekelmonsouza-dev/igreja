@@ -3,6 +3,9 @@ import { Layout } from "./components/Layout";
 import { ARTICLES } from "./data/content";
 import { ArticlePage } from "./pages/ArticlePage";
 import { ClergyProfile } from "./pages/ClergyProfile";
+import { Enciclopedia } from "./pages/Enciclopedia";
+import { Faq } from "./pages/Faq";
+import { Glossario } from "./pages/Glossario";
 import { Hierarquia } from "./pages/Hierarquia";
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
@@ -16,7 +19,10 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          {ARTICLES.map((page) => (
+          <Route path="/enciclopedia" element={<Enciclopedia />} />
+          <Route path="/perguntas-frequentes" element={<Faq />} />
+          <Route path="/glossario" element={<Glossario />} />
+          {ARTICLES.filter((page) => page.path !== "/enciclopedia").map((page) => (
             <Route key={page.path} path={page.path} element={<ArticlePage />} />
           ))}
           <Route path="/hierarquia" element={<Hierarquia />} />
