@@ -143,7 +143,7 @@ export const CLERGY: ClergyProfile[] = [
     slug: "abade-julio",
     name: "Arquimandrita Abade Júlio",
     role: "Mosteiro de São Basílio",
-    image: "/media/brasao-goc.png",
+    image: "/media/brasao-goc.jpg",
     summary: "Vida monástica e paternidade espiritual no Mosteiro de São Basílio.",
     facts: [
       { label: "Ministério", value: "Abade" },

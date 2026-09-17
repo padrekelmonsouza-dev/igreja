@@ -94,7 +94,7 @@ function HomeSearch() {
     navigate(q ? `/pesquisa?q=${encodeURIComponent(q)}` : "/pesquisa");
   }
   return (
-    <form onSubmit={onSearch} className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:flex-row">
+    <form onSubmit={onSearch} className="search-form mt-8 max-w-2xl">
       <label className="sr-only" htmlFor="home-search">
         Pesquisar Igreja Ortodoxa
       </label>
@@ -103,9 +103,9 @@ function HomeSearch() {
         name="q"
         type="search"
         placeholder="Ex.: diferença entre católica e ortodoxa"
-        className="h-14 flex-1 rounded-full border-0 px-6 text-ink outline-none"
+        className="search-field flex-1 border-0 text-ink outline-none"
       />
-      <button className="btn btn-gold h-14 px-8" type="submit">
+      <button className="btn btn-gold px-10" type="submit">
         Pesquisar
       </button>
     </form>
@@ -124,16 +124,16 @@ export function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,11,8,.90),rgba(18,11,8,.55)_45%,rgba(18,11,8,.25))]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(239,213,138,.22),rgba(0,0,0,0)_34%)]" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 sm:pb-24">
-          <p className="text-[11px] font-bold uppercase tracking-[0.32em] text-gold-soft">
+          <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-gold-soft sm:tracking-[0.32em]">
             Portal de referência da Igreja Ortodoxa no Brasil
           </p>
-          <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-tight sm:text-7xl">Vinde e vede.</h1>
+          <h1 className="mt-5 max-w-3xl break-words font-serif text-4xl leading-tight sm:text-7xl">Vinde e vede.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-parchment/95 sm:text-xl">
             O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os Santos,
             os ícones, o jejum e onde encontrar uma comunidade no Brasil.
           </p>
           <HomeSearch />
-          <div className="mt-6 flex max-w-xl flex-col gap-3">
+          <div className="mt-6 flex max-w-2xl flex-col gap-3">
             <Link className="btn btn-outline w-full" to="/o-que-e-igreja-ortodoxa">
               O que é a Igreja Ortodoxa
             </Link>

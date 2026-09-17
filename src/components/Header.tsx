@@ -12,9 +12,9 @@ export function Header() {
   }, [location.pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.style.overflowY = open ? "hidden" : "";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflowY = "";
     };
   }, [open]);
 
@@ -26,9 +26,9 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40">
+    <header className="relative sticky top-0 z-40">
       <div className="bg-burgundy text-parchment">
-        <div className="mx-auto max-w-6xl px-4 py-2 text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] sm:text-[11px] sm:tracking-[0.28em]">
+        <div className="mx-auto max-w-6xl px-3 py-2 text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em] sm:px-4 sm:text-[11px] sm:tracking-[0.28em]">
           Portal da Igreja Ortodoxa Grega no Brasil
         </div>
       </div>
@@ -41,10 +41,14 @@ export function Header() {
             onClick={() => setOpen(false)}
           >
             <img
-              src="/logo-gog.webp"
-              alt={SITE.name}
-              className="h-14 w-auto max-w-[min(100%,280px)] object-contain sm:h-16"
+              src="/media/brasao-goc.jpg"
+              alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil"
+              className="h-14 w-14 object-contain sm:h-16 sm:w-16"
             />
+            <span className="min-w-0 leading-tight">
+              <span className="block text-sm font-bold text-burgundy sm:text-base">Igreja Ortodoxa Grega</span>
+              <span className="block text-xs text-muted sm:text-sm">G.O.C. no Brasil</span>
+            </span>
           </Link>
           <nav className="hidden items-center gap-5 lg:flex">
             {NAV_KNOWLEDGE.slice(0, 4).map((link) => (
@@ -73,15 +77,15 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="fixed inset-0 top-[108px] z-50 overflow-y-auto bg-cream">
-          <form onSubmit={onSearch} className="mx-auto flex max-w-4xl gap-3 px-4 pt-6">
+        <div className="absolute inset-x-0 top-full z-50 h-[calc(100dvh-100%)] overflow-x-hidden overflow-y-auto bg-cream">
+          <form onSubmit={onSearch} className="search-form mx-auto max-w-4xl px-4 pt-6">
             <input
               name="q"
               type="search"
               placeholder="Pesquisar Igreja Ortodoxa..."
-              className="h-12 flex-1 rounded-full border border-[rgba(90,13,24,.18)] px-5"
+              className="search-field flex-1 border border-[rgba(90,13,24,.18)] bg-white outline-none"
             />
-            <button className="btn btn-burgundy h-12 px-6" type="submit">
+            <button className="btn btn-burgundy px-10" type="submit">
               Buscar
             </button>
           </form>
