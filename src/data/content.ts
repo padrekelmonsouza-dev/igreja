@@ -1,9 +1,15 @@
+import { KNOWLEDGE_ARTICLES } from "./knowledge";
+
 export const SITE = {
   name: "Igreja Ortodoxa Grega G.O.C. no Brasil",
   shortName: "G.O.C. no Brasil",
   synod: "Santo Sínodo de Eugenio de Atenas",
   motto: "Vinde e vede.",
   year: 2026,
+  portalName: "Portal da Igreja Ortodoxa no Brasil",
+  homeTitle: "Igreja Ortodoxa no Brasil | Fé, liturgia, santos e comunidades",
+  homeDescription:
+    "Portal de referência da Igreja Ortodoxa no Brasil: o que é a Ortodoxia, Divina Liturgia, ícones, santos, jejum, paróquias, catequese e como fazer a primeira visita.",
 };
 
 export const NAV_PRIMARY = [
@@ -24,7 +30,16 @@ export const NAV_MORE = [
   { href: "/pedido-de-oracao", label: "Pedidos de oração" },
 ];
 
-export const MENU_LINKS = [...NAV_PRIMARY, ...NAV_MORE];
+export const NAV_KNOWLEDGE = [
+  { href: "/o-que-e-igreja-ortodoxa", label: "O que é a Igreja Ortodoxa" },
+  { href: "/catolica-e-ortodoxa", label: "Católica e Ortodoxa" },
+  { href: "/primeira-visita", label: "Primeira visita" },
+  { href: "/enciclopedia", label: "Enciclopédia" },
+  { href: "/perguntas-frequentes", label: "Perguntas frequentes" },
+  { href: "/glossario", label: "Glossário" },
+];
+
+export const MENU_LINKS = [...NAV_KNOWLEDGE, ...NAV_PRIMARY, ...NAV_MORE];
 
 export type ArticleSection = {
   title: string;
@@ -36,10 +51,12 @@ export type ArticlePage = {
   title: string;
   kicker: string;
   intro: string;
+  description?: string;
+  related?: string[];
   sections: ArticleSection[];
 };
 
-export const ARTICLES: ArticlePage[] = [
+const BASE_ARTICLES: ArticlePage[] = [
   {
     path: "/fe",
     title: "Nossa Fé",
@@ -713,6 +730,8 @@ export const ARTICLES: ArticlePage[] = [
     ],
   },
 ];
+
+export const ARTICLES: ArticlePage[] = [...BASE_ARTICLES, ...KNOWLEDGE_ARTICLES];
 
 export function getArticle(path: string) {
   return ARTICLES.find((page) => page.path === path);

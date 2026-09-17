@@ -1,35 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { ARTICLES, SITE } from "../data/content";
 import { getClergy } from "../data/clergy";
+import { breadcrumbJsonLd, faqJsonLd, getPageSeo, websiteJsonLd } from "../data/seo";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-
-function pageTitle(pathname: string) {
-  if (pathname === "/") return SITE.name;
-  if (pathname.startsWith("/hierarquia/")) {
-    const person = getClergy(pathname.replace("/hierarquia/", ""));
-    return person ? `${person.name} — ${SITE.shortName}` : SITE.name;
-  }
-  const labels: Record<string, string> = {
-    "/hierarquia": "Hierarquia e Clero",
-    "/paroquias": "Paróquias",
-    "/comunidades": "Paróquias",
-    "/pedido-de-oracao": "Pedido de Oração",
-    "/pesquisa": "Pesquisa",
-  };
-  const article = ARTICLES.find((page) => page.path === pathname);
-  const label = article?.title || labels[pathname];
-  return label ? `${label} — ${SITE.shortName}` : SITE.name;
-}
+import { Seo } from "./Seo";
 
 export function Layout() {
   const location = useLocation();
   const [showTop, setShowTop] = useState(false);
+  const seo = useMemo(() => {
+    const base = getPageSeo(location.pathname);
+    if (location.pathname.startsWith("/hierarquia/")) {
+      const person = getClergy(location.pathname.replace("/hierarquia/", ""));
+      if (person) {
+        return {
+          ...base,
+          title: `${person.name} | Clero da Igreja Ortodoxa no Brasil`,
+          description: `${person.name}, ${person.role}. ${person.summary}`,
+          noindex: false,
+        };
+      }
+    }
+    const q = new URLSearchParams(location.search).get("q");
+    if (location.pathname === "/pesquisa" && q) {
+      return {
+        ...base,
+        title: `Pesquisa: ${q} | Igreja Ortodoxa no Brasil`,
+      };
+    }
+    return base;
+  }, [location.pathname, location.search]);
+
+  const jsonLd = useMemo(() => {
+    if (location.pathname === "/") return websiteJsonLd();
+    if (location.pathname === "/perguntas-frequentes") {
+      return [websiteJsonLd(), faqJsonLd(), breadcrumbJsonLd(seo.path, "Perguntas frequentes")];
+    }
+    return [breadcrumbJsonLd(seo.path, seo.title.split("|")[0].trim())];
+  }, [location.pathname, seo.path, seo.title]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = pageTitle(location.pathname);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -43,6 +55,14 @@ export function Layout() {
 
   return (
     <div className="min-h-screen bg-cream text-ink">
+      <Seo
+        title={seo.title}
+        description={seo.description}
+        path={seo.path}
+        type={seo.type}
+        jsonLd={jsonLd}
+        noindex={seo.noindex}
+      />
       <a className="skip-link" href="#conteudo">
         Ir para o conteúdo
       </a>
