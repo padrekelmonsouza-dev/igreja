@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: #fffaf0;
+  color: #151313;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #caa34a;
+  color: #1c140d;
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -40px;
+  z-index: 80;
+  border-radius: 999px;
+  background: #5a0d18;
+  color: #f6efdf;
+  padding: 10px 16px;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.kicker {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8d2530;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: #caa34a;
+  color: #1c140d;
+}
+
+.btn-gold:hover {
+  background: #d4b05c;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.btn-burgundy {
+  background: #5a0d18;
+  color: #f6efdf;
+}
+
+.btn-burgundy:hover {
+  background: #6d1220;
+}
+
+.prose-church p + p {
+  margin-top: 1rem;
+}
+
+.prose-church h2 {
+  font-size: 1.7rem;
+  margin: 2.2rem 0 0.8rem;
+}
+
+.prose-church a {
+  color: #5a0d18;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
