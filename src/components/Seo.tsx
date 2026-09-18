@@ -50,8 +50,11 @@ export function Seo({
     upsertMeta('meta[property="og:locale"]', { property: "og:locale", content: SITE.locale });
     upsertMeta('meta[property="og:site_name"]', { property: "og:site_name", content: SITE.name });
     upsertMeta('meta[property="og:image"]', { property: "og:image", content: ogImage });
+    upsertMeta('meta[property="og:image:secure_url"]', { property: "og:image:secure_url", content: ogImage });
+    upsertMeta('meta[property="og:image:type"]', { property: "og:image:type", content: "image/jpeg" });
     upsertMeta('meta[property="og:image:width"]', { property: "og:image:width", content: "1200" });
-    upsertMeta('meta[property="og:image:height"]', { property: "og:image:height", content: "630" });
+    upsertMeta('meta[property="og:image:height"]', { property: "og:image:height", content: "791" });
+    upsertMeta('meta[property="og:image:alt"]', { property: "og:image:alt", content: SITE.motto });
     upsertMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
     upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: title });
     upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: description });

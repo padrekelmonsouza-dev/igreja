@@ -37,7 +37,7 @@ function VideoModal({ src, portrait, onClose }: { src: string; portrait?: boolea
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`relative z-10 overflow-hidden rounded-t-3xl bg-ink shadow-card sm:rounded-3xl ${portrait ? "w-full max-w-sm" : "w-full max-w-4xl"}`}
+        className={`relative z-10 overflow-hidden rounded-t-3xl bg-ink shadow-card sm:rounded-3xl ${portrait ? "w-full sm:max-w-sm" : "w-full max-w-4xl"}`}
       >
         <div className="flex items-center justify-between px-4 py-3">
           <h2 id={titleId} className="font-serif text-xl text-white">
@@ -78,7 +78,7 @@ export function VideoGallery() {
         <button
           type="button"
           onClick={() => setActive({ src: FEATURED_VIDEO, portrait: true })}
-          className="relative mx-auto aspect-[9/16] h-[29.94rem] w-auto overflow-hidden rounded-2xl bg-ink lg:mx-0 lg:h-[36.59rem]"
+          className="relative mx-auto aspect-[9/16] w-full overflow-hidden rounded-2xl bg-ink lg:mx-0 lg:h-[36.59rem] lg:w-auto"
         >
           <video src={FEATURED_VIDEO} className="h-full w-full object-cover" muted playsInline preload="metadata" />
           <span className="absolute inset-0 grid place-items-center bg-ink/20">
