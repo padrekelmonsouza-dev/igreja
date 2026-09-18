@@ -7,39 +7,69 @@ export const SITE = {
   motto: "Vinde e vede.",
   year: 2026,
   portalName: "Portal da Igreja Ortodoxa no Brasil",
-  homeTitle: "Igreja Ortodoxa no Brasil | Fé, liturgia, santos e comunidades",
+  tabTitle: "Igreja Ortodoxa Grega no Brasil",
+  homeTitle: "Igreja Ortodoxa Grega no Brasil",
   homeDescription:
     "Portal de referência da Igreja Ortodoxa no Brasil: o que é a Ortodoxia, Divina Liturgia, ícones, santos, jejum, paróquias, catequese e como fazer a primeira visita.",
 };
 
-export const NAV_PRIMARY = [
-  { href: "/igreja", label: "Igreja Ortodoxa" },
-  { href: "/mosteiro", label: "Mosteiro" },
-  { href: "/paroquias", label: "Paróquias" },
-  { href: "/santo-sinodo", label: "Santo Sínodo" },
-  { href: "/liturgia", label: "Liturgia" },
-  { href: "/catequese", label: "Catequese" },
+export type NavItem = {
+  href: string;
+  label: string;
+  icon: string;
+};
+
+export const NAV_PRIMARY: NavItem[] = [
+  { href: "/igreja", label: "Igreja Ortodoxa", icon: "church" },
+  { href: "/mosteiro", label: "Mosteiro", icon: "monastery" },
+  { href: "/paroquias", label: "Paróquias", icon: "parish" },
+  { href: "/santo-sinodo", label: "Santo Sínodo", icon: "synod" },
+  { href: "/liturgia", label: "Liturgia", icon: "liturgy" },
+  { href: "/catequese", label: "Catequese", icon: "catechesis" },
 ];
 
-export const NAV_MORE = [
-  { href: "/hierarquia", label: "Clero" },
-  { href: "/arcebispo-primaz", label: "Arcebispo Primaz" },
-  { href: "/pastorais", label: "Pastorais" },
-  { href: "/ordem-de-sao-jose", label: "Ordem de São José" },
-  { href: "/missoes", label: "Missões Ortodoxas" },
-  { href: "/pedido-de-oracao", label: "Pedidos de oração" },
+export const NAV_MORE: NavItem[] = [
+  { href: "/hierarquia", label: "Clero", icon: "clergy" },
+  { href: "/arcebispo-primaz", label: "Arcebispo Primaz", icon: "bishop" },
+  { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
+  { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
+  { href: "/missoes", label: "Missões Ortodoxas", icon: "mission" },
+  { href: "/pedido-de-oracao", label: "Pedidos de oração", icon: "prayer" },
 ];
 
-export const NAV_KNOWLEDGE = [
-  { href: "/o-que-e-igreja-ortodoxa", label: "O que é a Igreja Ortodoxa" },
-  { href: "/catolica-e-ortodoxa", label: "Católica e Ortodoxa" },
-  { href: "/primeira-visita", label: "Primeira visita" },
-  { href: "/enciclopedia", label: "Enciclopédia" },
-  { href: "/perguntas-frequentes", label: "Perguntas frequentes" },
-  { href: "/glossario", label: "Glossário" },
+export const NAV_KNOWLEDGE: NavItem[] = [
+  { href: "/o-que-e-igreja-ortodoxa", label: "O que é a Igreja Ortodoxa", icon: "cross" },
+  { href: "/catolica-e-ortodoxa", label: "Católica e Ortodoxa", icon: "scales" },
+  { href: "/primeira-visita", label: "Primeira visita", icon: "door" },
+  { href: "/enciclopedia", label: "Enciclopédia", icon: "book" },
+  { href: "/perguntas-frequentes", label: "Perguntas frequentes", icon: "question" },
+  { href: "/glossario", label: "Glossário", icon: "glossary" },
 ];
 
 export const MENU_LINKS = [...NAV_KNOWLEDGE, ...NAV_PRIMARY, ...NAV_MORE];
+
+const EXTRA_PATH_ICONS: Record<string, string> = {
+  "/fe": "cross",
+  "/santos": "saints",
+  "/theotokos": "pastoral",
+  "/formacao/misterios": "liturgy",
+  "/oracao-de-jesus": "prayer",
+  "/jejum-ortodoxo": "liturgy",
+  "/calendario": "calendar",
+  "/noticias": "news",
+  "/videos": "video",
+  "/biblioteca": "library",
+  "/batismo-ortodoxo": "liturgy",
+  "/historia-da-igreja-ortodoxa": "book",
+  "/pesquisa": "search",
+  "/formacao/jesus-cristo": "cross",
+  "/formacao/igreja": "church",
+  "/formacao/jejum-e-oracao": "prayer",
+};
+
+export function iconForPath(path: string): string {
+  return MENU_LINKS.find((link) => link.href === path)?.icon || EXTRA_PATH_ICONS[path] || "book";
+}
 
 export type ArticleSection = {
   title: string;

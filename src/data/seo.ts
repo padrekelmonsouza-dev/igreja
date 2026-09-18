@@ -34,36 +34,36 @@ export function getPageSeo(pathname: string): PageSeo {
 
   const extras: Record<string, Omit<PageSeo, "path">> = {
     "/perguntas-frequentes": {
-      title: "Perguntas frequentes sobre a Igreja Ortodoxa | Brasil",
+      title: `Perguntas frequentes | ${SITE.tabTitle}`,
       description:
         "Respostas claras: o que é a Igreja Ortodoxa, diferenças com a Católica, liturgia, comunhão, jejum, batismo e como visitar uma comunidade no Brasil.",
       type: "article",
     },
     "/glossario": {
-      title: "Glossário ortodoxo | Termos da Igreja Ortodoxa em português",
+      title: `Glossário | ${SITE.tabTitle}`,
       description:
         "Dicionário da Igreja Ortodoxa: liturgia, ícone, Theotokos, sínodo, jejum, G.O.C., velho calendário e outros termos explicados em português.",
       type: "article",
     },
     "/paroquias": {
-      title: "Paróquias ortodoxas no Brasil | Encontre uma comunidade",
+      title: `Paróquias | ${SITE.tabTitle}`,
       description:
         "Lista de paróquias e comunidades da Igreja Ortodoxa Grega G.O.C. no Brasil. Busque por estado, cidade ou sacerdote e prepare sua primeira visita.",
       type: "website",
     },
     "/hierarquia": {
-      title: "Clero e hierarquia da Igreja Ortodoxa no Brasil",
+      title: `Clero e hierarquia | ${SITE.tabTitle}`,
       description:
         "Conheça bispos e sacerdotes da Igreja Ortodoxa Grega G.O.C. no Brasil: biografias, eparquias, ordenação e ministério.",
       type: "website",
     },
     "/pesquisa": {
-      title: "Pesquisar no portal da Igreja Ortodoxa",
+      title: `Pesquisar | ${SITE.tabTitle}`,
       description: "Busque artigos, liturgia, santos, paróquias, glossário e perguntas frequentes sobre a Igreja Ortodoxa no Brasil.",
       type: "website",
     },
     "/pedido-de-oracao": {
-      title: "Pedido de oração | Igreja Ortodoxa no Brasil",
+      title: `Pedido de oração | ${SITE.tabTitle}`,
       description: "Envie uma intenção de oração para a Igreja Ortodoxa Grega G.O.C. no Brasil. Os pedidos passam por moderação.",
       type: "website",
     },
@@ -77,7 +77,7 @@ export function getPageSeo(pathname: string): PageSeo {
   if (article) {
     return {
       path: pathname,
-      title: `${article.title} | Igreja Ortodoxa no Brasil`,
+      title: `${article.title} | ${SITE.tabTitle}`,
       description: article.description || article.intro,
       type: "article",
     };
@@ -86,7 +86,7 @@ export function getPageSeo(pathname: string): PageSeo {
   if (pathname.startsWith("/hierarquia/")) {
     return {
       path: pathname,
-      title: `Hierarquia ortodoxa | ${SITE.shortName}`,
+      title: `Hierarquia | ${SITE.tabTitle}`,
       description: "Perfil do clero da Igreja Ortodoxa Grega G.O.C. no Brasil.",
       type: "article",
     };
