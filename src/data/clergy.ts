@@ -13,9 +13,9 @@ export const CLERGY: ClergyProfile[] = [
     slug: "dom-eugenios-de-atenas",
     name: "Dom Eugenios de Atenas",
     role: "Santo Sínodo",
-    image: "/media/eugenios.png",
+    image: "/media/card-dom-eugenios.jpg",
     summary:
-      "Autoridade eclesiástica apresentada pelo projeto como referência central do Santo Sínodo de Eugenio de Atenas.",
+      "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C.",
     facts: [
       { label: "Ministério", value: "Primazia sinodal" },
       { label: "Sede", value: "Atenas" },
@@ -25,7 +25,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Perfil",
         body: [
-          "Dom Eugenios de Atenas é apresentado neste portal como referência de autoridade do Santo Sínodo. A primazia, na tradição ortodoxa, é serviço à unidade da fé e à comunhão dos bispos.",
+          "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
         ],
       },
       {
@@ -46,9 +46,9 @@ export const CLERGY: ClergyProfile[] = [
     slug: "dom-leontios",
     name: "Dom Leontios de Noronha e Valdigem",
     role: "Arcebispo Metropolita da América do Sul",
-    image: "/media/leontios.png",
+    image: "/media/card-dom-leontios.jpg",
     summary:
-      "Perfil histórico e pastoral, atuação na América do Sul e legado no Brasil.",
+      "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil.",
     facts: [
       { label: "Título", value: "Arcebispo Metropolita da América do Sul" },
       { label: "Atuação", value: "América do Sul e Brasil" },
@@ -58,7 +58,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Perfil histórico e pastoral",
         body: [
-          "Dom Leontios de Noronha e Valdigem é apresentado como Arcebispo Metropolita da América do Sul. Sua página reúne o ministério episcopal, a memória histórica e o legado pastoral no Brasil.",
+          "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil. Como Arcebispo Metropolita da América do Sul, dedicou sua vida ao serviço da Santa Igreja, ao anúncio do Santo Evangelho e à preservação da fé ortodoxa recebida dos Santos Apóstolos e transmitida ao longo dos séculos pelos Santos Padres.",
         ],
       },
       {
@@ -79,8 +79,8 @@ export const CLERGY: ClergyProfile[] = [
     slug: "padre-kelmon-luis",
     name: "Padre Kelmon Luís",
     role: "Eparquia de São Paulo · SP",
-    image: "/media/kelmon.png",
-    summary: "Presbítero da Eparquia de São Paulo.",
+    image: "/media/card-padre-kelmon.jpg",
+    summary: "Presbítero da Eparquia de São Paulo. Nasceu em Salvador, na Bahia, em 1976.",
     facts: [
       { label: "Nascimento", value: "21/10/1976" },
       { label: "Ordenação", value: "02/08/2015" },
@@ -90,13 +90,13 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Biografia",
         body: [
-          "Padre Kelmon Luís nasceu em 21 de outubro de 1976. Foi ordenado em 2 de agosto de 2015 e serve na Eparquia de São Paulo.",
+          "Padre Kelmon nasceu em Salvador, na Bahia, em 21 de outubro de 1976. Foi ordenado em 2 de agosto de 2015 e serve na Eparquia de São Paulo. Há mais de 30 anos vive a fé no dia a dia: formação, pastoral e o debate público.",
         ],
       },
       {
         title: "Ministério",
         body: [
-          "Seu ministério presbiteral inclui a celebração da Divina Liturgia, a catequese, o acompanhamento dos fiéis e a presença pastoral na eparquia paulista.",
+          "Começou na juventude, na Legião de Maria. Depois estudou Filosofia, Teologia e Pedagogia e atuou em missões e ações humanitárias. Seu ministério presbiteral inclui a celebração da Divina Liturgia, a catequese e o acompanhamento dos fiéis na eparquia paulista.",
         ],
       },
       {
@@ -111,7 +111,7 @@ export const CLERGY: ClergyProfile[] = [
     slug: "padre-joao-damasceno",
     name: "Padre João Damasceno",
     role: "Eparquia do Rio de Janeiro",
-    image: "/media/joao.png",
+    image: "/media/joao.webp",
     summary: "Presbítero da Eparquia do Rio de Janeiro.",
     facts: [
       { label: "Nome civil", value: "Lucas Soares Chagas" },
@@ -143,7 +143,7 @@ export const CLERGY: ClergyProfile[] = [
     slug: "abade-julio",
     name: "Arquimandrita Abade Júlio",
     role: "Mosteiro de São Basílio",
-    image: "/media/brasao-goc.jpg",
+    image: "/media/brasao-goc.webp",
     summary: "Vida monástica e paternidade espiritual no Mosteiro de São Basílio.",
     facts: [
       { label: "Ministério", value: "Abade" },
@@ -179,7 +179,7 @@ export const PARISHES = [
     sacerdote: "Arquimandrita Abade Júlio",
     endereco: "Rua Gomes Freire nº 64, Marapicu, CEP 26295-045",
     contato: "(21) 96483-7295",
-    href: "/mosteiro",
+    href: "/comunidades/nova-iguacu",
   },
   {
     estado: "SP",
@@ -188,7 +188,7 @@ export const PARISHES = [
     sacerdote: "Padre Kelmon Luís",
     endereco: "Endereço litúrgico a confirmar com o pároco",
     contato: "Ver perfil do clero",
-    href: "/hierarquia/padre-kelmon-luis",
+    href: "/igreja/hierarquia/padre-kelmon-luis",
   },
   {
     estado: "RJ",
@@ -197,6 +197,6 @@ export const PARISHES = [
     sacerdote: "Padre João Damasceno",
     endereco: "Endereço litúrgico a confirmar com o pároco",
     contato: "Ver perfil do clero",
-    href: "/hierarquia/padre-joao-damasceno",
+    href: "/igreja/hierarquia/padre-joao-damasceno",
   },
 ];

@@ -30,7 +30,7 @@ export function Pesquisa() {
             type="search"
             defaultValue={q}
             placeholder="Ex.: O que é a Divina Liturgia?"
-            className="search-field flex-1 border border-[rgba(90,13,24,.18)] outline-none"
+            className="search-field flex-1 border border-burgundy/18 outline-none"
           />
           <button className="btn btn-burgundy px-10" type="submit">
             Pesquisar
@@ -53,7 +53,7 @@ export function Pesquisa() {
                   <Link
                     key={term}
                     to={`/pesquisa?q=${encodeURIComponent(term)}`}
-                    className="rounded-full border border-[rgba(90,13,24,.14)] bg-white px-4 py-2 text-sm hover:border-burgundy/40"
+                    className="rounded-full border border-burgundy/15 bg-white px-4 py-2 text-sm hover:border-burgundy/40"
                   >
                     {term}
                   </Link>
@@ -67,7 +67,7 @@ export function Pesquisa() {
               <Link
                 key={item.href}
                 to={item.href}
-                className="block rounded-2xl border border-[rgba(90,13,24,.12)] bg-white px-5 py-4 hover:shadow-card"
+                className="block rounded-2xl border border-burgundy/12 bg-white px-5 py-4 hover:shadow-card"
               >
                 <h2 className="text-xl">{item.title}</h2>
                 <p className="mt-1 text-sm text-burgundy">{item.href}</p>

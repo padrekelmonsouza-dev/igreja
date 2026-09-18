@@ -1,18 +1,28 @@
-import { FormEvent, useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { NAV_KNOWLEDGE, NAV_MORE, NAV_PRIMARY, SITE } from "../data/content";
-import { NavIcon, NavLabel } from "./NavIcon";
-
-const HOME_NAV = { href: "/", label: "Início", icon: "home" };
+import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import {
+  DESKTOP_NAV_IDS,
+  FIND_CHURCH_LINK,
+  MAIN_NAV,
+  START_HERE_LINK,
+  SUPPORT_LINK,
+} from "../data/navigation";
+import { SITE } from "../data/site";
+import { useSearchModal } from "./SearchModal";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const location = useLocation();
-  const navigate = useNavigate();
+  const { openSearch } = useSearchModal();
+  const menuId = useId();
+  const headerRef = useRef<HTMLElement>(null);
+  const searchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     setOpen(false);
+    setOpenGroup(null);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -24,81 +34,126 @@ export function Header() {
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 8);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+        setOpenGroup(null);
+      }
+    }
+    function onClick(event: MouseEvent) {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpenGroup(null);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("mousedown", onClick);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("mousedown", onClick);
+    };
+  }, []);
+
   function onSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const q = String(new FormData(event.currentTarget).get("q") || "").trim();
     setOpen(false);
-    navigate(q ? `/pesquisa?q=${encodeURIComponent(q)}` : "/pesquisa");
+    if (q) openSearch(q);
   }
+
+  function onSearchInput(value: string) {
+    window.clearTimeout(searchTimer.current);
+    if (value.trim().length < 3) return;
+    searchTimer.current = window.setTimeout(() => {
+      setOpen(false);
+      openSearch(value);
+    }, 700);
+  }
+
+  const desktopNav = MAIN_NAV.filter((item) => DESKTOP_NAV_IDS.includes(item.id as (typeof DESKTOP_NAV_IDS)[number]));
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50">
+      <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 w-full">
         <div
-          className={`text-parchment transition-[background-color,backdrop-filter] duration-300 ${
-            scrolled ? "bg-burgundy/70 backdrop-blur-xl" : "bg-burgundy"
-          }`}
-        >
-          <div className="mx-auto max-w-6xl px-3 py-2 text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.12em] sm:px-4 sm:text-[11px] sm:tracking-[0.28em]">
-            Portal da Igreja Ortodoxa Grega no Brasil
-          </div>
-        </div>
-        <div
-          className={`border-b transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 ${
+          className={`border-b transition-[background-color,box-shadow,border-color] duration-300 ${
             scrolled
-              ? "border-white/35 bg-cream/55 shadow-[0_12px_40px_-18px_rgba(90,13,24,.45)] backdrop-blur-2xl"
-              : "border-[rgba(90,13,24,.14)] bg-cream/92 backdrop-blur-md"
+              ? "border-burgundy/15 bg-ivory/90 shadow-[0_12px_40px_-24px_rgba(110,18,28,.5)] backdrop-blur-xl"
+              : "border-burgundy/15 bg-ivory/96"
           }`}
         >
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-            <Link
-              to="/"
-              aria-label={SITE.name}
-              className="flex min-w-0 shrink-0 items-center"
-              onClick={() => setOpen(false)}
-            >
+          <div className="mx-auto flex w-full max-w-[1280px] items-center gap-3 px-4 py-2.5 lg:gap-6">
+            <Link to="/" aria-label={SITE.name} className="shrink-0" onClick={() => setOpen(false)}>
               <img
-                src="/logo-gog.webp"
+                src={SITE.logo}
                 alt=""
-                className="h-[3.75rem] w-auto max-w-[min(100%,14.5rem)] object-contain object-left sm:h-[4.5rem] sm:max-w-[18rem]"
+                width={286}
+                height={94}
+                className="h-[3.9rem] w-auto max-w-[min(100%,14.95rem)] object-contain object-left sm:h-[4.55rem] sm:max-w-[18.2rem]"
               />
             </Link>
-            <div className="ml-auto flex min-w-0 items-center gap-1 sm:gap-2">
-              <nav className="hidden min-w-0 items-center lg:flex">
-                <NavLink
-                  to="/"
-                  end
-                  className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-[rgba(90,13,24,.06)] hover:text-burgundy xl:px-3"
-                >
-                  <NavIcon name={HOME_NAV.icon} className="h-4 w-4 shrink-0 text-burgundy" />
-                  {HOME_NAV.label}
-                </NavLink>
-                {NAV_KNOWLEDGE.slice(0, 4).map((link) => (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-[rgba(90,13,24,.06)] hover:text-burgundy xl:px-3"
+
+            <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 xl:flex" aria-label="Principal">
+              {desktopNav.map((item) =>
+                item.children?.length ? (
+                  <div key={item.id} className="relative">
+                    <button
+                      type="button"
+                      className="inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-burgundy/5 hover:text-burgundy"
+                      aria-expanded={openGroup === item.id}
+                      aria-haspopup="true"
+                      onClick={() => setOpenGroup((current) => (current === item.id ? null : item.id))}
+                    >
+                      {item.label}
+                      <span aria-hidden="true" className="text-[10px]">
+                        ▾
+                      </span>
+                    </button>
+                    {openGroup === item.id ? (
+                      <div className="absolute left-0 top-full z-50 min-w-[16rem] pt-2">
+                        <div className="rounded-2xl border border-burgundy/10 bg-white p-2 shadow-card">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              to={child.href}
+                              className="block rounded-xl px-3 py-2.5 text-sm hover:bg-ivory hover:text-burgundy"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : (
+                  <NavLink
+                    key={item.id}
+                    to={item.href}
+                    end={item.href === "/"}
+                    className="rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-burgundy/5 hover:text-burgundy"
                   >
-                    <NavIcon name={link.icon} className="h-4 w-4 shrink-0 text-burgundy" />
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
+                    {item.label}
+                  </NavLink>
+                ),
+              )}
+            </nav>
+
+            <div className="ml-auto flex items-center xl:ml-0">
               <button
                 type="button"
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[rgba(90,13,24,.3)] bg-cream/80 text-ink backdrop-blur-sm"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-burgundy/20 bg-white text-burgundy xl:hidden"
                 aria-expanded={open}
+                aria-controls={menuId}
                 aria-label={open ? "Fechar menu" : "Abrir menu"}
                 onClick={() => setOpen((value) => !value)}
               >
-                <span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   {open ? (
                     <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" />
@@ -112,58 +167,85 @@ export function Header() {
         </div>
 
         {open ? (
-          <div className="absolute inset-x-0 top-full z-50 h-[calc(100dvh-100%)] overflow-x-hidden overflow-y-auto bg-cream/92 backdrop-blur-xl">
-            <form onSubmit={onSearch} className="search-form mx-auto max-w-4xl px-4 pt-6">
+          <div
+            id={menuId}
+            className="fixed inset-x-0 bottom-0 top-[5.15rem] z-[60] overflow-y-auto bg-white sm:top-[5.8rem]"
+          >
+            <form onSubmit={onSearch} className="search-form mx-auto max-w-3xl px-4 pt-5">
+              <label className="sr-only" htmlFor="mobile-search">
+                Pesquisar
+              </label>
               <input
+                id="mobile-search"
                 name="q"
                 type="search"
-                placeholder="Pesquisar Igreja Ortodoxa..."
-                className="search-field flex-1 border border-[rgba(90,13,24,.18)] bg-white outline-none"
+                placeholder="Pesquisar no portal"
+                className="search-field border border-burgundy/15 bg-white"
+                onChange={(event) => onSearchInput(event.target.value)}
               />
-              <button className="btn btn-burgundy px-10" type="submit">
+              <button className="btn btn-burgundy px-8" type="submit">
                 Buscar
               </button>
             </form>
-            <div className="mx-auto max-w-4xl px-4 py-8">
-              <p className="kicker mb-3">Conhecer a fé</p>
-              <nav className="grid gap-3 sm:grid-cols-2">
-                <NavLink
-                  to="/"
-                  end
-                  onClick={() => setOpen(false)}
-                  className="inline-flex items-center rounded-2xl border border-[rgba(90,13,24,.14)] bg-white px-5 py-4 text-lg transition hover:border-burgundy/40 hover:shadow-card"
-                >
-                  <NavLabel icon={HOME_NAV.icon} label={HOME_NAV.label} variant="badge" />
-                </NavLink>
-                {NAV_KNOWLEDGE.map((link) => (
-                  <NavLink
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setOpen(false)}
-                    className="inline-flex items-center rounded-2xl border border-[rgba(90,13,24,.14)] bg-white px-5 py-4 text-lg transition hover:border-burgundy/40 hover:shadow-card"
-                  >
-                    <NavLabel icon={link.icon} label={link.label} variant="badge" />
-                  </NavLink>
-                ))}
-              </nav>
-              <p className="kicker mb-3 mt-10">A Igreja</p>
-              <nav className="grid gap-3 sm:grid-cols-2">
-                {[...NAV_PRIMARY, ...NAV_MORE].map((link) => (
-                  <NavLink
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setOpen(false)}
-                    className="inline-flex items-center rounded-2xl border border-[rgba(90,13,24,.14)] bg-white px-5 py-4 text-lg transition hover:border-burgundy/40 hover:shadow-card"
-                  >
-                    <NavLabel icon={link.icon} label={link.label} variant="badge" />
-                  </NavLink>
-                ))}
-              </nav>
-            </div>
+            <nav className="mx-auto max-w-3xl space-y-2 px-4 py-6" aria-label="Menu móvel">
+              {MAIN_NAV.map((item) => (
+                <div key={item.id} className="rounded-2xl bg-ivory ring-1 ring-burgundy/10">
+                  {item.children?.length ? (
+                    <details>
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4 text-lg font-medium">
+                        <span>{item.label}</span>
+                        <svg
+                          className="menu-chevron h-5 w-5 shrink-0 text-burgundy"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M6 9l6 6 6-6"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </summary>
+                      <div className="space-y-1 px-3 pb-3">
+                        <Link to={item.href} className="block rounded-xl px-3 py-3 text-burgundy" onClick={() => setOpen(false)}>
+                          Visão geral
+                        </Link>
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            className="block rounded-xl px-3 py-3"
+                            onClick={() => setOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <Link to={item.href} className="block px-4 py-4 text-lg" onClick={() => setOpen(false)}>
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              <Link to={START_HERE_LINK.href} className="block rounded-2xl bg-ivory px-4 py-4 ring-1 ring-burgundy/10" onClick={() => setOpen(false)}>
+                {START_HERE_LINK.label}
+              </Link>
+              <Link to={SUPPORT_LINK.href} className="block rounded-2xl bg-ivory px-4 py-4 ring-1 ring-burgundy/10" onClick={() => setOpen(false)}>
+                {SUPPORT_LINK.label}
+              </Link>
+              <Link to={FIND_CHURCH_LINK.href} className="btn btn-gold mt-4 w-full" onClick={() => setOpen(false)}>
+                {FIND_CHURCH_LINK.label}
+              </Link>
+            </nav>
           </div>
         ) : null}
       </header>
-      <div className="h-[6.85rem] sm:h-[7.65rem]" aria-hidden="true" />
+      <div className="h-[5.15rem] sm:h-[5.8rem]" aria-hidden="true" />
     </>
   );
 }

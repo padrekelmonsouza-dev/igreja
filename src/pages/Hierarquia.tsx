@@ -9,14 +9,14 @@ export function Hierarquia() {
         kicker="Serviço à Igreja"
         title="Hierarquia e Clero"
         intro="Homens a serviço da Igreja."
-        crumbs={[{ href: "/hierarquia", label: "Hierarquia e Clero" }]}
+        crumbs={[{ href: "/igreja", label: "A Igreja" }, { href: "/igreja/hierarquia", label: "Hierarquia e Clero" }]}
       />
       <div className="mx-auto grid max-w-6xl gap-5 px-4 py-12 md:grid-cols-2">
         {CLERGY.map((person) => (
           <Link
             key={person.slug}
-            to={`/hierarquia/${person.slug}`}
-            className="overflow-hidden rounded-3xl border border-[rgba(90,13,24,.12)] bg-white hover:shadow-card"
+                to={`/igreja/hierarquia/${person.slug}`}
+            className="overflow-hidden rounded-3xl border border-burgundy/12 bg-white hover:shadow-card"
           >
             <div className="relative h-72">
               <img src={person.image} alt={person.name} className="h-full w-full object-cover object-top" />

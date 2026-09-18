@@ -248,7 +248,7 @@ export function NavLabel({
   return (
     <span className={className}>
       {variant === "badge" ? (
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(160deg,#5a0d18,#8d2530)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(160deg,#6E121C,#9B2430)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
           <NavIcon name={icon} className="h-5 w-5" />
         </span>
       ) : (

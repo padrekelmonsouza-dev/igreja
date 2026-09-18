@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { ARTICLES } from "../data/content";
+import { REDIRECTS } from "../data/redirects";
+
+function resolvePath(path: string) {
+  return REDIRECTS[path] || path;
+}
 
 export function Related({ paths }: { paths?: string[] }) {
   const pages = (paths || [])
-    .map((path) => ARTICLES.find((page) => page.path === path))
+    .map((path) => ARTICLES.find((page) => page.path === resolvePath(path) || page.path === path))
     .filter(Boolean);
 
   if (pages.length === 0) return null;
@@ -18,10 +23,10 @@ export function Related({ paths }: { paths?: string[] }) {
             <Link
               key={page.path}
               to={page.path}
-              className="rounded-2xl border border-[rgba(90,13,24,.12)] bg-white p-5 hover:shadow-card"
+              className="rounded-2xl border border-burgundy/10 bg-white p-5 hover:shadow-card"
             >
-              <h3 className="text-xl">{page.title}</h3>
-              <p className="mt-2 text-sm text-muted">{page.intro}</p>
+              <h3 className="font-serif text-xl">{page.title}</h3>
+              <p className="mt-2 text-sm text-stone">{page.intro}</p>
             </Link>
           ) : null,
         )}

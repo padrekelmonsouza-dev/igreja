@@ -7,7 +7,7 @@ export function ClergyProfile() {
   const person = slug ? getClergy(slug) : undefined;
 
   if (!person) {
-    return <Navigate to="/hierarquia" replace />;
+    return <Navigate to="/igreja/hierarquia" replace />;
   }
 
   return (
@@ -17,19 +17,26 @@ export function ClergyProfile() {
         title={person.name}
         intro={person.role}
         crumbs={[
-          { href: "/hierarquia", label: "Hierarquia" },
-          { href: `/hierarquia/${person.slug}`, label: person.name },
+          { href: "/igreja", label: "A Igreja" },
+          { href: "/igreja/hierarquia", label: "Hierarquia" },
+          { href: `/igreja/hierarquia/${person.slug}`, label: person.name },
         ]}
       />
       <article className="mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[280px_1fr]">
         <aside>
-          <img src={person.image} alt={person.name} className="w-full rounded-3xl object-cover shadow-card" />
-          <div className="mt-5 rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-5">
+          <img
+            src={person.image}
+            alt={person.name}
+            className="w-full rounded-3xl object-cover shadow-card"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="mt-5 rounded-3xl border border-burgundy/10 bg-white p-5">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-burgundy">Dados oficiais</p>
             <dl className="mt-4 space-y-3">
               {person.facts.map((fact) => (
                 <div key={fact.label}>
-                  <dt className="text-sm text-muted">{fact.label}</dt>
+                  <dt className="text-sm text-stone">{fact.label}</dt>
                   <dd className="text-lg">{fact.value}</dd>
                 </div>
               ))}
@@ -47,7 +54,7 @@ export function ClergyProfile() {
               ))}
             </section>
           ))}
-          <Link className="btn btn-burgundy" to="/hierarquia">
+          <Link className="btn btn-burgundy" to="/igreja/hierarquia">
             Ver todo o clero
           </Link>
         </div>
