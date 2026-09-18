@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/Article";
-import { ARTICLES } from "../data/content";
+import { ARTICLES, iconForPath } from "../data/content";
+import { NavLabel } from "../components/NavIcon";
 
 const GROUPS = [
   {
@@ -33,15 +34,21 @@ export function Enciclopedia() {
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="mb-10 grid gap-3 sm:grid-cols-3">
           <Link to="/perguntas-frequentes" className="rounded-2xl border border-[rgba(90,13,24,.12)] bg-white p-5 hover:shadow-card">
-            <h2 className="text-xl">Perguntas frequentes</h2>
+            <h2 className="text-xl">
+              <NavLabel icon="question" label="Perguntas frequentes" variant="badge" />
+            </h2>
             <p className="mt-2 text-muted">O que o Google mais pergunta sobre a Ortodoxia, respondido com clareza.</p>
           </Link>
           <Link to="/glossario" className="rounded-2xl border border-[rgba(90,13,24,.12)] bg-white p-5 hover:shadow-card">
-            <h2 className="text-xl">Glossário</h2>
+            <h2 className="text-xl">
+              <NavLabel icon="glossary" label="Glossário" variant="badge" />
+            </h2>
             <p className="mt-2 text-muted">Ícone, Theotokos, sínodo, jejum e os termos da liturgia.</p>
           </Link>
           <Link to="/pesquisa" className="rounded-2xl border border-[rgba(90,13,24,.12)] bg-white p-5 hover:shadow-card">
-            <h2 className="text-xl">Busca do portal</h2>
+            <h2 className="text-xl">
+              <NavLabel icon="search" label="Busca do portal" variant="badge" />
+            </h2>
             <p className="mt-2 text-muted">Encontre qualquer artigo, paróquia ou perfil do clero.</p>
           </Link>
         </div>
@@ -61,7 +68,9 @@ export function Enciclopedia() {
                 const intro = page?.intro || extras[path] || "";
                 return (
                   <Link key={path} to={path} className="rounded-2xl border border-[rgba(90,13,24,.12)] bg-white p-5 hover:shadow-card">
-                    <h3 className="text-xl">{title}</h3>
+                    <h3 className="text-xl">
+                      <NavLabel icon={iconForPath(path)} label={title} variant="badge" />
+                    </h3>
                     <p className="mt-2 text-sm text-muted">{intro}</p>
                   </Link>
                 );

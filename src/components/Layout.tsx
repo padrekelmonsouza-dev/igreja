@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { getClergy } from "../data/clergy";
+import { SITE } from "../data/content";
 import { breadcrumbJsonLd, faqJsonLd, getPageSeo, websiteJsonLd } from "../data/seo";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -16,7 +17,7 @@ export function Layout() {
       if (person) {
         return {
           ...base,
-          title: `${person.name} | Clero da Igreja Ortodoxa no Brasil`,
+          title: `${person.name} | ${SITE.tabTitle}`,
           description: `${person.name}, ${person.role}. ${person.summary}`,
           noindex: false,
         };
@@ -26,7 +27,7 @@ export function Layout() {
     if (location.pathname === "/pesquisa" && q) {
       return {
         ...base,
-        title: `Pesquisa: ${q} | Igreja Ortodoxa no Brasil`,
+        title: `Pesquisa: ${q} | ${SITE.tabTitle}`,
       };
     }
     return base;

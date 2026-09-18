@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CLERGY } from "../data/clergy";
 import { MENU_LINKS } from "../data/content";
 import { FAQ_ITEMS } from "../data/faq";
+import { NavIcon, NavLabel } from "../components/NavIcon";
 
 const STEPS = [
   { n: "01", title: "O que é a Ortodoxia?", href: "/o-que-e-igreja-ortodoxa" },
@@ -18,37 +19,37 @@ const STEPS = [
 
 const INTROS = [
   {
-    icon: "✝",
+    icon: "cross",
     title: "O que é a Ortodoxia?",
     text: "Uma introdução à Igreja, sua fé, história e Tradição Apostólica.",
     href: "/o-que-e-igreja-ortodoxa",
   },
   {
-    icon: "🕯",
+    icon: "liturgy",
     title: "Divina Liturgia",
     text: "Entenda cada momento da celebração e como participar pela primeira vez.",
     href: "/liturgia",
   },
   {
-    icon: "☦",
+    icon: "saints",
     title: "Ícones e Santos",
     text: "Conheça a veneração dos Santos e o significado espiritual dos ícones.",
     href: "/santos",
   },
   {
-    icon: "📅",
+    icon: "calendar",
     title: "Calendário Patrístico",
     text: "Explore festas, santos, leituras e períodos de jejum do calendário litúrgico.",
     href: "/calendario",
   },
   {
-    icon: "⚖",
+    icon: "scales",
     title: "Católica e Ortodoxa",
     text: "As diferenças e o que há em comum, explicadas com respeito.",
     href: "/catolica-e-ortodoxa",
   },
   {
-    icon: "🚪",
+    icon: "door",
     title: "Primeira visita",
     text: "O que vestir, se pode comungar e o que esperar na liturgia.",
     href: "/primeira-visita",
@@ -57,25 +58,25 @@ const INTROS = [
 
 const LIBRARY = [
   {
-    icon: "📖",
+    icon: "book",
     title: "Enciclopédia Ortodoxa",
     text: "Páginas aprofundadas sobre doutrina, história, liturgia, Santos Padres e tradição.",
     href: "/enciclopedia",
   },
   {
-    icon: "📰",
+    icon: "news",
     title: "Notícias e artigos",
     text: "Atualizações da Igreja, reflexões, homilias e conteúdo editorial.",
     href: "/noticias",
   },
   {
-    icon: "🎥",
+    icon: "video",
     title: "Vídeos e homilias",
     text: "Um acervo organizado por sacerdote, tema, data e comunidade.",
     href: "/videos",
   },
   {
-    icon: "📚",
+    icon: "library",
     title: "Biblioteca",
     text: "Livros, revistas, documentos e materiais de formação em um só lugar.",
     href: "/biblioteca",
@@ -123,11 +124,10 @@ export function Home() {
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,11,8,.90),rgba(18,11,8,.55)_45%,rgba(18,11,8,.25))]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(239,213,138,.22),rgba(0,0,0,0)_34%)]" />
-        <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 sm:pb-24">
-          <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-gold-soft sm:tracking-[0.32em]">
-            Portal de referência da Igreja Ortodoxa no Brasil
-          </p>
-          <h1 className="mt-5 max-w-3xl break-words font-serif text-4xl leading-tight sm:text-7xl">Vinde e vede.</h1>
+        <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-10 sm:pb-24">
+          <h1 className="max-w-5xl break-words font-serif text-6xl leading-[0.92] sm:text-8xl lg:text-[7.25rem]">
+            Vinde e vede.
+          </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-parchment/95 sm:text-xl">
             O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os Santos,
             os ícones, o jejum e onde encontrar uma comunidade no Brasil.
@@ -174,9 +174,9 @@ export function Home() {
             <Link
               key={link.href}
               to={link.href}
-              className="rounded-[18px] border border-[rgba(90,13,24,.14)] bg-white px-[16.8px] py-4 transition hover:-translate-y-0.5 hover:shadow-card"
+              className="inline-flex items-center gap-3 rounded-[18px] border border-[rgba(90,13,24,.14)] bg-white px-[16.8px] py-4 transition hover:-translate-y-0.5 hover:shadow-card"
             >
-              {link.label}
+              <NavLabel icon={link.icon} label={link.label} variant="badge" />
             </Link>
           ))}
         </div>
@@ -196,7 +196,9 @@ export function Home() {
                 to={item.href}
                 className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6 transition hover:shadow-card"
               >
-                <div className="text-2xl">{item.icon}</div>
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(160deg,#5a0d18,#8d2530)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
+                  <NavIcon name={item.icon} className="h-6 w-6" />
+                </div>
                 <h3 className="mt-3 text-2xl">{item.title}</h3>
                 <p className="mt-2 text-muted">{item.text}</p>
               </Link>
@@ -310,7 +312,9 @@ export function Home() {
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {LIBRARY.map((item) => (
               <Link key={item.href} to={item.href} className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6 hover:shadow-card">
-                <div className="text-2xl">{item.icon}</div>
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(160deg,#5a0d18,#8d2530)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
+                  <NavIcon name={item.icon} className="h-6 w-6" />
+                </div>
                 <h3 className="mt-3 text-2xl">{item.title}</h3>
                 <p className="mt-2 text-muted">{item.text}</p>
               </Link>

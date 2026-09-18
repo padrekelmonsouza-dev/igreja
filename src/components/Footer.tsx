@@ -1,6 +1,7 @@
 import { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NAV_KNOWLEDGE, NAV_MORE, NAV_PRIMARY, SITE } from "../data/content";
+import { NavLabel } from "./NavIcon";
 
 export function Footer() {
   const navigate = useNavigate();
@@ -52,8 +53,8 @@ export function Footer() {
           <ul className="mt-4 space-y-2">
             {NAV_KNOWLEDGE.map((link) => (
               <li key={link.href}>
-                <Link className="hover:text-burgundy" to={link.href}>
-                  {link.label}
+                <Link className="inline-flex items-center gap-2 hover:text-burgundy" to={link.href}>
+                  <NavLabel icon={link.icon} label={link.label}  />
                 </Link>
               </li>
             ))}
@@ -64,8 +65,8 @@ export function Footer() {
           <ul className="mt-4 space-y-2">
             {NAV_PRIMARY.map((link) => (
               <li key={link.href}>
-                <Link className="hover:text-burgundy" to={link.href}>
-                  {link.label}
+                <Link className="inline-flex items-center gap-2 hover:text-burgundy" to={link.href}>
+                  <NavLabel icon={link.icon} label={link.label}  />
                 </Link>
               </li>
             ))}
@@ -76,8 +77,8 @@ export function Footer() {
           <ul className="mt-4 space-y-2">
             {NAV_MORE.map((link) => (
               <li key={link.href}>
-                <Link className="hover:text-burgundy" to={link.href}>
-                  {link.label}
+                <Link className="inline-flex items-center gap-2 hover:text-burgundy" to={link.href}>
+                  <NavLabel icon={link.icon} label={link.label}  />
                 </Link>
               </li>
             ))}
