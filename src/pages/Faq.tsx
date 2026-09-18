@@ -15,7 +15,7 @@ export function Faq() {
       <section className="mx-auto max-w-4xl px-4 py-12">
         <div className="space-y-4">
           {FAQ_ITEMS.map((item) => (
-            <article key={item.question} className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6">
+            <article key={item.question} className="rounded-3xl border border-burgundy/12 bg-white p-6">
               <h2 className="text-2xl">{item.question}</h2>
               <p className="mt-3 text-lg leading-8 text-[#3a342d]">{item.answer}</p>
               {item.href ? (
@@ -27,7 +27,7 @@ export function Faq() {
           ))}
         </div>
       </section>
-      <Related paths={["/o-que-e-igreja-ortodoxa", "/catolica-e-ortodoxa", "/primeira-visita", "/glossario"]} />
+      <Related paths={["/ortodoxia/o-que-e-a-ortodoxia", "/ortodoxia/catolica-e-ortodoxa", "/primeira-visita", "/glossario"]} />
     </>
   );
 }

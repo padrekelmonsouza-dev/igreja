@@ -5,24 +5,30 @@ export default {
     extend: {
       colors: {
         burgundy: {
-          DEFAULT: "#5a0d18",
-          light: "#8d2530",
+          DEFAULT: "#6E121C",
+          light: "#9B2430",
         },
         gold: {
-          DEFAULT: "#caa34a",
-          soft: "#efd58a",
-          dark: "#1c140d",
+          DEFAULT: "#D4AF37",
+          soft: "#F0D56A",
+          dark: "#3D2A0A",
         },
-        cream: "#fffaf0",
-        parchment: "#f6efdf",
-        ink: "#151313",
-        muted: "#5c5348",
+        ivory: "#F7F0DC",
+        cream: "#FBF6E8",
+        parchment: "#F3E6C4",
+        ink: "#1A0E0C",
+        stone: "#6B655C",
+        muted: "#5C5348",
       },
       fontFamily: {
-        serif: ['Georgia', '"Times New Roman"', "Times", "serif"],
+        serif: ['"Cormorant Garamond"', "Georgia", '"Times New Roman"', "serif"],
+        sans: ['"Source Sans 3"', "system-ui", "Segoe UI", "sans-serif"],
       },
       boxShadow: {
-        card: "0 18px 40px -24px rgba(90, 13, 24, 0.35)",
+        card: "0 18px 40px -24px rgba(110, 18, 28, 0.45)",
+      },
+      maxWidth: {
+        site: "1280px",
       },
     },
   },

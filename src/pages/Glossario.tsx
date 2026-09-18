@@ -24,7 +24,7 @@ export function Glossario() {
             <h2 className="mb-4 font-serif text-3xl text-burgundy">{letter}</h2>
             <div className="space-y-4">
               {terms.map((item) => (
-                <article key={item.term} className="rounded-2xl border border-[rgba(90,13,24,.12)] bg-white p-5">
+                <article key={item.term} className="rounded-2xl border border-burgundy/12 bg-white p-5">
                   <h3 className="text-xl">{item.term}</h3>
                   <p className="mt-2 leading-7 text-[#3a342d]">{item.definition}</p>
                   {item.href ? (
@@ -38,7 +38,7 @@ export function Glossario() {
           </section>
         ))}
       </section>
-      <Related paths={["/enciclopedia", "/liturgia", "/o-que-e-igreja-ortodoxa"]} />
+      <Related paths={["/enciclopedia", "/ortodoxia/divina-liturgia", "/ortodoxia/o-que-e-a-ortodoxia"]} />
     </>
   );
 }

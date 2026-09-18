@@ -1,357 +1,720 @@
-import { FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { LITURGICAL_FASTS, LITURGICAL_NOTE, MAJOR_FEASTS } from "../data/calendar";
 import { CLERGY } from "../data/clergy";
-import { MENU_LINKS } from "../data/content";
+import { COMMUNITIES } from "../data/communities";
+import { DONATION_PROJECTS, FORMATION_LINKS } from "../data/collections";
+import { getArticle } from "../data/content";
 import { FAQ_ITEMS } from "../data/faq";
-import { NavIcon, NavLabel } from "../components/NavIcon";
-
-const STEPS = [
-  { n: "01", title: "O que é a Ortodoxia?", href: "/o-que-e-igreja-ortodoxa" },
-  { n: "02", title: "Quem é Jesus Cristo?", href: "/formacao/jesus-cristo" },
-  { n: "03", title: "O que é a Igreja?", href: "/formacao/igreja" },
-  { n: "04", title: "Os Santos e os Ícones", href: "/santos" },
-  { n: "05", title: "A Divina Liturgia", href: "/liturgia" },
-  { n: "06", title: "Os Santos Mistérios", href: "/formacao/misterios" },
-  { n: "07", title: "Jejum e oração", href: "/formacao/jejum-e-oracao" },
-  { n: "08", title: "Calendário Antigo", href: "/calendario" },
-  { n: "09", title: "Encontre uma comunidade", href: "/paroquias" },
-];
-
-const INTROS = [
-  {
-    icon: "cross",
-    title: "O que é a Ortodoxia?",
-    text: "Uma introdução à Igreja, sua fé, história e Tradição Apostólica.",
-    href: "/o-que-e-igreja-ortodoxa",
-  },
-  {
-    icon: "liturgy",
-    title: "Divina Liturgia",
-    text: "Entenda cada momento da celebração e como participar pela primeira vez.",
-    href: "/liturgia",
-  },
-  {
-    icon: "saints",
-    title: "Ícones e Santos",
-    text: "Conheça a veneração dos Santos e o significado espiritual dos ícones.",
-    href: "/santos",
-  },
-  {
-    icon: "calendar",
-    title: "Calendário Patrístico",
-    text: "Explore festas, santos, leituras e períodos de jejum do calendário litúrgico.",
-    href: "/calendario",
-  },
-  {
-    icon: "scales",
-    title: "Católica e Ortodoxa",
-    text: "As diferenças e o que há em comum, explicadas com respeito.",
-    href: "/catolica-e-ortodoxa",
-  },
-  {
-    icon: "door",
-    title: "Primeira visita",
-    text: "O que vestir, se pode comungar e o que esperar na liturgia.",
-    href: "/primeira-visita",
-  },
-];
-
-const LIBRARY = [
-  {
-    icon: "book",
-    title: "Enciclopédia Ortodoxa",
-    text: "Páginas aprofundadas sobre doutrina, história, liturgia, Santos Padres e tradição.",
-    href: "/enciclopedia",
-  },
-  {
-    icon: "news",
-    title: "Notícias e artigos",
-    text: "Atualizações da Igreja, reflexões, homilias e conteúdo editorial.",
-    href: "/noticias",
-  },
-  {
-    icon: "video",
-    title: "Vídeos e homilias",
-    text: "Um acervo organizado por sacerdote, tema, data e comunidade.",
-    href: "/videos",
-  },
-  {
-    icon: "library",
-    title: "Biblioteca",
-    text: "Livros, revistas, documentos e materiais de formação em um só lugar.",
-    href: "/biblioteca",
-  },
-];
+import { SITE } from "../data/site";
+import { trackEvent } from "../lib/analytics";
+import { BibleCard } from "../components/BibleCard";
+import { VideoGallery } from "../components/VideoGallery";
+import { useSearchModal } from "../components/SearchModal";
 
 const featuredClergy = ["padre-kelmon-luis", "padre-joao-damasceno", "dom-leontios"]
   .map((slug) => CLERGY.find((person) => person.slug === slug))
   .filter(Boolean);
 
-function HomeSearch() {
-  const navigate = useNavigate();
-  function onSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const q = String(new FormData(event.currentTarget).get("q") || "").trim();
-    navigate(q ? `/pesquisa?q=${encodeURIComponent(q)}` : "/pesquisa");
+const HIERARCHY_NEWS_CARDS = [
+  {
+    slug: "dom-leontios",
+    title: "Dom Leontios de Noronha e Valdigem",
+    kicker: "Sua Eminência Dom Leontios",
+    image: "/media/card-dom-leontios.jpg",
+    imageClass: "object-cover object-[center_18%]",
+    meta: "De bendita e eterna memória",
+    body: "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil. Como Arcebispo Metropolita da América do Sul, dedicou sua vida ao serviço da Santa Igreja, ao anúncio do Santo Evangelho e à preservação da fé ortodoxa recebida dos Santos Apóstolos e transmitida ao longo dos séculos pelos Santos Padres.",
+  },
+  {
+    slug: "dom-eugenios-de-atenas",
+    title: "O Arcebispo atual: Dom Eugenios de Atenas",
+    kicker: "O Santo Sínodo de Sua Beatitude Eugenios de Atenas",
+    image: "/media/card-dom-eugenios.jpg",
+    imageClass: "object-cover object-center",
+    meta: "Santo Sínodo",
+    body: "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
+  },
+  {
+    slug: "padre-kelmon-luis",
+    title: "Padre Kelmon Luís",
+    kicker: "Eparquia de São Paulo",
+    image: "/media/card-padre-kelmon.jpg",
+    imageClass: "object-cover object-[center_20%]",
+    meta: "Nascimento: 21/10/1976 · Ordenação: 02/08/2015",
+    body: "Padre Kelmon nasceu em Salvador, na Bahia, em 1976. Há mais de 30 anos vive a fé no dia a dia: formação, pastoral e o debate público. Começou na juventude, na Legião de Maria. Depois estudou Filosofia, Teologia e Pedagogia e atuou em missões e ações humanitárias.",
+  },
+] as const;
+
+const HERO_SHORTCUTS = [
+  {
+    href: "/igreja",
+    label: "Conheça a Igreja",
+    description: "Fé apostólica, história e a vida da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    icon: "book",
+  },
+  {
+    href: "/comunidades",
+    label: "Encontre uma comunidade",
+    description: "Mosteiro em Nova Iguaçu e comunidades em São Paulo e no Rio de Janeiro.",
+    icon: "church",
+  },
+  {
+    href: "/calendario",
+    label: "Calendário litúrgico",
+    description: "Páscoa, Teofania, jejuns e o ritmo do ano da Igreja.",
+    icon: "calendar",
+  },
+  {
+    href: "/videos",
+    label: "Vídeos e homilias",
+    description: "Homilias, liturgia e catequese, quando o acervo oficial for publicado.",
+    icon: "video",
+  },
+  {
+    href: "/formacao",
+    label: "Formação e biblioteca",
+    description: "Textos e materiais autorizados para estudar a fé ortodoxa.",
+    icon: "library",
+  },
+  {
+    href: "/doacoes",
+    label: "Apoie a Igreja",
+    description: "Sustente a liturgia, as obras e a missão das comunidades.",
+    icon: "heart",
+  },
+] as const;
+
+function HeroShortcutIcon({ name }: { name: (typeof HERO_SHORTCUTS)[number]["icon"] }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.6,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    className: "h-6 w-6",
+    "aria-hidden": true,
+  };
+  if (name === "book") {
+    return (
+      <svg {...common}>
+        <path d="M5 19.2A2.2 2.2 0 0 1 7.3 17H20" />
+        <path d="M7.3 4H20v16H7.3A2.3 2.3 0 0 1 5 17.7V6.3A2.3 2.3 0 0 1 7.3 4Z" />
+        <path d="M8.6 8.2h7.4M8.6 11.6h5.2" />
+      </svg>
+    );
+  }
+  if (name === "church") {
+    return (
+      <svg {...common}>
+        <path d="M12 3v3M10.6 4.2h2.8" />
+        <path d="M12 6.2 5.5 10.4V21h13V10.4L12 6.2Z" />
+        <path d="M10 21v-5.2h4V21" />
+        <path d="M8.2 13.2h1.4M14.4 13.2h1.4" />
+      </svg>
+    );
+  }
+  if (name === "calendar") {
+    return (
+      <svg {...common}>
+        <rect x="4" y="5.5" width="16" height="14" rx="1.6" />
+        <path d="M8 3.8v3.4M16 3.8v3.4M4 10.2h16" />
+      </svg>
+    );
+  }
+  if (name === "video") {
+    return (
+      <svg {...common}>
+        <rect x="3.4" y="6.2" width="12.4" height="11.6" rx="1.8" />
+        <path d="m15.8 10.2 4.8-2.4v8.4l-4.8-2.4Z" />
+      </svg>
+    );
+  }
+  if (name === "library") {
+    return (
+      <svg {...common}>
+        <path d="M5 6.2h5.2v12.2H5zM10.6 8.2h5.2v10.2h-5.2zM16.2 5.5h3.4v12.9h-3.4z" />
+      </svg>
+    );
   }
   return (
-    <form onSubmit={onSearch} className="search-form mt-8 max-w-2xl">
-      <label className="sr-only" htmlFor="home-search">
-        Pesquisar Igreja Ortodoxa
-      </label>
-      <input
-        id="home-search"
-        name="q"
-        type="search"
-        placeholder="Ex.: diferença entre católica e ortodoxa"
-        className="search-field flex-1 border-0 text-ink outline-none"
-      />
-      <button className="btn btn-gold px-10" type="submit">
-        Pesquisar
-      </button>
-    </form>
+    <svg {...common}>
+      <path d="M12 20s-7-4.35-7-9.15A3.85 3.85 0 0 1 12 8.1a3.85 3.85 0 0 1 7 2.75C19 15.65 12 20 12 20Z" />
+    </svg>
+  );
+}
+
+type ShortcutItem = (typeof HERO_SHORTCUTS)[number];
+type ShortcutBlock = { title: string; text: string };
+
+function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: string[]; blocks: ShortcutBlock[] } {
+  if (item.href === "/igreja") {
+    const article = getArticle("/igreja/quem-somos");
+    return {
+      kicker: "A Igreja",
+      paragraphs: [
+        "Quem somos, nossa história, nossa fé, a hierarquia e a sucessão apostólica — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+        ...(article?.sections.slice(0, 3).flatMap((section) => section.body) || []),
+      ],
+      blocks: [
+        { title: "Quem Somos", text: "A Igreja Ortodoxa Grega G.O.C. no Brasil e o Santo Sínodo de Eugenio de Atenas." },
+        { title: "Nossa História", text: "Da Igreja apostólica à presença ortodoxa no Brasil." },
+        { title: "Nossa Fé", text: "Tradição Apostólica, Credo e vida litúrgica." },
+        { title: "Hierarquia", text: "Bispos, sacerdotes e a vida de serviço da Igreja." },
+        { title: "Mosteiro de São Basílio", text: "Casa de oração em Nova Iguaçu." },
+      ],
+    };
+  }
+
+  if (item.href === "/comunidades") {
+    return {
+      kicker: "Comunidades",
+      paragraphs: [
+        "Onde a Igreja reza no Brasil. Horários e datas específicas devem ser confirmados com cada comunidade.",
+      ],
+      blocks: COMMUNITIES.map((community) => ({
+        title: `${community.name} · ${community.city}`,
+        text: [
+          community.summary,
+          community.clergy ? `Clero: ${community.clergy}.` : "",
+          community.address || "",
+          community.phone ? `Telefone: ${community.phone}.` : community.pendingOfficial?.length
+            ? `Ainda não publicados: ${community.pendingOfficial.join(", ")}.`
+            : "",
+        ]
+          .filter(Boolean)
+          .join(" "),
+      })),
+    };
+  }
+
+  if (item.href === "/calendario") {
+    const article = getArticle("/calendario");
+    return {
+      kicker: "O tempo da Igreja",
+      paragraphs: [LITURGICAL_NOTE, article?.intro || item.description],
+      blocks: [
+        ...MAJOR_FEASTS.map((feast) => ({ title: feast.name, text: feast.description })),
+        ...LITURGICAL_FASTS.map((fast) => ({ title: fast.name, text: fast.description })),
+      ],
+    };
+  }
+
+  if (item.href === "/videos") {
+    const article = getArticle("/videos");
+    return {
+      kicker: article?.kicker || "Ouvir e ver",
+      paragraphs: [
+        article?.intro || item.description,
+        ...(article?.sections.flatMap((section) => section.body) || []),
+        "Homilias, liturgia e catequese, quando o acervo oficial for publicado.",
+      ],
+      blocks: [],
+    };
+  }
+
+  if (item.href === "/formacao") {
+    const formation = getArticle("/formacao");
+    const library = getArticle("/biblioteca");
+    return {
+      kicker: "Estude a fé",
+      paragraphs: [formation?.intro || item.description, library?.intro || ""],
+      blocks: FORMATION_LINKS.slice(0, 6).map((link) => ({ title: link.title, text: link.summary })),
+    };
+  }
+
+  return {
+    kicker: "Apoie a Igreja",
+    paragraphs: [
+      "Espaço institucional para apoio à manutenção, às obras, à evangelização e à formação. Dados bancários e PIX só serão publicados quando oficiais.",
+    ],
+    blocks: DONATION_PROJECTS.map((project) => ({ title: project.title, text: project.text })),
+  };
+}
+
+function ShortcutModal({ item, onClose }: { item: ShortcutItem; onClose: () => void }) {
+  const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const content = shortcutContent(item);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => closeRef.current?.focus(), 40);
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+    const previous = document.body.style.overflowY;
+    document.body.style.overflowY = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(timer);
+      document.body.style.overflowY = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-6">
+      <button type="button" className="absolute inset-0 bg-ink/55" aria-label="Fechar informações" onClick={onClose} />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className="relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-card sm:rounded-3xl"
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-burgundy/10 px-5 py-4">
+          <div className="flex min-w-0 items-start gap-3">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-burgundy text-gold-soft ring-1 ring-gold/30">
+              <HeroShortcutIcon name={item.icon} />
+            </span>
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">{content.kicker}</p>
+              <h2 id={titleId} className="mt-1 font-serif text-2xl leading-tight text-ink sm:text-3xl">
+                {item.label}
+              </h2>
+            </div>
+          </div>
+          <button
+            ref={closeRef}
+            type="button"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-burgundy/20 text-burgundy"
+            aria-label="Fechar"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </div>
+        <div className="overflow-y-auto px-5 py-5">
+          {content.paragraphs.filter(Boolean).map((paragraph) => (
+            <p key={paragraph} className="mt-3 text-base leading-7 text-ink first:mt-0">
+              {paragraph}
+            </p>
+          ))}
+          {content.blocks.length ? (
+            <ul className="mt-5 space-y-2">
+              {content.blocks.map((block) => (
+                <li key={block.title} className="rounded-2xl border border-burgundy/10 bg-ivory px-4 py-3">
+                  <p className="font-medium text-ink">{block.title}</p>
+                  <p className="mt-0.5 text-sm leading-6 text-stone">{block.text}</p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
+    </div>
   );
 }
 
 export function Home() {
+  const { openSearch } = useSearchModal();
+  const searchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const [openShortcut, setOpenShortcut] = useState<ShortcutItem | null>(null);
+
+  function onHeroSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const q = String(new FormData(event.currentTarget).get("q") || "").trim();
+    if (q) openSearch(q);
+  }
+
+  function onHeroInput(value: string) {
+    window.clearTimeout(searchTimer.current);
+    if (value.trim().length < 3) return;
+    searchTimer.current = window.setTimeout(() => openSearch(value), 700);
+  }
+
   return (
     <div>
-      <section className="relative isolate min-h-[88vh] overflow-hidden text-white">
-        <img
-          src="/media/hero-proto.png"
-          alt="Celebração ortodoxa"
-          className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,11,8,.90),rgba(18,11,8,.55)_45%,rgba(18,11,8,.25))]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(239,213,138,.22),rgba(0,0,0,0)_34%)]" />
-        <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-10 sm:pb-24">
-          <h1 className="max-w-5xl break-words font-serif text-6xl leading-[0.92] sm:text-8xl lg:text-[7.25rem]">
-            Vinde e vede.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-parchment/95 sm:text-xl">
-            O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os Santos,
-            os ícones, o jejum e onde encontrar uma comunidade no Brasil.
+      <section className="full-bleed relative isolate overflow-hidden text-white">
+        <picture>
+          <source srcSet="/media/hero-iconostase.webp" type="image/webp" />
+          <img
+            src="/media/hero-iconostase.jpg"
+            alt="Interior de templo ortodoxo com iconóstase, ícones, cruz e velas"
+            width={1024}
+            height={320}
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/65" aria-hidden="true" />
+
+        <div className="relative mx-auto flex w-full max-w-[1280px] flex-col justify-center px-4 py-12 lg:min-h-[28rem] lg:py-16">
+          <p className="sr-only">
+            {SITE.homeHeadline}. {SITE.synod}.
           </p>
-          <HomeSearch />
-          <div className="mt-6 flex max-w-2xl flex-col gap-3">
-            <Link className="btn btn-outline w-full" to="/o-que-e-igreja-ortodoxa">
-              O que é a Igreja Ortodoxa
-            </Link>
-            <Link className="btn btn-outline w-full" to="/paroquias">
-              Encontrar uma comunidade
-            </Link>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <h1 className="font-serif text-5xl font-bold leading-[0.95] text-[#F6E08A] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] sm:text-6xl lg:text-7xl">
+                {SITE.motto}
+              </h1>
+              <p className="mt-5 max-w-xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
+                O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os
+                Santos, os ícones, o jejum e onde encontrar uma comunidade no Brasil.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <form onSubmit={onHeroSearch} className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+                <label className="sr-only" htmlFor="hero-search">
+                  Pesquisar
+                </label>
+                <input
+                  id="hero-search"
+                  name="q"
+                  type="search"
+                  placeholder="Ex.: diferença entre católica e ortodoxa"
+                  className="h-14 min-h-14 w-full min-w-0 flex-1 rounded-full border-0 bg-white px-6 text-base text-ink outline-none placeholder:text-stone/70"
+                  onChange={(event) => onHeroInput(event.target.value)}
+                />
+                <button className="btn btn-gold h-14 min-h-14 shrink-0 px-8" type="submit">
+                  Pesquisar
+                </button>
+              </form>
+              <Link
+                to="/ortodoxia/o-que-e-a-ortodoxia"
+                className="flex min-h-12 items-center justify-center rounded-full border border-white/80 px-4 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
+              >
+                O que é a Igreja Ortodoxa
+              </Link>
+              <Link
+                to="/comunidades"
+                className="flex min-h-12 items-center justify-center rounded-full border border-white/80 px-4 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
+              >
+                Encontrar uma comunidade
+              </Link>
+            </div>
           </div>
-          <a href="#portal" className="mt-10 text-sm tracking-wide text-white/80">
-            Explore o portal ↓
+
+          <a
+            href="#atalhos"
+            className="mt-10 inline-flex items-center justify-center gap-2 self-center text-sm text-white/90 transition hover:text-white"
+          >
+            Explore o portal
+            <span aria-hidden="true">↓</span>
           </a>
         </div>
       </section>
 
-      <section id="portal" className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 lg:grid-cols-2">
-        <div>
-          <p className="kicker">Uma tradição viva</p>
-          <h2 className="mt-3 font-serif text-4xl leading-tight sm:text-5xl">A referência da Ortodoxia em português.</h2>
-          <p className="mt-5 text-lg leading-8 text-muted">
-            Este portal foi feito para quem pesquisa “Igreja Ortodoxa” no Brasil: explicações profundas, vocabulário
-            claro, guias de primeira visita e caminhos até uma comunidade viva.
-          </p>
-          <Link className="btn btn-burgundy mt-8" to="/enciclopedia">
-            Abrir a enciclopédia
+      <section className="relative isolate bg-ivory text-ink">
+        <nav id="atalhos" aria-label="Atalhos da página inicial" className="scroll-mt-24 px-4 pb-2 pt-4 sm:pb-3 sm:pt-5">
+          <ul className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-3">
+            {HERO_SHORTCUTS.map((item) => (
+              <li key={item.href}>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={() => setOpenShortcut(item)}
+                  className="group flex h-full w-full flex-col rounded-2xl border border-burgundy/10 bg-white p-3.5 text-left shadow-card transition hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_40px_-24px_rgba(110,18,28,.55)] sm:flex-row sm:items-start sm:gap-4 sm:rounded-3xl sm:p-5"
+                >
+                  <span className="mb-3 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-burgundy text-gold-soft ring-1 ring-gold/30 sm:mb-0 sm:h-12 sm:w-12 sm:rounded-2xl">
+                    <HeroShortcutIcon name={item.icon} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-serif text-[15px] leading-tight text-ink group-hover:text-burgundy sm:text-xl">
+                      {item.label}
+                    </span>
+                    <span className="mt-1 line-clamp-2 text-xs leading-5 text-stone sm:mt-1.5 sm:text-sm sm:leading-6">
+                      {item.description}
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl items-start gap-8 px-4 pb-16 pt-[10%] sm:gap-10 sm:pb-20 lg:grid-cols-[minmax(0,1fr)_600px]">
+        <div className="flex flex-col lg:max-h-[600px]">
+          <div>
+            <p className="kicker">Quem somos</p>
+            <h2 className="mt-2 font-serif text-3xl leading-tight">Igreja Ortodoxa Grega G.O.C. no Brasil</h2>
+            <p className="mt-4 text-base leading-7 text-stone lg:mt-7">
+              A Igreja Ortodoxa Grega G.O.C. no Brasil apresenta a fé apostólica, a Divina Liturgia e a vida das
+              comunidades em comunhão com o Santo Sínodo de Eugenio de Atenas. G.O.C. refere-se aos Cristãos Ortodoxos
+              Genuínos, na tradição velho-calendarista grega.
+            </p>
+            <p className="mt-3 text-base leading-7 text-stone">
+              É um portal de fé, formação, história e missão, para quem chega agora e para quem já vive a fé.
+              Confessamos a Igreja una, santa, católica e apostólica; honramos os Santos Ícones, o jejum e o calendário
+              patrístico.
+            </p>
+            <p className="mt-3 text-base leading-7 text-stone">
+              A presença ortodoxa no Brasil cresceu por missões, mosteiros, paróquias e o testemunho de clérigos e fiéis.
+              A história da Igreja é a transmissão da mesma fé, nos mesmos Mistérios, de geração em geração.
+            </p>
+            <p className="mt-3 text-base leading-7 text-stone">
+              Há comunidades, missões e o Mosteiro de São Basílio em Marapicu, Nova Iguaçu, com núcleos pastorais em São
+              Paulo e no Rio de Janeiro. A Tradição Apostólica — Escritura, liturgia, Padres e sucessão episcopal — é o
+              que a Igreja transmite. O convite permanece: vinde e vede.
+            </p>
+          </div>
+          <Link className="btn btn-burgundy mt-14 w-fit shrink-0" to="/igreja/quem-somos">
+            Quem somos
           </Link>
         </div>
         <img
-          src="/media/painel-oficial.jpg"
-          alt="Igreja Ortodoxa Grega G.O.C. no Brasil, Santo Sínodo de Eugenio de Atenas, Ortodoxia do Velho Calendário"
-          className="w-full rounded-3xl shadow-card"
+          src="/media/igreja-ortodoxa-grega-no-brasil.jpg"
+          alt="Igreja Ortodoxa Grega G.O.C. no Brasil, Santo Sínodo de Eugenios de Atenas, Ortodoxia do Velho Calendário"
+          width={600}
+          height={600}
+          className="aspect-square h-auto w-full max-w-[600px] rounded-3xl object-cover shadow-card lg:h-[600px] lg:w-[600px] lg:justify-self-end"
+          loading="lazy"
+          decoding="async"
         />
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <p className="kicker">Acesso rápido</p>
-        <h2 className="mt-3 font-serif text-4xl">Navegue pelo portal.</h2>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {MENU_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="inline-flex items-center gap-3 rounded-[18px] border border-[rgba(90,13,24,.14)] bg-white px-[16.8px] py-4 transition hover:-translate-y-0.5 hover:shadow-card"
-            >
-              <NavLabel icon={link.icon} label={link.label} variant="badge" />
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[rgba(246,239,223,.45)] py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <p className="kicker">Conheça a fé</p>
-          <h2 className="mt-3 font-serif text-4xl">Comece por onde você estiver.</h2>
-          <p className="mt-4 max-w-3xl text-lg text-muted">
-            Conteúdo organizado para explicar a fé com profundidade, clareza e respeito.
-          </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {INTROS.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6 transition hover:shadow-card"
+      <section className="pb-16 pt-4 sm:pb-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="font-serif leading-tight">
+            <span className="block text-lg text-[#6E121C] sm:text-xl">No Brasil e no mundo</span>
+            <span className="mt-1 block text-3xl text-[#1A0E0C] sm:text-4xl">Igreja Ortodoxa Grega</span>
+          </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {HIERARCHY_NEWS_CARDS.map((card) => (
+              <article
+                key={card.slug}
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#d9e2ec] bg-white shadow-[0_8px_24px_-18px_rgba(15,23,42,.45)]"
               >
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(160deg,#5a0d18,#8d2530)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
-                  <NavIcon name={item.icon} className="h-6 w-6" />
+                <div className="aspect-[16/10] overflow-hidden bg-[#f6f1e8]">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className={`h-full w-full ${card.imageClass}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
-                <h3 className="mt-3 text-2xl">{item.title}</h3>
-                <p className="mt-2 text-muted">{item.text}</p>
-              </Link>
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <h3 className="truncate font-serif text-lg leading-7 text-[#1b2430]">
+                    {card.title}
+                    <span className="font-sans text-sm font-medium text-burgundy"> · {card.kicker}</span>
+                  </h3>
+                  <p className="mt-3 h-[7.5rem] text-[15px] leading-6 text-stone line-clamp-5">
+                    {card.body}
+                  </p>
+                  <p className="mt-4 text-sm text-stone/70">{card.meta}</p>
+                  <Link
+                    to={`/igreja/hierarquia/${card.slug}`}
+                    className="mt-3 inline-flex w-fit items-center gap-1 text-[13px] font-semibold uppercase tracking-[0.08em] text-burgundy hover:underline"
+                  >
+                    Ler perfil
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20">
-        <p className="kicker">O que as pessoas perguntam</p>
-        <h2 className="mt-3 font-serif text-4xl">Perguntas sobre a Igreja Ortodoxa.</h2>
-        <p className="mt-4 max-w-3xl text-lg text-muted">
-          Respostas prontas para as buscas mais comuns em português — da diferença com a Igreja Católica à primeira visita.
-        </p>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {FAQ_ITEMS.slice(0, 6).map((item) => (
-            <Link
-              key={item.question}
-              to={item.href || "/perguntas-frequentes"}
-              className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6 hover:shadow-card"
-            >
-              <h3 className="text-xl">{item.question}</h3>
-              <p className="mt-2 text-muted">{item.answer}</p>
-            </Link>
-          ))}
-        </div>
-        <Link className="btn btn-burgundy mt-8" to="/perguntas-frequentes">
-          Ver todas as perguntas
-        </Link>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-20">
-        <p className="kicker">Primeiros passos</p>
-        <h2 className="mt-3 font-serif text-4xl">Descubra a Ortodoxia em 9 passos.</h2>
-        <p className="mt-4 max-w-3xl text-lg text-muted">
-          Uma jornada guiada para quem está chegando agora e quer entender antes de visitar uma comunidade.
-        </p>
-        <div className="mt-8 divide-y divide-[rgba(90,13,24,.1)] overflow-hidden rounded-3xl border border-[rgba(90,13,24,.12)] bg-white">
-          {STEPS.map((step) => (
-            <Link key={step.href} to={step.href} className="flex items-center gap-5 px-5 py-4 hover:bg-parchment/60">
-              <span className="w-10 text-sm font-bold text-gold">{step.n}</span>
-              <span className="text-lg">{step.title}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[rgba(246,239,223,.45)] py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <p className="kicker">Hierarquia e clero</p>
-          <h2 className="mt-3 font-serif text-4xl">Homens a serviço da Igreja.</h2>
-          <p className="mt-4 max-w-3xl text-lg text-muted">
-            Perfis biográficos, ministério, ordenação, homilias, catequeses e registros históricos — com informações
-            oficiais.
+      <section className="px-4 pb-10 sm:pb-12">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
+          <p className="kicker">Primeira vez aqui?</p>
+          <h2 className="mt-3 font-serif text-4xl">É sua primeira vez conhecendo a Igreja Ortodoxa?</h2>
+          <p className="mt-4 max-w-3xl text-lg text-stone">
+            Visitantes são bem-vindos. Não é preciso saber grego nem memorizar o ofício. Basta chegar com respeito, observar
+            e deixar a liturgia ensinar.
           </p>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {featuredClergy.map((person) =>
-              person ? (
-                <Link
-                  key={person.slug}
-                  to={`/hierarquia/${person.slug}`}
-                  className="group relative isolate min-h-[420px] overflow-hidden rounded-3xl"
-                >
-                  <img src={person.image} alt={person.name} className="absolute inset-0 h-full w-full object-cover object-top transition duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-[linear-gradient(transparent_25%,rgba(0,0,0,.92))]" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                    <h3 className="text-2xl">{person.name.replace(" de Noronha e Valdigem", "")}</h3>
-                    <p className="mt-1 text-gold-soft">{person.role}</p>
-                    {person.facts.slice(0, 2).map((fact) => (
-                      <p key={fact.label} className="mt-1 text-sm text-white/80">
-                        <strong>{fact.label}:</strong> {fact.value}
-                      </p>
-                    ))}
-                    {person.slug === "dom-leontios" ? (
-                      <p className="mt-2 text-sm text-white/80">{person.summary}</p>
-                    ) : null}
-                  </div>
-                </Link>
-              ) : null,
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-20">
-        <p className="kicker">Autoridade e missão</p>
-        <h2 className="mt-3 font-serif text-4xl">Uma Igreja com história, presença e missão.</h2>
-        <p className="mt-4 max-w-3xl text-lg text-muted">
-          O portal terá páginas institucionais para o Santo Sínodo, a hierarquia, as comunidades e as missões, sempre
-          separando informação oficial de conteúdo editorial.
-        </p>
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {[CLERGY[0], CLERGY[1]].map((person) => (
-            <Link key={person.slug} to={`/hierarquia/${person.slug}`} className="overflow-hidden rounded-3xl border border-[rgba(90,13,24,.12)] bg-white">
-              <div className="relative h-64">
-                <img src={person.image} alt={person.name} className="h-full w-full object-cover object-top" />
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { title: "Quem pode visitar", text: "Todos. A Santa Comunhão é reservada aos fiéis ortodoxos preparados." },
+              { title: "O que esperar", text: "Canto, ícones, incenso e uma liturgia que costuma durar de uma hora e meia a duas horas." },
+              { title: "Como se portar", text: "Roupa recatada, silêncio, chegar alguns minutos antes e cumprimentar o sacerdote ao final." },
+            ].map((item) => (
+              <div key={item.title} className="rounded-3xl border border-burgundy/10 bg-ivory p-6">
+                <h3 className="font-serif text-2xl">{item.title}</h3>
+                <p className="mt-2 text-stone">{item.text}</p>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl">{person.name}</h3>
-                <p className="mt-2 text-muted">{person.summary}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[rgba(246,239,223,.45)] py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <p className="kicker">Portal de conhecimento</p>
-          <h2 className="mt-3 font-serif text-4xl">Uma biblioteca viva da fé.</h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {LIBRARY.map((item) => (
-              <Link key={item.href} to={item.href} className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6 hover:shadow-card">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(160deg,#5a0d18,#8d2530)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
-                  <NavIcon name={item.icon} className="h-6 w-6" />
-                </div>
-                <h3 className="mt-3 text-2xl">{item.title}</h3>
-                <p className="mt-2 text-muted">{item.text}</p>
-              </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="relative isolate overflow-hidden py-24 text-white">
-        <img src="/media/hero-proto.png" alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,11,8,.92),rgba(18,11,8,.72))]" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-gold-soft">Venha e veja</p>
-          <h2 className="mt-3 font-serif text-4xl sm:text-5xl">Encontre uma comunidade perto de você.</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-parchment/90">
-            O visitante poderá escolher estado ou cidade e encontrar comunidades, horários, contatos, mapa, fotos e
-            orientações para sua primeira visita.
-          </p>
-          <Link className="btn btn-gold mt-8" to="/paroquias">
-            Ver comunidades
+          <Link className="btn btn-gold mt-8" to="/primeira-visita">
+            Comece aqui
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-4 py-20 md:grid-cols-3">
-        {[
-          { n: "01 · CONHEÇA", title: "Descubra a fé", text: "Comece pelos conteúdos introdutórios." },
-          { n: "02 · APROFUNDE", title: "Estude e ore", text: "Explore liturgia, Santos, ícones, jejum e formação." },
-          { n: "03 · PARTICIPE", title: "Vá à comunidade", text: "Encontre horários e saiba o que esperar na primeira visita." },
-        ].map((item) => (
-          <div key={item.title} className="rounded-3xl border border-[rgba(90,13,24,.12)] bg-white p-6">
-            <p className="text-sm font-bold text-burgundy">{item.n}</p>
-            <h3 className="mt-3 text-2xl">{item.title}</h3>
-            <p className="mt-2 text-muted">{item.text}</p>
+      <section className="mx-auto max-w-7xl px-4 pb-16 pt-4 sm:pb-20">
+        <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,24rem)]">
+          <div className="flex h-full min-h-0 flex-col rounded-[2rem] bg-white p-6 text-[#6E121C] shadow-card sm:p-8">
+            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#6E121C]">Conheça a Ortodoxia</p>
+            <h2 className="mt-3 font-serif text-4xl text-[#6E121C]">Fé, liturgia e Tradição Apostólica.</h2>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                { href: "/ortodoxia/o-que-e-a-ortodoxia", title: "O que é a Ortodoxia?" },
+                { href: "/ortodoxia/divina-liturgia", title: "Divina Liturgia" },
+                { href: "/ortodoxia/icones", title: "Ícones" },
+                { href: "/ortodoxia/santos", title: "Santos" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="rounded-2xl bg-ivory p-5 text-[#6E121C] ring-1 ring-burgundy/10 hover:bg-parchment"
+                >
+                  <h3 className="font-serif text-2xl text-[#6E121C]">{item.title}</h3>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-8 text-[11px] font-bold uppercase tracking-[0.28em] text-[#6E121C]">Próximas celebrações</p>
+            <h3 className="mt-3 font-serif text-3xl leading-tight text-[#6E121C]">A vida da Igreja se mede pela liturgia.</h3>
+            <p className="mt-3 text-[#6E121C]">
+              Horários e datas específicas devem ser confirmados com cada comunidade. O Mosteiro de São Basílio pede
+              contato prévio: {COMMUNITIES[0].phone}.
+            </p>
+            <div className="mt-5 rounded-2xl bg-ivory p-5 ring-1 ring-burgundy/10">
+              <p className="text-sm uppercase tracking-[0.2em] text-[#6E121C]">Próxima celebração</p>
+              <p className="mt-2 font-serif text-2xl text-[#6E121C]">Confirme com a comunidade local</p>
+              <p className="mt-2 text-[#6E121C]">
+                A agenda oficial de ofícios será publicada quando a Secretaria da Igreja disponibilizar os horários.
+              </p>
+            </div>
+            <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row">
+              <Link className="btn btn-burgundy" to="/calendario">
+                Ver calendário litúrgico
+              </Link>
+              <Link className="btn btn-outline-dark" to="/comunidades">
+                Encontrar uma Igreja
+              </Link>
+            </div>
           </div>
-        ))}
+          <div className="h-full lg:justify-self-end lg:w-full">
+            <BibleCard />
+          </div>
+        </div>
       </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-20">
+        <p className="kicker">Comunidades</p>
+        <h2 className="mt-3 font-serif text-4xl">Onde a Igreja reza no Brasil.</h2>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {COMMUNITIES.map((community) => (
+            <Link key={community.slug} to={community.href} className="rounded-3xl border border-burgundy/10 bg-white p-6 hover:shadow-card">
+              <p className="text-sm font-bold uppercase tracking-[0.16em] text-burgundy">
+                {community.city} · {community.state}
+              </p>
+              <h3 className="mt-3 font-serif text-2xl">{community.name}</h3>
+              <p className="mt-2 text-stone">{community.summary}</p>
+            </Link>
+          ))}
+        </div>
+        <Link className="btn btn-burgundy mt-8" to="/comunidades">
+          Encontre uma Igreja
+        </Link>
+      </section>
+
+      <section className="bg-white py-12 sm:py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <VideoGallery />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-20">
+        <p className="kicker">Hierarquia</p>
+        <h2 className="mt-3 font-serif text-4xl">Homens a serviço da Igreja.</h2>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {featuredClergy.map((person) =>
+            person ? (
+              <Link
+                key={person.slug}
+                to={`/igreja/hierarquia/${person.slug}`}
+                className="group relative isolate min-h-[420px] overflow-hidden rounded-3xl"
+              >
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="absolute inset-0 h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(transparent_25%,rgba(78,12,20,.92))]" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <h3 className="font-serif text-2xl">{person.name.replace(" de Noronha e Valdigem", "")}</h3>
+                  <p className="mt-1 text-gold-soft">{person.role}</p>
+                </div>
+              </Link>
+            ) : null,
+          )}
+        </div>
+      </section>
+
+      <section className="full-bleed relative flex h-[350px] items-center justify-center overflow-hidden text-white">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat [background-attachment:fixed]"
+          style={{ backgroundImage: `url(${SITE.heroImage})` }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-burgundy/80" aria-hidden="true" />
+        <div className="relative mx-auto max-w-4xl px-4 text-center">
+          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-gold-soft">Convite</p>
+          <h2 className="mt-2 font-serif text-4xl sm:text-5xl">Venha e veja.</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-ivory/90">
+            Conheça a Igreja, prepare sua primeira visita e encontre uma comunidade.
+          </p>
+          <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link className="btn btn-gold" to="/primeira-visita">
+              Comece aqui
+            </Link>
+            <Link className="btn btn-outline" to="/comunidades">
+              Encontre uma comunidade
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-20 md:grid-cols-2">
+        <div className="rounded-3xl border border-burgundy/10 bg-white p-8">
+          <p className="kicker">Apoie a Igreja</p>
+          <h2 className="mt-3 font-serif text-3xl">Sustente a vida litúrgica e missionária.</h2>
+          <p className="mt-4 text-stone">
+            Espaço institucional para manutenção, obras, evangelização e formação. Dados bancários serão publicados somente
+            quando oficiais.
+          </p>
+          <Link className="btn btn-burgundy mt-6" to="/doacoes">
+            Apoie a Igreja
+          </Link>
+        </div>
+        <div className="rounded-3xl border border-burgundy/10 bg-white p-8">
+          <p className="kicker">Contato</p>
+          <h2 className="mt-3 font-serif text-3xl">Fale com uma comunidade.</h2>
+          <p className="mt-4 text-stone">
+            Telefone do Mosteiro de São Basílio: {COMMUNITIES[0].phone}. Pedidos de oração passam por moderação.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link className="btn btn-burgundy" to="/contato">
+              Contato
+            </Link>
+            <a
+              className="btn btn-outline-dark"
+              href={`https://wa.me/${COMMUNITIES[0].whatsapp}`}
+              onClick={() => trackEvent("click_whatsapp", { community: "nova-iguacu" })}
+            >
+              WhatsApp do mosteiro
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-10">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
+          <p className="kicker">Perguntas frequentes</p>
+          <h2 className="mt-3 font-serif text-4xl">O que as pessoas perguntam.</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {FAQ_ITEMS.slice(0, 4).map((item) => (
+              <Link
+                key={item.question}
+                to={item.href || "/perguntas-frequentes"}
+                className="rounded-3xl border border-burgundy/10 p-6 hover:shadow-card"
+              >
+                <h3 className="font-serif text-xl">{item.question}</h3>
+                <p className="mt-2 text-stone">{item.answer}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      {openShortcut ? <ShortcutModal item={openShortcut} onClose={() => setOpenShortcut(null)} /> : null}
     </div>
   );
 }

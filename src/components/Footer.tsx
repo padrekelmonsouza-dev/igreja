@@ -1,25 +1,24 @@
 import { FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { NAV_KNOWLEDGE, NAV_MORE, NAV_PRIMARY, SITE } from "../data/content";
-import { NavLabel } from "./NavIcon";
+import { Link } from "react-router-dom";
+import { COMMUNITIES } from "../data/communities";
+import { FOOTER_INSTITUTIONAL, FOOTER_LEARN, FOOTER_LEGAL, SUPPORT_LINK } from "../data/navigation";
+import { SITE, SITE_CONTACT } from "../data/site";
+import { useSearchModal } from "./SearchModal";
 
 export function Footer() {
-  const navigate = useNavigate();
+  const { openSearch } = useSearchModal();
 
   function onSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const q = String(data.get("q") || "").trim();
-    navigate(q ? `/pesquisa?q=${encodeURIComponent(q)}` : "/pesquisa");
+    const q = String(new FormData(event.currentTarget).get("q") || "").trim();
+    if (q) openSearch(q);
   }
 
   return (
-    <footer className="mt-8 bg-cream">
-      <section className="bg-[linear-gradient(135deg,#5a0d18,#8d2530)] px-6 py-20 text-white">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-gold-soft">Pesquisa</p>
-          <h2 className="mt-3 font-serif text-3xl sm:text-4xl">O que você deseja conhecer sobre a Ortodoxia?</h2>
-          <form onSubmit={onSearch} className="search-form mt-8">
+    <footer className="w-full bg-ivory">
+      <section className="flex h-20 w-full items-center bg-burgundy text-white">
+        <div className="mx-auto flex h-full w-full max-w-[1280px] items-center justify-between gap-4 px-4">
+          <form onSubmit={onSearch} className="flex min-w-0 flex-1 items-center gap-2 sm:max-w-xl">
             <label className="sr-only" htmlFor="footer-search">
               Pesquisar
             </label>
@@ -28,66 +27,101 @@ export function Footer() {
               name="q"
               type="search"
               placeholder="Ex.: O que é a Divina Liturgia?"
-              className="search-field flex-1 border-0 text-ink outline-none ring-2 ring-white/20"
+              className="h-11 min-w-0 flex-1 rounded-full border-0 bg-white px-4 text-sm text-ink outline-none"
             />
-            <button className="btn btn-gold px-10" type="submit">
+            <button className="btn btn-gold h-11 min-h-11 shrink-0 px-5" type="submit">
               Pesquisar
             </button>
           </form>
+          <p className="hidden shrink-0 font-serif text-lg text-white md:block lg:text-xl">
+            O que você deseja conhecer sobre a Ortodoxia?
+          </p>
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-4">
-        <div>
-          <img src="/media/brasao-goc.jpg" alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil" className="mb-4 h-28 w-28 object-contain" />
-          <h3 className="text-xl leading-tight">
-            Igreja Ortodoxa
-            <br />
-            no Brasil
-          </h3>
-          <p className="mt-3 text-muted">Portal de referência da fé, da liturgia, da história e das comunidades ortodoxas.</p>
-          <p className="mt-4 text-sm text-burgundy">{SITE.synod}</p>
-        </div>
-        <div>
-          <h3 className="text-lg">Conhecer</h3>
-          <ul className="mt-4 space-y-2">
-            {NAV_KNOWLEDGE.map((link) => (
-              <li key={link.href}>
-                <Link className="inline-flex items-center gap-2 hover:text-burgundy" to={link.href}>
-                  <NavLabel icon={link.icon} label={link.label}  />
+      <div className="w-full bg-ivory">
+        <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-2">
+            <img
+              src="/media/brasao-goc.webp"
+              alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil"
+              width={112}
+              height={112}
+              className="mb-4 h-24 w-24 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+            <h2 className="font-serif text-2xl leading-tight">{SITE.name}</h2>
+            <p className="mt-3 max-w-md text-stone">
+              Portal institucional de fé, liturgia, história e comunidades da Igreja Ortodoxa Grega no Brasil.
+            </p>
+            <p className="mt-4 text-sm text-burgundy">{SITE.synod}</p>
+            <p className="mt-3 text-sm text-stone">Mosteiro de São Basílio — {SITE_CONTACT.monasteryAddress}</p>
+          </div>
+          <div>
+            <h3 className="font-serif text-lg">A Igreja</h3>
+            <ul className="mt-4 space-y-2">
+              {FOOTER_INSTITUTIONAL.map((link) => (
+                <li key={link.href}>
+                  <Link className="hover:text-burgundy" to={link.href}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-serif text-lg">Conhecer</h3>
+            <ul className="mt-4 space-y-2">
+              {FOOTER_LEARN.map((link) => (
+                <li key={link.href}>
+                  <Link className="hover:text-burgundy" to={link.href}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-serif text-lg">Comunidades</h3>
+            <ul className="mt-4 space-y-2">
+              {COMMUNITIES.map((community) => (
+                <li key={community.slug}>
+                  <Link className="hover:text-burgundy" to={community.href}>
+                    {community.city}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link className="hover:text-burgundy" to="/contato">
+                  Contato
                 </Link>
               </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-lg">Igreja</h3>
-          <ul className="mt-4 space-y-2">
-            {NAV_PRIMARY.map((link) => (
-              <li key={link.href}>
-                <Link className="inline-flex items-center gap-2 hover:text-burgundy" to={link.href}>
-                  <NavLabel icon={link.icon} label={link.label}  />
+              <li>
+                <Link className="hover:text-burgundy" to={SUPPORT_LINK.href}>
+                  {SUPPORT_LINK.label}
                 </Link>
               </li>
-            ))}
-          </ul>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3 className="text-lg">Mais</h3>
-          <ul className="mt-4 space-y-2">
-            {NAV_MORE.map((link) => (
+      </div>
+      <div className="w-full border-t border-burgundy/10">
+        <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-3 px-4 py-6 text-sm text-stone sm:flex-row">
+          <p>
+            © {SITE.year} {SITE.name} — {SITE.synod}
+          </p>
+          <ul className="flex flex-wrap justify-center gap-4">
+            {FOOTER_LEGAL.map((link) => (
               <li key={link.href}>
-                <Link className="inline-flex items-center gap-2 hover:text-burgundy" to={link.href}>
-                  <NavLabel icon={link.icon} label={link.label}  />
+                <Link className="hover:text-burgundy" to={link.href}>
+                  {link.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <p className="border-t border-[rgba(90,13,24,.14)] px-4 py-6 text-center text-sm text-muted">
-        © {SITE.year} {SITE.name} — {SITE.synod}
-      </p>
     </footer>
   );
 }

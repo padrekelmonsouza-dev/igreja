@@ -2,14 +2,14 @@ import type { ArticlePage } from "./content";
 
 export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
   {
-    path: "/o-que-e-igreja-ortodoxa",
+    path: "/ortodoxia/o-que-e-a-ortodoxia",
     title: "O que é a Igreja Ortodoxa?",
     kicker: "Guia essencial",
     intro:
       "A Igreja Ortodoxa é a Igreja de Cristo na continuidade apostólica: a mesma fé, os mesmos Mistérios e a mesma liturgia transmitidas desde os Apóstolos até o Brasil de hoje.",
     description:
       "O que é a Igreja Ortodoxa? Entenda a fé ortodoxa, a Tradição Apostólica, a Divina Liturgia, os ícones e como a Ortodoxia vive no Brasil.",
-    related: ["/catolica-e-ortodoxa", "/liturgia", "/primeira-visita", "/fe"],
+    related: ["/ortodoxia/catolica-e-ortodoxa", "/ortodoxia/divina-liturgia", "/primeira-visita", "/igreja/nossa-fe"],
     sections: [
       {
         title: "Uma resposta direta",
@@ -39,6 +39,44 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
         ],
       },
       {
+        title: "Origem e Tradição Apostólica",
+        body: [
+          "A Igreja nasce em Jerusalém, no Pentecostes. Antioquia, Alexandria, Roma e, mais tarde, Constantinopla tornam-se centros da pregação. Os Apóstolos ordenam bispos; os mártires selam a fé com o sangue; os Padres interpretam a Escritura na liturgia.",
+          "A Igreja Ortodoxa compreende-se como a continuidade viva da Igreja fundada por Nosso Senhor Jesus Cristo e transmitida pelos Santos Apóstolos. A fé é a vida da Igreja, conservada na Escritura, nos Santos Concílios, na liturgia e nos Padres.",
+        ],
+      },
+      {
+        title: "Os Santos Concílios Ecumênicos",
+        body: [
+          "Niceia, Constantinopla, Éfeso, Calcedônia e os concílios seguintes defenderam que Cristo é verdadeiro Deus e verdadeiro homem, e que o Espírito Santo é Senhor. O dogma não é especulação: é proteção da salvação.",
+          "Os Santos Concílios Ecumênicos defenderam a fé contra as heresias e formularam o dogma em serviço à salvação: Cristo verdadeiro Deus e verdadeiro homem.",
+        ],
+      },
+      {
+        title: "A Divina Liturgia",
+        body: [
+          "A Divina Liturgia é o coração da vida ortodoxa. Nela, a Igreja oferece ao Pai o sacrifício eucarístico de Cristo, no Espírito Santo. Não é um espetáculo nem uma reunião meramente simbólica: é a atualização do Mistério pascal.",
+        ],
+      },
+      {
+        title: "Os Santos Mistérios",
+        body: [
+          "Os Santos Mistérios são ações de Cristo na Igreja. Por eles, a graça se torna visível e a vida humana é transfigurada. No Batismo, morremos e ressuscitamos com Cristo. Na Crisma, somos selados com o dom do Espírito Santo. A Divina Eucaristia é o Mistério dos mistérios.",
+        ],
+      },
+      {
+        title: "Ícones e Santos",
+        body: [
+          "O ícone não é um quadro decorativo. É teologia em cor: janela para o Reino. A Igreja não adora os Santos nem os ícones: adora somente a Santíssima Trindade. Venera os Santos porque neles Cristo se tornou visível.",
+        ],
+      },
+      {
+        title: "Espiritualidade e calendário",
+        body: [
+          "A oração de Jesus, o jejum, a esmola e a vida da paróquia educam o coração. A Igreja Ortodoxa Grega G.O.C. neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
+        ],
+      },
+      {
         title: "Por onde começar",
         body: [
           "Leia a comparação com a Igreja Católica, entenda a Divina Liturgia, conheça os ícones e prepare sua primeira visita. Depois, fale com um sacerdote. A internet informa; a Igreja acolhe.",
@@ -47,14 +85,14 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/catolica-e-ortodoxa",
+    path: "/ortodoxia/catolica-e-ortodoxa",
     title: "Igreja Católica e Igreja Ortodoxa: quais as diferenças?",
     kicker: "Pergunta frequente",
     intro:
       "Católicos e ortodoxos compartilham o Credo, os Concílios do primeiro milênio e o amor a Cristo. As diferenças são reais — e merecem ser explicadas com respeito, não com polêmica.",
     description:
       "Diferença entre Igreja Católica e Igreja Ortodoxa: papa, Filioque, liturgia, ícones, comunhão e o que um brasileiro precisa saber antes de visitar.",
-    related: ["/o-que-e-igreja-ortodoxa", "/liturgia", "/santos", "/perguntas-frequentes"],
+    related: ["/ortodoxia/o-que-e-a-ortodoxia", "/ortodoxia/divina-liturgia", "/ortodoxia/santos", "/perguntas-frequentes"],
     sections: [
       {
         title: "O que há em comum",
@@ -102,7 +140,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "Não é preciso saber grego, nem memorizar o ofício. Basta chegar com respeito, observar e deixar a liturgia ensinar.",
     description:
       "Como é a primeira visita a uma Igreja Ortodoxa no Brasil: o que vestir, se pode comungar, quanto dura a liturgia e o que fazer ao chegar.",
-    related: ["/liturgia", "/paroquias", "/o-que-e-igreja-ortodoxa", "/catequese"],
+    related: ["/ortodoxia/divina-liturgia", "/comunidades", "/ortodoxia/o-que-e-a-ortodoxia", "/catequese"],
     sections: [
       {
         title: "Antes de ir",
@@ -143,14 +181,14 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/historia-da-igreja-ortodoxa",
+    path: "/igreja/nossa-historia",
     title: "História da Igreja Ortodoxa",
     kicker: "Memória viva",
     intro:
       "Da Jerusalém apostólica aos mosteiros do Brasil, a história ortodoxa é a transmissão da mesma fé em tempos diferentes.",
     description:
       "História da Igreja Ortodoxa: Apóstolos, Concílios, cisma de 1054, calendário, missões e a presença ortodoxa no Brasil.",
-    related: ["/o-que-e-igreja-ortodoxa", "/santo-sinodo", "/calendario", "/enciclopedia"],
+    related: ["/ortodoxia/o-que-e-a-ortodoxia", "/santo-sinodo", "/calendario", "/enciclopedia"],
     sections: [
       {
         title: "Das origens apostólicas",
@@ -185,14 +223,14 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/oracao-de-jesus",
+    path: "/ortodoxia/oracao",
     title: "Oração de Jesus",
     kicker: "Oração do coração",
     intro:
       "“Senhor Jesus Cristo, Filho de Deus, tem piedade de mim, pecador.” Esta é a oração que os Padres chamaram de tesouro do coração.",
     description:
       "O que é a Oração de Jesus na Igreja Ortodoxa, como rezá-la no cotidiano e qual sua relação com o jejum e a liturgia.",
-    related: ["/formacao/jejum-e-oracao", "/liturgia", "/catequese"],
+    related: ["/formacao/jejum-e-oracao", "/ortodoxia/divina-liturgia", "/catequese"],
     sections: [
       {
         title: "A fórmula e o sentido",
@@ -215,14 +253,14 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/theotokos",
+    path: "/ortodoxia/theotokos",
     title: "Theotokos: a Mãe de Deus na Igreja Ortodoxa",
     kicker: "Santíssima Virgem",
     intro:
       "Honrar Maria é confessar que o Verbo se fez carne. Theotokos significa Mãe de Deus: o Filho que Ela gerou é o próprio Deus encarnado.",
     description:
       "Quem é a Theotokos na Igreja Ortodoxa: Maria, Mãe de Deus, ícones, festas e a diferença entre veneração e adoração.",
-    related: ["/santos", "/liturgia", "/calendario", "/o-que-e-igreja-ortodoxa"],
+    related: ["/ortodoxia/santos", "/ortodoxia/divina-liturgia", "/calendario", "/ortodoxia/o-que-e-a-ortodoxia"],
     sections: [
       {
         title: "Por que Mãe de Deus",
@@ -245,14 +283,14 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/batismo-ortodoxo",
+    path: "/ortodoxia/batismo",
     title: "Batismo ortodoxo",
     kicker: "Nascer de novo",
     intro:
       "No Batismo ortodoxo, o catecúmeno morre e ressuscita com Cristo. Em seguida recebe a Crisma, o selo do Espírito Santo, e é levado à Comunhão.",
     description:
       "Como funciona o Batismo na Igreja Ortodoxa: imersão, Crisma, crianças, adultos convertidos e preparação catequética no Brasil.",
-    related: ["/formacao/misterios", "/catequese", "/primeira-visita"],
+    related: ["/ortodoxia/sacramentos", "/catequese", "/primeira-visita"],
     sections: [
       {
         title: "O rito",
@@ -275,14 +313,14 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/jejum-ortodoxo",
+    path: "/ortodoxia/jejum",
     title: "Jejum ortodoxo",
     kicker: "Ascese da Igreja",
     intro:
       "O jejum ortodoxo treina o corpo para libertar a alma. Não é dieta nem recorde. É obediência evangélica, vivida com a Igreja.",
     description:
       "Como é o jejum na Igreja Ortodoxa: Grande Quaresma, quartas e sextas, o que se come, exceções pastorais e relação com a oração.",
-    related: ["/formacao/jejum-e-oracao", "/calendario", "/liturgia"],
+    related: ["/formacao/jejum-e-oracao", "/calendario", "/ortodoxia/divina-liturgia"],
     sections: [
       {
         title: "Os grandes jejuns",

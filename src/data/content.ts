@@ -1,17 +1,5 @@
 import { KNOWLEDGE_ARTICLES } from "./knowledge";
-
-export const SITE = {
-  name: "Igreja Ortodoxa Grega G.O.C. no Brasil",
-  shortName: "G.O.C. no Brasil",
-  synod: "Santo Sínodo de Eugenio de Atenas",
-  motto: "Vinde e vede.",
-  year: 2026,
-  portalName: "Portal da Igreja Ortodoxa no Brasil",
-  tabTitle: "Igreja Ortodoxa Grega no Brasil",
-  homeTitle: "Igreja Ortodoxa Grega no Brasil",
-  homeDescription:
-    "Portal de referência da Igreja Ortodoxa no Brasil: o que é a Ortodoxia, Divina Liturgia, ícones, santos, jejum, paróquias, catequese e como fazer a primeira visita.",
-};
+export { SITE } from "./site";
 
 export type NavItem = {
   href: string;
@@ -22,14 +10,14 @@ export type NavItem = {
 export const NAV_PRIMARY: NavItem[] = [
   { href: "/igreja", label: "Igreja Ortodoxa", icon: "church" },
   { href: "/mosteiro", label: "Mosteiro", icon: "monastery" },
-  { href: "/paroquias", label: "Paróquias", icon: "parish" },
+  { href: "/comunidades", label: "Paróquias", icon: "parish" },
   { href: "/santo-sinodo", label: "Santo Sínodo", icon: "synod" },
-  { href: "/liturgia", label: "Liturgia", icon: "liturgy" },
+  { href: "/ortodoxia/divina-liturgia", label: "Liturgia", icon: "liturgy" },
   { href: "/catequese", label: "Catequese", icon: "catechesis" },
 ];
 
 export const NAV_MORE: NavItem[] = [
-  { href: "/hierarquia", label: "Clero", icon: "clergy" },
+  { href: "/igreja/hierarquia", label: "Clero", icon: "clergy" },
   { href: "/arcebispo-primaz", label: "Arcebispo Primaz", icon: "bishop" },
   { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
   { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
@@ -38,8 +26,8 @@ export const NAV_MORE: NavItem[] = [
 ];
 
 export const NAV_KNOWLEDGE: NavItem[] = [
-  { href: "/o-que-e-igreja-ortodoxa", label: "O que é a Igreja Ortodoxa", icon: "cross" },
-  { href: "/catolica-e-ortodoxa", label: "Católica e Ortodoxa", icon: "scales" },
+  { href: "/ortodoxia/o-que-e-a-ortodoxia", label: "O que é a Igreja Ortodoxa", icon: "cross" },
+  { href: "/ortodoxia/catolica-e-ortodoxa", label: "Católica e Ortodoxa", icon: "scales" },
   { href: "/primeira-visita", label: "Primeira visita", icon: "door" },
   { href: "/enciclopedia", label: "Enciclopédia", icon: "book" },
   { href: "/perguntas-frequentes", label: "Perguntas frequentes", icon: "question" },
@@ -49,18 +37,20 @@ export const NAV_KNOWLEDGE: NavItem[] = [
 export const MENU_LINKS = [...NAV_KNOWLEDGE, ...NAV_PRIMARY, ...NAV_MORE];
 
 const EXTRA_PATH_ICONS: Record<string, string> = {
-  "/fe": "cross",
-  "/santos": "saints",
-  "/theotokos": "pastoral",
-  "/formacao/misterios": "liturgy",
-  "/oracao-de-jesus": "prayer",
-  "/jejum-ortodoxo": "liturgy",
+  "/igreja/nossa-fe": "cross",
+  "/ortodoxia/santos": "saints",
+  "/ortodoxia/theotokos": "pastoral",
+  "/ortodoxia/sacramentos": "liturgy",
+  "/ortodoxia/oracao": "prayer",
+  "/ortodoxia/jejum": "liturgy",
+  "/ortodoxia/icones": "saints",
+  "/igreja/sucessao-apostolica": "synod",
   "/calendario": "calendar",
   "/noticias": "news",
   "/videos": "video",
   "/biblioteca": "library",
-  "/batismo-ortodoxo": "liturgy",
-  "/historia-da-igreja-ortodoxa": "book",
+  "/ortodoxia/batismo": "liturgy",
+  "/igreja/nossa-historia": "book",
   "/pesquisa": "search",
   "/formacao/jesus-cristo": "cross",
   "/formacao/igreja": "church",
@@ -88,7 +78,7 @@ export type ArticlePage = {
 
 const BASE_ARTICLES: ArticlePage[] = [
   {
-    path: "/fe",
+    path: "/igreja/nossa-fe",
     title: "Nossa Fé",
     kicker: "Fé e tradição",
     intro:
@@ -124,8 +114,8 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/igreja",
-    title: "Igreja Ortodoxa",
+    path: "/igreja/quem-somos",
+    title: "Quem Somos",
     kicker: "Tradição viva",
     intro:
       "Conheça a presença, a história e a missão da Igreja Ortodoxa Grega G.O.C. no Brasil.",
@@ -259,7 +249,7 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/liturgia",
+    path: "/ortodoxia/divina-liturgia",
     title: "Divina Liturgia",
     kicker: "O coração da vida ortodoxa",
     intro: "Compreenda a celebração e prepare-se para participar.",
@@ -451,7 +441,7 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/santos",
+    path: "/ortodoxia/santos",
     title: "Ícones e Santos",
     kicker: "Nuvem de testemunhas",
     intro:
@@ -622,7 +612,7 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/formacao/misterios",
+    path: "/ortodoxia/sacramentos",
     title: "Os Santos Mistérios",
     kicker: "06 · Primeiros passos",
     intro:
@@ -671,6 +661,75 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "Esmola e vigilância",
         body: [
           "O jejum sem misericórdia resseca. A oração sem vigilância se dispersa. Os três — oração, jejum e esmola — caminham juntos.",
+        ],
+      },
+    ],
+  },
+  {
+    path: "/igreja/sucessao-apostolica",
+    title: "Sucessão Apostólica",
+    kicker: "Tradição viva",
+    intro:
+      "A Tradição Apostólica é o rio da vida eclesial: Escritura, liturgia, cânones, Padres e sucessão episcopal. A Igreja transmite o que recebeu.",
+    description:
+      "Sucessão apostólica na Igreja Ortodoxa: a continuidade da fé, da liturgia e do episcopado desde os Apóstolos.",
+    related: ["/igreja/hierarquia", "/igreja/nossa-fe", "/santo-sinodo", "/ortodoxia/o-que-e-a-ortodoxia"],
+    sections: [
+      {
+        title: "O que a Igreja recebeu",
+        body: [
+          "A Igreja Ortodoxa compreende-se como a continuidade viva da Igreja fundada por Nosso Senhor Jesus Cristo e transmitida pelos Santos Apóstolos. A fé não é uma invenção recente, nem um sistema particular de ideias: é a vida da Igreja, conservada na Escritura, nos Santos Concílios, na liturgia e nos Padres.",
+          "A Tradição Apostólica é o rio da vida eclesial: Escritura, liturgia, cânones, Padres e sucessão episcopal. Nada disso existe isolado. A Igreja transmite o que recebeu.",
+        ],
+      },
+      {
+        title: "Bispos em sucessão",
+        body: [
+          "Na eclesiologia ortodoxa, nenhuma pessoa particular substitui a Igreja. O bispo preside na caridade, em sucessão apostólica, e o sínodo guarda a fé comum.",
+          "Bispos, presbíteros, diáconos e fiéis formam um só povo sacerdotal, com ministérios distintos. Sem o povo não há liturgia; sem o bispo não há Igreja local plena.",
+        ],
+      },
+      {
+        title: "No Santo Sínodo e no Brasil",
+        body: [
+          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil. Dom Eugenios de Atenas é apresentado como referência central dessa autoridade sinodal.",
+          "A presença na América do Sul conta com o ministério de Dom Leontios de Noronha e Valdigem, Arcebispo Metropolita, cujo perfil histórico e pastoral é apresentado nas páginas de hierarquia.",
+        ],
+      },
+    ],
+  },
+  {
+    path: "/ortodoxia/icones",
+    title: "Ícones ortodoxos",
+    kicker: "Teologia visível",
+    intro:
+      "O ícone não é um quadro decorativo. É teologia em cor: janela para o Reino. Ele ensina o Evangelho, guarda a memória da Encarnação e conduz à oração.",
+    description:
+      "O que são ícones ortodoxos: veneração, Theotokos, Santos e o sentido espiritual da iconografia na Igreja Ortodoxa.",
+    related: ["/ortodoxia/santos", "/ortodoxia/theotokos", "/ortodoxia/divina-liturgia", "/ortodoxia/o-que-e-a-ortodoxia"],
+    sections: [
+      {
+        title: "O que é um ícone",
+        body: [
+          "O ícone não é um quadro decorativo. É teologia em cor: janela para o Reino. Ele ensina o Evangelho, guarda a memória da Encarnação e conduz à oração. Por isso é benzido, beijado e colocado no templo e no lar.",
+        ],
+      },
+      {
+        title: "Veneração, não adoração",
+        body: [
+          "Os Santos são amigos de Deus. A Igreja não os adora: adora somente a Santíssima Trindade. Venera os Santos porque neles Cristo se tornou visível. Pedimos sua intercessão como quem pede oração a um irmão que já contempla o Senhor.",
+        ],
+      },
+      {
+        title: "A Theotokos",
+        body: [
+          "A Santíssima Mãe de Deus ocupa lugar ímpar na piedade ortodoxa. Todo ícone verdadeiro da Virgem aponta para o Cristo que Ela carregou. Honrar Maria é confessar que o Verbo se fez carne.",
+        ],
+      },
+      {
+        title: "No templo e no calendário",
+        body: [
+          "Praticamente todo templo ortodoxo tem o ícone da Mãe de Deus no iconóstase. O calendário celebra a Natividade, a Entrada no Templo, a Anunciação, a Dormição e dezenas de ícones milagrosos. Conhecer Maria é caminhar para Cristo.",
         ],
       },
     ],
