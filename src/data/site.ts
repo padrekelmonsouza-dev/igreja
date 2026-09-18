@@ -16,7 +16,7 @@ export const SITE = {
   locale: "pt_BR",
   language: "pt-BR",
   logo: "/logo-gog.webp",
-  ogImage: "/media/painel-oficial.jpg",
+  ogImage: "/media/og-share.jpg",
   heroImage: "/media/hero-proto.webp",
   heroFallback: "/media/hero-proto.png",
   themeColor: "#6E121C",
