@@ -9,6 +9,7 @@ import { FAQ_ITEMS } from "../data/faq";
 import { SITE } from "../data/site";
 import { trackEvent } from "../lib/analytics";
 import { BibleCard } from "../components/BibleCard";
+import { EcclesiaNews } from "../components/EcclesiaNews";
 import { VideoGallery } from "../components/VideoGallery";
 
 const featuredClergy = ["padre-kelmon-luis", "padre-joao-damasceno", "dom-leontios"]
@@ -395,6 +396,8 @@ export function Home() {
           </ul>
         </nav>
       </section>
+
+      <EcclesiaNews />
 
       <section className="mx-auto grid max-w-7xl items-start gap-8 px-4 pb-16 pt-[10%] sm:gap-10 sm:pb-20 lg:grid-cols-[minmax(0,1fr)_600px]">
         <div className="flex flex-col lg:max-h-[600px]">

@@ -69,14 +69,16 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const bar = barRef.current;
-    if (!bar) return;
-    function measure() {
-      setBarHeight(bar.getBoundingClientRect().height);
-    }
+    const node = barRef.current;
+    if (!node) return;
+    const measure = () => {
+      const current = barRef.current;
+      if (!current) return;
+      setBarHeight(current.getBoundingClientRect().height);
+    };
     measure();
     const observer = new ResizeObserver(measure);
-    observer.observe(bar);
+    observer.observe(node);
     return () => observer.disconnect();
   }, [searchOpen]);
 
