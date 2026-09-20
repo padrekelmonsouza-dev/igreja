@@ -1,83 +1,58 @@
 export type NavLink = {
   href: string;
   label: string;
+  icon?: string;
 };
 
 export type NavGroup = {
   id: string;
   label: string;
   href: string;
+  icon: string;
   children?: NavLink[];
 };
 
 export const MAIN_NAV: NavGroup[] = [
-  { id: "inicio", label: "Início", href: "/" },
+  { id: "inicio", label: "Início", href: "/", icon: "home" },
   {
     id: "igreja",
-    label: "A Igreja",
+    label: "Igreja",
     href: "/igreja",
+    icon: "church",
     children: [
-      { href: "/igreja/quem-somos", label: "Quem Somos" },
-      { href: "/igreja/nossa-historia", label: "Nossa História" },
-      { href: "/igreja/nossa-fe", label: "Nossa Fé" },
-      { href: "/igreja/hierarquia", label: "Hierarquia" },
-      { href: "/igreja/sucessao-apostolica", label: "Sucessão Apostólica" },
+      { href: "/igreja/arcebispos", label: "Arcebispos", icon: "bishop" },
+      { href: "/mosteiro", label: "Mosteiros", icon: "monastery" },
+      { href: "/paroquias", label: "Paróquias", icon: "parish" },
+      { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
+      { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
     ],
   },
-  {
-    id: "ortodoxia",
-    label: "Ortodoxia",
-    href: "/ortodoxia",
-    children: [
-      { href: "/ortodoxia/o-que-e-a-ortodoxia", label: "O que é a Ortodoxia?" },
-      { href: "/ortodoxia/divina-liturgia", label: "Divina Liturgia" },
-      { href: "/ortodoxia/icones", label: "Ícones" },
-      { href: "/ortodoxia/sacramentos", label: "Sacramentos / Mistérios" },
-      { href: "/ortodoxia/santos", label: "Santos" },
-      { href: "/ortodoxia/jejum", label: "Jejum" },
-      { href: "/ortodoxia/oracao", label: "Oração" },
-    ],
-  },
-  {
-    id: "comunidades",
-    label: "Comunidades",
-    href: "/comunidades",
-    children: [
-      { href: "/comunidades", label: "Encontrar uma Igreja" },
-      { href: "/comunidades/nova-iguacu", label: "Nova Iguaçu" },
-      { href: "/comunidades/sao-paulo", label: "São Paulo" },
-      { href: "/comunidades/rio-de-janeiro", label: "Rio de Janeiro" },
-    ],
-  },
-  { id: "calendario", label: "Calendário", href: "/calendario" },
-  { id: "noticias", label: "Notícias", href: "/noticias" },
-  { id: "formacao", label: "Formação", href: "/formacao" },
-  { id: "biblioteca", label: "Biblioteca", href: "/biblioteca" },
-  { id: "videos", label: "Vídeos", href: "/videos" },
-  { id: "eventos", label: "Eventos", href: "/eventos" },
-  { id: "contato", label: "Contato", href: "/contato" },
+  { id: "clero", label: "Clero", href: "/clero", icon: "clergy" },
+  { id: "liturgia", label: "Liturgia", href: "/liturgia", icon: "liturgy" },
+  { id: "catequese", label: "Catequese", href: "/catequese", icon: "catechesis" },
+  { id: "missoes", label: "Missões", href: "/missoes", icon: "mission" },
 ];
 
 export const SUPPORT_LINK: NavLink = { href: "/doacoes", label: "Apoie a Igreja" };
-export const FIND_CHURCH_LINK: NavLink = { href: "/comunidades", label: "Encontre uma Igreja" };
+export const FIND_CHURCH_LINK: NavLink = { href: "/paroquias", label: "Encontre uma Igreja" };
 export const START_HERE_LINK: NavLink = { href: "/primeira-visita", label: "Comece aqui" };
 
 export const FOOTER_INSTITUTIONAL: NavLink[] = [
-  { href: "/igreja/quem-somos", label: "Quem Somos" },
-  { href: "/igreja/nossa-historia", label: "Nossa História" },
-  { href: "/igreja/hierarquia", label: "Hierarquia" },
-  { href: "/santo-sinodo", label: "Santo Sínodo" },
-  { href: "/mosteiro", label: "Mosteiro de São Basílio" },
+  { href: "/igreja/arcebispos", label: "Arcebispos" },
+  { href: "/mosteiro", label: "Mosteiros" },
+  { href: "/paroquias", label: "Paróquias" },
+  { href: "/pastorais", label: "Pastorais" },
+  { href: "/ordem-de-sao-jose", label: "Ordem de São José" },
   { href: "/pedido-de-oracao", label: "Pedidos de oração" },
 ];
 
 export const FOOTER_LEARN: NavLink[] = [
-  { href: "/ortodoxia/o-que-e-a-ortodoxia", label: "O que é a Ortodoxia?" },
-  { href: "/primeira-visita", label: "Primeira visita" },
-  { href: "/formacao", label: "Formação" },
+  { href: "/clero", label: "Clero" },
+  { href: "/liturgia", label: "Liturgia" },
+  { href: "/catequese", label: "Catequese" },
+  { href: "/missoes", label: "Missões" },
   { href: "/perguntas-frequentes", label: "Perguntas frequentes" },
   { href: "/glossario", label: "Glossário" },
-  { href: "/enciclopedia", label: "Enciclopédia" },
 ];
 
 export const FOOTER_LEGAL: NavLink[] = [
@@ -87,13 +62,4 @@ export const FOOTER_LEGAL: NavLink[] = [
   { href: "/doacoes", label: "Apoie a Igreja" },
 ];
 
-export const DESKTOP_NAV_IDS = [
-  "inicio",
-  "igreja",
-  "ortodoxia",
-  "comunidades",
-  "calendario",
-  "noticias",
-  "formacao",
-  "contato",
-] as const;
+export const DESKTOP_NAV_IDS = ["inicio", "igreja", "clero", "liturgia", "catequese", "missoes"] as const;

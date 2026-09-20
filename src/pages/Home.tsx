@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { LITURGICAL_FASTS, LITURGICAL_NOTE, MAJOR_FEASTS } from "../data/calendar";
 import { CLERGY } from "../data/clergy";
@@ -10,7 +10,6 @@ import { SITE } from "../data/site";
 import { trackEvent } from "../lib/analytics";
 import { BibleCard } from "../components/BibleCard";
 import { VideoGallery } from "../components/VideoGallery";
-import { useSearchModal } from "../components/SearchModal";
 
 const featuredClergy = ["padre-kelmon-luis", "padre-joao-damasceno", "dom-leontios"]
   .map((slug) => CLERGY.find((person) => person.slug === slug))
@@ -152,17 +151,17 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
   if (item.href === "/igreja") {
     const article = getArticle("/igreja/quem-somos");
     return {
-      kicker: "A Igreja",
+      kicker: "Igreja",
       paragraphs: [
-        "Quem somos, nossa história, nossa fé, a hierarquia e a sucessão apostólica — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+        "Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ...(article?.sections.slice(0, 3).flatMap((section) => section.body) || []),
       ],
       blocks: [
-        { title: "Quem Somos", text: "A Igreja Ortodoxa Grega G.O.C. no Brasil e o Santo Sínodo de Eugenio de Atenas." },
-        { title: "Nossa História", text: "Da Igreja apostólica à presença ortodoxa no Brasil." },
-        { title: "Nossa Fé", text: "Tradição Apostólica, Credo e vida litúrgica." },
-        { title: "Hierarquia", text: "Bispos, sacerdotes e a vida de serviço da Igreja." },
-        { title: "Mosteiro de São Basílio", text: "Casa de oração em Nova Iguaçu." },
+        { title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
+        { title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
+        { title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
+        { title: "Pastorais", text: "Acolhida, família, enfermos e formação." },
+        { title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
       ],
     };
   }
@@ -307,21 +306,7 @@ function ShortcutModal({ item, onClose }: { item: ShortcutItem; onClose: () => v
 }
 
 export function Home() {
-  const { openSearch } = useSearchModal();
-  const searchTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [openShortcut, setOpenShortcut] = useState<ShortcutItem | null>(null);
-
-  function onHeroSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const q = String(new FormData(event.currentTarget).get("q") || "").trim();
-    if (q) openSearch(q);
-  }
-
-  function onHeroInput(value: string) {
-    window.clearTimeout(searchTimer.current);
-    if (value.trim().length < 3) return;
-    searchTimer.current = window.setTimeout(() => openSearch(value), 700);
-  }
 
   return (
     <div>
@@ -349,29 +334,14 @@ export function Home() {
               <h1 className="font-serif text-5xl font-bold leading-[0.95] text-[#F6E08A] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] sm:text-6xl lg:text-7xl">
                 {SITE.motto}
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
+              <p className="hero-lead mt-5 max-w-xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
                 O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os
-                Santos, os ícones, o jejum e onde encontrar uma comunidade no Brasil.
+                Santos, os ícones, o jejum e onde encontrar uma{" "}
+                <span className="whitespace-nowrap">comunidade</span> no Brasil.
               </p>
             </div>
 
             <div className="flex flex-col gap-3">
-              <form onSubmit={onHeroSearch} className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
-                <label className="sr-only" htmlFor="hero-search">
-                  Pesquisar
-                </label>
-                <input
-                  id="hero-search"
-                  name="q"
-                  type="search"
-                  placeholder="Ex.: diferença entre católica e ortodoxa"
-                  className="h-14 min-h-14 w-full min-w-0 flex-1 rounded-full border-0 bg-white px-6 text-base text-ink outline-none placeholder:text-stone/70"
-                  onChange={(event) => onHeroInput(event.target.value)}
-                />
-                <button className="btn btn-gold h-14 min-h-14 shrink-0 px-8" type="submit">
-                  Pesquisar
-                </button>
-              </form>
               <Link
                 to="/ortodoxia/o-que-e-a-ortodoxia"
                 className="flex min-h-12 items-center justify-center rounded-full border border-white/80 px-4 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"

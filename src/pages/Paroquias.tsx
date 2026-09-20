@@ -21,10 +21,13 @@ export function Paroquias() {
   return (
     <>
       <PageHero
-        kicker="Igreja próxima de você"
+        kicker="Igreja"
         title="Paróquias"
         intro="Encontre uma paróquia ortodoxa por estado, cidade ou sacerdote."
-        crumbs={[{ href: "/paroquias", label: "Paróquias" }]}
+        crumbs={[
+          { href: "/igreja", label: "Igreja" },
+          { href: "/paroquias", label: "Paróquias" },
+        ]}
       />
       <section className="mx-auto max-w-6xl px-4 py-12">
         <form onSubmit={onSubmit} className="mb-8">

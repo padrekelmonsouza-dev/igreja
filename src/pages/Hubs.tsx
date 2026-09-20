@@ -4,22 +4,19 @@ export function IgrejaHub() {
   return (
     <>
       <PageHero
-        kicker="A Igreja"
+        kicker="Igreja"
         title="Igreja Ortodoxa Grega no Brasil"
-        intro="Quem somos, nossa história, nossa fé, a hierarquia e a sucessão apostólica — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
-        crumbs={[{ href: "/igreja", label: "A Igreja" }]}
+        intro="Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
+        crumbs={[{ href: "/igreja", label: "Igreja" }]}
       />
       <section className="mx-auto max-w-6xl px-4 py-12">
         <HubGrid
           items={[
-            { href: "/igreja/quem-somos", title: "Quem Somos", text: "A Igreja Ortodoxa Grega G.O.C. no Brasil e o Santo Sínodo de Eugenio de Atenas." },
-            { href: "/igreja/nossa-historia", title: "Nossa História", text: "Da Igreja apostólica à presença ortodoxa no Brasil." },
-            { href: "/igreja/nossa-fe", title: "Nossa Fé", text: "Tradição Apostólica, Credo e vida litúrgica." },
-            { href: "/igreja/hierarquia", title: "Hierarquia", text: "Bispos, sacerdotes e a vida de serviço da Igreja." },
-            { href: "/igreja/sucessao-apostolica", title: "Sucessão Apostólica", text: "A continuidade da fé, da liturgia e do episcopado." },
-            { href: "/santo-sinodo", title: "Santo Sínodo", text: "Autoridade sinodal e referência canônica apresentada neste portal." },
-            { href: "/mosteiro", title: "Mosteiro de São Basílio", text: "Casa de oração em Nova Iguaçu." },
-            { href: "/missoes", title: "Missões", text: "Anunciar Cristo e formar comunidades." },
+            { href: "/igreja/arcebispos", title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
+            { href: "/mosteiro", title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
+            { href: "/paroquias", title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
+            { href: "/pastorais", title: "Pastorais", text: "Acolhida, família, enfermos e formação." },
+            { href: "/ordem-de-sao-jose", title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
           ]}
         />
       </section>

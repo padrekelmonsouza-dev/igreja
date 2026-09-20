@@ -14,11 +14,11 @@ const GROUPS = [
   },
   {
     title: "Vida da Igreja",
-    paths: ["/calendario", "/ortodoxia/batismo", "/catequese", "/igreja/nossa-historia", "/comunidades"],
+    paths: ["/calendario", "/ortodoxia/batismo", "/catequese", "/igreja/nossa-historia", "/paroquias"],
   },
   {
     title: "Institucional",
-    paths: ["/igreja", "/santo-sinodo", "/igreja/hierarquia", "/mosteiro", "/missoes"],
+    paths: ["/igreja", "/igreja/arcebispos", "/clero", "/mosteiro", "/missoes"],
   },
 ];
 
@@ -59,19 +59,20 @@ export function Enciclopedia() {
               {group.paths.map((path) => {
                 const page = ARTICLES.find((item) => item.path === path);
                 const extras: Record<string, string> = {
-                  "/igreja/hierarquia": "Hierarquia e clero da Igreja no Brasil.",
-                  "/comunidades": "Encontre uma comunidade ortodoxa por estado ou cidade.",
-                  "/igreja": "Quem somos, história, fé e sucessão apostólica.",
+                  "/igreja/hierarquia": "Bispos e sacerdotes da Igreja no Brasil.",
+                  "/clero": "Bispos e sacerdotes da Igreja no Brasil.",
+                  "/paroquias": "Encontre uma paróquia ortodoxa por estado, cidade ou sacerdote.",
+                  "/igreja/arcebispos": "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul.",
+                  "/igreja": "Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José.",
                 };
-                const title =
-                  page?.title ||
-                  (path === "/igreja/hierarquia"
-                    ? "Hierarquia e clero"
-                    : path === "/comunidades"
-                      ? "Comunidades no Brasil"
-                      : path === "/igreja"
-                        ? "A Igreja"
-                        : path);
+                const titles: Record<string, string> = {
+                  "/igreja/hierarquia": "Clero",
+                  "/clero": "Clero",
+                  "/paroquias": "Paróquias",
+                  "/igreja/arcebispos": "Arcebispos",
+                  "/igreja": "Igreja",
+                };
+                const title = page?.title || titles[path] || path;
                 const intro = page?.intro || extras[path] || "";
                 return (
                   <Link key={path} to={path} className="rounded-2xl border border-burgundy/10 bg-white p-5 hover:shadow-card">

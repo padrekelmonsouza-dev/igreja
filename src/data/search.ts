@@ -1,6 +1,7 @@
 import { ARTICLES, MENU_LINKS } from "./content";
 import { CLERGY } from "./clergy";
 import { COMMUNITIES } from "./communities";
+import { EXTERNAL_SOURCES, type ExternalItem } from "./externalSources";
 import { FAQ_ITEMS } from "./faq";
 import { GLOSSARY } from "./glossary";
 import { MAIN_NAV } from "./navigation";
@@ -148,15 +149,27 @@ function queryTerms(query: string) {
   return [...expanded];
 }
 
+function fuzzyHit(text: string, term: string) {
+  if (text.includes(term)) return term.length > 5 ? 4 : 2;
+  if (term.length < 3) return 0;
+  const words = text.split(/[^a-z0-9.]+/);
+  for (const word of words) {
+    if (word.length < 3) continue;
+    if (word.includes(term) || term.includes(word)) return 1;
+  }
+  return 0;
+}
+
 function scoreHaystack(haystack: string, terms: string[]) {
   const text = normalize(haystack);
-  if (!terms.length) return 0;
+  if (!terms.length) return 1;
   let score = 0;
   let hits = 0;
   for (const term of terms) {
-    if (text.includes(term)) {
+    const points = fuzzyHit(text, term);
+    if (points) {
       hits += 1;
-      score += term.length > 5 ? 4 : 2;
+      score += points;
     }
   }
   if (hits === 0) return 0;
@@ -164,12 +177,19 @@ function scoreHaystack(haystack: string, terms: string[]) {
   return score + hits;
 }
 
+const FALLBACK_HREFS = [
+  "/ortodoxia/o-que-e-a-ortodoxia",
+  "/perguntas-frequentes",
+  "/primeira-visita",
+  "/paroquias",
+  "/liturgia",
+  "/santo-sinodo",
+];
+
 export function searchSite(query: string) {
   const terms = queryTerms(query);
-  if (terms.length === 0) return [];
-
   const seen = new Set<string>();
-  return SEARCH_INDEX.map((item) => ({
+  const ranked = SEARCH_INDEX.map((item) => ({
     item,
     score: scoreHaystack(`${item.title} ${item.text}`, terms) + scoreHaystack(item.title, terms) * 2,
   }))
@@ -181,6 +201,29 @@ export function searchSite(query: string) {
       seen.add(item.href);
       return true;
     });
+
+  if (ranked.length) return ranked;
+  return SEARCH_INDEX.filter((item) => FALLBACK_HREFS.includes(item.href));
+}
+
+export function searchExternal(query: string, extra: ExternalItem[] = []) {
+  const terms = queryTerms(query);
+  const pool = [...extra, ...EXTERNAL_SOURCES];
+  const seen = new Set<string>();
+  const ranked = pool
+    .map((item) => ({
+      item,
+      score: scoreHaystack(`${item.title} ${item.text} ${item.source}`, terms) + scoreHaystack(item.title, terms) * 2,
+    }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((entry) => entry.item)
+    .filter((item) => {
+      if (seen.has(item.href + item.title)) return false;
+      seen.add(item.href + item.title);
+      return true;
+    });
+  return ranked.length ? ranked.slice(0, 6) : EXTERNAL_SOURCES.slice(0, 4);
 }
 
 export type SearchAnswer = {
@@ -190,12 +233,15 @@ export type SearchAnswer = {
   sourceHref?: string;
   sourceLabel?: string;
   pages: SearchItem[];
+  external: ExternalItem[];
+  localStrong: boolean;
 };
 
-export function answerQuery(query: string): SearchAnswer {
-  const trimmed = query.trim();
+export function answerQuery(query: string, liveExternal: ExternalItem[] = []): SearchAnswer {
+  const trimmed = query.trim() || "fé ortodoxa";
   const terms = queryTerms(trimmed);
   const pages = searchSite(trimmed).slice(0, 6);
+  const external = searchExternal(trimmed, liveExternal);
 
   type Candidate = { score: number; title: string; answer: string; href?: string; label?: string };
   const candidates: Candidate[] = [];
@@ -281,7 +327,7 @@ export function answerQuery(query: string): SearchAnswer {
   candidates.sort((a, b) => b.score - a.score);
   const best = candidates[0];
 
-  if (best && best.score >= 8) {
+  if (best && best.score >= 4) {
     return {
       query: trimmed,
       title: best.title,
@@ -289,22 +335,22 @@ export function answerQuery(query: string): SearchAnswer {
       sourceHref: best.href,
       sourceLabel: best.label,
       pages,
+      external,
+      localStrong: true,
     };
   }
 
+  const web = external[0];
   return {
     query: trimmed,
-    title: trimmed,
-    answer:
-      "Não há um texto idêntico a essa pergunta neste portal. A fé ortodoxa grega apresentada aqui — Tradição Apostólica, Divina Liturgia, ícones, jejum e vida das comunidades G.O.C. no Brasil — está nas páginas abaixo. Abra a que for mais próxima, ou comece por “O que é a Igreja Ortodoxa?”.",
+    title: web?.title || trimmed,
+    answer: web
+      ? `${web.text} Fonte: ${web.source}. Este portal G.O.C. também reúne a fé apostólica, a Divina Liturgia e a vida das comunidades no Brasil nas páginas abaixo.`
+      : "A fé ortodoxa grega apresentada neste portal — Tradição Apostólica, Divina Liturgia, ícones, jejum e vida das comunidades G.O.C. no Brasil — está nas páginas abaixo. Consulte também as fontes ortodoxas da internet.",
     sourceHref: pages[0]?.href || "/ortodoxia/o-que-e-a-ortodoxia",
-    sourceLabel: "Portal",
-    pages: pages.length
-      ? pages
-      : SEARCH_INDEX.filter((item) =>
-          ["/ortodoxia/o-que-e-a-ortodoxia", "/comunidades", "/perguntas-frequentes", "/primeira-visita"].includes(
-            item.href,
-          ),
-        ),
+    sourceLabel: web ? web.source : "Portal",
+    pages,
+    external,
+    localStrong: false,
   };
 }

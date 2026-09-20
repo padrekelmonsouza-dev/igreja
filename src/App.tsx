@@ -9,6 +9,8 @@ const Enciclopedia = lazy(() => import("./pages/Enciclopedia").then((m) => ({ de
 const Faq = lazy(() => import("./pages/Faq").then((m) => ({ default: m.Faq })));
 const Glossario = lazy(() => import("./pages/Glossario").then((m) => ({ default: m.Glossario })));
 const Hierarquia = lazy(() => import("./pages/Hierarquia").then((m) => ({ default: m.Hierarquia })));
+const Arcebispos = lazy(() => import("./pages/Arcebispos").then((m) => ({ default: m.Arcebispos })));
+const Paroquias = lazy(() => import("./pages/Paroquias").then((m) => ({ default: m.Paroquias })));
 const ClergyProfile = lazy(() => import("./pages/ClergyProfile").then((m) => ({ default: m.ClergyProfile })));
 const PedidoOracao = lazy(() => import("./pages/PedidoOracao").then((m) => ({ default: m.PedidoOracao })));
 const Pesquisa = lazy(() => import("./pages/Pesquisa").then((m) => ({ default: m.Pesquisa })));
@@ -61,6 +63,9 @@ export default function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/igreja" element={<IgrejaHub />} />
+            <Route path="/igreja/arcebispos" element={<Arcebispos />} />
+            <Route path="/paroquias" element={<Paroquias />} />
+            <Route path="/clero" element={<Hierarquia />} />
             <Route path="/ortodoxia" element={<OrtodoxiaHub />} />
             <Route path="/ortodoxia/o-que-e-a-ortodoxia" element={<OrtodoxiaIntro />} />
             <Route path="/comunidades" element={<Comunidades />} />

@@ -8,20 +8,20 @@ export type NavItem = {
 };
 
 export const NAV_PRIMARY: NavItem[] = [
-  { href: "/igreja", label: "Igreja Ortodoxa", icon: "church" },
-  { href: "/mosteiro", label: "Mosteiro", icon: "monastery" },
-  { href: "/comunidades", label: "Paróquias", icon: "parish" },
-  { href: "/santo-sinodo", label: "Santo Sínodo", icon: "synod" },
-  { href: "/ortodoxia/divina-liturgia", label: "Liturgia", icon: "liturgy" },
+  { href: "/", label: "Início", icon: "church" },
+  { href: "/igreja", label: "Igreja", icon: "church" },
+  { href: "/clero", label: "Clero", icon: "clergy" },
+  { href: "/liturgia", label: "Liturgia", icon: "liturgy" },
   { href: "/catequese", label: "Catequese", icon: "catechesis" },
+  { href: "/missoes", label: "Missões", icon: "mission" },
 ];
 
 export const NAV_MORE: NavItem[] = [
-  { href: "/igreja/hierarquia", label: "Clero", icon: "clergy" },
-  { href: "/arcebispo-primaz", label: "Arcebispo Primaz", icon: "bishop" },
+  { href: "/igreja/arcebispos", label: "Arcebispos", icon: "bishop" },
+  { href: "/mosteiro", label: "Mosteiros", icon: "monastery" },
+  { href: "/paroquias", label: "Paróquias", icon: "parish" },
   { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
   { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
-  { href: "/missoes", label: "Missões Ortodoxas", icon: "mission" },
   { href: "/pedido-de-oracao", label: "Pedidos de oração", icon: "prayer" },
 ];
 
@@ -52,6 +52,9 @@ const EXTRA_PATH_ICONS: Record<string, string> = {
   "/ortodoxia/batismo": "liturgy",
   "/igreja/nossa-historia": "book",
   "/pesquisa": "search",
+  "/igreja/arcebispos": "bishop",
+  "/paroquias": "parish",
+  "/clero": "clergy",
   "/formacao/jesus-cristo": "cross",
   "/formacao/igreja": "church",
   "/formacao/jejum-e-oracao": "prayer",

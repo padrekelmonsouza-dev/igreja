@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/Article";
-import { CLERGY } from "../data/clergy";
+import { ARCHBISHOPS } from "../data/clergy";
 
-export function Hierarquia() {
+export function Arcebispos() {
   return (
     <>
       <PageHero
-        kicker="Serviço à Igreja"
-        title="Clero"
-        intro="Homens a serviço da Igreja."
-        crumbs={[{ href: "/clero", label: "Clero" }]}
+        kicker="Igreja"
+        title="Arcebispos"
+        intro="O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul, conforme já apresentados neste portal."
+        crumbs={[
+          { href: "/igreja", label: "Igreja" },
+          { href: "/igreja/arcebispos", label: "Arcebispos" },
+        ]}
       />
       <div className="mx-auto grid max-w-6xl gap-5 px-4 py-12 md:grid-cols-2">
-        {CLERGY.map((person) => (
+        {ARCHBISHOPS.map((person) => (
           <Link
             key={person.slug}
-                to={`/igreja/hierarquia/${person.slug}`}
+            to={`/igreja/hierarquia/${person.slug}`}
             className="overflow-hidden rounded-3xl border border-burgundy/12 bg-white hover:shadow-card"
           >
             <div className="relative h-72">

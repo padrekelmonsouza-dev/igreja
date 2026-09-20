@@ -1,26 +1,35 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { PageHero } from "../components/Article";
-import { getClergy } from "../data/clergy";
+import { getClergy, isArchbishop } from "../data/clergy";
 
 export function ClergyProfile() {
   const { slug } = useParams();
   const person = slug ? getClergy(slug) : undefined;
 
   if (!person) {
-    return <Navigate to="/igreja/hierarquia" replace />;
+    return <Navigate to="/clero" replace />;
   }
+
+  const archbishop = isArchbishop(person.slug);
 
   return (
     <>
       <PageHero
-        kicker="Hierarquia e Clero"
+        kicker={archbishop ? "Arcebispos" : "Clero"}
         title={person.name}
         intro={person.role}
-        crumbs={[
-          { href: "/igreja", label: "A Igreja" },
-          { href: "/igreja/hierarquia", label: "Hierarquia" },
-          { href: `/igreja/hierarquia/${person.slug}`, label: person.name },
-        ]}
+        crumbs={
+          archbishop
+            ? [
+                { href: "/igreja", label: "Igreja" },
+                { href: "/igreja/arcebispos", label: "Arcebispos" },
+                { href: `/igreja/hierarquia/${person.slug}`, label: person.name },
+              ]
+            : [
+                { href: "/clero", label: "Clero" },
+                { href: `/igreja/hierarquia/${person.slug}`, label: person.name },
+              ]
+        }
       />
       <article className="mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[280px_1fr]">
         <aside>
@@ -54,8 +63,8 @@ export function ClergyProfile() {
               ))}
             </section>
           ))}
-          <Link className="btn btn-burgundy" to="/igreja/hierarquia">
-            Ver todo o clero
+          <Link className="btn btn-burgundy" to={archbishop ? "/igreja/arcebispos" : "/clero"}>
+            {archbishop ? "Ver os arcebispos" : "Ver todo o clero"}
           </Link>
         </div>
       </article>

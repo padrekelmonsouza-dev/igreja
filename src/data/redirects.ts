@@ -1,6 +1,5 @@
 /** URLs antigas preservadas por redirecionamento. Não remover: protege links internos e indexação. */
 export const REDIRECTS: Record<string, string> = {
-  "/paroquias": "/comunidades",
   "/o-que-e-igreja-ortodoxa": "/ortodoxia/o-que-e-a-ortodoxia",
   "/liturgia": "/ortodoxia/divina-liturgia",
   "/santos": "/ortodoxia/santos",

@@ -11,7 +11,7 @@ export function Footer() {
   function onSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const q = String(new FormData(event.currentTarget).get("q") || "").trim();
-    if (q) openSearch(q);
+    openSearch(q);
   }
 
   return (
@@ -59,7 +59,7 @@ export function Footer() {
             <p className="mt-3 text-sm text-stone">Mosteiro de São Basílio — {SITE_CONTACT.monasteryAddress}</p>
           </div>
           <div>
-            <h3 className="font-serif text-lg">A Igreja</h3>
+            <h3 className="font-serif text-lg">Igreja</h3>
             <ul className="mt-4 space-y-2">
               {FOOTER_INSTITUTIONAL.map((link) => (
                 <li key={link.href}>

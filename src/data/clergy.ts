@@ -171,6 +171,14 @@ export function getClergy(slug: string) {
   return CLERGY.find((person) => person.slug === slug);
 }
 
+export const ARCHBISHOPS = CLERGY.filter((person) =>
+  /arcebispo|santo sínodo|primazia/i.test(`${person.role} ${person.facts.map((fact) => fact.value).join(" ")}`),
+);
+
+export function isArchbishop(slug: string) {
+  return ARCHBISHOPS.some((person) => person.slug === slug);
+}
+
 export const PARISHES = [
   {
     estado: "RJ",

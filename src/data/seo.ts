@@ -41,13 +41,31 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
     type: "website",
   },
   "/igreja": {
-    title: `A Igreja | ${SITE.tabTitle}`,
+    title: `Igreja | ${SITE.tabTitle}`,
     description:
-      "Quem somos, história, fé, hierarquia e sucessão apostólica da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    type: "website",
+  },
+  "/igreja/arcebispos": {
+    title: `Arcebispos | ${SITE.tabTitle}`,
+    description:
+      "Arcebispos da Igreja Ortodoxa Grega G.O.C.: Dom Eugenios de Atenas e Dom Leontios de Noronha e Valdigem.",
+    type: "website",
+  },
+  "/paroquias": {
+    title: `Paróquias | ${SITE.tabTitle}`,
+    description:
+      "Encontre uma paróquia da Igreja Ortodoxa Grega no Brasil por estado, cidade ou sacerdote.",
+    type: "website",
+  },
+  "/clero": {
+    title: `Clero | ${SITE.tabTitle}`,
+    description:
+      "Conheça bispos e sacerdotes da Igreja Ortodoxa Grega G.O.C. no Brasil: biografias, eparquias, ordenação e ministério.",
     type: "website",
   },
   "/igreja/hierarquia": {
-    title: `Hierarquia e clero | ${SITE.tabTitle}`,
+    title: `Clero | ${SITE.tabTitle}`,
     description:
       "Conheça bispos e sacerdotes da Igreja Ortodoxa Grega G.O.C. no Brasil: biografias, eparquias, ordenação e ministério.",
     type: "website",
@@ -324,6 +342,9 @@ export function placeJsonLd(slug: string) {
 export const PUBLIC_INDEX_PATHS = [
   "/",
   "/igreja",
+  "/igreja/arcebispos",
+  "/paroquias",
+  "/clero",
   "/igreja/quem-somos",
   "/igreja/nossa-historia",
   "/igreja/nossa-fe",

@@ -232,6 +232,13 @@ details[open] > summary .menu-chevron {
   hyphens: auto;
 }
 
+#conteudo .hero-lead {
+  text-align: start;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
 #conteudo h1,
 #conteudo h2,
 #conteudo h3,

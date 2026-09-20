@@ -4,9 +4,11 @@ import { Related } from "../components/Related";
 import { getArticle } from "../data/content";
 import type { Crumb } from "../data/seo";
 
+const IGREJA_PAGES = new Set(["/mosteiro", "/pastorais", "/ordem-de-sao-jose", "/paroquias"]);
+
 function crumbsFor(path: string, title: string): Crumb[] {
   const crumbs: Crumb[] = [];
-  if (path.startsWith("/igreja/")) crumbs.push({ href: "/igreja", label: "A Igreja" });
+  if (path.startsWith("/igreja/") || IGREJA_PAGES.has(path)) crumbs.push({ href: "/igreja", label: "Igreja" });
   if (path.startsWith("/ortodoxia/")) crumbs.push({ href: "/ortodoxia", label: "Ortodoxia" });
   if (path.startsWith("/formacao/")) crumbs.push({ href: "/formacao", label: "Formação" });
   crumbs.push({ href: path, label: title });
