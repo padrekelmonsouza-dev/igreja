@@ -180,7 +180,7 @@ const BASE_ARTICLES: ArticlePage[] = [
     title: "Mosteiro de São Basílio",
     kicker: "Oração e espiritualidade",
     intro:
-      "Rua Gomes Freire nº 64, Marapicu, Nova Iguaçu — RJ, CEP 26295-045. Telefone: (21) 96483-7295.",
+      "R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045. Telefone: (21) 96483-7295.",
     sections: [
       {
         title: "História",
@@ -197,7 +197,7 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "Localização",
         body: [
-          "Endereço: Rua Gomes Freire nº 64, Marapicu, Nova Iguaçu — RJ, CEP 26295-045.",
+          "Endereço: R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045.",
           "Recomenda-se contato prévio antes da primeira visita, especialmente para refeições, hospedagem ou participação em ofícios.",
         ],
       },

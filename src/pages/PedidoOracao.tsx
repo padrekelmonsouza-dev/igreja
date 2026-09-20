@@ -40,7 +40,7 @@ export function PedidoOracao() {
         intro="Envie sua intenção para oração. Todos os pedidos passam por moderação."
         crumbs={[{ href: "/pedido-de-oracao", label: "Pedido de Oração" }]}
       />
-      <section className="mx-auto max-w-2xl px-4 py-12">
+      <section className="site-section mx-auto max-w-2xl px-4">
         {sent ? (
           <div className="mb-8 rounded-3xl border border-burgundy/20 bg-parchment p-5" role="status">
             Seu pedido foi registrado para moderação. A Igreja rezará por esta intenção.

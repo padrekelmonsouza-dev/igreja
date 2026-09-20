@@ -14,7 +14,7 @@ export function Arcebispos() {
           { href: "/igreja/arcebispos", label: "Arcebispos" },
         ]}
       />
-      <div className="mx-auto grid max-w-6xl gap-5 px-4 py-12 md:grid-cols-2">
+      <div className="site-section mx-auto grid max-w-6xl gap-5 px-4 md:grid-cols-2">
         {ARCHBISHOPS.map((person) => (
           <Link
             key={person.slug}

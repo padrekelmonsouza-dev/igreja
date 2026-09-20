@@ -42,7 +42,7 @@ function CatalogLayout({
   return (
     <>
       <PageHero kicker={kicker} title={title} intro={intro} crumbs={[{ href: path, label: title }]} />
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="site-section mx-auto max-w-6xl px-4">
         <CategoryPills items={categories} active={active} onSelect={setActive} />
         {filtered.length === 0 ? (
           <div className="mt-8">
@@ -98,7 +98,7 @@ export function Formacao() {
         intro={article?.intro || "Caminhos de estudo para conhecer a fé e a tradição ortodoxas."}
         crumbs={[{ href: "/formacao", label: "Formação" }]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="site-section mx-auto max-w-6xl px-4">
         <CategoryPills items={FORMATION_CATEGORIES} active={active} onSelect={setActive} />
         {emptyCategory ? (
           <div className="mt-8">

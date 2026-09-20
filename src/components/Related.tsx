@@ -14,7 +14,7 @@ export function Related({ paths }: { paths?: string[] }) {
   if (pages.length === 0) return null;
 
   return (
-    <aside className="mx-auto max-w-4xl px-4 pb-16">
+    <aside className="site-section mx-auto max-w-4xl px-4">
       <p className="kicker">Continue no portal</p>
       <h2 className="mt-2 font-serif text-3xl">Leia também</h2>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">

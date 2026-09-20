@@ -29,7 +29,7 @@ export function Comunidades() {
         intro="Comunidades da Igreja Ortodoxa Grega G.O.C. no Brasil com os dados oficiais já publicados. Novos endereços serão acrescentados somente quando confirmados."
         crumbs={[{ href: "/comunidades", label: "Comunidades" }]}
       />
-      <section className="mx-auto max-w-7xl px-4 py-12">
+      <section className="site-section mx-auto max-w-7xl px-4">
         <form onSubmit={onSubmit} className="mb-8">
           <label className="mb-2 block text-sm font-bold uppercase tracking-[0.16em] text-burgundy" htmlFor="parish-search">
             Buscar comunidade
@@ -56,6 +56,7 @@ export function Comunidades() {
                   <h2 className="mt-2 font-serif text-2xl">{community.name}</h2>
                   <p className="mt-2 text-stone">{community.summary}</p>
                   {community.address ? <p className="mt-3">{community.address}</p> : null}
+                  {community.scheduleNote ? <p className="mt-2">{community.scheduleNote}</p> : null}
                   {community.clergy ? <p className="mt-2">{community.clergy}</p> : null}
                   {community.pendingOfficial ? (
                     <div className="mt-4">

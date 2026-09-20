@@ -61,13 +61,13 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/clero": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
-      "Conheça bispos e sacerdotes da Igreja Ortodoxa Grega G.O.C. no Brasil: biografias, eparquias, ordenação e ministério.",
+      "Arcebispos, padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/igreja/hierarquia": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
-      "Conheça bispos e sacerdotes da Igreja Ortodoxa Grega G.O.C. no Brasil: biografias, eparquias, ordenação e ministério.",
+      "Arcebispos, padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/ortodoxia": {
@@ -385,7 +385,20 @@ export const PUBLIC_INDEX_PATHS = [
   "/santo-sinodo",
   "/pesquisa",
   ...ARTICLES.map((page) => page.path),
-  ...["dom-eugenios-de-atenas", "dom-leontios", "padre-kelmon-luis", "padre-joao-damasceno", "abade-julio"].map(
+  ...[
+    "dom-eugenios-de-atenas",
+    "dom-leontios",
+    "padre-kelmon-luis",
+    "padre-joao-damasceno",
+    "padre-jose-sergio-da-silva",
+    "padre-riuler-silva-de-jesus",
+    "dom-jose-vicente-garcia-aguila",
+    "jose-augusto-maciel-torres",
+    "abade-julio",
+    "crispim-souza-silva",
+    "max-yuri-fae-silva",
+    "mateus-alves-de-oliveira",
+  ].map(
     (slug) => `/igreja/hierarquia/${slug}`,
   ),
 ];

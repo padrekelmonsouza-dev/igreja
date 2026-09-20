@@ -15,7 +15,7 @@ export function Doacoes() {
         intro="Espaço institucional para apoio à manutenção, às obras, à evangelização e à formação. Dados bancários e PIX só serão publicados quando oficiais."
         crumbs={[{ href: "/doacoes", label: "Apoie a Igreja" }]}
       />
-      <section className="mx-auto max-w-4xl space-y-6 px-4 py-12">
+      <section className="site-section mx-auto max-w-4xl space-y-6 px-4">
         <OfficialNotice>
           PIX, dados bancários e doação recorrente ainda não foram publicados pela Secretaria da Igreja. Este espaço está
           pronto para recebê-los.
@@ -46,7 +46,7 @@ export function Contato() {
         intro="Utilize os contatos oficiais já publicados. Não há e-mail institucional listado neste portal até divulgação oficial."
         crumbs={[{ href: "/contato", label: "Contato" }]}
       />
-      <section className="mx-auto grid max-w-5xl gap-6 px-4 py-12 md:grid-cols-2">
+      <section className="site-section mx-auto grid max-w-5xl gap-6 px-4 md:grid-cols-2">
         <article className="rounded-3xl border border-burgundy/10 bg-white p-6">
           <h2 className="font-serif text-2xl">{monastery.name}</h2>
           <p className="mt-3">{SITE_CONTACT.monasteryAddress}</p>
@@ -90,7 +90,7 @@ export function PoliticaPrivacidade() {
         intro="Como este portal trata informações pessoais, de acordo com o funcionamento atual do site."
         crumbs={[{ href: "/politica-de-privacidade", label: "Política de privacidade" }]}
       />
-      <article className="prose-church mx-auto max-w-3xl px-4 py-12">
+      <article className="prose-church site-section mx-auto max-w-3xl px-4">
         <h2>Quem é responsável</h2>
         <p>Este portal institucional é publicado em nome da {SITE.name}.</p>
         <h2>Dados que o site pode receber</h2>
@@ -122,7 +122,7 @@ export function TermosUso() {
         intro="Condições de uso do portal institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/termos-de-uso", label: "Termos de uso" }]}
       />
-      <article className="prose-church mx-auto max-w-3xl px-4 py-12">
+      <article className="prose-church site-section mx-auto max-w-3xl px-4">
         <h2>Finalidade</h2>
         <p>
           O site destina-se à informação institucional, à formação da fé e à indicação de comunidades. Conteúdo oficial e

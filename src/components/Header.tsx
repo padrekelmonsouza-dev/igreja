@@ -9,6 +9,7 @@ import {
 } from "../data/navigation";
 import { SITE } from "../data/site";
 import { MenuIcon } from "./MenuIcon";
+import { useQuemSomosModal } from "./QuemSomosModal";
 import { useSearchModal } from "./SearchModal";
 
 export function Header() {
@@ -18,6 +19,7 @@ export function Header() {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const location = useLocation();
   const { openSearch } = useSearchModal();
+  const { openQuemSomos } = useQuemSomosModal();
   const menuId = useId();
   const headerRef = useRef<HTMLElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -137,7 +139,20 @@ export function Header() {
 
             <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 xl:flex" aria-label="Principal">
               {desktopNav.map((item) =>
-                item.children?.length ? (
+                item.id === "quem-somos" ? (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-burgundy/5 hover:text-burgundy"
+                    onClick={() => {
+                      setOpenGroup(null);
+                      openQuemSomos();
+                    }}
+                  >
+                    <MenuIcon name={item.icon} className="h-4 w-4 text-burgundy" />
+                    {item.label}
+                  </button>
+                ) : item.children?.length ? (
                   <div key={item.id} className="relative">
                     <button
                       type="button"
@@ -305,6 +320,18 @@ export function Header() {
                         ))}
                       </div>
                     </details>
+                  ) : item.id === "quem-somos" ? (
+                    <button
+                      type="button"
+                      className="flex w-full items-center gap-3 px-4 py-4 text-left text-lg"
+                      onClick={() => {
+                        setOpen(false);
+                        openQuemSomos();
+                      }}
+                    >
+                      <MenuIcon name={item.icon} className="h-5 w-5 text-burgundy" />
+                      {item.label}
+                    </button>
                   ) : (
                     <Link to={item.href} className="flex items-center gap-3 px-4 py-4 text-lg" onClick={() => setOpen(false)}>
                       <MenuIcon name={item.icon} className="h-5 w-5 text-burgundy" />

@@ -23,7 +23,7 @@ export function Pesquisa() {
         intro="Encontre páginas de fé, liturgia, clero, comunidades e formação."
         crumbs={[{ href: "/pesquisa", label: "Pesquisa" }]}
       />
-      <section className="mx-auto max-w-3xl px-4 py-12">
+      <section className="site-section mx-auto max-w-3xl px-4">
         <form onSubmit={onSubmit} className="search-form">
           <input
             name="q"

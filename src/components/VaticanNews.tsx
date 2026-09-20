@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { ECCLESIA_FALLBACK, fetchEcclesiaNews, type EcclesiaArticle } from "../lib/ecclesiaNews";
+import { fetchVaticanNews, VATICAN_FALLBACK, type VaticanArticle } from "../lib/vaticanNews";
 
 const PAGE_SIZE = 4;
 const ROTATE_MS = 12000;
 const REFRESH_MS = 3 * 60 * 1000;
-const MOBILE_IMAGE_H = 493;
-const DESKTOP_IMAGE_H = 666;
+const LEFT_IMAGE = "/media/vatican-theotokos.jpg";
 
 function shuffle<T>(items: T[]) {
   const next = [...items];
@@ -24,13 +23,13 @@ function NewsImage({ src, className }: { src: string; className?: string }) {
       loading="lazy"
       className={className}
       onError={(event) => {
-        event.currentTarget.src = "/media/ecclesia-christo.png";
+        event.currentTarget.src = LEFT_IMAGE;
       }}
     />
   );
 }
 
-function NewsCard({ article, fit }: { article: EcclesiaArticle; fit?: boolean }) {
+function NewsCard({ article, fit }: { article: VaticanArticle; fit?: boolean }) {
   return (
     <a
       href={article.href}
@@ -77,8 +76,8 @@ function NewsArrows({ onPrev, onNext }: { onPrev: () => void; onNext: () => void
   );
 }
 
-export function EcclesiaNews() {
-  const [articles, setArticles] = useState<EcclesiaArticle[]>(() => shuffle(ECCLESIA_FALLBACK));
+export function VaticanNews() {
+  const [articles, setArticles] = useState<VaticanArticle[]>(() => shuffle(VATICAN_FALLBACK));
   const [page, setPage] = useState(0);
   const [pause, setPause] = useState(0);
   const articlesRef = useRef(articles);
@@ -88,7 +87,7 @@ export function EcclesiaNews() {
     let cancelled = false;
 
     async function load() {
-      const items = await fetchEcclesiaNews();
+      const items = await fetchVaticanNews();
       if (cancelled || !items.length) return;
       setArticles(shuffle(items));
       setPage(0);
@@ -120,21 +119,21 @@ export function EcclesiaNews() {
   }, [pages, pause]);
 
   return (
-    <section className="site-section bg-ivory px-4" data-news-count={articles.length} data-news-page={page}>
+    <section className="site-section bg-ivory px-4">
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="lg:hidden">
           <div className="overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
             <img
-              src="/media/ecclesia-christo.png"
-              alt="Ícone de Cristo"
+              src={LEFT_IMAGE}
+              alt="Ícone da Theotokos com o Menino Jesus"
               width={350}
-              height={MOBILE_IMAGE_H}
-              className="h-[493px] w-full object-cover object-[center_12%]"
+              height={493}
+              className="h-[493px] w-full object-cover object-[center_18%]"
             />
           </div>
 
           <div className="mt-6 flex items-center justify-between gap-3">
-            <h2 className="font-serif text-3xl leading-tight text-ink">Ecclesia News</h2>
+            <h2 className="font-serif text-3xl leading-tight text-ink">Vatican News</h2>
             <NewsArrows onPrev={() => go(-1)} onNext={() => go(1)} />
           </div>
 
@@ -150,17 +149,17 @@ export function EcclesiaNews() {
         <div className="hidden lg:grid lg:h-[666px] lg:grid-cols-[350px_minmax(0,1fr)] lg:items-stretch lg:gap-8">
           <div className="h-full overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
             <img
-              src="/media/ecclesia-christo.png"
-              alt="Ícone de Cristo"
+              src={LEFT_IMAGE}
+              alt="Ícone da Theotokos com o Menino Jesus"
               width={350}
-              height={DESKTOP_IMAGE_H}
-              className="h-full w-full object-cover object-[center_12%]"
+              height={666}
+              className="h-full w-full object-cover object-[center_18%]"
             />
           </div>
 
           <div className="flex h-full min-h-0 min-w-0 flex-col">
             <div className="mb-4 flex shrink-0 items-center justify-between gap-3">
-              <h2 className="font-serif text-3xl leading-tight text-ink sm:text-[2rem]">Ecclesia News</h2>
+              <h2 className="font-serif text-3xl leading-tight text-ink sm:text-[2rem]">Vatican News</h2>
               <NewsArrows onPrev={() => go(-1)} onNext={() => go(1)} />
             </div>
 

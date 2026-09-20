@@ -18,7 +18,7 @@ export function Glossario() {
         intro="Termos da liturgia, da teologia e da vida paroquial explicados em português para estudo, catequese e pesquisa."
         crumbs={[{ href: "/glossario", label: "Glossário" }]}
       />
-      <section className="mx-auto max-w-4xl px-4 py-12">
+      <section className="site-section mx-auto max-w-4xl px-4">
         {Object.entries(grouped).map(([letter, terms]) => (
           <section key={letter} className="mb-10">
             <h2 className="mb-4 font-serif text-3xl text-burgundy">{letter}</h2>

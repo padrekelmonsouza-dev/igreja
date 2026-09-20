@@ -1,3 +1,5 @@
+import { SITE_CONTACT } from "./site";
+
 export type Community = {
   slug: string;
   name: string;
@@ -27,17 +29,17 @@ export const COMMUNITIES: Community[] = [
     city: "Nova Iguaçu",
     state: "RJ",
     stateName: "Rio de Janeiro",
-    address: "Rua Gomes Freire nº 64, Marapicu, Nova Iguaçu — RJ",
+    address: SITE_CONTACT.monasteryAddress,
     cep: "26295-045",
-    phone: "(21) 96483-7295",
-    whatsapp: "5521964837295",
+    phone: SITE_CONTACT.monasteryPhone,
+    whatsapp: SITE_CONTACT.monasteryWhatsapp,
     clergy: "Arquimandrita Abade Júlio",
     clergyHref: "/igreja/hierarquia/abade-julio",
     patron: "São Basílio",
     scheduleNote:
       "Horários de celebração e normas de visita podem variar segundo o calendário litúrgico. Recomenda-se contato prévio antes da primeira visita.",
     photos: ["/media/hero-proto.webp"],
-    mapsQuery: "Rua Gomes Freire 64, Marapicu, Nova Iguaçu, RJ, CEP 26295-045",
+    mapsQuery: SITE_CONTACT.monasteryAddress,
     href: "/comunidades/nova-iguacu",
     summary: "Casa de vida monástica, oração e hospitalidade em Marapicu, Nova Iguaçu.",
   },
@@ -47,17 +49,14 @@ export const COMMUNITIES: Community[] = [
     city: "São Paulo",
     state: "SP",
     stateName: "São Paulo",
+    address: "Rua Oscar Bressane, 311 - Bosque da Saúde, São Paulo - SP",
     clergy: "Padre Kelmon Luís",
     clergyHref: "/igreja/hierarquia/padre-kelmon-luis",
+    scheduleNote: "Divina Liturgia diária às 9h. Aos domingos, às 10h.",
+    mapsQuery: "Rua Oscar Bressane, 311 - Bosque da Saúde, São Paulo - SP",
     href: "/comunidades/sao-paulo",
     summary: "Núcleo pastoral da Eparquia de São Paulo.",
-    pendingOfficial: [
-      "endereço litúrgico",
-      "telefone",
-      "e-mail",
-      "horários da Divina Liturgia",
-      "fotos do templo",
-    ],
+    pendingOfficial: ["telefone", "e-mail", "fotos do templo"],
   },
   {
     slug: "rio-de-janeiro",

@@ -36,7 +36,7 @@ export function Calendario() {
         intro={article?.intro || "Festas, santos e jejuns do calendário patrístico."}
         crumbs={[{ href: "/calendario", label: "Calendário" }]}
       />
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 lg:grid-cols-[1.15fr_.85fr]">
+      <section className="site-section mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1.15fr_.85fr]">
         <div>
           <div className="mb-5 flex items-center justify-between gap-3">
             <button type="button" className="btn btn-outline-dark min-h-11 px-4" onClick={() => shift(-1)}>
@@ -104,7 +104,7 @@ export function Calendario() {
         </aside>
       </section>
       {article ? (
-        <article className="mx-auto max-w-4xl px-4 pb-16">
+        <article className="site-section mx-auto max-w-4xl px-4">
           {article.sections.map((section) => (
             <section key={section.title} className="mb-8">
               <h2 className="font-serif text-3xl">{section.title}</h2>

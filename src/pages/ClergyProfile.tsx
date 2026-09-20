@@ -31,7 +31,7 @@ export function ClergyProfile() {
               ]
         }
       />
-      <article className="mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[280px_1fr]">
+      <article className="site-section mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[280px_1fr]">
         <aside>
           <img
             src={person.image}
@@ -40,6 +40,20 @@ export function ClergyProfile() {
             loading="lazy"
             decoding="async"
           />
+          {person.gallery?.length ? (
+            <div className="mt-4 grid gap-3">
+              {person.gallery.map((src) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt=""
+                  className="w-full rounded-3xl object-cover shadow-card"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </div>
+          ) : null}
           <div className="mt-5 rounded-3xl border border-burgundy/10 bg-white p-5">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-burgundy">Dados oficiais</p>
             <dl className="mt-4 space-y-3">

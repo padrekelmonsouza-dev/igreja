@@ -36,7 +36,7 @@ export function OrtodoxiaIntro() {
         ]}
       />
       <ArticleBody page={page} />
-      <section className="mx-auto max-w-4xl px-4 pb-8">
+      <section className="site-section mx-auto max-w-4xl px-4">
         <h2 className="font-serif text-3xl">Perguntas frequentes</h2>
         <div className="mt-6 space-y-4">
           {faq.map((item) =>

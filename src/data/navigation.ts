@@ -14,6 +14,7 @@ export type NavGroup = {
 
 export const MAIN_NAV: NavGroup[] = [
   { id: "inicio", label: "Início", href: "/", icon: "home" },
+  { id: "quem-somos", label: "Quem Somos", href: "#quem-somos", icon: "church" },
   {
     id: "igreja",
     label: "Igreja",
@@ -62,4 +63,4 @@ export const FOOTER_LEGAL: NavLink[] = [
   { href: "/doacoes", label: "Apoie a Igreja" },
 ];
 
-export const DESKTOP_NAV_IDS = ["inicio", "igreja", "clero", "liturgia", "catequese", "missoes"] as const;
+export const DESKTOP_NAV_IDS = ["inicio", "quem-somos", "igreja", "clero", "liturgia", "catequese", "missoes"] as const;

@@ -29,7 +29,7 @@ export function Paroquias() {
           { href: "/paroquias", label: "Paróquias" },
         ]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="site-section mx-auto max-w-6xl px-4">
         <form onSubmit={onSubmit} className="mb-8">
           <label className="mb-2 block text-sm font-bold uppercase tracking-[0.16em] text-burgundy" htmlFor="parish-search">
             Lista de comunidades

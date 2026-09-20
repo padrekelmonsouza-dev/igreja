@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { getClergy } from "../data/clergy";
+import { getCommunity } from "../data/communities";
 import { SITE } from "../data/content";
-import { MAIN_NAV } from "../data/navigation";
+import { FOOTER_INSTITUTIONAL, FOOTER_LEARN, FOOTER_LEGAL, MAIN_NAV } from "../data/navigation";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -14,10 +15,34 @@ import {
   websiteJsonLd,
 } from "../data/seo";
 import { initAnalytics, trackPageView } from "../lib/analytics";
+import { Breadcrumbs } from "./Breadcrumbs";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { SiteHero } from "./SiteHero";
+import { QuemSomosProvider } from "./QuemSomosModal";
 import { SearchProvider } from "./SearchModal";
 import { Seo } from "./Seo";
+
+function labelForHref(href: string, fallback: string) {
+  if (href === "/igreja/hierarquia") return "Clero";
+  const links = [
+    ...MAIN_NAV.map((item) => ({ href: item.href, label: item.label })),
+    ...MAIN_NAV.flatMap((item) => item.children || []),
+    ...FOOTER_INSTITUTIONAL,
+    ...FOOTER_LEARN,
+    ...FOOTER_LEGAL,
+  ];
+  const nav = links.find((item) => item.href === href);
+  if (nav) return nav.label;
+  if (href.startsWith("/igreja/hierarquia/")) {
+    return getClergy(href.replace("/igreja/hierarquia/", ""))?.name || fallback;
+  }
+  if (href.startsWith("/comunidades/") && href !== "/comunidades") {
+    return getCommunity(href.replace("/comunidades/", ""))?.name || fallback;
+  }
+  const seoName = getPageSeo(href).title.split("|")[0].trim();
+  return seoName || fallback;
+}
 
 function crumbsFor(pathname: string, label: string) {
   const parts = pathname.split("/").filter(Boolean);
@@ -26,10 +51,11 @@ function crumbsFor(pathname: string, label: string) {
   let href = "";
   for (let index = 0; index < parts.length; index += 1) {
     href += `/${parts[index]}`;
-    const navMatch = MAIN_NAV.find((item) => item.href === href);
-    const childMatch = MAIN_NAV.flatMap((item) => item.children || []).find((item) => item.href === href);
-    const text = index === parts.length - 1 ? label : childMatch?.label || navMatch?.label || parts[index];
-    crumbs.push({ href, label: text });
+    const isLast = index === parts.length - 1;
+    crumbs.push({
+      href: href === "/igreja/hierarquia" ? "/clero" : href,
+      label: isLast ? label : labelForHref(href, parts[index]),
+    });
   }
   return crumbs;
 }
@@ -102,6 +128,7 @@ export function Layout() {
 
   return (
     <SearchProvider>
+    <QuemSomosProvider>
     <div className="min-h-screen w-full overflow-x-hidden bg-ivory text-ink">
       <Seo
         title={seo.title}
@@ -118,7 +145,15 @@ export function Layout() {
       <Header />
       <div className="mx-auto w-full max-w-[1280px]">
         <main id="conteudo">
-          <Outlet />
+          <SiteHero />
+          {location.pathname !== "/" ? (
+            <div className="px-4 pt-6 text-left">
+              <Breadcrumbs crumbs={crumbsFor(location.pathname, seo.title.split("|")[0].trim())} />
+            </div>
+          ) : null}
+          <div id="pagina">
+            <Outlet />
+          </div>
         </main>
       </div>
       <Footer />
@@ -133,6 +168,7 @@ export function Layout() {
         </button>
       ) : null}
     </div>
+    </QuemSomosProvider>
     </SearchProvider>
   );
 }

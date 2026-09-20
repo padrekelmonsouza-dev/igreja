@@ -5,8 +5,8 @@ export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
   if (crumbs.length === 0) return null;
 
   return (
-    <nav aria-label="Trilha de navegação" className="mb-6 text-sm text-stone">
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+    <nav aria-label="Trilha de navegação" className="mb-2 text-left text-sm text-stone">
+      <ol className="flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
         <li>
           <Link to="/" className="hover:text-burgundy">
             Início

@@ -15,7 +15,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="w-full bg-ivory">
+    <footer className="w-full bg-white">
       <section className="flex h-20 w-full items-center bg-burgundy text-white">
         <div className="mx-auto flex h-full w-full max-w-[1280px] items-center justify-between gap-4 px-4">
           <form onSubmit={onSearch} className="flex min-w-0 flex-1 items-center gap-2 sm:max-w-xl">
@@ -39,7 +39,7 @@ export function Footer() {
         </div>
       </section>
 
-      <div className="w-full bg-ivory">
+      <div className="w-full bg-white">
         <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <img

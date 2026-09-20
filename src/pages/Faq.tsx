@@ -12,7 +12,7 @@ export function Faq() {
         intro="Respostas diretas, em português, para quem pesquisa a fé ortodoxa no Brasil — da primeira visita ao jejum, dos ícones ao Batismo."
         crumbs={[{ href: "/perguntas-frequentes", label: "Perguntas frequentes" }]}
       />
-      <section className="mx-auto max-w-4xl px-4 py-12">
+      <section className="site-section mx-auto max-w-4xl px-4">
         <div className="space-y-4">
           {FAQ_ITEMS.map((item) => (
             <article key={item.question} className="rounded-3xl border border-burgundy/12 bg-white p-6">

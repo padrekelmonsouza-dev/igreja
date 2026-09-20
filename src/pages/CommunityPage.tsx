@@ -23,7 +23,7 @@ export function CommunityPage() {
           { href: community.href, label: community.city },
         ]}
       />
-      <section className="mx-auto grid max-w-6xl gap-8 px-4 py-12 lg:grid-cols-[1fr_1fr]">
+      <section className="site-section mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[1fr_1fr]">
         <div className="space-y-5">
           {community.patron ? <p><strong>Padroeiro:</strong> {community.patron}</p> : null}
           {community.clergy ? (
@@ -32,7 +32,12 @@ export function CommunityPage() {
               {community.clergyHref ? <Link className="underline underline-offset-4" to={community.clergyHref}>{community.clergy}</Link> : community.clergy}
             </p>
           ) : null}
-          {community.address ? <p><strong>Endereço:</strong> {community.address}{community.cep ? ` · CEP ${community.cep}` : ""}</p> : null}
+          {community.address ? (
+            <p>
+              <strong>Endereço:</strong> {community.address}
+              {community.cep && !community.address.includes(community.cep) ? ` · CEP ${community.cep}` : ""}
+            </p>
+          ) : null}
           {community.phone ? (
             <p>
               <strong>Telefone:</strong>{" "}

@@ -1,35 +1,22 @@
 import { Link } from "react-router-dom";
 import type { ArticlePage } from "../data/content";
 import type { Crumb } from "../data/seo";
-import { Breadcrumbs } from "./Breadcrumbs";
 import { ShareBar } from "./ShareBar";
 
 export function PageHero({
-  kicker,
   title,
-  intro,
-  crumbs,
 }: {
   kicker: string;
   title: string;
   intro: string;
   crumbs?: Crumb[];
 }) {
-  return (
-    <section className="border-b border-burgundy/10 bg-[linear-gradient(180deg,#f7f0dc,rgba(243,230,196,.45))]">
-      <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
-        {crumbs ? <Breadcrumbs crumbs={crumbs} /> : null}
-        <p className="kicker">{kicker}</p>
-        <h1 className="mt-3 font-serif text-4xl leading-tight sm:text-5xl">{title}</h1>
-        <p className="mt-5 max-w-3xl text-lg leading-relaxed text-stone">{intro}</p>
-      </div>
-    </section>
-  );
+  return <h1 className="sr-only">{title}</h1>;
 }
 
 export function ArticleBody({ page, showShare = true }: { page: ArticlePage; showShare?: boolean }) {
   return (
-    <article className="mx-auto max-w-4xl px-4 py-12">
+    <article className="site-section mx-auto max-w-4xl px-4">
       <div className="prose-church space-y-10">
         {page.sections.map((section) => (
           <section key={section.title}>

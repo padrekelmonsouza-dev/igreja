@@ -5,11 +5,12 @@ import { CLERGY } from "../data/clergy";
 import { COMMUNITIES } from "../data/communities";
 import { DONATION_PROJECTS, FORMATION_LINKS } from "../data/collections";
 import { getArticle } from "../data/content";
-import { FAQ_ITEMS } from "../data/faq";
+import { FAQ_ITEMS, type FaqItem } from "../data/faq";
 import { SITE } from "../data/site";
 import { trackEvent } from "../lib/analytics";
 import { BibleCard } from "../components/BibleCard";
 import { EcclesiaNews } from "../components/EcclesiaNews";
+import { VaticanNews } from "../components/VaticanNews";
 import { VideoGallery } from "../components/VideoGallery";
 
 const featuredClergy = ["padre-kelmon-luis", "padre-joao-damasceno", "dom-leontios"]
@@ -39,7 +40,7 @@ const HIERARCHY_NEWS_CARDS = [
     slug: "padre-kelmon-luis",
     title: "Padre Kelmon Luís",
     kicker: "Eparquia de São Paulo",
-    image: "/media/card-padre-kelmon.jpg",
+    image: "/media/padre-kelmon-luis.jpg",
     imageClass: "object-cover object-[center_20%]",
     meta: "Nascimento: 21/10/1976 · Ordenação: 02/08/2015",
     body: "Padre Kelmon nasceu em Salvador, na Bahia, em 1976. Há mais de 30 anos vive a fé no dia a dia: formação, pastoral e o debate público. Começou na juventude, na Legião de Maria. Depois estudou Filosofia, Teologia e Pedagogia e atuou em missões e ações humanitárias.",
@@ -177,8 +178,9 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
         title: `${community.name} · ${community.city}`,
         text: [
           community.summary,
-          community.clergy ? `Clero: ${community.clergy}.` : "",
+          community.clergy ? `Celebrante: ${community.clergy}.` : "",
           community.address || "",
+          community.scheduleNote || "",
           community.phone ? `Telefone: ${community.phone}.` : community.pendingOfficial?.length
             ? `Ainda não publicados: ${community.pendingOfficial.join(", ")}.`
             : "",
@@ -306,70 +308,72 @@ function ShortcutModal({ item, onClose }: { item: ShortcutItem; onClose: () => v
   );
 }
 
+function FaqModal({ item, onClose }: { item: FaqItem; onClose: () => void }) {
+  const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => closeRef.current?.focus(), 40);
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+    const previous = document.body.style.overflowY;
+    document.body.style.overflowY = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(timer);
+      document.body.style.overflowY = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-6">
+      <button type="button" className="absolute inset-0 bg-ink/55" aria-label="Fechar pergunta" onClick={onClose} />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className="relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-card sm:rounded-3xl"
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-burgundy/10 px-5 py-4">
+          <div className="min-w-0">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">Perguntas frequentes</p>
+            <h2 id={titleId} className="mt-1 font-serif text-2xl leading-tight text-ink sm:text-3xl">
+              {item.question}
+            </h2>
+          </div>
+          <button
+            ref={closeRef}
+            type="button"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-burgundy/20 text-burgundy"
+            aria-label="Fechar"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </div>
+        <div className="overflow-y-auto px-5 py-5">
+          <p className="text-base leading-7 text-ink sm:text-lg sm:leading-8">{item.answer}</p>
+          {item.href ? (
+            <Link className="btn btn-burgundy mt-6" to={item.href} onClick={onClose}>
+              Ler o artigo completo
+            </Link>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Home() {
   const [openShortcut, setOpenShortcut] = useState<ShortcutItem | null>(null);
+  const [openFaq, setOpenFaq] = useState<FaqItem | null>(null);
 
   return (
     <div>
-      <section className="full-bleed relative isolate overflow-hidden text-white">
-        <picture>
-          <source srcSet="/media/hero-iconostase.webp" type="image/webp" />
-          <img
-            src="/media/hero-iconostase.jpg"
-            alt="Interior de templo ortodoxo com iconóstase, ícones, cruz e velas"
-            width={1024}
-            height={320}
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-center"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/65" aria-hidden="true" />
-
-        <div className="relative mx-auto flex w-full max-w-[1280px] flex-col justify-center px-4 py-12 lg:min-h-[28rem] lg:py-16">
-          <p className="sr-only">
-            {SITE.homeHeadline}. {SITE.synod}.
-          </p>
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h1 className="font-serif text-5xl font-bold leading-[0.95] text-[#F6E08A] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] sm:text-6xl lg:text-7xl">
-                {SITE.motto}
-              </h1>
-              <p className="hero-lead mt-5 max-w-xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
-                O lugar para entender a fé ortodoxa em português: o que é a Igreja Ortodoxa, a Divina Liturgia, os
-                Santos, os ícones, o jejum e onde encontrar uma{" "}
-                <span className="whitespace-nowrap">comunidade</span> no Brasil.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <Link
-                to="/ortodoxia/o-que-e-a-ortodoxia"
-                className="flex min-h-12 items-center justify-center rounded-full border border-white/80 px-4 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
-              >
-                O que é a Igreja Ortodoxa
-              </Link>
-              <Link
-                to="/comunidades"
-                className="flex min-h-12 items-center justify-center rounded-full border border-white/80 px-4 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-white/10"
-              >
-                Encontrar uma comunidade
-              </Link>
-            </div>
-          </div>
-
-          <a
-            href="#atalhos"
-            className="mt-10 inline-flex items-center justify-center gap-2 self-center text-sm text-white/90 transition hover:text-white"
-          >
-            Explore o portal
-            <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </section>
-
       <section className="relative isolate bg-ivory text-ink">
-        <nav id="atalhos" aria-label="Atalhos da página inicial" className="scroll-mt-24 px-4 pb-2 pt-4 sm:pb-3 sm:pt-5">
+        <nav id="atalhos" aria-label="Atalhos da página inicial" className="site-section scroll-mt-24 px-4">
           <ul className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-3">
             {HERO_SHORTCUTS.map((item) => (
               <li key={item.href}>
@@ -399,47 +403,7 @@ export function Home() {
 
       <EcclesiaNews />
 
-      <section className="mx-auto grid max-w-7xl items-start gap-8 px-4 pb-16 pt-[10%] sm:gap-10 sm:pb-20 lg:grid-cols-[minmax(0,1fr)_600px]">
-        <div className="flex flex-col lg:max-h-[600px]">
-          <div>
-            <p className="kicker">Quem somos</p>
-            <h2 className="mt-2 font-serif text-3xl leading-tight">Igreja Ortodoxa Grega G.O.C. no Brasil</h2>
-            <p className="mt-4 text-base leading-7 text-stone lg:mt-7">
-              A Igreja Ortodoxa Grega G.O.C. no Brasil apresenta a fé apostólica, a Divina Liturgia e a vida das
-              comunidades em comunhão com o Santo Sínodo de Eugenio de Atenas. G.O.C. refere-se aos Cristãos Ortodoxos
-              Genuínos, na tradição velho-calendarista grega.
-            </p>
-            <p className="mt-3 text-base leading-7 text-stone">
-              É um portal de fé, formação, história e missão, para quem chega agora e para quem já vive a fé.
-              Confessamos a Igreja una, santa, católica e apostólica; honramos os Santos Ícones, o jejum e o calendário
-              patrístico.
-            </p>
-            <p className="mt-3 text-base leading-7 text-stone">
-              A presença ortodoxa no Brasil cresceu por missões, mosteiros, paróquias e o testemunho de clérigos e fiéis.
-              A história da Igreja é a transmissão da mesma fé, nos mesmos Mistérios, de geração em geração.
-            </p>
-            <p className="mt-3 text-base leading-7 text-stone">
-              Há comunidades, missões e o Mosteiro de São Basílio em Marapicu, Nova Iguaçu, com núcleos pastorais em São
-              Paulo e no Rio de Janeiro. A Tradição Apostólica — Escritura, liturgia, Padres e sucessão episcopal — é o
-              que a Igreja transmite. O convite permanece: vinde e vede.
-            </p>
-          </div>
-          <Link className="btn btn-burgundy mt-14 w-fit shrink-0" to="/igreja/quem-somos">
-            Quem somos
-          </Link>
-        </div>
-        <img
-          src="/media/igreja-ortodoxa-grega-no-brasil.jpg"
-          alt="Igreja Ortodoxa Grega G.O.C. no Brasil, Santo Sínodo de Eugenios de Atenas, Ortodoxia do Velho Calendário"
-          width={600}
-          height={600}
-          className="aspect-square h-auto w-full max-w-[600px] rounded-3xl object-cover shadow-card lg:h-[600px] lg:w-[600px] lg:justify-self-end"
-          loading="lazy"
-          decoding="async"
-        />
-      </section>
-
-      <section className="pb-16 pt-4 sm:pb-20">
+      <section className="site-section">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="font-serif leading-tight">
             <span className="block text-lg text-[#6E121C] sm:text-xl">No Brasil e no mundo</span>
@@ -483,7 +447,38 @@ export function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-10 sm:pb-12">
+      <VaticanNews />
+
+      <section className="site-section mx-auto max-w-7xl px-4">
+        <p className="kicker">Eparquia</p>
+        <h2 className="mt-3 font-serif text-4xl">Homens a serviço da Igreja.</h2>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {featuredClergy.map((person) =>
+            person ? (
+              <Link
+                key={person.slug}
+                to={`/igreja/hierarquia/${person.slug}`}
+                className="group relative isolate min-h-[420px] overflow-hidden rounded-3xl"
+              >
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="absolute inset-0 h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(transparent_25%,rgba(78,12,20,.92))]" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <h3 className="font-serif text-2xl">{person.name.replace(" de Noronha e Valdigem", "")}</h3>
+                  <p className="mt-1 text-gold-soft">{person.role}</p>
+                </div>
+              </Link>
+            ) : null,
+          )}
+        </div>
+      </section>
+
+      <section className="site-section px-4">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
           <p className="kicker">Primeira vez aqui?</p>
           <h2 className="mt-3 font-serif text-4xl">É sua primeira vez conhecendo a Igreja Ortodoxa?</h2>
@@ -509,7 +504,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 pt-4 sm:pb-20">
+      <section className="site-section mx-auto max-w-7xl px-4">
         <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,24rem)]">
           <div className="flex h-full min-h-0 flex-col rounded-[2rem] bg-white p-6 text-[#6E121C] shadow-card sm:p-8">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#6E121C]">Conheça a Ortodoxia</p>
@@ -558,7 +553,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20">
+      <section className="site-section mx-auto max-w-7xl px-4">
         <p className="kicker">Comunidades</p>
         <h2 className="mt-3 font-serif text-4xl">Onde a Igreja reza no Brasil.</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -569,6 +564,11 @@ export function Home() {
               </p>
               <h3 className="mt-3 font-serif text-2xl">{community.name}</h3>
               <p className="mt-2 text-stone">{community.summary}</p>
+              {community.address ? <p className="mt-3 text-stone">{community.address}</p> : null}
+              {community.scheduleNote ? <p className="mt-2 text-stone">{community.scheduleNote}</p> : null}
+              {community.slug === "sao-paulo" && community.clergy ? (
+                <p className="mt-2 text-stone">Celebrante: Padre Kelmon</p>
+              ) : null}
             </Link>
           ))}
         </div>
@@ -577,38 +577,9 @@ export function Home() {
         </Link>
       </section>
 
-      <section className="bg-white py-12 sm:py-14">
-        <div className="mx-auto max-w-7xl px-4">
+      <section className="site-section px-4">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-12 sm:px-8 sm:py-14">
           <VideoGallery />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20">
-        <p className="kicker">Hierarquia</p>
-        <h2 className="mt-3 font-serif text-4xl">Homens a serviço da Igreja.</h2>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {featuredClergy.map((person) =>
-            person ? (
-              <Link
-                key={person.slug}
-                to={`/igreja/hierarquia/${person.slug}`}
-                className="group relative isolate min-h-[420px] overflow-hidden rounded-3xl"
-              >
-                <img
-                  src={person.image}
-                  alt={person.name}
-                  className="absolute inset-0 h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(transparent_25%,rgba(78,12,20,.92))]" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <h3 className="font-serif text-2xl">{person.name.replace(" de Noronha e Valdigem", "")}</h3>
-                  <p className="mt-1 text-gold-soft">{person.role}</p>
-                </div>
-              </Link>
-            ) : null,
-          )}
         </div>
       </section>
 
@@ -636,7 +607,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 py-20 md:grid-cols-2">
+      <section className="site-section mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-2">
         <div className="rounded-3xl border border-burgundy/10 bg-white p-8">
           <p className="kicker">Apoie a Igreja</p>
           <h2 className="mt-3 font-serif text-3xl">Sustente a vida litúrgica e missionária.</h2>
@@ -669,25 +640,28 @@ export function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-10">
+      <section className="site-section px-4">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
           <p className="kicker">Perguntas frequentes</p>
           <h2 className="mt-3 font-serif text-4xl">O que as pessoas perguntam.</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {FAQ_ITEMS.slice(0, 4).map((item) => (
-              <Link
+              <button
                 key={item.question}
-                to={item.href || "/perguntas-frequentes"}
-                className="rounded-3xl border border-burgundy/10 p-6 hover:shadow-card"
+                type="button"
+                aria-haspopup="dialog"
+                onClick={() => setOpenFaq(item)}
+                className="rounded-3xl border border-burgundy/10 p-6 text-left hover:shadow-card"
               >
                 <h3 className="font-serif text-xl">{item.question}</h3>
                 <p className="mt-2 text-stone">{item.answer}</p>
-              </Link>
+              </button>
             ))}
           </div>
         </div>
       </section>
       {openShortcut ? <ShortcutModal item={openShortcut} onClose={() => setOpenShortcut(null)} /> : null}
+      {openFaq ? <FaqModal item={openFaq} onClose={() => setOpenFaq(null)} /> : null}
     </div>
   );
 }

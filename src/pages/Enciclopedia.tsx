@@ -31,7 +31,7 @@ export function Enciclopedia() {
         intro="Artigos para quem pesquisa a fé ortodoxa em português: doutrina, história, liturgia, santos, glossário e vida paroquial."
         crumbs={[{ href: "/enciclopedia", label: "Enciclopédia" }]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="site-section mx-auto max-w-6xl px-4">
         <div className="mb-10 grid gap-3 sm:grid-cols-3">
           <Link to="/perguntas-frequentes" className="rounded-2xl border border-burgundy/10 bg-white p-5 hover:shadow-card">
             <h2 className="text-xl">

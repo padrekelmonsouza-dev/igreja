@@ -29,6 +29,18 @@ body,
   margin-left: calc(50% - 50vw);
 }
 
+.site-section {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .site-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Source Sans 3", system-ui, "Segoe UI", sans-serif;

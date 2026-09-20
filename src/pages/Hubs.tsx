@@ -9,7 +9,7 @@ export function IgrejaHub() {
         intro="Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/igreja", label: "Igreja" }]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="site-section mx-auto max-w-6xl px-4">
         <HubGrid
           items={[
             { href: "/igreja/arcebispos", title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
@@ -33,7 +33,7 @@ export function OrtodoxiaHub() {
         intro="O que é a Igreja Ortodoxa, a Divina Liturgia, os ícones, os Santos Mistérios, os santos, o jejum e a oração."
         crumbs={[{ href: "/ortodoxia", label: "Ortodoxia" }]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12">
+      <section className="site-section mx-auto max-w-6xl px-4">
         <HubGrid
           items={[
             { href: "/ortodoxia/o-que-e-a-ortodoxia", title: "O que é a Ortodoxia?", text: "Guia essencial da fé apostólica em português." },

@@ -79,7 +79,7 @@ function fromWp(posts: WpPost[]): EcclesiaArticle[] {
       return { href, title, text, image };
     })
     .filter((item) => item.href && item.title)
-    .slice(0, 4);
+    .slice(0, 12);
 }
 
 function fromRss(xml: string): EcclesiaArticle[] {
@@ -100,7 +100,7 @@ function fromRss(xml: string): EcclesiaArticle[] {
       };
     })
     .filter((item) => item.href && item.title)
-    .slice(0, 4);
+    .slice(0, 12);
 }
 
 async function readJson(url: string) {
@@ -118,8 +118,8 @@ async function readRss(url: string) {
 
 export async function fetchEcclesiaNews(): Promise<EcclesiaArticle[]> {
   const sources = [
-    () => readJson("https://news.ecclesia.org.br/wp-json/wp/v2/posts?per_page=4&_embed=wp:featuredmedia"),
-    () => readJson("/proxy/ecclesia/wp-json/wp/v2/posts?per_page=4&_embed=wp:featuredmedia"),
+    () => readJson("https://news.ecclesia.org.br/wp-json/wp/v2/posts?per_page=12&_embed=wp:featuredmedia"),
+    () => readJson("/proxy/ecclesia/wp-json/wp/v2/posts?per_page=12&_embed=wp:featuredmedia"),
     () => readRss("/proxy/ecclesia/feed/"),
     () => readRss("https://news.ecclesia.org.br/feed/"),
   ];
