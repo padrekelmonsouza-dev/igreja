@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/Article";
+import { KnowOrthodoxy } from "../components/KnowOrthodoxy";
 import { OfficialNotice } from "../components/ShareBar";
 import { clergyByCategory, type ClergyCategory, type ClergyProfile } from "../data/clergy";
 
@@ -275,6 +276,8 @@ export function Hierarquia() {
           </section>
         );
       })}
+
+      <KnowOrthodoxy />
     </>
   );
 }
