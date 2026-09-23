@@ -69,8 +69,8 @@ export function LatestEvents() {
         Encontro realizado em São Paulo, em 21 de setembro de 2026: matéria e registros em vídeo.
       </p>
 
-      <div className="mx-auto mt-8 flex w-full max-w-[1080px] flex-col gap-4 lg:h-[800px] lg:flex-row lg:items-stretch lg:gap-4">
-        <div className="relative h-[min(70vw,800px)] w-full overflow-hidden rounded-[1.75rem] bg-ink shadow-card lg:h-[800px] lg:min-w-0 lg:flex-[1.35]">
+      <div className="mt-8 grid w-full grid-cols-1 items-start gap-5 lg:grid-cols-[30%_70%]">
+        <div className="aspect-[1125/1936] w-full justify-self-start overflow-hidden rounded-[1.75rem] bg-ink shadow-card">
           <video
             src={LATEST_FEATURED_VIDEO.src}
             poster={LATEST_FEATURED_VIDEO.poster}
@@ -81,7 +81,7 @@ export function LatestEvents() {
           />
         </div>
 
-        <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden rounded-[1.75rem] bg-white p-4 shadow-card ring-1 ring-burgundy/10 sm:p-5 lg:h-[800px]">
+        <div className="flex min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] bg-white p-4 shadow-card ring-1 ring-burgundy/10 sm:p-6 lg:max-h-[calc((min(1280px,100vw)-2rem)*0.3*1936/1125)] lg:p-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">Matéria</p>
           <h3 className="mt-2 font-serif text-xl leading-tight text-ink sm:text-2xl">{article.title}</h3>
           <p className="mt-3 line-clamp-5 text-sm leading-6 text-stone">{article.summary}</p>
@@ -108,6 +108,7 @@ export function LatestEvents() {
                 key={video.src}
                 type="button"
                 onClick={() => setActive(video.src)}
+                aria-label={`Abrir ${video.label}`}
                 className="group relative min-h-0 overflow-hidden rounded-2xl bg-burgundy"
               >
                 <img
@@ -119,7 +120,6 @@ export function LatestEvents() {
                 <span className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-burgundy/80 ring-2 ring-gold/70">
                   <PlayIcon className="h-5 w-5" />
                 </span>
-                <span className="absolute bottom-2 left-2 font-serif text-sm text-white">{video.label}</span>
               </button>
             ))}
           </div>
