@@ -104,6 +104,7 @@ export const CLERGY: ClergyProfile[] = [
         title: "Ministério",
         body: [
           "Começou na juventude, na Legião de Maria. Depois estudou Filosofia, Teologia e Pedagogia e atuou em missões e ações humanitárias. Seu ministério presbiteral inclui a celebração da Divina Liturgia, a catequese e o acompanhamento dos fiéis na eparquia paulista.",
+          "Fundou a Pastoral Política, difundindo que o Cristocentrismo é a política que se deve praticar a fim de resgatar a natureza da política, que é servir o povo verdadeiramente. Fundou o Foro do Brasil a fim de preparar novos políticos com visão e prática cristocêntrica. Dedica-se à expansão da Igreja Ortodoxa no Brasil e na América Latina.",
         ],
       },
       {

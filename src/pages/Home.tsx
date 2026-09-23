@@ -10,6 +10,7 @@ import { SITE } from "../data/site";
 import { trackEvent } from "../lib/analytics";
 import { EcclesiaNews } from "../components/EcclesiaNews";
 import { KnowOrthodoxy } from "../components/KnowOrthodoxy";
+import { LatestEvents } from "../components/LatestEvents";
 import { VaticanNews } from "../components/VaticanNews";
 import { VideoGallery } from "../components/VideoGallery";
 
@@ -446,6 +447,8 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      <LatestEvents />
 
       <VaticanNews />
 
