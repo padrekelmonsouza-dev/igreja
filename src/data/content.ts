@@ -310,6 +310,8 @@ const BASE_ARTICLES: ArticlePage[] = [
     kicker: "Formação da fé",
     intro:
       "Caminhos para conhecer a fé ortodoxa com clareza, respeito e profundidade.",
+    description:
+      "Catequese ortodoxa em português: iniciação, doutrina, Batismo, Santos Mistérios e como participar de uma comunidade.",
     sections: [
       {
         title: "Para quem está chegando",

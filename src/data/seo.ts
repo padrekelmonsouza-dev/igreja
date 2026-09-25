@@ -70,6 +70,12 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
       "Liturgia ortodoxa: São João Crisóstomo, São Basílio, São Tiago e o sentido da Divina Liturgia em português.",
     type: "website",
   },
+  "/catequese": {
+    title: `Catequese | ${SITE.tabTitle}`,
+    description:
+      "Catequese ortodoxa em português: iniciação, doutrina, Batismo, Santos Mistérios e como participar de uma comunidade.",
+    type: "website",
+  },
   "/igreja/hierarquia": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
