@@ -1,7 +1,9 @@
-import { copyFileSync, existsSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { REDIRECTS } from "./src/data/redirects";
+import { ALL_INDEX_PATHS } from "./src/data/seo";
 
 const HTACCESS = `# Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
 # Sem este arquivo, URLs como /catequese, /liturgia e /missoes
@@ -20,6 +22,17 @@ const HTACCESS = `# Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
 ErrorDocument 404 /index.html
 `;
 
+function writeRouteIndexes(dist: string, index: string) {
+  const paths = new Set([...ALL_INDEX_PATHS, ...Object.keys(REDIRECTS)]);
+  for (const path of paths) {
+    const clean = path.replace(/^\//, "").replace(/\/$/, "");
+    if (!clean || clean.includes(".")) continue;
+    const dir = resolve(dist, clean);
+    mkdirSync(dir, { recursive: true });
+    copyFileSync(index, resolve(dir, "index.html"));
+  }
+}
+
 function hostingerSpaFallback() {
   return {
     name: "hostinger-spa-fallback",
@@ -27,9 +40,9 @@ function hostingerSpaFallback() {
       const dist = resolve(process.cwd(), "dist");
       writeFileSync(resolve(dist, ".htaccess"), HTACCESS, "utf8");
       const index = resolve(dist, "index.html");
-      if (existsSync(index)) {
-        copyFileSync(index, resolve(dist, "404.html"));
-      }
+      if (!existsSync(index)) return;
+      copyFileSync(index, resolve(dist, "404.html"));
+      writeRouteIndexes(dist, index);
     },
   };
 }
