@@ -6,7 +6,6 @@ import { COMMUNITIES } from "../data/communities";
 import { DONATION_PROJECTS, FORMATION_LINKS } from "../data/collections";
 import { getArticle } from "../data/content";
 import { FAQ_ITEMS, type FaqItem } from "../data/faq";
-import { SITE } from "../data/site";
 import { trackEvent } from "../lib/analytics";
 import { EcclesiaNews } from "../components/EcclesiaNews";
 import { KnowOrthodoxy } from "../components/KnowOrthodoxy";
@@ -536,30 +535,6 @@ export function Home() {
       <section className="site-section px-4">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-12 sm:px-8 sm:py-14">
           <VideoGallery />
-        </div>
-      </section>
-
-      <section className="full-bleed relative flex h-[350px] items-center justify-center overflow-hidden text-white">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat [background-attachment:fixed]"
-          style={{ backgroundImage: `url(${SITE.heroImage})` }}
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-burgundy/80" aria-hidden="true" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-gold-soft">Convite</p>
-          <h2 className="mt-2 font-serif text-4xl sm:text-5xl">Venha e veja.</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-lg text-ivory/90">
-            Conheça a Igreja, prepare sua primeira visita e encontre uma comunidade.
-          </p>
-          <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link className="btn btn-gold" to="/primeira-visita">
-              Comece aqui
-            </Link>
-            <Link className="btn btn-outline" to="/comunidades">
-              Encontre uma comunidade
-            </Link>
-          </div>
         </div>
       </section>
 

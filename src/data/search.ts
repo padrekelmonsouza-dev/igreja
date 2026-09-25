@@ -296,7 +296,10 @@ export function answerQuery(query: string, liveExternal: ExternalItem[] = []): S
   }
 
   for (const person of CLERGY) {
-    const score = scoreHaystack(`${person.name} ${person.role} ${person.summary}`, terms);
+    const score = scoreHaystack(
+      `${person.name} ${person.role} ${person.summary} ${person.facts.map((fact) => fact.value).join(" ")}`,
+      terms,
+    );
     if (score > 0) {
       candidates.push({
         score: score + 4,

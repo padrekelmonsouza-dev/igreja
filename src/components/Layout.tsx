@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { getClergy } from "../data/clergy";
 import { getCommunity } from "../data/communities";
@@ -18,6 +18,7 @@ import { initAnalytics, trackPageView } from "../lib/analytics";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { PastoralVocacional } from "./PastoralVocacional";
 import { SiteHero } from "./SiteHero";
 import { QuemSomosProvider } from "./QuemSomosModal";
 import { SearchProvider } from "./SearchModal";
@@ -42,6 +43,33 @@ function labelForHref(href: string, fallback: string) {
   }
   const seoName = getPageSeo(href).title.split("|")[0].trim();
   return seoName || fallback;
+}
+
+function pageLevelSections(pagina: HTMLElement) {
+  const sections: HTMLElement[] = [];
+  const roots = [...pagina.children].filter((el) => el.id !== "pastoral-vocacional");
+  for (const root of roots) {
+    if (root instanceof HTMLElement && root.tagName === "SECTION") {
+      sections.push(root);
+      continue;
+    }
+    for (const child of root.children) {
+      if (child instanceof HTMLElement && child.tagName === "SECTION" && child.id !== "pastoral-vocacional") {
+        sections.push(child);
+      }
+    }
+  }
+  return sections;
+}
+
+function placeVocacaoBeforeLastSection() {
+  const pagina = document.getElementById("pagina");
+  const vocacao = document.getElementById("pastoral-vocacional");
+  if (!pagina || !vocacao) return;
+  const sections = pageLevelSections(pagina);
+  const last = sections.at(-1);
+  if (!last || last.previousElementSibling === vocacao) return;
+  last.parentElement?.insertBefore(vocacao, last);
 }
 
 function crumbsFor(pathname: string, label: string) {
@@ -126,6 +154,15 @@ export function Layout() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useLayoutEffect(() => {
+    const pagina = document.getElementById("pagina");
+    if (!pagina) return;
+    placeVocacaoBeforeLastSection();
+    const observer = new MutationObserver(() => placeVocacaoBeforeLastSection());
+    observer.observe(pagina, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
   return (
     <SearchProvider>
     <QuemSomosProvider>
@@ -153,6 +190,7 @@ export function Layout() {
           ) : null}
           <div id="pagina">
             <Outlet />
+            <PastoralVocacional />
           </div>
         </main>
       </div>

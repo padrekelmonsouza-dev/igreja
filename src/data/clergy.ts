@@ -202,6 +202,82 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
+    slug: "padre-julio-cesar-dos-santos",
+    name: "Padre Júlio Cesar dos Santos",
+    role: "Padre",
+    category: "presbitero",
+    image: "/media/padre-julio-cesar-dos-santos.jpg",
+    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil. Nome religioso: Padre Jorge.",
+    facts: [
+      { label: "Nome religioso", value: "Padre Jorge" },
+      { label: "Nascimento", value: "03/08/1964" },
+      { label: "Ordenação", value: "25/07/1992" },
+    ],
+    sections: [
+      {
+        title: "Biografia",
+        body: [
+          "Padre Júlio Cesar dos Santos, nome religioso Padre Jorge, nasceu em 3 de agosto de 1964 e foi ordenado em 25 de julho de 1992.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "Dados de eparquia, comunidade e demais registros pastorais serão publicados nesta página quando oficiais.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "padre-aquila",
+    name: "Padre Aquila Peroba",
+    role: "Padre Diretor Vocacional",
+    category: "presbitero",
+    image: "/media/padre-aquila.jpg",
+    summary: "Padre Diretor Vocacional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    facts: [{ label: "Ministério", value: "Diretor Vocacional" }],
+    sections: [
+      {
+        title: "Biografia",
+        body: [
+          "Padre Aquila Peroba é Padre Diretor Vocacional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "Dados de nascimento, ordenação, eparquia e demais registros pastorais serão publicados nesta página quando oficiais.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "padre-pedro",
+    name: "Padre Pedro",
+    role: "Padre",
+    category: "presbitero",
+    image: "/media/padre-pedro.jpg",
+    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    facts: [
+      { label: "Nascimento", value: "28/05/1971" },
+      { label: "Ordenação", value: "05/09/2022" },
+    ],
+    sections: [
+      {
+        title: "Biografia",
+        body: [
+          "Padre Pedro nasceu em 28 de maio de 1971 e foi ordenado em 5 de setembro de 2022.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "Dados de eparquia, comunidade e demais registros pastorais serão publicados nesta página quando oficiais.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "dom-jose-vicente-garcia-aguila",
     name: "Dom José Vicente Garcia Aguila",
     role: "Sacerdote Monge",

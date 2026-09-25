@@ -280,3 +280,11 @@ details[open] > summary .menu-chevron {
   text-align: start;
   hyphens: none;
 }
+
+@media (max-width: 1023px) {
+  #pastoral-vocacional p,
+  #pastoral-vocacional li {
+    text-align: start;
+    hyphens: none;
+  }
+}

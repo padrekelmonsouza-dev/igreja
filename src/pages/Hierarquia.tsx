@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/Article";
 import { KnowOrthodoxy } from "../components/KnowOrthodoxy";
@@ -12,7 +11,7 @@ const SECTIONS: {
   kicker: string;
   title: string;
   intro: string;
-  layout: "featured" | "grid" | "wide" | "carousel";
+  layout: "featured" | "grid" | "wide" | "padres";
 }[] = [
   {
     category: "arcebispo",
@@ -29,7 +28,7 @@ const SECTIONS: {
     kicker: "Padres",
     title: "Padres a serviço da Igreja.",
     intro: "Padres já apresentados neste portal, com os dados oficiais publicados.",
-    layout: "carousel",
+    layout: "padres",
   },
   {
     category: "sacerdote-monge",
@@ -130,96 +129,6 @@ function WideCard({ person }: { person: ClergyProfile }) {
   );
 }
 
-function CarouselArrows({
-  onPrev,
-  onNext,
-  canPrev,
-  canNext,
-}: {
-  onPrev: () => void;
-  onNext: () => void;
-  canPrev: boolean;
-  canNext: boolean;
-}) {
-  return (
-    <div className="flex items-center gap-2">
-      <button
-        type="button"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-burgundy/15 bg-white text-xl leading-none text-burgundy shadow-[0_8px_16px_-10px_rgba(110,18,28,.55)] disabled:cursor-default disabled:opacity-35"
-        aria-label="Cards anteriores"
-        onClick={onPrev}
-        disabled={!canPrev}
-      >
-        ‹
-      </button>
-      <button
-        type="button"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-burgundy/15 bg-white text-xl leading-none text-burgundy shadow-[0_8px_16px_-10px_rgba(110,18,28,.55)] disabled:cursor-default disabled:opacity-35"
-        aria-label="Próximos cards"
-        onClick={onNext}
-        disabled={!canNext}
-      >
-        ›
-      </button>
-    </div>
-  );
-}
-
-function PortraitCarousel({ people }: { people: ClergyProfile[] }) {
-  const scroller = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(false);
-
-  function updateArrows() {
-    const el = scroller.current;
-    if (!el) return;
-    setCanPrev(el.scrollLeft > 8);
-    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 8);
-  }
-
-  function scrollByCard(direction: -1 | 1) {
-    const el = scroller.current;
-    const card = el?.querySelector<HTMLElement>("[data-clergy-card]");
-    if (!el || !card) return;
-    const gap = Number.parseFloat(getComputedStyle(el).columnGap || getComputedStyle(el).gap) || 20;
-    el.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: "smooth" });
-  }
-
-  useEffect(() => {
-    const el = scroller.current;
-    if (!el) return;
-    updateArrows();
-    el.addEventListener("scroll", updateArrows, { passive: true });
-    window.addEventListener("resize", updateArrows);
-    return () => {
-      el.removeEventListener("scroll", updateArrows);
-      window.removeEventListener("resize", updateArrows);
-    };
-  }, [people.length]);
-
-  return (
-    <div className="mt-8">
-      <div className="mb-4 flex justify-end">
-        <CarouselArrows onPrev={() => scrollByCard(-1)} onNext={() => scrollByCard(1)} canPrev={canPrev} canNext={canNext} />
-      </div>
-      <div
-        ref={scroller}
-        className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {people.map((person) => (
-          <div
-            key={person.slug}
-            data-clergy-card
-            className="w-full shrink-0 snap-start sm:w-[calc((100%-1.25rem)/2)] xl:w-[calc((100%-3.75rem)/4)]"
-          >
-            <PortraitCard person={person} compact />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function Hierarquia() {
   return (
     <>
@@ -260,8 +169,12 @@ export function Hierarquia() {
                   <WideCard key={person.slug} person={person} />
                 ))}
               </div>
-            ) : section.layout === "carousel" ? (
-              <PortraitCarousel people={people} />
+            ) : section.layout === "padres" ? (
+              <div className="mt-8 grid gap-5 lg:grid-cols-4">
+                {people.map((person) => (
+                  <PortraitCard key={person.slug} person={person} compact />
+                ))}
+              </div>
             ) : (
               <div
                 className={`mt-8 grid gap-5 ${

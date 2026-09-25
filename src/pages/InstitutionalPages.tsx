@@ -98,6 +98,10 @@ export function PoliticaPrivacidade() {
           A página de pedidos de oração solicita nome, cidade e a intenção. O envio fica registrado no dispositivo do
           visitante (armazenamento local) para moderação posterior. Não há publicação automática do pedido.
         </p>
+        <p>
+          O formulário da Pastoral Vocacional, presente no portal, solicita nome, WhatsApp, telefone, e-mail e mensagem.
+          O envio é encaminhado ao endereço publicado {SITE_CONTACT.vocationalEmail}.
+        </p>
         <h2>Cookies e medição</h2>
         <p>
           O Google Analytics 4 só é carregado se um identificador oficial for configurado no ambiente de publicação. Não
