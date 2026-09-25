@@ -38,7 +38,7 @@ export function Glossario() {
           </section>
         ))}
       </section>
-      <Related paths={["/enciclopedia", "/ortodoxia/divina-liturgia", "/ortodoxia/o-que-e-a-ortodoxia"]} />
+      <Related paths={["/enciclopedia", "/liturgia", "/ortodoxia/o-que-e-a-ortodoxia"]} />
     </>
   );
 }

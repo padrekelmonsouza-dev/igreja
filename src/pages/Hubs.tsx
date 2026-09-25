@@ -37,7 +37,7 @@ export function OrtodoxiaHub() {
         <HubGrid
           items={[
             { href: "/ortodoxia/o-que-e-a-ortodoxia", title: "O que é a Ortodoxia?", text: "Guia essencial da fé apostólica em português." },
-            { href: "/ortodoxia/divina-liturgia", title: "Divina Liturgia", text: "O coração da vida ortodoxa." },
+            { href: "/liturgia", title: "Liturgia", text: "O coração da vida ortodoxa." },
             { href: "/ortodoxia/icones", title: "Ícones", text: "Teologia visível da Encarnação." },
             { href: "/ortodoxia/sacramentos", title: "Sacramentos / Mistérios", text: "Batismo, Crisma, Eucaristia e os demais Mistérios." },
             { href: "/ortodoxia/santos", title: "Santos", text: "A nuvem de testemunhas e a Theotokos." },

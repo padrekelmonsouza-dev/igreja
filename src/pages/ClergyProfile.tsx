@@ -77,7 +77,7 @@ export function ClergyProfile() {
               ))}
             </section>
           ))}
-          <Link className="btn btn-burgundy" to={archbishop ? "/igreja/arcebispos" : "/clero"}>
+          <Link className="btn btn-burgundy text-white no-underline" to={archbishop ? "/igreja/arcebispos" : "/clero"}>
             {archbishop ? "Ver os arcebispos" : "Ver todo o clero"}
           </Link>
         </div>

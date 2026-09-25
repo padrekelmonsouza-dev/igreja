@@ -4,7 +4,7 @@ import { BibleCard } from "./BibleCard";
 
 const TOPICS = [
   { href: "/ortodoxia/o-que-e-a-ortodoxia", title: "O que é a Ortodoxia?" },
-  { href: "/ortodoxia/divina-liturgia", title: "Divina Liturgia" },
+  { href: "/liturgia", title: "Liturgia" },
   { href: "/ortodoxia/icones", title: "Ícones" },
   { href: "/ortodoxia/santos", title: "Santos" },
 ];

@@ -1,7 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { LITURGICAL_FASTS, LITURGICAL_NOTE, MAJOR_FEASTS } from "../data/calendar";
-import { CLERGY } from "../data/clergy";
 import { COMMUNITIES } from "../data/communities";
 import { DONATION_PROJECTS, FORMATION_LINKS } from "../data/collections";
 import { getArticle } from "../data/content";
@@ -13,9 +12,34 @@ import { LatestEvents } from "../components/LatestEvents";
 import { VaticanNews } from "../components/VaticanNews";
 import { VideoGallery } from "../components/VideoGallery";
 
-const featuredClergy = ["padre-kelmon-luis", "padre-joao-damasceno", "dom-leontios"]
-  .map((slug) => CLERGY.find((person) => person.slug === slug))
-  .filter(Boolean);
+const EPARQUIA_VIDEO = "/videos/igreja-ortodoxa.mp4";
+
+const EPARQUIA_CARDS = [
+  {
+    slug: "dom-leontios",
+    title: "Dom Leontios",
+    image: "/media/card-dom-leontios.jpg",
+    imageClass: "object-cover object-[center_18%]",
+  },
+  {
+    slug: "dom-eugenios-de-atenas",
+    title: "Dom Eugenios de Atenas",
+    image: "/media/card-dom-eugenios.jpg",
+    imageClass: "object-cover object-center",
+  },
+  {
+    slug: "padre-kelmon-luis",
+    title: "Padre Kelmon",
+    image: "/media/padre-kelmon-luis.jpg",
+    imageClass: "object-cover object-[center_20%]",
+  },
+  {
+    slug: "padre-joao-damasceno",
+    title: "Padre João Damasceno",
+    image: "/media/padre-joao-damasceno.jpg",
+    imageClass: "object-cover object-top",
+  },
+] as const;
 
 const HIERARCHY_NEWS_CARDS = [
   {
@@ -366,6 +390,40 @@ function FaqModal({ item, onClose }: { item: FaqItem; onClose: () => void }) {
   );
 }
 
+function EparquiaCard({
+  card,
+  fit,
+}: {
+  card: (typeof EPARQUIA_CARDS)[number];
+  fit?: boolean;
+}) {
+  return (
+    <Link
+      to={`/igreja/hierarquia/${card.slug}`}
+      className="group flex h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-burgundy/20 bg-white shadow-card transition hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_40px_-24px_rgba(110,18,28,.55)]"
+    >
+      <div className={fit ? "min-h-0 flex-1 overflow-hidden bg-parchment" : "aspect-[16/9] overflow-hidden bg-parchment"}>
+        <img
+          src={card.image}
+          alt={card.title}
+          className={`h-full w-full transition duration-300 group-hover:scale-[1.02] ${card.imageClass}`}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div className={fit ? "flex shrink-0 flex-col px-3 pb-3 pt-3" : "flex flex-col px-4 pb-4 pt-4 sm:px-5 sm:pb-5"}>
+        <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-[1.15rem] font-semibold leading-none text-ink [hyphens:none] [overflow-wrap:normal] group-hover:text-burgundy sm:text-[1.25rem]">
+          {card.title}
+        </h3>
+        <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] text-burgundy">
+          Ler perfil
+          <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export function Home() {
   const [openShortcut, setOpenShortcut] = useState<ShortcutItem | null>(null);
   const [openFaq, setOpenFaq] = useState<FaqItem | null>(null);
@@ -451,35 +509,6 @@ export function Home() {
 
       <VaticanNews />
 
-      <section className="site-section mx-auto max-w-7xl px-4">
-        <p className="kicker">Eparquia</p>
-        <h2 className="mt-3 font-serif text-4xl">Homens a serviço da Igreja.</h2>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {featuredClergy.map((person) =>
-            person ? (
-              <Link
-                key={person.slug}
-                to={`/igreja/hierarquia/${person.slug}`}
-                className="group relative isolate min-h-[420px] overflow-hidden rounded-3xl"
-              >
-                <img
-                  src={person.image}
-                  alt={person.name}
-                  className="absolute inset-0 h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(transparent_25%,rgba(78,12,20,.92))]" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <h3 className="font-serif text-2xl">{person.name.replace(" de Noronha e Valdigem", "")}</h3>
-                  <p className="mt-1 text-gold-soft">{person.role}</p>
-                </div>
-              </Link>
-            ) : null,
-          )}
-        </div>
-      </section>
-
       <section className="site-section px-4">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
           <p className="kicker">Primeira vez aqui?</p>
@@ -503,6 +532,64 @@ export function Home() {
           <Link className="btn btn-gold mt-8" to="/primeira-visita">
             Comece aqui
           </Link>
+        </div>
+      </section>
+
+      <section className="site-section bg-ivory px-4">
+        <div className="mx-auto w-full max-w-[1280px]">
+          <div className="lg:hidden">
+            <div className="overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
+              <video
+                src={EPARQUIA_VIDEO}
+                className="h-[493px] w-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                title="Igreja Ortodoxa"
+              />
+            </div>
+
+            <div className="mt-6">
+              <p className="kicker">Eparquia</p>
+              <h2 className="mt-2 font-serif text-3xl leading-tight text-ink">Homens a serviço da Igreja.</h2>
+            </div>
+
+            <ul className="mt-5 space-y-8">
+              {EPARQUIA_CARDS.map((card) => (
+                <li key={card.slug}>
+                  <EparquiaCard card={card} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hidden lg:grid lg:h-[666px] lg:grid-cols-[350px_minmax(0,1fr)] lg:items-stretch lg:gap-8">
+            <div className="h-full overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
+              <video
+                src={EPARQUIA_VIDEO}
+                className="h-full w-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                title="Igreja Ortodoxa"
+              />
+            </div>
+
+            <div className="flex h-full min-h-0 min-w-0 flex-col">
+              <div className="mb-4 shrink-0">
+                <p className="kicker">Eparquia</p>
+                <h2 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-[2rem]">Homens a serviço da Igreja.</h2>
+              </div>
+
+              <ul className="grid min-h-0 flex-1 grid-cols-2 gap-x-6 gap-y-4">
+                {EPARQUIA_CARDS.map((card) => (
+                  <li key={card.slug} className="min-h-0">
+                    <EparquiaCard card={card} fit />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 

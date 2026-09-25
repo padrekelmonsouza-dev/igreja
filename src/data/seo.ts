@@ -64,6 +64,12 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
       "Arcebispos, padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
+  "/liturgia": {
+    title: `Liturgia | ${SITE.tabTitle}`,
+    description:
+      "Liturgia ortodoxa: São João Crisóstomo, São Basílio, São Tiago e o sentido da Divina Liturgia em português.",
+    type: "website",
+  },
   "/igreja/hierarquia": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
@@ -352,7 +358,7 @@ export const PUBLIC_INDEX_PATHS = [
   "/igreja/sucessao-apostolica",
   "/ortodoxia",
   "/ortodoxia/o-que-e-a-ortodoxia",
-  "/ortodoxia/divina-liturgia",
+  "/liturgia",
   "/ortodoxia/icones",
   "/ortodoxia/sacramentos",
   "/ortodoxia/santos",

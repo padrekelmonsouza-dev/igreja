@@ -11,7 +11,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   { term: "Cálice", definition: "Vaso sagrado que contém o Sangue de Cristo na Eucaristia." },
   { term: "Catecúmeno", definition: "Pessoa que se prepara para o Batismo e a recepção na Igreja." },
   { term: "Crisma", definition: "Santo Mistério da unção com o Myron, selo do dom do Espírito Santo, dado com o Batismo." },
-  { term: "Divina Liturgia", definition: "Celebração eucarística ortodoxa, centro de toda a vida da Igreja.", href: "/ortodoxia/divina-liturgia" },
+  { term: "Divina Liturgia", definition: "Celebração eucarística ortodoxa, centro de toda a vida da Igreja.", href: "/liturgia" },
   { term: "Eparquia", definition: "Diocese ortodoxa, território pastoral sob um bispo." },
   { term: "Filioque", definition: "Acréscimo ocidental ao Credo (“e do Filho”), não recebido pela Igreja Ortodoxa.", href: "/ortodoxia/catolica-e-ortodoxa" },
   { term: "G.O.C.", definition: "Genuine Orthodox Christians: Cristãos Ortodoxos Genuínos, tradição velho-calendarista." },

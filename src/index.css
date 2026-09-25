@@ -198,7 +198,9 @@ a {
 
 .btn-burgundy {
   background: #6e121c;
-  color: #f7f0dc;
+  color: #ffffff;
+  font-size: 13px;
+  letter-spacing: 0.12em;
 }
 
 .btn-burgundy:hover {
@@ -234,6 +236,12 @@ details[open] > summary .menu-chevron {
   color: #6e121c;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.prose-church a.btn,
+.prose-church a.btn-burgundy {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 #conteudo p,

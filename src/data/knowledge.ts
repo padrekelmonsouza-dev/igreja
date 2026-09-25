@@ -9,7 +9,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "A Igreja Ortodoxa é a Igreja de Cristo na continuidade apostólica: a mesma fé, os mesmos Mistérios e a mesma liturgia transmitidas desde os Apóstolos até o Brasil de hoje.",
     description:
       "O que é a Igreja Ortodoxa? Entenda a fé ortodoxa, a Tradição Apostólica, a Divina Liturgia, os ícones e como a Ortodoxia vive no Brasil.",
-    related: ["/ortodoxia/catolica-e-ortodoxa", "/ortodoxia/divina-liturgia", "/primeira-visita", "/igreja/nossa-fe"],
+    related: ["/ortodoxia/catolica-e-ortodoxa", "/liturgia", "/primeira-visita", "/igreja/nossa-fe"],
     sections: [
       {
         title: "Uma resposta direta",
@@ -92,7 +92,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "Católicos e ortodoxos compartilham o Credo, os Concílios do primeiro milênio e o amor a Cristo. As diferenças são reais — e merecem ser explicadas com respeito, não com polêmica.",
     description:
       "Diferença entre Igreja Católica e Igreja Ortodoxa: papa, Filioque, liturgia, ícones, comunhão e o que um brasileiro precisa saber antes de visitar.",
-    related: ["/ortodoxia/o-que-e-a-ortodoxia", "/ortodoxia/divina-liturgia", "/ortodoxia/santos", "/perguntas-frequentes"],
+    related: ["/ortodoxia/o-que-e-a-ortodoxia", "/liturgia", "/ortodoxia/santos", "/perguntas-frequentes"],
     sections: [
       {
         title: "O que há em comum",
@@ -140,7 +140,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "Não é preciso saber grego, nem memorizar o ofício. Basta chegar com respeito, observar e deixar a liturgia ensinar.",
     description:
       "Como é a primeira visita a uma Igreja Ortodoxa no Brasil: o que vestir, se pode comungar, quanto dura a liturgia e o que fazer ao chegar.",
-    related: ["/ortodoxia/divina-liturgia", "/comunidades", "/ortodoxia/o-que-e-a-ortodoxia", "/catequese"],
+    related: ["/liturgia", "/comunidades", "/ortodoxia/o-que-e-a-ortodoxia", "/catequese"],
     sections: [
       {
         title: "Antes de ir",
@@ -230,7 +230,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "“Senhor Jesus Cristo, Filho de Deus, tem piedade de mim, pecador.” Esta é a oração que os Padres chamaram de tesouro do coração.",
     description:
       "O que é a Oração de Jesus na Igreja Ortodoxa, como rezá-la no cotidiano e qual sua relação com o jejum e a liturgia.",
-    related: ["/formacao/jejum-e-oracao", "/ortodoxia/divina-liturgia", "/catequese"],
+    related: ["/formacao/jejum-e-oracao", "/liturgia", "/catequese"],
     sections: [
       {
         title: "A fórmula e o sentido",
@@ -260,7 +260,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "Honrar Maria é confessar que o Verbo se fez carne. Theotokos significa Mãe de Deus: o Filho que Ela gerou é o próprio Deus encarnado.",
     description:
       "Quem é a Theotokos na Igreja Ortodoxa: Maria, Mãe de Deus, ícones, festas e a diferença entre veneração e adoração.",
-    related: ["/ortodoxia/santos", "/ortodoxia/divina-liturgia", "/calendario", "/ortodoxia/o-que-e-a-ortodoxia"],
+    related: ["/ortodoxia/santos", "/liturgia", "/calendario", "/ortodoxia/o-que-e-a-ortodoxia"],
     sections: [
       {
         title: "Por que Mãe de Deus",
@@ -320,7 +320,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       "O jejum ortodoxo treina o corpo para libertar a alma. Não é dieta nem recorde. É obediência evangélica, vivida com a Igreja.",
     description:
       "Como é o jejum na Igreja Ortodoxa: Grande Quaresma, quartas e sextas, o que se come, exceções pastorais e relação com a oração.",
-    related: ["/formacao/jejum-e-oracao", "/calendario", "/ortodoxia/divina-liturgia"],
+    related: ["/formacao/jejum-e-oracao", "/calendario", "/liturgia"],
     sections: [
       {
         title: "Os grandes jejuns",

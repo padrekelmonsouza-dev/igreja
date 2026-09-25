@@ -10,7 +10,7 @@ const GROUPS = [
   },
   {
     title: "Fé e liturgia",
-    paths: ["/ortodoxia/divina-liturgia", "/ortodoxia/santos", "/ortodoxia/theotokos", "/ortodoxia/sacramentos", "/ortodoxia/oracao", "/ortodoxia/jejum"],
+    paths: ["/liturgia", "/ortodoxia/santos", "/ortodoxia/theotokos", "/ortodoxia/sacramentos", "/ortodoxia/oracao", "/ortodoxia/jejum"],
   },
   {
     title: "Vida da Igreja",

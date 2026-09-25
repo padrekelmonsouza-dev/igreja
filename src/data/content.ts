@@ -252,10 +252,12 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/ortodoxia/divina-liturgia",
-    title: "Divina Liturgia",
+    path: "/liturgia",
+    title: "Liturgia",
     kicker: "O coração da vida ortodoxa",
     intro: "Compreenda a celebração e prepare-se para participar.",
+    description:
+      "Liturgia ortodoxa em português: São João Crisóstomo, São Basílio, São Tiago e o sentido da Divina Liturgia.",
     sections: [
       {
         title: "O que é",
@@ -709,7 +711,7 @@ const BASE_ARTICLES: ArticlePage[] = [
       "O ícone não é um quadro decorativo. É teologia em cor: janela para o Reino. Ele ensina o Evangelho, guarda a memória da Encarnação e conduz à oração.",
     description:
       "O que são ícones ortodoxos: veneração, Theotokos, Santos e o sentido espiritual da iconografia na Igreja Ortodoxa.",
-    related: ["/ortodoxia/santos", "/ortodoxia/theotokos", "/ortodoxia/divina-liturgia", "/ortodoxia/o-que-e-a-ortodoxia"],
+    related: ["/ortodoxia/santos", "/ortodoxia/theotokos", "/liturgia", "/ortodoxia/o-que-e-a-ortodoxia"],
     sections: [
       {
         title: "O que é um ícone",

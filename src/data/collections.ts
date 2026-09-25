@@ -113,7 +113,7 @@ export const FORMATION_LINKS: (CatalogItem & { category: string })[] = [
     slug: "divina-liturgia",
     title: "Divina Liturgia",
     summary: "O coração da vida ortodoxa e o sentido de cada momento.",
-    href: "/ortodoxia/divina-liturgia",
+    href: "/liturgia",
     category: "liturgia",
   },
   {

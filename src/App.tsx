@@ -31,6 +31,7 @@ const Doacoes = lazy(() => import("./pages/InstitutionalPages").then((m) => ({ d
 const Contato = lazy(() => import("./pages/InstitutionalPages").then((m) => ({ default: m.Contato })));
 const PoliticaPrivacidade = lazy(() => import("./pages/InstitutionalPages").then((m) => ({ default: m.PoliticaPrivacidade })));
 const TermosUso = lazy(() => import("./pages/InstitutionalPages").then((m) => ({ default: m.TermosUso })));
+const Liturgia = lazy(() => import("./pages/Liturgia").then((m) => ({ default: m.Liturgia })));
 
 const DEDICATED_ARTICLE_PATHS = new Set([
   "/enciclopedia",
@@ -40,6 +41,7 @@ const DEDICATED_ARTICLE_PATHS = new Set([
   "/calendario",
   "/formacao",
   "/ortodoxia/o-que-e-a-ortodoxia",
+  "/liturgia",
 ]);
 
 function PageLoader() {
@@ -66,6 +68,7 @@ export default function App() {
             <Route path="/igreja/arcebispos" element={<Arcebispos />} />
             <Route path="/paroquias" element={<Paroquias />} />
             <Route path="/clero" element={<Hierarquia />} />
+            <Route path="/liturgia" element={<Liturgia />} />
             <Route path="/ortodoxia" element={<OrtodoxiaHub />} />
             <Route path="/ortodoxia/o-que-e-a-ortodoxia" element={<OrtodoxiaIntro />} />
             <Route path="/comunidades" element={<Comunidades />} />

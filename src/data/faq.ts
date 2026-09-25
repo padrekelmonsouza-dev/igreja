@@ -39,13 +39,13 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "O que é a Divina Liturgia?",
     answer:
       "É o coração da vida ortodoxa: a celebração eucarística em que a Igreja oferece ao Pai o sacrifício de Cristo. É cantada, com ícones, incenso e a proclamação da Palavra.",
-    href: "/ortodoxia/divina-liturgia",
+    href: "/liturgia",
   },
   {
     question: "Quanto tempo dura uma missa ortodoxa?",
     answer:
       "A Divina Liturgia costuma durar de uma hora e meia a duas horas, mais em festas. Não se chama “missa” no uso ortodoxo habitual, embora o sentido eucarístico seja o centro.",
-    href: "/ortodoxia/divina-liturgia",
+    href: "/liturgia",
   },
   {
     question: "O que são ícones ortodoxos?",
@@ -111,7 +111,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "A liturgia é em grego ou em português?",
     answer:
       "Depende da comunidade. No Brasil, várias celebrações usam o português, às vezes com hinos em grego. Não é preciso saber a língua para rezar com o corpo e o silêncio.",
-    href: "/ortodoxia/divina-liturgia",
+    href: "/liturgia",
   },
   {
     question: "Onde encontrar uma paróquia ortodoxa perto de mim?",
