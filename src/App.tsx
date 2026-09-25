@@ -33,6 +33,7 @@ const PoliticaPrivacidade = lazy(() => import("./pages/InstitutionalPages").then
 const TermosUso = lazy(() => import("./pages/InstitutionalPages").then((m) => ({ default: m.TermosUso })));
 const Liturgia = lazy(() => import("./pages/Liturgia").then((m) => ({ default: m.Liturgia })));
 const Catequese = lazy(() => import("./pages/Catequese").then((m) => ({ default: m.Catequese })));
+const Missoes = lazy(() => import("./pages/Missoes").then((m) => ({ default: m.Missoes })));
 
 const DEDICATED_ARTICLE_PATHS = new Set([
   "/enciclopedia",
@@ -44,6 +45,7 @@ const DEDICATED_ARTICLE_PATHS = new Set([
   "/ortodoxia/o-que-e-a-ortodoxia",
   "/liturgia",
   "/catequese",
+  "/missoes",
 ]);
 
 function PageLoader() {
@@ -72,6 +74,7 @@ export default function App() {
             <Route path="/clero" element={<Hierarquia />} />
             <Route path="/liturgia" element={<Liturgia />} />
             <Route path="/catequese" element={<Catequese />} />
+            <Route path="/missoes" element={<Missoes />} />
             <Route path="/ortodoxia" element={<OrtodoxiaHub />} />
             <Route path="/ortodoxia/o-que-e-a-ortodoxia" element={<OrtodoxiaIntro />} />
             <Route path="/comunidades" element={<Comunidades />} />

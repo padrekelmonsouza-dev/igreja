@@ -422,10 +422,12 @@ const BASE_ARTICLES: ArticlePage[] = [
   },
   {
     path: "/missoes",
-    title: "Missões Ortodoxas",
+    title: "Missões",
     kicker: "Ide e fazei discípulos",
     intro:
       "A missão ortodoxa anuncia Cristo, planta comunidades e forma discípulos na Tradição da Igreja.",
+    description:
+      "Missões ortodoxas no Brasil: anunciar Cristo, plantar comunidades, catequese e como ajudar a Igreja.",
     sections: [
       {
         title: "O sentido da missão",

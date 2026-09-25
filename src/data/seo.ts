@@ -76,6 +76,12 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
       "Catequese ortodoxa em português: iniciação, doutrina, Batismo, Santos Mistérios e como participar de uma comunidade.",
     type: "website",
   },
+  "/missoes": {
+    title: `Missões | ${SITE.tabTitle}`,
+    description:
+      "Missões ortodoxas no Brasil: anunciar Cristo, plantar comunidades, catequese e como ajudar a Igreja Ortodoxa Grega G.O.C.",
+    type: "website",
+  },
   "/igreja/hierarquia": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
