@@ -19,6 +19,7 @@ import { Breadcrumbs } from "./Breadcrumbs";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { PastoralVocacional } from "./PastoralVocacional";
+import { SupportContact } from "./SupportContact";
 import { SiteHero } from "./SiteHero";
 import { QuemSomosProvider } from "./QuemSomosModal";
 import { SearchProvider } from "./SearchModal";
@@ -154,6 +155,7 @@ export function Layout() {
         <div id="pagina">
           <Outlet key={location.pathname} />
           <PastoralVocacional />
+          <SupportContact />
         </div>
       </main>
       <Footer />

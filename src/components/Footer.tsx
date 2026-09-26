@@ -1,44 +1,11 @@
-import { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { COMMUNITIES } from "../data/communities";
 import { FOOTER_INSTITUTIONAL, FOOTER_LEARN, FOOTER_LEGAL, SUPPORT_LINK } from "../data/navigation";
 import { SITE, SITE_CONTACT } from "../data/site";
-import { useSearchModal } from "./SearchModal";
 
 export function Footer() {
-  const { openSearch } = useSearchModal();
-
-  function onSearch(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const q = String(new FormData(event.currentTarget).get("q") || "").trim();
-    openSearch(q);
-  }
-
   return (
     <footer className="w-full bg-white">
-      <section className="flex h-20 w-full items-center bg-burgundy text-white">
-        <div className="mx-auto flex h-full w-full max-w-[1280px] items-center justify-between gap-4 px-4">
-          <form onSubmit={onSearch} className="flex min-w-0 flex-1 items-center gap-2 sm:max-w-xl">
-            <label className="sr-only" htmlFor="footer-search">
-              Pesquisar
-            </label>
-            <input
-              id="footer-search"
-              name="q"
-              type="search"
-              placeholder="Ex.: O que é a Divina Liturgia?"
-              className="h-11 min-w-0 flex-1 rounded-full border-0 bg-white px-4 text-sm text-ink outline-none"
-            />
-            <button className="btn btn-gold h-11 min-h-11 shrink-0 px-5" type="submit">
-              Pesquisar
-            </button>
-          </form>
-          <p className="hidden shrink-0 font-serif text-lg text-white md:block lg:text-xl">
-            O que você deseja conhecer sobre a Ortodoxia?
-          </p>
-        </div>
-      </section>
-
       <div className="w-full bg-white">
         <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">

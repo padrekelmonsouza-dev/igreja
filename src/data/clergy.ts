@@ -309,11 +309,11 @@ export const CLERGY: ClergyProfile[] = [
   },
   {
     slug: "dom-jose-vicente-garcia-aguila",
-    name: "Dom José Vicente Garcia Aguila",
-    role: "Sacerdote Monge",
-    category: "sacerdote-monge",
+    name: "Padre José Vicente Garcia",
+    role: "Padre",
+    category: "presbitero",
     image: "/media/dom-jose-vicente-garcia-aguila.jpg",
-    summary: "Sacerdote monge incardinado na Eparquia de São Paulo.",
+    summary: "Padre incardinado na Eparquia de São Paulo.",
     facts: [
       { label: "Nascimento", value: "17/03/1957" },
       { label: "Natural", value: "Equador" },
@@ -324,7 +324,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Perfil",
         body: [
-          "Dom José Vicente Garcia Aguila nasceu em 17 de março de 1957, no Equador. É sacerdote monge, incardinado na Eparquia de São Paulo. A sagração episcopal ocorreu em 2 de agosto de 2026.",
+          "Padre José Vicente Garcia nasceu em 17 de março de 1957, no Equador. Está incardinado na Eparquia de São Paulo. A sagração episcopal ocorreu em 2 de agosto de 2026.",
         ],
       },
     ],

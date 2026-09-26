@@ -11,7 +11,7 @@ const SECTIONS: {
   kicker: string;
   title: string;
   intro: string;
-  layout: "featured" | "grid" | "wide" | "padres";
+  layout: "featured" | "grid" | "padres";
 }[] = [
   {
     category: "arcebispo",
@@ -29,14 +29,6 @@ const SECTIONS: {
     title: "Padres a serviço da Igreja.",
     intro: "Padres já apresentados neste portal, com os dados oficiais publicados.",
     layout: "padres",
-  },
-  {
-    category: "sacerdote-monge",
-    id: "sacerdote-monge",
-    kicker: "Sacerdote monge",
-    title: "Sacerdote monge.",
-    intro: "Incardinado na Eparquia de São Paulo.",
-    layout: "wide",
   },
   {
     category: "seminarista",
@@ -97,38 +89,6 @@ function PortraitCard({ person, compact }: { person: ClergyProfile; compact?: bo
   );
 }
 
-function WideCard({ person }: { person: ClergyProfile }) {
-  return (
-    <Link
-      to={`/igreja/hierarquia/${person.slug}`}
-      className="group grid overflow-hidden rounded-[1.75rem] bg-white shadow-card ring-1 ring-burgundy/10 lg:grid-cols-[minmax(280px,38%)_1fr]"
-    >
-      <div className="relative min-h-[280px] overflow-hidden bg-parchment lg:min-h-[340px]">
-        <img
-          src={person.image}
-          alt={person.name}
-          className="absolute inset-0 h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">{person.role}</p>
-        <h3 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-4xl">{person.name}</h3>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-stone">{person.summary}</p>
-        <dl className="mt-6 grid gap-3 sm:grid-cols-2">
-          {person.facts.map((fact) => (
-            <div key={fact.label} className="rounded-2xl bg-ivory px-4 py-3 ring-1 ring-burgundy/10">
-              <dt className="text-[11px] font-bold uppercase tracking-[0.16em] text-burgundy">{fact.label}</dt>
-              <dd className="mt-1 text-ink">{fact.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </Link>
-  );
-}
-
 export function Hierarquia() {
   return (
     <>
@@ -163,13 +123,7 @@ export function Hierarquia() {
               <p className="mt-3 max-w-3xl text-stone">{section.intro}</p>
             </div>
 
-            {section.layout === "wide" ? (
-              <div className="mt-8 space-y-5">
-                {people.map((person) => (
-                  <WideCard key={person.slug} person={person} />
-                ))}
-              </div>
-            ) : section.layout === "padres" ? (
+            {section.layout === "padres" ? (
               <div className="mt-8 grid gap-5 lg:grid-cols-4">
                 {people.map((person) => (
                   <PortraitCard key={person.slug} person={person} compact />
