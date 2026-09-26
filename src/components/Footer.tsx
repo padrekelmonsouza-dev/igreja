@@ -26,7 +26,7 @@ export function Footer() {
             <p className="mt-3 text-sm text-stone">Mosteiro de São Basílio — {SITE_CONTACT.monasteryAddress}</p>
           </div>
           <div>
-            <h3 className="font-serif text-lg">Igreja</h3>
+            <h3 className="font-serif text-2xl !font-bold text-burgundy">Igreja</h3>
             <ul className="mt-4 space-y-2">
               {FOOTER_INSTITUTIONAL.map((link) => (
                 <li key={link.href}>
@@ -38,7 +38,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-serif text-lg">Conhecer</h3>
+            <h3 className="font-serif text-2xl !font-bold text-burgundy">Conhecer</h3>
             <ul className="mt-4 space-y-2">
               {FOOTER_LEARN.map((link) => (
                 <li key={link.href}>
@@ -50,7 +50,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-serif text-lg">Comunidades</h3>
+            <h3 className="font-serif text-2xl !font-bold text-burgundy">Comunidades</h3>
             <ul className="mt-4 space-y-2">
               {COMMUNITIES.map((community) => (
                 <li key={community.slug}>
