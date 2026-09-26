@@ -50,7 +50,7 @@ function CatequeseModal({ item, onClose }: { item: ModalItem; onClose: () => voi
             <img
               src={item.data.image}
               alt=""
-              className={`absolute inset-0 h-full w-full ${item.data.imageClass || "object-cover"}`}
+              className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(78,12,20,.92))]" />
           </div>
@@ -101,7 +101,7 @@ function PathCard({ path, onOpen }: { path: CatechesisPath; onOpen: () => void }
       <img
         src={path.image}
         alt=""
-        className={`absolute inset-0 h-full w-full transition duration-500 group-hover:scale-105 ${path.imageClass || "object-cover object-top"}`}
+        className={`absolute inset-0 h-full w-full object-cover transition duration-500 ${path.imageClass || "object-top group-hover:scale-105"}`}
         loading="lazy"
         decoding="async"
       />

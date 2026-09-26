@@ -25,7 +25,7 @@ export const CATECHESIS_PATHS: CatechesisPath[] = [
     title: "Iniciação à fé",
     summary: "A catequese não é um curso acelerado. É entrada na vida da Igreja.",
     image: "/media/catequese-cristo.jpg",
-    imageClass: "object-cover object-top",
+    imageClass: "object-cover object-[center_12%] scale-150 group-hover:scale-[1.58]",
     body: [
       "A catequese não é um curso acelerado. É iniciação à vida da Igreja: oração, doutrina, liturgia, moral evangélica e pertencimento comunitário.",
       "Quem chega não precisa saber grego nem memorizar o ofício. O primeiro passo é participar, ouvir e deixar a Igreja ensinar. O portal oferece os primeiros passos; a comunidade local completa o caminho.",
@@ -38,7 +38,7 @@ export const CATECHESIS_PATHS: CatechesisPath[] = [
     title: "A doutrina da Igreja",
     summary: "Deus, Cristo, a Igreja, os Mistérios, os ícones, o jejum e a oração.",
     image: "/media/liturgia-sao-joao-crisostomo.jpg",
-    imageClass: "object-cover object-[center_18%]",
+    imageClass: "object-[center_18%] group-hover:scale-105",
     body: [
       "Quem é Deus, quem é Jesus Cristo, o que é a Igreja, os Santos Mistérios, os ícones, o jejum, a oração de Jesus, o calendário e a preparação para o Batismo ou a recepção na Igreja.",
       "Confessamos que o Filho eterno do Pai se encarnou do Espírito Santo e da Virgem Maria. Ele não é um profeta entre outros, nem um símbolo moral. É o Senhor, o único Salvador.",
@@ -51,7 +51,7 @@ export const CATECHESIS_PATHS: CatechesisPath[] = [
     title: "Batismo e recepção",
     summary: "Morrer e ressuscitar com Cristo: o rito, a Crisma e a preparação.",
     image: "/media/catequese-batismo.jpg",
-    imageClass: "object-cover object-[center_35%]",
+    imageClass: "object-[center_35%] group-hover:scale-105",
     body: [
       "No Batismo ortodoxo, o catecúmeno morre e ressuscita com Cristo. Em seguida recebe a Crisma, o selo do Espírito Santo, e é levado à Comunhão.",
       "O rito se faz por imersão, em nome do Pai e do Filho e do Espírito Santo. A Crisma é dada na mesma celebração. A Eucaristia completa a iniciação.",
@@ -65,7 +65,7 @@ export const CATECHESIS_PATHS: CatechesisPath[] = [
     title: "Como participar",
     summary: "Procure o sacerdote. A Igreja local acompanha o caminho.",
     image: "/media/catequese-igreja.jpg",
-    imageClass: "object-cover object-[center_28%]",
+    imageClass: "object-[center_28%] group-hover:scale-105",
     body: [
       "Procure o sacerdote da comunidade mais próxima. A catequese pode ocorrer em encontros presenciais, acompanhamento espiritual e leitura guiada.",
       "O portal oferece os primeiros passos; a Igreja local completa o caminho. Confirme endereço e horário com a comunidade. O Mosteiro de São Basílio, em Nova Iguaçu, pede contato prévio.",
