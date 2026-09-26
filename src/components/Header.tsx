@@ -34,9 +34,21 @@ export function Header() {
   }, [location.pathname]);
 
   useEffect(() => {
-    document.body.style.overflowY = open ? "hidden" : "";
+    const html = document.documentElement;
+    if (!open) return;
+    const y = window.scrollY;
+    html.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${y}px`;
+    document.body.style.width = "100%";
     return () => {
-      document.body.style.overflowY = "";
+      html.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, y);
     };
   }, [open]);
 
@@ -274,8 +286,8 @@ export function Header() {
         {open ? (
           <div
             id={menuId}
-            className="fixed inset-x-0 bottom-0 z-[60] overflow-y-auto bg-white"
-            style={{ top: barHeight }}
+            className="fixed inset-x-0 bottom-0 z-[60] overflow-y-auto bg-white [-webkit-overflow-scrolling:touch]"
+            style={{ top: barHeight, paddingBottom: "env(safe-area-inset-bottom)" }}
           >
             <nav className="mx-auto max-w-3xl space-y-2 px-4 py-6" aria-label="Menu móvel">
               {MAIN_NAV.map((item) => (

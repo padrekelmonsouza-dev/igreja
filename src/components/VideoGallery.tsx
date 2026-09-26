@@ -58,6 +58,7 @@ function VideoModal({ src, portrait, onClose }: { src: string; portrait?: boolea
           className={`w-full bg-black ${portrait ? "aspect-[9/16] max-h-[80vh] object-contain" : "aspect-video"}`}
           controls
           autoPlay
+          muted
           playsInline
         />
       </div>

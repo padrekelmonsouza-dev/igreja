@@ -67,7 +67,7 @@ function placeVocacaoBeforeLastSection() {
   const vocacao = document.getElementById("pastoral-vocacional");
   if (!pagina || !vocacao) return;
   const sections = pageLevelSections(pagina);
-  const last = sections.at(-1);
+  const last = sections[sections.length - 1];
   if (!last || last.previousElementSibling === vocacao) return;
   last.parentElement?.insertBefore(vocacao, last);
 }
@@ -166,7 +166,7 @@ export function Layout() {
   return (
     <SearchProvider>
     <QuemSomosProvider>
-    <div className="min-h-screen w-full overflow-x-hidden bg-ivory text-ink">
+    <div className="min-h-screen w-full bg-ivory text-ink">
       <Seo
         title={seo.title}
         description={seo.description}
@@ -180,20 +180,18 @@ export function Layout() {
         Ir para o conteúdo
       </a>
       <Header />
-      <div className="mx-auto w-full max-w-[1280px]">
-        <main id="conteudo">
-          <SiteHero />
-          {location.pathname !== "/" ? (
-            <div className="px-4 pt-6 text-left">
-              <Breadcrumbs crumbs={crumbsFor(location.pathname, seo.title.split("|")[0].trim())} />
-            </div>
-          ) : null}
-          <div id="pagina">
-            <Outlet />
-            <PastoralVocacional />
+      <main id="conteudo" className="w-full">
+        <SiteHero />
+        {location.pathname !== "/" ? (
+          <div className="mx-auto w-full max-w-[1280px] px-4 pt-6 text-left">
+            <Breadcrumbs crumbs={crumbsFor(location.pathname, seo.title.split("|")[0].trim())} />
           </div>
-        </main>
-      </div>
+        ) : null}
+        <div id="pagina">
+          <Outlet />
+          <PastoralVocacional />
+        </div>
+      </main>
       <Footer />
       {showTop ? (
         <button

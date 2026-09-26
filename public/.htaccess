@@ -1,6 +1,8 @@
 # Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
-# Sem este arquivo, URLs como /catequese, /liturgia e /missoes
-# devolvem o 404 da hospedagem em vez do aplicativo React.
+# Sem DirectorySlash, o iOS/Safari e o WhatsApp não caem no
+# redirecionamento /pagina -> /pagina/ que deixa a tela em branco.
+
+DirectorySlash Off
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -8,8 +10,7 @@
 
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule ^ index.html [L]
 </IfModule>
 
 ErrorDocument 404 /index.html

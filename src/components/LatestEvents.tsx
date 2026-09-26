@@ -51,7 +51,14 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
             ×
           </button>
         </div>
-        <video src={src} className="aspect-[9/16] max-h-[80vh] w-full bg-black object-contain" controls autoPlay playsInline />
+        <video
+          src={src}
+          className="aspect-[9/16] max-h-[80vh] w-full bg-black object-contain"
+          controls
+          autoPlay
+          muted
+          playsInline
+        />
       </div>
     </div>
   );

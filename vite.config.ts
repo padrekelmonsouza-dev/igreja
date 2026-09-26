@@ -1,13 +1,13 @@
-import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { REDIRECTS } from "./src/data/redirects";
-import { ALL_INDEX_PATHS } from "./src/data/seo";
 
 const HTACCESS = `# Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
-# Sem este arquivo, URLs como /catequese, /liturgia e /missoes
-# devolvem o 404 da hospedagem em vez do aplicativo React.
+# Sem DirectorySlash, o iOS/Safari e o WhatsApp não caem no
+# redirecionamento /pagina -> /pagina/ que deixa a tela em branco.
+
+DirectorySlash Off
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -15,23 +15,11 @@ const HTACCESS = `# Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
 
   RewriteRule ^index\\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule ^ index.html [L]
 </IfModule>
 
 ErrorDocument 404 /index.html
 `;
-
-function writeRouteIndexes(dist: string, index: string) {
-  const paths = new Set([...ALL_INDEX_PATHS, ...Object.keys(REDIRECTS)]);
-  for (const path of paths) {
-    const clean = path.replace(/^\//, "").replace(/\/$/, "");
-    if (!clean || clean.includes(".")) continue;
-    const dir = resolve(dist, clean);
-    mkdirSync(dir, { recursive: true });
-    copyFileSync(index, resolve(dir, "index.html"));
-  }
-}
 
 function hostingerSpaFallback() {
   return {
@@ -40,9 +28,9 @@ function hostingerSpaFallback() {
       const dist = resolve(process.cwd(), "dist");
       writeFileSync(resolve(dist, ".htaccess"), HTACCESS, "utf8");
       const index = resolve(dist, "index.html");
-      if (!existsSync(index)) return;
-      copyFileSync(index, resolve(dist, "404.html"));
-      writeRouteIndexes(dist, index);
+      if (existsSync(index)) {
+        copyFileSync(index, resolve(dist, "404.html"));
+      }
     },
   };
 }
@@ -64,6 +52,8 @@ export default defineConfig({
     },
   },
   build: {
+    target: ["es2019", "safari14", "ios14"],
+    cssTarget: ["safari14"],
     rollupOptions: {
       output: {
         manualChunks: {
