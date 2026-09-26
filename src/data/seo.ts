@@ -413,6 +413,7 @@ export const PUBLIC_INDEX_PATHS = [
     "padre-julio-cesar-dos-santos",
     "padre-aquila",
     "padre-pedro",
+    "padre-francisco-angel-e-moran-vida",
     "dom-jose-vicente-garcia-aguila",
     "jose-augusto-maciel-torres",
     "abade-julio",

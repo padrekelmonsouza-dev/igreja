@@ -279,6 +279,35 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
+    slug: "padre-francisco-angel-e-moran-vida",
+    name: "Padre Francisco Ángel E. Morán Vida",
+    role: "Administrador da Vicaria do Equador",
+    category: "presbitero",
+    image: "/media/padre-francisco-angel-e-moran-vida.jpg",
+    summary:
+      "Sacerdote nascido em Guayaquil, no Equador, em 8 de junho de 1967. Administrador da Vicaria do Equador.",
+    facts: [
+      { label: "Nascimento", value: "08/06/1967" },
+      { label: "Natural", value: "Guayaquil, Equador" },
+      { label: "Ordenação", value: "02/02/2025" },
+      { label: "Ministério", value: "Administrador da Vicaria do Equador" },
+    ],
+    sections: [
+      {
+        title: "Biografia",
+        body: [
+          "Padre Francisco Ángel E. Morán Vida nasceu em 8 de junho de 1967, na cidade de Guayaquil, Equador. Foi ordenado em 2 de fevereiro de 2025.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "É sacerdote e Administrador da Vicaria do Equador. Também é apresentado como Presidente da Federação Internacional de Advogados Ortodoxos, sede Equador.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "dom-jose-vicente-garcia-aguila",
     name: "Dom José Vicente Garcia Aguila",
     role: "Sacerdote Monge",
