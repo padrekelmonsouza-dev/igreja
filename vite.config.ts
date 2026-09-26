@@ -1,11 +1,9 @@
-import { copyFileSync, existsSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, readdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 const HTACCESS = `# Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
-# Sem DirectorySlash, o iOS/Safari e o WhatsApp não caem no
-# redirecionamento /pagina -> /pagina/ que deixa a tela em branco.
 
 DirectorySlash Off
 
@@ -25,7 +23,19 @@ ErrorDocument 404 /index.html
   AddType application/javascript .mjs
   AddType text/css .css
 </IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+  <FilesMatch "\\.js$">
+    Header set Content-Type "application/javascript; charset=utf-8"
+  </FilesMatch>
+</IfModule>
 `;
+
+const LEGACY_BUNDLES = ["index-MRjjP1fG.js", "index-BI_quxwH.js", "index-B8rvoxVv.js", "index-B9yqSosC.js"];
 
 function hostingerSpaFallback() {
   return {
@@ -36,6 +46,14 @@ function hostingerSpaFallback() {
       const index = resolve(dist, "index.html");
       if (existsSync(index)) {
         copyFileSync(index, resolve(dist, "404.html"));
+      }
+      const assets = resolve(dist, "assets");
+      const main = readdirSync(assets).find((file) => /^index-.*\.js$/.test(file));
+      if (!main) return;
+      const stub = `import "/assets/${main}";\n`;
+      for (const name of LEGACY_BUNDLES) {
+        if (name === main) continue;
+        writeFileSync(resolve(assets, name), stub, "utf8");
       }
     },
   };
@@ -60,12 +78,6 @@ export default defineConfig({
   build: {
     target: ["es2019", "safari14", "ios14"],
     cssTarget: ["safari14"],
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          react: ["react", "react-dom", "react-router-dom"],
-        },
-      },
-    },
+    modulePreload: { polyfill: false },
   },
 });

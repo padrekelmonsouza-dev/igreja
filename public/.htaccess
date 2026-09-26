@@ -1,6 +1,4 @@
 # Igreja Ortodoxa Grega no Brasil — Hostinger / Apache
-# Sem DirectorySlash, o iOS/Safari e o WhatsApp não caem no
-# redirecionamento /pagina -> /pagina/ que deixa a tela em branco.
 
 DirectorySlash Off
 
@@ -19,4 +17,14 @@ ErrorDocument 404 /index.html
   AddType application/javascript .js
   AddType application/javascript .mjs
   AddType text/css .css
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.js$">
+    Header set Content-Type "application/javascript; charset=utf-8"
+  </FilesMatch>
 </IfModule>
