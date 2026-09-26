@@ -59,20 +59,25 @@ export const VATICAN_FALLBACK: VaticanArticle[] = [
 ];
 
 function decodeHtml(value: string) {
-  return value
-    .replace(/<!\[CDATA\[|\]\]>/g, "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;|&#8220;|&#8221;/g, '"')
-    .replace(/&#8211;/g, "–")
-    .replace(/&#8212;/g, "—")
-    .replace(/&#8230;/g, "…")
-    .replace(/&#8216;|&#8217;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  const stripped = value.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, " ");
+  let decoded = stripped;
+  if (typeof document !== "undefined") {
+    const box = document.createElement("textarea");
+    box.innerHTML = stripped;
+    decoded = box.value;
+  } else {
+    decoded = stripped
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;|&#8220;|&#8221;/g, '"')
+      .replace(/&#8211;/g, "–")
+      .replace(/&#8212;/g, "—")
+      .replace(/&#8230;/g, "…")
+      .replace(/&#8216;|&#8217;/g, "'")
+      .replace(/&nbsp;/g, " ");
+  }
+  return decoded.replace(/\s+/g, " ").trim();
 }
 
 function fromRss(xml: string): VaticanArticle[] {
@@ -167,23 +172,66 @@ function fallbackParagraphs(fallback: string) {
   return [text];
 }
 
+function isVaticanArticleUrl(href: string) {
+  return /^https:\/\/www\.vaticannews\.va\/pt\/[A-Za-z0-9_./-]+\.html$/i.test(href);
+}
+
 function canUseVaticanProxy() {
   if (typeof location === "undefined") return false;
   return location.hostname === "localhost" || location.hostname === "127.0.0.1";
 }
 
+const articleBodyCache = new Map<string, string[]>();
+
+async function readJsonBody(response: Response) {
+  const text = await response.text();
+  if (!response.ok || isOwnPortalHtml(text)) return [];
+  try {
+    const data = JSON.parse(text) as { html?: string; paragraphs?: string[] };
+    if (Array.isArray(data.paragraphs) && data.paragraphs.length) {
+      return data.paragraphs.filter((item) => item && !item.includes("Ative o JavaScript"));
+    }
+    if (data.html) return paragraphsFromHtml(data.html);
+  } catch {
+    return paragraphsFromHtml(text);
+  }
+  return [];
+}
+
+async function readArticleFromPhp(href: string) {
+  const response = await fetch(`/vatican-article.php?url=${encodeURIComponent(href)}`);
+  return readJsonBody(response);
+}
+
+async function readArticleFromProxy(href: string) {
+  if (!canUseVaticanProxy()) return [];
+  const path = href.replace(/^https:\/\/www\.vaticannews\.va/i, "");
+  const response = await fetch(`/proxy/vatican${path}`);
+  if (!response.ok) return [];
+  return paragraphsFromHtml(await response.text());
+}
+
 export async function fetchVaticanArticleBody(href: string, fallback = ""): Promise<string[]> {
-  if (canUseVaticanProxy()) {
-    const path = href.replace(/^https:\/\/www\.vaticannews\.va/i, "");
-    try {
-      const response = await fetch(`/proxy/vatican${path}`);
-      if (response.ok) {
-        const paragraphs = paragraphsFromHtml(await response.text());
-        if (paragraphs.length) return paragraphs;
+  const cached = articleBodyCache.get(href);
+  if (cached?.length) return cached;
+
+  if (isVaticanArticleUrl(href)) {
+    for (const load of [readArticleFromPhp, readArticleFromProxy]) {
+      try {
+        const paragraphs = await load(href);
+        if (paragraphs.length > 1 || (paragraphs.length === 1 && paragraphs[0] !== fallback)) {
+          articleBodyCache.set(href, paragraphs);
+          return paragraphs;
+        }
+        if (paragraphs.length) {
+          articleBodyCache.set(href, paragraphs);
+          return paragraphs;
+        }
+      } catch {
+        // next source
       }
-    } catch {
-      // use the RSS summary
     }
   }
+
   return fallbackParagraphs(fallback);
 }

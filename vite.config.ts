@@ -12,6 +12,7 @@ DirectorySlash Off
   RewriteBase /
 
   RewriteRule ^index\\.html$ - [L]
+  RewriteRule ^vatican-article\\.php$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^ index.html [L]
 </IfModule>
@@ -44,6 +45,47 @@ const LEGACY_BUNDLES = [
   "index-CN8TjWGy.js",
 ];
 
+function isVaticanArticleUrl(href: string) {
+  return /^https:\/\/www\.vaticannews\.va\/pt\/[A-Za-z0-9_./-]+\.html$/i.test(href);
+}
+
+function vaticanArticleDevProxy() {
+  async function handle(req: { url?: string }, res: { statusCode: number; setHeader: (name: string, value: string) => void; end: (body: string) => void }, next: () => void) {
+    const raw = req.url || "";
+    if (!raw.startsWith("/vatican-article.php")) {
+      next();
+      return;
+    }
+    const href = new URL(raw, "http://localhost").searchParams.get("url") || "";
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    if (!isVaticanArticleUrl(href)) {
+      res.statusCode = 400;
+      res.end(JSON.stringify({ paragraphs: [] }));
+      return;
+    }
+    try {
+      const response = await fetch(href, {
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; IgrejaOrtodoxaGrega/1.0)" },
+      });
+      const html = response.ok ? await response.text() : "";
+      res.end(JSON.stringify({ html }));
+    } catch {
+      res.statusCode = 502;
+      res.end(JSON.stringify({ paragraphs: [] }));
+    }
+  }
+
+  return {
+    name: "vatican-article-dev-proxy",
+    configureServer(server: { middlewares: { use: (fn: typeof handle) => void } }) {
+      server.middlewares.use(handle);
+    },
+    configurePreviewServer(server: { middlewares: { use: (fn: typeof handle) => void } }) {
+      server.middlewares.use(handle);
+    },
+  };
+}
+
 function hostingerSpaFallback() {
   return {
     name: "hostinger-spa-fallback",
@@ -67,7 +109,7 @@ function hostingerSpaFallback() {
 }
 
 export default defineConfig({
-  plugins: [react(), hostingerSpaFallback()],
+  plugins: [react(), vaticanArticleDevProxy(), hostingerSpaFallback()],
   server: {
     proxy: {
       "/proxy/ecclesia": {

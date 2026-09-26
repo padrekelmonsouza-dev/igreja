@@ -33,12 +33,16 @@ function VaticanNewsModal({ article, onClose }: { article: VaticanArticle; onClo
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const [body, setBody] = useState<string[]>(article.text ? [article.text] : []);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
+    setLoading(true);
     fetchVaticanArticleBody(article.href, article.text).then((paragraphs) => {
       const usable = paragraphs.filter((item) => !item.includes("Ative o JavaScript"));
-      if (!cancelled && usable.length) setBody(usable);
+      if (cancelled) return;
+      if (usable.length) setBody(usable);
+      setLoading(false);
     });
     return () => {
       cancelled = true;
@@ -91,8 +95,11 @@ function VaticanNewsModal({ article, onClose }: { article: VaticanArticle; onClo
           </button>
         </div>
         <div className="overflow-y-auto px-5 py-5">
-          {body.map((paragraph) => (
-            <p key={paragraph} className="mt-3 text-base leading-7 text-ink first:mt-0">
+          {loading && body.length <= 1 ? (
+            <p className="mb-4 text-sm text-ink/60">A carregar o texto completo da matéria…</p>
+          ) : null}
+          {body.map((paragraph, index) => (
+            <p key={`${index}-${paragraph.slice(0, 32)}`} className="mt-3 text-base leading-7 text-ink first:mt-0">
               {paragraph}
             </p>
           ))}
