@@ -140,32 +140,50 @@ export async function fetchVaticanNews(): Promise<VaticanArticle[]> {
   return VATICAN_FALLBACK;
 }
 
+function isOwnPortalHtml(html: string) {
+  return html.includes("Ative o JavaScript no navegador") || html.includes('id="root"');
+}
+
 function paragraphsFromHtml(html: string) {
+  if (isOwnPortalHtml(html)) return [];
   const start = html.indexOf('class="article__text"');
-  const slice = start >= 0 ? html.slice(start, start + 40000) : html;
+  if (start < 0) return [];
+  const slice = html.slice(start, start + 40000);
   const matches = slice.match(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/gi) || [];
   const paragraphs: string[] = [];
   for (const tag of matches) {
     const text = decodeHtml(tag);
     if (!text || text === "Vatican News") continue;
+    if (text.includes("Ative o JavaScript")) continue;
     if (text.startsWith("Obrigado por ter lido")) break;
     paragraphs.push(text);
   }
   return paragraphs;
 }
 
+function fallbackParagraphs(fallback: string) {
+  const text = decodeHtml(fallback).trim();
+  if (!text || text.includes("Ative o JavaScript")) return [];
+  return [text];
+}
+
+function canUseVaticanProxy() {
+  if (typeof location === "undefined") return false;
+  return location.hostname === "localhost" || location.hostname === "127.0.0.1";
+}
+
 export async function fetchVaticanArticleBody(href: string, fallback = ""): Promise<string[]> {
-  const path = href.replace(/^https:\/\/www\.vaticannews\.va/i, "");
-  const urls = [`/proxy/vatican${path}`, href];
-  for (const url of urls) {
+  if (canUseVaticanProxy()) {
+    const path = href.replace(/^https:\/\/www\.vaticannews\.va/i, "");
     try {
-      const response = await fetch(url);
-      if (!response.ok) continue;
-      const paragraphs = paragraphsFromHtml(await response.text());
-      if (paragraphs.length) return paragraphs;
+      const response = await fetch(`/proxy/vatican${path}`);
+      if (response.ok) {
+        const paragraphs = paragraphsFromHtml(await response.text());
+        if (paragraphs.length) return paragraphs;
+      }
     } catch {
-      // next source
+      // use the RSS summary
     }
   }
-  return fallback ? [fallback] : [];
+  return fallbackParagraphs(fallback);
 }

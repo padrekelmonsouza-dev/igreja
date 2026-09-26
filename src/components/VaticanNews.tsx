@@ -37,7 +37,8 @@ function VaticanNewsModal({ article, onClose }: { article: VaticanArticle; onClo
   useEffect(() => {
     let cancelled = false;
     fetchVaticanArticleBody(article.href, article.text).then((paragraphs) => {
-      if (!cancelled && paragraphs.length) setBody(paragraphs);
+      const usable = paragraphs.filter((item) => !item.includes("Ative o JavaScript"));
+      if (!cancelled && usable.length) setBody(usable);
     });
     return () => {
       cancelled = true;
