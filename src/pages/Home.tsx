@@ -431,7 +431,7 @@ export function Home() {
   return (
     <div>
       <section className="relative isolate bg-ivory text-ink">
-        <nav id="atalhos" aria-label="Atalhos da página inicial" className="site-section scroll-mt-24 px-4">
+        <nav id="atalhos" aria-label="Atalhos da página inicial" className="site-section mx-auto w-full max-w-[1280px] scroll-mt-24 px-4">
           <ul className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-3">
             {HERO_SHORTCUTS.map((item) => (
               <li key={item.href}>
