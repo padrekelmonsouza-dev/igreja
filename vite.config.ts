@@ -35,7 +35,14 @@ ErrorDocument 404 /index.html
 </IfModule>
 `;
 
-const LEGACY_BUNDLES = ["index-MRjjP1fG.js", "index-BI_quxwH.js", "index-B8rvoxVv.js", "index-B9yqSosC.js"];
+const LEGACY_BUNDLES = [
+  "index-MRjjP1fG.js",
+  "index-BI_quxwH.js",
+  "index-B8rvoxVv.js",
+  "index-B9yqSosC.js",
+  "index-CJUOFLpA.js",
+  "index-CN8TjWGy.js",
+];
 
 function hostingerSpaFallback() {
   return {

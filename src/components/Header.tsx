@@ -31,6 +31,11 @@ export function Header() {
     setOpen(false);
     setOpenGroup(null);
     setSearchOpen(false);
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
   }, [location.pathname]);
 
   useEffect(() => {
