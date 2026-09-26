@@ -81,7 +81,10 @@ function fromRss(xml: string): VaticanArticle[] {
     .map((block) => {
       const title = decodeHtml(block.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || "");
       const href = decodeHtml(block.match(/<link>([\s\S]*?)<\/link>/i)?.[1] || "");
-      const raw = block.match(/<description>([\s\S]*?)<\/description>/i)?.[1] || title;
+      const raw =
+        block.match(/<content:encoded>([\s\S]*?)<\/content:encoded>/i)?.[1] ||
+        block.match(/<description>([\s\S]*?)<\/description>/i)?.[1] ||
+        title;
       const image =
         block.match(/<media:content[^>]+url=["']([^"']+)["']/i)?.[1] ||
         block.match(/<enclosure[^>]+url=["']([^"']+)["']/i)?.[1] ||
@@ -135,4 +138,34 @@ export async function fetchVaticanNews(): Promise<VaticanArticle[]> {
     }
   }
   return VATICAN_FALLBACK;
+}
+
+function paragraphsFromHtml(html: string) {
+  const start = html.indexOf('class="article__text"');
+  const slice = start >= 0 ? html.slice(start, start + 40000) : html;
+  const matches = slice.match(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/gi) || [];
+  const paragraphs: string[] = [];
+  for (const tag of matches) {
+    const text = decodeHtml(tag);
+    if (!text || text === "Vatican News") continue;
+    if (text.startsWith("Obrigado por ter lido")) break;
+    paragraphs.push(text);
+  }
+  return paragraphs;
+}
+
+export async function fetchVaticanArticleBody(href: string, fallback = ""): Promise<string[]> {
+  const path = href.replace(/^https:\/\/www\.vaticannews\.va/i, "");
+  const urls = [`/proxy/vatican${path}`, href];
+  for (const url of urls) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) continue;
+      const paragraphs = paragraphsFromHtml(await response.text());
+      if (paragraphs.length) return paragraphs;
+    } catch {
+      // next source
+    }
+  }
+  return fallback ? [fallback] : [];
 }

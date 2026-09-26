@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { fetchVaticanNews, VATICAN_FALLBACK, type VaticanArticle } from "../lib/vaticanNews";
+import { useEffect, useId, useRef, useState } from "react";
+import { fetchVaticanArticleBody, fetchVaticanNews, VATICAN_FALLBACK, type VaticanArticle } from "../lib/vaticanNews";
 
 const PAGE_SIZE = 4;
 const ROTATE_MS = 12000;
@@ -29,13 +29,92 @@ function NewsImage({ src, className }: { src: string; className?: string }) {
   );
 }
 
-function NewsCard({ article, fit }: { article: VaticanArticle; fit?: boolean }) {
+function VaticanNewsModal({ article, onClose }: { article: VaticanArticle; onClose: () => void }) {
+  const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const [body, setBody] = useState<string[]>(article.text ? [article.text] : []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchVaticanArticleBody(article.href, article.text).then((paragraphs) => {
+      if (!cancelled && paragraphs.length) setBody(paragraphs);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [article.href, article.text]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => closeRef.current?.focus(), 40);
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+    const previous = document.body.style.overflowY;
+    document.body.style.overflowY = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(timer);
+      document.body.style.overflowY = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
   return (
-    <a
-      href={article.href}
-      target="_blank"
-      rel="noreferrer"
-      className="group flex h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-burgundy/20 bg-white shadow-card transition hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_40px_-24px_rgba(110,18,28,.55)]"
+    <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-6">
+      <button type="button" className="absolute inset-0 bg-ink/55" aria-label="Fechar notícia" onClick={onClose} />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className="relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-card sm:rounded-3xl"
+      >
+        <div className="relative h-40 shrink-0 overflow-hidden sm:h-48">
+          <NewsImage src={article.image} className="absolute inset-0 h-full w-full object-cover object-center" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(78,12,20,.92))]" />
+        </div>
+        <div className="flex items-start justify-between gap-4 border-b border-burgundy/10 px-5 py-4">
+          <div className="min-w-0">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">Vatican News</p>
+            <h2 id={titleId} className="mt-1 font-serif text-2xl leading-tight text-ink sm:text-3xl">
+              {article.title}
+            </h2>
+          </div>
+          <button
+            ref={closeRef}
+            type="button"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-burgundy/20 text-burgundy"
+            aria-label="Fechar"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        </div>
+        <div className="overflow-y-auto px-5 py-5">
+          {body.map((paragraph) => (
+            <p key={paragraph} className="mt-3 text-base leading-7 text-ink first:mt-0">
+              {paragraph}
+            </p>
+          ))}
+          <a
+            className="btn btn-burgundy mt-8 w-full text-white no-underline sm:w-auto"
+            href={article.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ir ao site da notícia
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NewsCard({ article, fit, onOpen }: { article: VaticanArticle; fit?: boolean; onOpen: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group flex h-full min-h-0 w-full flex-col overflow-hidden rounded-3xl border border-burgundy/20 bg-white text-left shadow-card transition hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_40px_-24px_rgba(110,18,28,.55)]"
     >
       <div className={fit ? "min-h-0 flex-1 overflow-hidden bg-parchment" : "aspect-[16/9] overflow-hidden bg-parchment"}>
         <NewsImage src={article.image} className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
@@ -49,7 +128,7 @@ function NewsCard({ article, fit }: { article: VaticanArticle; fit?: boolean }) 
           <span aria-hidden="true">→</span>
         </span>
       </div>
-    </a>
+    </button>
   );
 }
 
@@ -80,6 +159,7 @@ export function VaticanNews() {
   const [articles, setArticles] = useState<VaticanArticle[]>(() => shuffle(VATICAN_FALLBACK));
   const [page, setPage] = useState(0);
   const [pause, setPause] = useState(0);
+  const [open, setOpen] = useState<VaticanArticle | null>(null);
   const articlesRef = useRef(articles);
   articlesRef.current = articles;
 
@@ -111,12 +191,12 @@ export function VaticanNews() {
   }
 
   useEffect(() => {
-    if (pages < 2) return;
+    if (pages < 2 || open) return;
     const timer = window.setInterval(() => {
       setPage((current) => (current + 1) % pages);
     }, ROTATE_MS);
     return () => window.clearInterval(timer);
-  }, [pages, pause]);
+  }, [pages, pause, open]);
 
   return (
     <section className="site-section bg-ivory px-4">
@@ -140,7 +220,7 @@ export function VaticanNews() {
           <ul className="mt-5 space-y-8">
             {visible.map((article) => (
               <li key={article.href}>
-                <NewsCard article={article} />
+                <NewsCard article={article} onOpen={() => setOpen(article)} />
               </li>
             ))}
           </ul>
@@ -166,13 +246,14 @@ export function VaticanNews() {
             <ul className="grid min-h-0 flex-1 grid-cols-2 gap-x-6 gap-y-4">
               {visible.map((article) => (
                 <li key={article.href} className="min-h-0">
-                  <NewsCard article={article} fit />
+                  <NewsCard article={article} fit onOpen={() => setOpen(article)} />
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
+      {open ? <VaticanNewsModal article={open} onClose={() => setOpen(null)} /> : null}
     </section>
   );
 }
