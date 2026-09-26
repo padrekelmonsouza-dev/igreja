@@ -19,6 +19,12 @@ DirectorySlash Off
 </IfModule>
 
 ErrorDocument 404 /index.html
+
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType application/javascript .mjs
+  AddType text/css .css
+</IfModule>
 `;
 
 function hostingerSpaFallback() {
