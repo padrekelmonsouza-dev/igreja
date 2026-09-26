@@ -59,8 +59,6 @@ export const FOOTER_LEARN: NavLink[] = [
 export const FOOTER_LEGAL: NavLink[] = [
   { href: "/politica-de-privacidade", label: "Política de privacidade" },
   { href: "/termos-de-uso", label: "Termos de uso" },
-  { href: "/contato", label: "Contato" },
-  { href: "/doacoes", label: "Apoie a Igreja" },
 ];
 
 export const DESKTOP_NAV_IDS = ["inicio", "quem-somos", "igreja", "clero", "liturgia", "catequese", "missoes"] as const;
