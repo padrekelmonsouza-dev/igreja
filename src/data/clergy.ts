@@ -279,11 +279,11 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
-    slug: "padre-francisco-angel-e-moran-vida",
-    name: "Padre Francisco Ángel E. Morán Vida",
+    slug: "padre-fausto",
+    name: "Padre Fausto",
     role: "Administrador da Vicaria do Equador",
     category: "presbitero",
-    image: "/media/padre-francisco-angel-e-moran-vida.jpg",
+    image: "/media/padre-fausto.jpg",
     summary:
       "Sacerdote nascido em Guayaquil, no Equador, em 8 de junho de 1967. Administrador da Vicaria do Equador.",
     facts: [
@@ -296,7 +296,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Biografia",
         body: [
-          "Padre Francisco Ángel E. Morán Vida nasceu em 8 de junho de 1967, na cidade de Guayaquil, Equador. Foi ordenado em 2 de fevereiro de 2025.",
+          "Padre Fausto nasceu em 8 de junho de 1967, na cidade de Guayaquil, Equador. Foi ordenado em 2 de fevereiro de 2025.",
         ],
       },
       {
@@ -433,8 +433,13 @@ export const CLERGY: ClergyProfile[] = [
   },
 ];
 
+const CLERGY_ALIASES: Record<string, string> = {
+  "padre-francisco-angel-e-moran-vida": "padre-fausto",
+};
+
 export function getClergy(slug: string) {
-  return CLERGY.find((person) => person.slug === slug);
+  const canonical = CLERGY_ALIASES[slug] || slug;
+  return CLERGY.find((person) => person.slug === canonical);
 }
 
 export function clergyByCategory(category: ClergyCategory) {

@@ -13,6 +13,7 @@ export const REDIRECTS: Record<string, string> = {
   "/theotokos": "/ortodoxia/theotokos",
   "/batismo-ortodoxo": "/ortodoxia/batismo",
   "/comece-aqui": "/primeira-visita",
+  "/igreja/hierarquia/padre-francisco-angel-e-moran-vida": "/igreja/hierarquia/padre-fausto",
 };
 
 export const LEGACY_CLERGY_PREFIX = "/hierarquia/";

@@ -10,6 +10,10 @@ export function ClergyProfile() {
     return <Navigate to="/clero" replace />;
   }
 
+  if (slug && slug !== person.slug) {
+    return <Navigate to={`/igreja/hierarquia/${person.slug}`} replace />;
+  }
+
   const archbishop = isArchbishop(person.slug);
 
   return (
