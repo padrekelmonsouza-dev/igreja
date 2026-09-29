@@ -28,7 +28,10 @@ function SacramentosModal({ item, onClose }: { item: ModalItem; onClose: () => v
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const title = item.data.title;
-  const kicker = ("label" in item.data && item.data.label) || item.data.greek || "Santo Mistério";
+  const kicker: string =
+    "label" in item.data && typeof (item.data as SacramentTheme).label === "string"
+      ? (item.data as SacramentTheme).label
+      : item.data.greek || "Santo Mistério";
   const paragraphs = item.data.body;
 
   useEffect(() => {
