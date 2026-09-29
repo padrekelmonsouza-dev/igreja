@@ -6,16 +6,15 @@ import { NavIcon } from "../components/NavIcon";
 import {
   EUCARISTIA_THEMES,
   FEATURED_SACRAMENTS,
-  MATRIMONIO_GRID_CARDS,
+  MATRIMONIO_THEMES,
   ORDEM_RANKS,
   SACRAMENT_TOPICS,
   type FeaturedSacrament,
-  type SacramentGridCard,
   type SacramentTheme,
   type SacramentTopic,
 } from "../data/sacraments";
 
-type ModalItem = { kind: "grid"; data: SacramentGridCard } | { kind: "topic"; data: SacramentTopic };
+type ModalItem = { kind: "topic"; data: SacramentTopic };
 
 function featuredBySlug(slug: string) {
   return FEATURED_SACRAMENTS.find((item) => item.slug === slug) || FEATURED_SACRAMENTS[0];
@@ -28,9 +27,8 @@ const FEATURED_MATRIMONIO = featuredBySlug("matrimonio");
 function SacramentosModal({ item, onClose }: { item: ModalItem; onClose: () => void }) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
-  const isGrid = item.kind === "grid";
   const title = item.data.title;
-  const kicker = isGrid ? item.data.kicker : "Sacramentos";
+  const kicker = ("label" in item.data && item.data.label) || item.data.greek || "Santo Mistério";
   const paragraphs = item.data.body;
 
   useEffect(() => {
@@ -57,21 +55,15 @@ function SacramentosModal({ item, onClose }: { item: ModalItem; onClose: () => v
         aria-labelledby={titleId}
         className="relative z-10 flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-card sm:rounded-3xl"
       >
-        {isGrid ? (
-          <div className="relative h-48 shrink-0 overflow-hidden bg-ink sm:h-56">
-            <img src={item.data.image} alt="" className="absolute inset-0 h-full w-full object-cover object-center" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(78,12,20,.88))]" />
-          </div>
-        ) : null}
         <div className="flex items-start justify-between gap-4 border-b border-burgundy/10 px-5 py-4">
           <div className="flex min-w-0 items-start gap-3">
-            {isGrid ? null : (
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-burgundy text-gold-soft ring-1 ring-gold/30">
-                <NavIcon name={item.data.icon} className="h-6 w-6" />
-              </span>
-            )}
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[linear-gradient(160deg,#6E121C,#9B2430)] text-gold-soft ring-1 ring-gold">
+              <NavIcon name={item.data.icon} className="h-5 w-5" />
+            </span>
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">{kicker}</p>
+              <p className={`text-[11px] font-bold tracking-[0.18em] text-burgundy ${item.data.greek ? "" : "uppercase"}`}>
+                {kicker}
+              </p>
               <h2 id={titleId} className="mt-1 font-serif text-2xl leading-tight text-ink sm:text-3xl">
                 {title}
               </h2>
@@ -119,63 +111,22 @@ function FeaturedMedia({ item }: { item: FeaturedSacrament }) {
   return <img src={item.poster} alt="" className="h-full w-full object-cover object-[center_28%]" />;
 }
 
-function SacramentGridButton({
-  item,
-  fit,
-  onOpen,
-}: {
-  item: SacramentGridCard;
-  fit?: boolean;
-  onOpen: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="group flex h-full min-h-0 w-full flex-col overflow-hidden rounded-3xl border border-burgundy/20 bg-white text-left shadow-card transition hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-[0_22px_40px_-24px_rgba(110,18,28,.55)]"
-    >
-      <div className={fit ? "min-h-0 flex-1 overflow-hidden bg-parchment" : "aspect-[16/9] overflow-hidden bg-parchment"}>
-        <img
-          src={item.image}
-          alt=""
-          className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
-        />
-      </div>
-      <div className={fit ? "flex shrink-0 flex-col px-3 pb-3 pt-3" : "flex flex-col px-4 pb-4 pt-4 sm:px-5 sm:pb-5"}>
-        <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-[1.15rem] font-semibold leading-none text-ink [hyphens:none] [overflow-wrap:normal] group-hover:text-burgundy sm:text-[1.25rem]">
-          {item.title}
-        </h3>
-        <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.16em] text-burgundy">
-          Ler completo
-          <span aria-hidden="true">→</span>
-        </span>
-      </div>
-    </button>
-  );
-}
-
 function TopicCard({ topic, onOpen }: { topic: SacramentTopic; onOpen: () => void }) {
   return (
     <button
       type="button"
       onClick={onOpen}
-      className="group flex h-full flex-col rounded-[1.75rem] bg-white p-6 text-left shadow-card ring-1 ring-burgundy/10 transition hover:-translate-y-0.5"
+      className="group flex h-full flex-col rounded-[1.25rem] border border-burgundy/15 bg-white px-4 py-4 text-left shadow-card transition hover:-translate-y-0.5 hover:border-gold/50"
     >
-      <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[linear-gradient(160deg,#6E121C,#9B2430)] text-gold-soft shadow-[inset_0_1px_0_rgba(255,255,255,.22)]">
-        <NavIcon name={topic.icon} className="h-7 w-7" />
+      <span className="grid h-11 w-11 place-items-center rounded-full bg-[linear-gradient(160deg,#6E121C,#9B2430)] text-gold-soft ring-1 ring-gold">
+        <NavIcon name={topic.icon} className="h-5 w-5" />
       </span>
-      <h3 className="mt-5 font-serif text-2xl leading-tight text-ink">{topic.title}</h3>
-      <p className="mt-2 text-sm leading-6 text-stone">{topic.summary}</p>
+      {topic.greek ? (
+        <p className="mt-3 font-serif text-[12px] tracking-[0.1em] text-gold">{topic.greek}</p>
+      ) : null}
+      <h3 className="mt-1 font-serif text-xl leading-tight text-ink">{topic.title}</h3>
+      <p className="mt-1.5 text-[13px] leading-5 text-stone">{topic.summary}</p>
     </button>
-  );
-}
-
-function SectionHeading({ kicker, title }: { kicker: string; title: string }) {
-  return (
-    <div>
-      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-burgundy">{kicker}</p>
-      <h2 className="mt-1 font-serif text-3xl leading-tight text-ink sm:text-[2rem]">{title}</h2>
-    </div>
   );
 }
 
@@ -280,61 +231,6 @@ function EditorialSection({
   );
 }
 
-function HighlightSection({
-  item,
-  cards,
-  onOpen,
-}: {
-  item: FeaturedSacrament;
-  cards: SacramentGridCard[];
-  onOpen: (card: SacramentGridCard) => void;
-}) {
-  return (
-    <section className="site-section bg-ivory px-4">
-      <div className="mx-auto w-full max-w-[1280px]">
-        <div className="lg:hidden">
-          <div className="overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
-            <div className="h-[493px] w-full">
-              <FeaturedMedia item={item} />
-            </div>
-          </div>
-
-          <div className="mt-6">
-            <SectionHeading kicker={item.kicker} title={item.title} />
-          </div>
-
-          <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4">
-            {cards.map((card) => (
-              <li key={card.slug} className="min-h-0">
-                <SacramentGridButton item={card} onOpen={() => onOpen(card)} />
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="hidden lg:grid lg:h-[666px] lg:grid-cols-[350px_minmax(0,1fr)] lg:items-stretch lg:gap-8">
-          <div className="h-full overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
-            <FeaturedMedia item={item} />
-          </div>
-
-          <div className="flex h-full min-h-0 min-w-0 flex-col">
-            <div className="mb-4 shrink-0">
-              <SectionHeading kicker={item.kicker} title={item.title} />
-            </div>
-            <ul className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-x-6 gap-y-4">
-              {cards.map((card) => (
-                <li key={card.slug} className="min-h-0">
-                  <SacramentGridButton item={card} fit onOpen={() => onOpen(card)} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function Sacramentos() {
   const [open, setOpen] = useState<ModalItem | null>(null);
 
@@ -367,26 +263,33 @@ export function Sacramentos() {
         onOpen={(topic) => setOpen({ kind: "topic", data: topic })}
       />
 
-      <HighlightSection
-        item={FEATURED_MATRIMONIO}
-        cards={MATRIMONIO_GRID_CARDS}
-        onOpen={(card) => setOpen({ kind: "grid", data: card })}
-      />
-
-      <section id="temas" className="site-section mx-auto w-full max-w-[1280px] px-4">
-        <div>
-          <p className="kicker">Cada Mistério</p>
-          <h2 className="mt-3 font-serif text-4xl">O que a Igreja celebra.</h2>
-          <p className="mt-3 max-w-3xl text-stone">
-            Iniciação, Comunhão, reconciliação, cura dos enfermos, matrimônio e o serviço ordenado.
+      <section id="temas" className="bg-ivory px-4 py-8 sm:py-10">
+        <div className="mx-auto w-full max-w-[1280px]">
+          <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-burgundy">
+            <span className="h-px w-8 bg-gold" aria-hidden="true" />
+            Cada Mistério
           </p>
-        </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SACRAMENT_TOPICS.map((topic) => (
-            <TopicCard key={topic.slug} topic={topic} onOpen={() => setOpen({ kind: "topic", data: topic })} />
-          ))}
+          <h2 className="mt-2 font-serif text-[1.75rem] leading-tight text-ink sm:text-3xl">O que a Igreja celebra.</h2>
+          <p className="mt-2 max-w-2xl text-[15px] leading-6 text-stone">
+            Santos Mistérios (μυστήρια): Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem. A iniciação
+            é uma só — água, Myron e Comunhão, inclusive às crianças.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {SACRAMENT_TOPICS.map((topic) => (
+              <TopicCard key={topic.slug} topic={topic} onOpen={() => setOpen({ kind: "topic", data: topic })} />
+            ))}
+          </div>
         </div>
       </section>
+
+      <EditorialSection
+        item={FEATURED_MATRIMONIO}
+        titleAccent="do Matrimônio"
+        themes={MATRIMONIO_THEMES}
+        footerLead="Durante a Coroação, a Igreja proclama:"
+        footerQuote="«Ó Senhor nosso Deus, coroa-os com glória e honra.»"
+        onOpen={(topic) => setOpen({ kind: "topic", data: topic })}
+      />
 
       <KnowOrthodoxy />
       {open ? <SacramentosModal item={open} onClose={() => setOpen(null)} /> : null}

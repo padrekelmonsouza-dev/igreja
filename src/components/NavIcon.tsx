@@ -25,7 +25,14 @@ export type NavIconName =
   | "saints"
   | "news"
   | "video"
-  | "library";
+  | "library"
+  | "baptism"
+  | "chrism"
+  | "chalice"
+  | "confession"
+  | "unction"
+  | "crowns"
+  | "rings";
 
 function Svg({ children, className }: { children: ReactNode; className?: string }) {
   return (
@@ -213,6 +220,60 @@ const ICONS: Record<NavIconName, (className?: string) => ReactNode> = {
   library: (className) => (
     <Svg className={className}>
       <path fill="currentColor" d="M4.2 4.4h3.1v15.4H4.2zm4.4 1.6h3.1v13.8H8.6zm4.4-1.6h3.1v15.4h-3.1zm4.4 2.4h3.3v13H17.4z" />
+    </Svg>
+  ),
+  baptism: (className) => (
+    <Svg className={className}>
+      <path fill="currentColor" d="M11.15 2.2h1.7v2h2.35v1.35h-2.35v2.05h-1.7V5.55H8.8V4.2h2.35V2.2Z" />
+      <path fill="currentColor" d="M3.5 13.6c1.9-1.6 3.8-1.6 5.7 0 1.9 1.6 3.7 1.6 5.6 0 1.9-1.6 3.8-1.6 5.7 0v2.15c-1.9-1.6-3.8-1.6-5.7 0-1.9 1.6-3.7 1.6-5.6 0-1.9-1.6-3.8-1.6-5.7 0V13.6Z" />
+      <path fill="currentColor" d="M3.5 17.6c1.9-1.6 3.8-1.6 5.7 0 1.9 1.6 3.7 1.6 5.6 0 1.9-1.6 3.8-1.6 5.7 0v2.15c-1.9-1.6-3.8-1.6-5.7 0-1.9 1.6-3.7 1.6-5.6 0-1.9-1.6-3.8-1.6-5.7 0V17.6Z" />
+      <path fill="white" fillOpacity=".38" d="M3.5 15.1c1.9-1.6 3.8-1.6 5.7 0 1.9 1.6 3.7 1.6 5.6 0 1.9-1.6 3.8-1.6 5.7 0v.7c-1.9-1.6-3.8-1.6-5.7 0-1.9 1.6-3.7 1.6-5.6 0-1.9-1.6-3.8-1.6-5.7 0v-.7Z" />
+    </Svg>
+  ),
+  chrism: (className) => (
+    <Svg className={className}>
+      <path fill="currentColor" d="M12 2.3c.6 2.4 2.2 3.8 4.4 4.3-1.1.5-2.2.6-3.4.3v7.6h-2V6.9c-1.2.3-2.3.2-3.4-.3C9.8 6.1 11.4 4.7 12 2.3Z" />
+      <path fill="currentColor" d="M4.8 8.6c2.1.1 3.8-.7 4.8-2.1C8.2 8.2 6.2 9.6 3.8 10c.2-1.1.6-1.4 1-1.4Zm14.4 0c.4 0 .8.3 1 1.4-2.4-.4-4.4-1.8-5.8-3.5 1 .1 4 2.2 4.8 2.1Z" />
+      <path fill="currentColor" d="M10.6 15.6h2.8v2.1h2.1v1.35h-2.1v2.1h-2.8v-2.1H8.5V17.7h2.1v-2.1Z" />
+      <path fill="white" fillOpacity=".42" d="M11.25 4.8h1.5v8.4h-1.5z" />
+    </Svg>
+  ),
+  chalice: (className) => (
+    <Svg className={className}>
+      <path fill="currentColor" d="M6.6 5.1h10.8v2.2c0 3.6-2.3 6.4-5.4 7.1v1.8h2.8v1.4H9.2v-1.4h2.8v-1.8C8.9 13.7 6.6 10.9 6.6 7.3V5.1Z" />
+      <path fill="white" fillOpacity=".42" d="M8.1 6.3h7.8v1.1c0 2.8-1.6 4.9-3.9 5.5-2.3-.6-3.9-2.7-3.9-5.5V6.3Z" />
+      <path fill="currentColor" d="M7.6 19.6h8.8v1.55H7.6zM11.15 2.1h1.7v2.2h-1.7zM9.5 3.2h5v1.2h-5z" />
+    </Svg>
+  ),
+  confession: (className) => (
+    <Svg className={className}>
+      <path fill="currentColor" d="M5.1 3.4h1.6v2.1h2.1v1.35H6.7v2.1H5.1v-2.1H3v-1.35h2.1V3.4Z" />
+      <circle cx="14.2" cy="6.6" r="2.45" fill="currentColor" />
+      <path fill="currentColor" d="M8.6 21.2c.5-4 2.8-6.4 5.6-6.4s5.1 2.4 5.6 6.4H8.6Z" />
+      <path fill="white" fillOpacity=".42" d="M13.4 5.6h1.5v1.8h-1.5z" />
+    </Svg>
+  ),
+  unction: (className) => (
+    <Svg className={className}>
+      <path fill="currentColor" d="M12 2.6S6.6 10.2 6.6 14.4a5.4 5.4 0 0 0 10.8 0C17.4 10.2 12 2.6 12 2.6Z" />
+      <path fill="white" fillOpacity=".42" d="M12 5.4s-3.6 5.1-3.6 8.1a3.6 3.6 0 0 0 7.2 0c0-3-3.6-8.1-3.6-8.1Z" />
+      <path fill="currentColor" d="M11.25 11.6h1.5v2h1.7v1.3h-1.7v2h-1.5v-2H9.55v-1.3h1.7v-2Z" />
+    </Svg>
+  ),
+  crowns: (className) => (
+    <Svg className={className}>
+      <path fill="currentColor" d="M3.6 10.8 6 6.6l2.2 2.9L10.2 5l2.2 4.5.3.6H4l-.4-1.3Z" />
+      <path fill="currentColor" d="M3.9 12.2h8.4v2.8c0 1.1-.7 2-1.8 2.3l-.7.2H6.4c-1.1-.3-1.8-1.2-1.8-2.3v-3Z" />
+      <path fill="currentColor" d="M10.8 12.6 13.4 8l2.2 2.8L17.6 6.2 20 11.2l.3.6h-8.8l-.7-1.2Z" />
+      <path fill="currentColor" d="M11.2 14h8.6v2.8c0 1.1-.7 2-1.8 2.3l-.7.2h-3.6c-1.1-.3-1.8-1.2-1.8-2.3V14Z" />
+      <path fill="white" fillOpacity=".42" d="M12.4 15.2h6.2v1.2h-6.2z" />
+    </Svg>
+  ),
+  rings: (className) => (
+    <Svg className={className}>
+      <circle cx="9.2" cy="12" r="5.4" stroke="currentColor" strokeWidth="2.2" fill="none" />
+      <circle cx="14.8" cy="12" r="5.4" stroke="currentColor" strokeWidth="2.2" fill="none" />
+      <path fill="white" fillOpacity=".42" d="M9.2 8.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Z" />
     </Svg>
   ),
 };

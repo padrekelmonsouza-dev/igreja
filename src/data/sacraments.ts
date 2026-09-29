@@ -14,6 +14,7 @@ export type SacramentTopic = {
   slug: string;
   title: string;
   summary: string;
+  greek?: string;
   icon: NavIconName;
   body: string[];
 };
@@ -54,12 +55,13 @@ export const FEATURED_SACRAMENTS: FeaturedSacrament[] = [
     slug: "matrimonio",
     title: "Sacramento do Matrimônio",
     kicker: "Casamento ortodoxo",
-    summary: "A união do homem e da mulher à imagem de Cristo e da Igreja.",
+    summary:
+      "O Santo Matrimônio une o homem e a mulher diante de Deus e da Igreja, com a graça de viverem juntos em amor, fidelidade e comunhão.",
     video: "/videos/sacramentos/matrimonio.mp4?v=2",
     poster: "/videos/sacramentos/matrimonio.jpg?v=2",
     body: [
-      "O Matrimônio ortodoxo é Santo Mistério: o homem e a mulher se tornam uma só carne em Cristo. São Paulo chama a isto “grande mistério” e refere-o a Cristo e à Igreja (Ef 5,32).",
-      "O rito bizantino une Esponsais e Coroação. As coroas (stéfana) e o cálice comum marcam o caminho nupcial. Quem deseja este Mistério procura o sacerdote da comunidade.",
+      "Na tradição ortodoxa grega, o casamento não é contrato nem só instituição social: é vocação cristã. Marido e mulher crescem juntos em direção a Deus, na vida da Igreja.",
+      "Celebra-se no Noivado e na Coroação: anéis, coroas, o cálice comum e a Dança de Isaías, três voltas em torno da mesa sacramental.",
     ],
   },
   {
@@ -163,6 +165,45 @@ export const EUCARISTIA_THEMES: SacramentTheme[] = [
     icon: "church",
     body: [
       "A Comunhão une o fiel a Cristo e, nele, aos demais membros da Igreja. É a participação no Mistério de Cristo e uma expressão da unidade do Corpo de Cristo.",
+    ],
+  },
+];
+
+export const MATRIMONIO_THEMES: SacramentTheme[] = [
+  {
+    slug: "noivado",
+    roman: "I",
+    label: "I · Noivado",
+    title: "Os Anéis",
+    summary: "O casal troca os anéis como sinal do compromisso voluntário.",
+    icon: "rings",
+    body: [
+      "O Mistério do Matrimônio é celebrado em dois momentos principais: o Rito do Noivado e o Rito da Coroação. No primeiro, os anéis são abençoados e trocados como sinal do compromisso voluntário do casal.",
+      "O casal troca os anéis para viver juntos em fé, harmonia, verdade e amor. Na tradição ortodoxa grega, os anéis são tradicionalmente colocados na mão direita.",
+    ],
+  },
+  {
+    slug: "coroacao",
+    roman: "II",
+    label: "II · Coroação",
+    title: "As Coroas",
+    summary: "As coroas assinalam a união e a nova família em Deus.",
+    icon: "crowns",
+    body: [
+      "No Rito da Coroação, os esposos são coroados, recebendo as coroas como sinal de sua união e de sua nova vida familiar em Cristo.",
+      "As coroas representam a glória, a alegria e também o espírito de sacrifício da vida matrimonial cristã. O sacerdote une as mãos dos esposos e coloca as coroas sobre suas cabeças. A Igreja proclama: «Ó Senhor nosso Deus, coroa-os com glória e honra.»",
+    ],
+  },
+  {
+    slug: "calice-comum",
+    roman: "III",
+    label: "III · Cálice comum",
+    title: "Uma vida compartilhada",
+    summary: "Os esposos bebem do mesmo cálice, à memória das Bodas de Caná.",
+    icon: "chalice",
+    body: [
+      "O esposo e a esposa bebem do mesmo cálice de vinho abençoado, símbolo de que compartilharão as alegrias, responsabilidades e dificuldades da vida matrimonial. O gesto também recorda as Bodas de Caná.",
+      "A celebração termina com a tradicional Dança de Isaías, na qual o casal é conduzido três vezes ao redor da mesa sacramental.",
     ],
   },
 ];
@@ -355,76 +396,83 @@ export const SACRAMENT_TOPICS: SacramentTopic[] = [
   {
     slug: "batismo",
     title: "Batismo",
-    summary: "Morrer e ressuscitar com Cristo, pela água e pelo Espírito.",
-    icon: "door",
+    greek: "Βάπτισμα",
+    summary: "Imersão na morte e na ressurreição de Cristo, em nome da Santíssima Trindade.",
+    icon: "baptism",
     body: [
-      "No Batismo, morremos e ressuscitamos com Cristo. O rito ortodoxo se faz por imersão, em nome do Pai e do Filho e do Espírito Santo.",
-      "As crianças das famílias ortodoxas são batizadas cedo, porque a graça não espera a idade da razão. Adultos que desejam entrar na Igreja passam por catequese e pelo acompanhamento do sacerdote.",
-      "Na mesma celebração segue-se a Crisma e, em regra, a Comunhão. Ninguém se batiza por curiosidade estética. Batiza-se para viver em Cristo, na Igreja.",
+      "A Igreja Ortodoxa chama os sacramentos de Santos Mistérios (μυστήρια). O Batismo é o nascimento na vida de Cristo: morremos e ressuscitamos com Ele (Rm 6). O rito bizantino se faz por imersão, em nome do Pai e do Filho e do Espírito Santo.",
+      "As crianças das famílias ortodoxas são batizadas cedo, porque a graça não espera a idade da razão. Adultos que desejam entrar na Igreja passam por catequese e pelo acompanhamento do sacerdote, que indica o modo canônico de recepção.",
+      "Na mesma celebração seguem-se a Crisma e, em regra, a Santa Comunhão. A iniciação ortodoxa é uma só: água, Myron e Eucaristia. Ninguém se batiza por curiosidade estética. Batiza-se para viver em Cristo, na Igreja.",
     ],
   },
   {
     slug: "crisma",
     title: "Crisma",
-    summary: "O selo do Espírito Santo, dado com o Santo Myron.",
-    icon: "saints",
+    greek: "Χρίσμα",
+    summary: "O selo do dom do Espírito Santo, dado com o Santo Myron.",
+    icon: "chrism",
     body: [
-      "A Crisma é o Santo Mistério da unção com o Myron, selo do dom do Espírito Santo. Na prática ortodoxa, é dada junto com o Batismo, inclusive às crianças.",
-      "O Myron é o santo óleo consagrado. Pela Crisma, o batizado é selado como membro pleno do povo de Deus e chamado a testemunhar Cristo.",
-      "A Eucaristia completa esta iniciação: Batismo, Crisma e Comunhão formam um só nascimento na vida da Igreja.",
+      "A Crisma (unção com o Santo Myron) é o Pentecostes pessoal do recém-batizado. O sacerdote unge os sentidos e proclama: «Selo do dom do Espírito Santo». Assim o fiel é marcado como membro pleno do povo de Deus.",
+      "Na prática ortodoxa grega, a Crisma não se separa do Batismo: é dada na mesma celebração, inclusive às crianças. O Myron é o santo óleo consagrado pelos bispos e enviado às comunidades.",
+      "A Eucaristia completa esta iniciação. Batismo, Crisma e Comunhão formam um só nascimento na vida da Igreja, não três etapas tardias.",
     ],
   },
   {
     slug: "eucaristia",
     title: "Eucaristia",
-    summary: "O Corpo e o Sangue de Cristo na Divina Liturgia.",
-    icon: "liturgy",
+    greek: "Εὐχαριστία",
+    summary: "O Corpo e o Sangue de Cristo na Divina Liturgia — o Mistério dos mistérios.",
+    icon: "chalice",
     body: [
-      "Eucaristia vem do grego eucharistía: ação de graças. O pão e o vinho, pelo Espírito Santo, se tornam o Corpo e o Sangue de Cristo — presença real, não mera figura.",
-      "A forma habitual do rito bizantino é a Divina Liturgia de São João Crisóstomo. Os fiéis comungam sob as duas espécies, com a colher. Após o ofício distribui-se o antídoron, o pão abençoado.",
-      "Visitantes não ortodoxos são acolhidos para rezar, mas o cálice é para os fiéis iniciados pelo Batismo e pela Crisma, devidamente preparados. O detalhe do jejum pede-se ao confessor.",
+      "Eucaristia vem do grego eucharistía: ação de graças. O pão e o vinho, pela epiclese do Espírito Santo, se tornam o Corpo e o Sangue de Cristo — presença real, não mera figura. Nela a Igreja se torna o que já é.",
+      "A forma habitual do rito bizantino é a Divina Liturgia de São João Crisóstomo. Os fiéis comungam sob as duas espécies, com a colher (labída). As crianças ortodoxas, já crismadas, também se aproximam do cálice. Após o ofício distribui-se o antídoron, o pão abençoado.",
+      "Visitantes não ortodoxos são acolhidos para rezar, mas o cálice é para os fiéis iniciados pelo Batismo e pela Crisma, devidamente preparados. O detalhe do jejum e da Confissão pede-se ao confessor.",
     ],
   },
   {
     slug: "confissao",
     title: "Confissão",
-    summary: "Reconciliação com Deus e com a Igreja após o Batismo.",
-    icon: "prayer",
+    greek: "Μετάνοια",
+    summary: "Metanoia: reconciliação com Deus e com a Igreja após o Batismo.",
+    icon: "confession",
     body: [
-      "A Confissão reconcilia. Por este Mistério, os pecados cometidos após o Batismo são perdoados e o fiel se reconcilia com a Igreja.",
-      "O sacerdote não apenas pronuncia a absolvição: também oferece orientação espiritual. O segredo da confissão é guardado.",
-      "Para a Santa Comunhão, a Confissão se faz quando conveniente, segundo a tradição recebida do confessor. Procure o sacerdote da sua comunidade.",
+      "A Confissão é o Mistério da metanoia — conversão do coração. A tradição ortodoxa chama-a também de «segundo batismo»: por ela se perdoam os pecados cometidos após a fonte batismal e o fiel se reconcilia com a Igreja.",
+      "O sacerdote cobre o penitente com o epitrachílion, oferece conselho espiritual e pronuncia a absolvição. O segredo da confissão é guardado. Não se trata de um tribunal, mas de cura.",
+      "As crianças comungam desde a iniciação. A Confissão regular começa quando já distinguem o bem e o mal, segundo a orientação do sacerdote. Para a Santa Comunhão, o ritmo da Confissão segue a tradição recebida do confessor.",
     ],
   },
   {
     slug: "uncao",
     title: "Unção dos enfermos",
-    summary: "Oração, unção e, quando possível, a Comunhão aos doentes.",
-    icon: "pastoral",
+    greek: "Εὐχέλαιον",
+    summary: "Euchélaion: oração e óleo santo para a cura do corpo e da alma.",
+    icon: "unction",
     body: [
-      "A Unção é o Santo Mistério da Igreja pelos enfermos: oração, unção com óleo e pedido da graça de Deus sobre o corpo e a alma.",
-      "A pastoral dos enfermos inclui oração pelos doentes, visitas e, quando canonicamente possível, a Unção e a Comunhão aos enfermos.",
-      "Este Mistério não é apenas para a hora da morte. Peça ao sacerdote da comunidade quando houver doença ou necessidade pastoral.",
+      "A Unção dos enfermos, em grego euchélaion («oração do óleo»), segue a palavra de São Tiago: «Está alguém enfermo? Chame os presbíteros da Igreja» (Tg 5,14-15). Pede-se a graça de Deus sobre o corpo e a alma.",
+      "Na Igreja Ortodoxa este Mistério não se reserva à hora da morte — não é a «extrema-unção» latina. Celebra-se em doença, fraqueza e, em algumas comunidades, também em tempos litúrgicos de cura, sempre com o sacerdote.",
+      "A pastoral dos enfermos inclui visitas, oração e, quando canonicamente possível, a Unção e a Comunhão. Peça ao clero da comunidade mais próxima.",
     ],
   },
   {
     slug: "matrimonio",
     title: "Matrimônio",
-    summary: "O homem e a mulher, uma só carne em Cristo e na Igreja.",
-    icon: "church",
+    greek: "Γάμος",
+    summary: "Coroação do homem e da mulher numa só carne, à imagem de Cristo e da Igreja.",
+    icon: "crowns",
     body: [
-      "O Matrimônio ortodoxo é Santo Mistério: o homem e a mulher se tornam uma só carne em Cristo. São Paulo chama a isto “grande mistério” e refere-o a Cristo e à Igreja (Ef 5,32).",
-      "O rito bizantino tem Esponsais e Coroação. As coroas (stéfana) significam a realeza da casa doméstica e o martírio cotidiano do amor fiel. Lê-se Efésios 5 e o Evangelho das Bodas de Caná.",
-      "A preparação faz-se com o sacerdote da comunidade. Datas, documentos e o que os cânones pedem confirmam-se com o clero local.",
+      "O Matrimônio ortodoxo é Santo Mistério: o homem e a mulher se tornam uma só carne em Cristo. São Paulo chama a isto «grande mistério» e refere-o a Cristo e à Igreja (Ef 5,32).",
+      "O rito bizantino tem Esponsais e Coroação. As coroas (stéfana) significam a realeza da casa doméstica e o martírio cotidiano do amor fiel. Lê-se Efésios 5 e o Evangelho das Bodas de Caná, onde Cristo abençoa o vinho do banquete nupcial.",
+      "A preparação faz-se com o sacerdote da comunidade. Datas, documentos e o que os cânones pedem confirmam-se com o clero local — o portal explica o Mistério; a Igreja local celebra e acompanha cada casal.",
     ],
   },
   {
     slug: "ordem",
     title: "Ordem",
-    summary: "Quirotonia: diáconos, presbíteros e bispos para o serviço.",
-    icon: "clergy",
+    greek: "Ἱερωσύνη",
+    summary: "Quirotonia: o Espírito Santo constitui diáconos, presbíteros e bispos.",
+    icon: "bishop",
     body: [
-      "A Ordem é o Santo Mistério pelo qual o Espírito Santo, pela imposição das mãos do bispo (quirotonia), transmite a graça e a autoridade apostólica. O povo proclama Áxios — “ele é digno”.",
+      "A Ordem é o Santo Mistério pelo qual o Espírito Santo, pela imposição das mãos do bispo (quirotonia), transmite a graça e a autoridade apostólica. O povo proclama Áxios — «ele é digno».",
       "O bispo preside a Igreja local e é o único que pode conferir as ordens sagradas. O presbítero pastoreia a comunidade e celebra os Mistérios. O diácono auxilia na liturgia e na caridade. As ordens menores recebem a quirotesia, bênção distinta.",
       "A Igreja permite a ordenação de homens casados para o diaconato e o presbiterado, no primeiro casamento. Os bispos são escolhidos entre monges ou padres celibatários. A vocação se discerne com o clero, não sozinho.",
     ],
