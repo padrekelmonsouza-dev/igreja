@@ -10,7 +10,7 @@ const GROUPS = [
   },
   {
     title: "Fé e liturgia",
-    paths: ["/liturgia", "/ortodoxia/santos", "/ortodoxia/theotokos", "/ortodoxia/sacramentos", "/ortodoxia/oracao", "/ortodoxia/jejum"],
+    paths: ["/liturgia", "/ortodoxia/santos", "/ortodoxia/theotokos", "/sacramentos", "/ortodoxia/oracao", "/ortodoxia/jejum"],
   },
   {
     title: "Vida da Igreja",
@@ -62,6 +62,7 @@ export function Enciclopedia() {
                   "/igreja/hierarquia": "Bispos e sacerdotes da Igreja no Brasil.",
                   "/clero": "Bispos e sacerdotes da Igreja no Brasil.",
                   "/paroquias": "Encontre uma paróquia ortodoxa por estado, cidade ou sacerdote.",
+                  "/sacramentos": "Os Santos Mistérios: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem.",
                   "/igreja/arcebispos": "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul.",
                   "/igreja": "Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José.",
                 };
@@ -69,6 +70,7 @@ export function Enciclopedia() {
                   "/igreja/hierarquia": "Clero",
                   "/clero": "Clero",
                   "/paroquias": "Paróquias",
+                  "/sacramentos": "Sacramentos",
                   "/igreja/arcebispos": "Arcebispos",
                   "/igreja": "Igreja",
                 };

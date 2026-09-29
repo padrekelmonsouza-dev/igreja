@@ -25,7 +25,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   { term: "Ortodoxia", definition: "Reta fé e reta glória: a fé apostólica confessada e celebrada pela Igreja.", href: "/ortodoxia/o-que-e-a-ortodoxia" },
   { term: "Presbítero", definition: "Sacerdote ordenado pelo bispo para celebrar os Mistérios e pastorear o povo." },
   { term: "Proskomedia", definition: "Preparação dos dons de pão e vinho antes da Liturgia dos catecúmenos." },
-  { term: "Santos Mistérios", definition: "Sacramentos da Igreja: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem.", href: "/ortodoxia/sacramentos" },
+  { term: "Santos Mistérios", definition: "Sacramentos da Igreja: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem.", href: "/sacramentos" },
   { term: "Sínodo", definition: "Reunião dos bispos que guarda a fé e a disciplina da Igreja.", href: "/santo-sinodo" },
   { term: "Teose", definition: "Divinização: participação da criatura na vida de Deus pela graça, sem confundir as essências." },
   { term: "Theotokos", definition: "Mãe de Deus: título da Virgem Maria confirmado no Concílio de Éfeso.", href: "/ortodoxia/theotokos" },

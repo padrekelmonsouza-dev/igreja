@@ -24,6 +24,7 @@ import { Doacoes, Contato, PoliticaPrivacidade, TermosUso } from "./pages/Instit
 import { Liturgia } from "./pages/Liturgia";
 import { Catequese } from "./pages/Catequese";
 import { Missoes } from "./pages/Missoes";
+import { Sacramentos } from "./pages/Sacramentos";
 
 const DEDICATED_ARTICLE_PATHS = new Set([
   "/enciclopedia",
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="/igreja" element={<IgrejaHub />} />
           <Route path="/igreja/arcebispos" element={<Arcebispos />} />
           <Route path="/paroquias" element={<Paroquias />} />
+          <Route path="/sacramentos" element={<Sacramentos />} />
           <Route path="/clero" element={<Hierarquia />} />
           <Route path="/liturgia" element={<Liturgia />} />
           <Route path="/catequese" element={<Catequese />} />

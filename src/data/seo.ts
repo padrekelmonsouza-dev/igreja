@@ -43,7 +43,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/igreja": {
     title: `Igreja | ${SITE.tabTitle}`,
     description:
-      "Arcebispos, mosteiros, paróquias, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/igreja/arcebispos": {
@@ -56,6 +56,11 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
     title: `Paróquias | ${SITE.tabTitle}`,
     description:
       "Encontre uma paróquia da Igreja Ortodoxa Grega no Brasil por estado, cidade ou sacerdote.",
+    type: "website",
+  },
+  "/sacramentos": {
+    title: `Sacramentos | ${SITE.tabTitle}`,
+    description: "Sacramentos ortodoxos: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem — os Santos Mistérios da Igreja.",
     type: "website",
   },
   "/clero": {
@@ -362,6 +367,7 @@ export const PUBLIC_INDEX_PATHS = [
   "/igreja",
   "/igreja/arcebispos",
   "/paroquias",
+  "/sacramentos",
   "/clero",
   "/igreja/quem-somos",
   "/igreja/nossa-historia",

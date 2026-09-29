@@ -120,7 +120,7 @@ export const FORMATION_LINKS: (CatalogItem & { category: string })[] = [
     slug: "sacramentos",
     title: "Os Santos Mistérios",
     summary: "Batismo, Crisma, Eucaristia e os demais Mistérios da Igreja.",
-    href: "/ortodoxia/sacramentos",
+    href: "/sacramentos",
     category: "liturgia",
   },
   {
