@@ -67,7 +67,7 @@ function PortraitCard({ person, compact }: { person: ClergyProfile; compact?: bo
         <h3
           className={
             compact
-              ? "mt-1 truncate font-serif text-[1.05rem] leading-none tracking-tight whitespace-nowrap sm:text-lg"
+              ? "mt-1 font-serif text-[1.05rem] leading-tight sm:text-lg"
               : "mt-1 font-serif text-2xl leading-tight sm:text-3xl"
           }
         >

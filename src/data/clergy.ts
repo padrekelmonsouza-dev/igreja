@@ -280,29 +280,38 @@ export const CLERGY: ClergyProfile[] = [
   },
   {
     slug: "padre-fausto",
-    name: "Padre Fausto",
-    role: "Administrador da Vicaria do Equador",
+    name: "Padre Fausto Wilmo Báez Soxo",
+    role: "Vicaria Pastoral · República do Equador",
     category: "presbitero",
     image: "/media/padre-fausto.jpg",
     summary:
-      "Sacerdote nascido em Guayaquil, no Equador, em 8 de junho de 1967. Administrador da Vicaria do Equador.",
+      "Sacerdote Dr. Fausto Wilmo Báez Soxo, Vicaria Pastoral na República do Equador, habilitado para o exercício do ministério sacerdotal.",
     facts: [
+      { label: "Ministério", value: "Vicaria Pastoral" },
+      { label: "País", value: "República do Equador" },
+      { label: "Registro", value: "Ecuador 0011-2026" },
       { label: "Nascimento", value: "08/06/1967" },
       { label: "Natural", value: "Guayaquil, Equador" },
       { label: "Ordenação", value: "02/02/2025" },
-      { label: "Ministério", value: "Administrador da Vicaria do Equador" },
     ],
     sections: [
       {
         title: "Biografia",
         body: [
-          "Padre Fausto nasceu em 8 de junho de 1967, na cidade de Guayaquil, Equador. Foi ordenado em 2 de fevereiro de 2025.",
+          "Padre Dr. Fausto Wilmo Báez Soxo nasceu em 8 de junho de 1967, na cidade de Guayaquil, Equador. Foi ordenado em 2 de fevereiro de 2025.",
         ],
       },
       {
         title: "Ministério",
         body: [
-          "É sacerdote e Administrador da Vicaria do Equador. Também é apresentado como Presidente da Federação Internacional de Advogados Ortodoxos, sede Equador.",
+          "Serve na Vicaria Pastoral da República do Equador e está habilitado para o exercício do ministério sacerdotal. Também é apresentado como Presidente da Federação Internacional de Advogados Ortodoxos, sede Equador.",
+        ],
+      },
+      {
+        title: "Documento pastoral",
+        body: [
+          "O documento de identificação pastoral apresentado registra o sacerdote Dr. Fausto Wilmo Báez Soxo — primeiro apelido Báez, segundo apelido Soxo — na Vicaria Pastoral da República do Equador, com registro internacional Ecuador 0011-2026, habilitado para o exercício do ministério sacerdotal.",
+          "O mesmo documento indica a Arquidiocese Metropolitana da América, a Igreja Católica Apostólica Ortodoxa do Peru, o Internationalen Bischofs Conclave (IBC) e o Colégio Episcopal Peruano / Latino-americano.",
         ],
       },
     ],
