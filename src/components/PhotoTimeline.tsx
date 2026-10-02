@@ -35,7 +35,7 @@ export function PhotoTimeline({ eras, name }: { eras: TimelineEra[]; name: strin
         Da infância em Salvador ao ministério e às missões: a caminhada de {name}, contada em imagens.
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Fases da história">
+      <div className="mt-6 grid grid-cols-3 gap-2 md:flex md:flex-wrap" role="tablist" aria-label="Fases da história">
         {eras.map((era, i) => (
           <button
             key={era.title}
@@ -43,7 +43,7 @@ export function PhotoTimeline({ eras, name }: { eras: TimelineEra[]; name: strin
             role="tab"
             aria-selected={active === i}
             onClick={() => setActive(i)}
-            className={`rounded-full px-4 py-2 text-sm font-medium ring-1 transition ${
+            className={`flex min-h-[3rem] items-center justify-center rounded-2xl px-2 py-2 text-center text-xs font-medium leading-tight md:inline-flex md:min-h-0 md:rounded-full md:px-4 md:text-sm ring-1 transition ${
               active === i
                 ? "bg-burgundy text-gold ring-gold/50 shadow-card"
                 : "bg-white text-ink ring-burgundy/15 hover:bg-ivory hover:text-burgundy"
