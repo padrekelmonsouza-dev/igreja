@@ -223,7 +223,7 @@ function EditorialPanel({
   onOpen: (topic: SacramentTopic) => void;
 }) {
   return (
-    <div className="flex min-w-0 max-w-xl flex-col lg:h-full">
+    <div className="order-1 flex min-w-0 max-w-xl flex-col md:order-none lg:h-full">
       <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-burgundy">
         <span className="h-px w-10 bg-gold" aria-hidden="true" />
         {item.kicker}
@@ -276,7 +276,7 @@ function EditorialSection({
   return (
     <section className="site-section bg-ivory px-4">
       <div className="mx-auto grid w-full max-w-[1280px] items-center gap-8 lg:h-[666px] lg:max-h-[666px] lg:grid-cols-[350px_minmax(0,1fr)] lg:items-stretch lg:gap-14 lg:overflow-hidden">
-        <div className="overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card">
+        <div className="order-2 overflow-hidden rounded-[1.75rem] bg-burgundy shadow-card md:order-none">
           <div className="h-[493px] w-full lg:h-full">
             <FeaturedMedia item={item} />
           </div>
