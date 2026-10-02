@@ -10,7 +10,19 @@ export type ClergyProfile = {
   summary: string;
   facts: { label: string; value: string }[];
   sections: { title: string; body: string[] }[];
+  timeline?: TimelineEra[];
 };
+
+export type TimelineEra = {
+  period: string;
+  title: string;
+  text: string;
+  photos: string[];
+};
+
+function kelmonPhotos(from: number, to: number) {
+  return Array.from({ length: to - from + 1 }, (_, i) => `/media/kelmon/historia-${String(from + i).padStart(3, "0")}.jpg`);
+}
 
 export const CLERGY: ClergyProfile[] = [
   {
@@ -113,6 +125,62 @@ export const CLERGY: ClergyProfile[] = [
         body: [
           "Homilias, catequeses, vídeos e textos serão reunidos nesta página conforme a Secretaria e o próprio presbítero os disponibilizarem.",
         ],
+      },
+    ],
+    timeline: [
+      {
+        period: "Anos 1970 e 1980",
+        title: "Infância em Salvador",
+        text: "Os primeiros anos em família, a escola e a Primeira Comunhão.",
+        photos: kelmonPhotos(1, 9),
+      },
+      {
+        period: "Juventude",
+        title: "Os primeiros passos na fé",
+        text: "A juventude vivida na Igreja, com os grupos e os amigos que despertaram a vocação.",
+        photos: kelmonPhotos(10, 13),
+      },
+      {
+        period: "Formação",
+        title: "Seminário e estudos",
+        text: "Os anos de seminário, a vida em comunidade com os colegas de turma e a formação em Filosofia e Teologia.",
+        photos: kelmonPhotos(14, 30),
+      },
+      {
+        period: "Caminhada",
+        title: "Igreja, encontros e defesa da vida",
+        text: "Encontros com pastores e irmãos na fé, a liturgia oriental e o engajamento na defesa da vida.",
+        photos: kelmonPhotos(31, 43),
+      },
+      {
+        period: "2015",
+        title: "Ordenação e vida sinodal",
+        text: "Encontros com os bispos e a ordenação presbiteral, em 2 de agosto de 2015.",
+        photos: kelmonPhotos(44, 55),
+      },
+      {
+        period: "Missões",
+        title: "Construindo comunidades",
+        text: "A construção de igrejas, as primeiras liturgias à luz de velas e a catequese com as crianças.",
+        photos: kelmonPhotos(56, 66),
+      },
+      {
+        period: "Bahia",
+        title: "Missão junto ao povo",
+        text: "O trabalho com as comunidades ribeirinhas e da ilha: mutirões, visitas, encontros, liturgias e o cuidado com as famílias.",
+        photos: kelmonPhotos(67, 96),
+      },
+      {
+        period: "Hoje",
+        title: "Vida pública",
+        text: "Encontros e diálogos na vida pública do Brasil.",
+        photos: kelmonPhotos(97, 100),
+      },
+      {
+        period: "Publicação",
+        title: "Meu livro",
+        text: "Fé e Política de mãos dadas: breves e essenciais orientações para o jovem político. Momentos de lançamento e divulgação do livro.",
+        photos: kelmonPhotos(101, 107),
       },
     ],
   },

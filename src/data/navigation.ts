@@ -15,21 +15,14 @@ export type NavGroup = {
 export const MAIN_NAV: NavGroup[] = [
   { id: "inicio", label: "Início", href: "/", icon: "home" },
   { id: "quem-somos", label: "Quem Somos", href: "#quem-somos", icon: "church" },
-  {
-    id: "igreja",
-    label: "Igreja",
-    href: "/igreja",
-    icon: "church",
-    children: [
-      { href: "/igreja/arcebispos", label: "Arcebispos", icon: "bishop" },
-      { href: "/mosteiro", label: "Mosteiros", icon: "monastery" },
-      { href: "/paroquias", label: "Paróquias", icon: "parish" },
-      { href: "/sacramentos", label: "Sacramentos", icon: "liturgy" },
-      { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
-      { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
-    ],
-  },
+  { id: "igreja", label: "Igreja", href: "/igreja", icon: "church" },
+  { id: "arcebispos", label: "Arcebispos", href: "/igreja/arcebispos", icon: "bishop" },
   { id: "clero", label: "Clero", href: "/clero", icon: "clergy" },
+  { id: "mosteiros", label: "Mosteiros", href: "/mosteiro", icon: "monastery" },
+  { id: "paroquias", label: "Paróquias", href: "/paroquias", icon: "parish" },
+  { id: "sacramentos", label: "Sacramentos", href: "/sacramentos", icon: "liturgy" },
+  { id: "pastorais", label: "Pastorais", href: "/pastorais", icon: "pastoral" },
+  { id: "ordem-de-sao-jose", label: "Ordem de São José", href: "/ordem-de-sao-jose", icon: "joseph" },
   { id: "liturgia", label: "Liturgia", href: "/liturgia", icon: "liturgy" },
   { id: "catequese", label: "Catequese", href: "/catequese", icon: "catechesis" },
   { id: "missoes", label: "Missões", href: "/missoes", icon: "mission" },
@@ -62,5 +55,3 @@ export const FOOTER_LEGAL: NavLink[] = [
   { href: "/politica-de-privacidade", label: "Política de privacidade" },
   { href: "/termos-de-uso", label: "Termos de uso" },
 ];
-
-export const DESKTOP_NAV_IDS = ["inicio", "quem-somos", "igreja", "clero", "liturgia", "catequese", "missoes"] as const;

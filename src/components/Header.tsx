@@ -1,7 +1,6 @@
 import { FormEvent, useEffect, useId, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
-  DESKTOP_NAV_IDS,
   FIND_CHURCH_LINK,
   MAIN_NAV,
   START_HERE_LINK,
@@ -16,7 +15,6 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const location = useLocation();
   const { openSearch } = useSearchModal();
   const { openQuemSomos } = useQuemSomosModal();
@@ -29,7 +27,6 @@ export function Header() {
 
   useEffect(() => {
     setOpen(false);
-    setOpenGroup(null);
     setSearchOpen(false);
     document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
@@ -70,20 +67,12 @@ export function Header() {
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
-        setOpenGroup(null);
         setSearchOpen(false);
       }
     }
-    function onClick(event: MouseEvent) {
-      if (!headerRef.current?.contains(event.target as Node)) {
-        setOpenGroup(null);
-      }
-    }
     window.addEventListener("keydown", onKey);
-    window.addEventListener("mousedown", onClick);
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("mousedown", onClick);
     };
   }, []);
 
@@ -136,7 +125,8 @@ export function Header() {
     }, 700);
   }
 
-  const desktopNav = MAIN_NAV.filter((item) => DESKTOP_NAV_IDS.includes(item.id as (typeof DESKTOP_NAV_IDS)[number]));
+  const desktopLinkClass =
+    "relative inline-flex items-center whitespace-nowrap px-1 py-3 text-[13px] font-medium tracking-wide transition-colors after:absolute after:inset-x-1 after:bottom-0 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-gold after:transition-transform hover:text-burgundy hover:after:scale-x-100";
 
   return (
     <>
@@ -147,7 +137,7 @@ export function Header() {
             scrolled ? "shadow-[0_12px_40px_-24px_rgba(110,18,28,.5)]" : ""
           }`}
         >
-          <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2.5 px-4 py-2.5 xl:flex xl:gap-6">
+          <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2.5 px-4 py-2.5 xl:flex xl:justify-between xl:gap-6">
             <Link to="/" aria-label={SITE.name} className="shrink-0" onClick={() => setOpen(false)}>
               <img
                 src={SITE.logo}
@@ -158,66 +148,6 @@ export function Header() {
               />
             </Link>
 
-            <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 xl:flex" aria-label="Principal">
-              {desktopNav.map((item) =>
-                item.id === "quem-somos" ? (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-burgundy/5 hover:text-burgundy"
-                    onClick={() => {
-                      setOpenGroup(null);
-                      openQuemSomos();
-                    }}
-                  >
-                    <MenuIcon name={item.icon} className="h-4 w-4 text-burgundy" />
-                    {item.label}
-                  </button>
-                ) : item.children?.length ? (
-                  <div key={item.id} className="relative">
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-burgundy/5 hover:text-burgundy"
-                      aria-expanded={openGroup === item.id}
-                      aria-haspopup="true"
-                      onClick={() => setOpenGroup((current) => (current === item.id ? null : item.id))}
-                    >
-                      <MenuIcon name={item.icon} className="h-4 w-4 text-burgundy" />
-                      {item.label}
-                      <span aria-hidden="true" className="text-[10px]">
-                        ▾
-                      </span>
-                    </button>
-                    {openGroup === item.id ? (
-                      <div className="absolute left-0 top-full z-50 min-w-[16rem] pt-2">
-                        <div className="rounded-2xl border border-burgundy/10 bg-white p-2 shadow-card">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              to={child.href}
-                              className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm hover:bg-ivory hover:text-burgundy"
-                            >
-                              <MenuIcon name={child.icon} className="h-4 w-4 text-burgundy" />
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-                ) : (
-                  <NavLink
-                    key={item.id}
-                    to={item.href}
-                    end={item.href === "/"}
-                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[13px] text-ink hover:bg-burgundy/5 hover:text-burgundy"
-                  >
-                    <MenuIcon name={item.icon} className="h-4 w-4 text-burgundy" />
-                    {item.label}
-                  </NavLink>
-                ),
-              )}
-            </nav>
 
             <div className="flex items-center gap-2 justify-self-end xl:hidden">
               <button
@@ -290,6 +220,30 @@ export function Header() {
               </button>
             </form>
           </div>
+
+          <nav className="hidden border-t border-burgundy/10 xl:block" aria-label="Principal">
+            <ul className="mx-auto flex w-full max-w-[1280px] items-center justify-between gap-2 px-4">
+              {MAIN_NAV.map((item) => (
+                <li key={item.id}>
+                  {item.id === "quem-somos" ? (
+                    <button type="button" className={`${desktopLinkClass} text-ink`} onClick={openQuemSomos}>
+                      {item.label}
+                    </button>
+                  ) : (
+                    <NavLink
+                      to={item.href}
+                      end={item.href === "/" || item.href === "/igreja"}
+                      className={({ isActive }) =>
+                        `${desktopLinkClass} ${isActive ? "text-burgundy after:scale-x-100" : "text-ink"}`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
         {open ? (
@@ -301,47 +255,7 @@ export function Header() {
             <nav className="mx-auto max-w-3xl space-y-2 px-4 py-6" aria-label="Menu móvel">
               {MAIN_NAV.map((item) => (
                 <div key={item.id} className="rounded-2xl bg-ivory ring-1 ring-burgundy/10">
-                  {item.children?.length ? (
-                    <details>
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4 text-lg font-medium">
-                        <span className="inline-flex items-center gap-3">
-                          <MenuIcon name={item.icon} className="h-5 w-5 text-burgundy" />
-                          {item.label}
-                        </span>
-                        <svg
-                          className="menu-chevron h-5 w-5 shrink-0 text-burgundy"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M6 9l6 6 6-6"
-                            stroke="currentColor"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </summary>
-                      <div className="space-y-1 px-3 pb-3">
-                        <Link to={item.href} className="flex items-center gap-3 rounded-xl px-3 py-3 text-burgundy" onClick={() => setOpen(false)}>
-                          <MenuIcon name={item.icon} className="h-4 w-4" />
-                          Visão geral
-                        </Link>
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            className="flex items-center gap-3 rounded-xl px-3 py-3"
-                            onClick={() => setOpen(false)}
-                          >
-                            <MenuIcon name={child.icon} className="h-4 w-4 text-burgundy" />
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </details>
-                  ) : item.id === "quem-somos" ? (
+                  {item.id === "quem-somos" ? (
                     <button
                       type="button"
                       className="flex w-full items-center gap-3 px-4 py-4 text-left text-lg"

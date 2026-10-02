@@ -19,12 +19,22 @@ export type SacramentTopic = {
   body: string[];
 };
 
+export type SacramentSlide = {
+  src: string;
+  alt: string;
+  credit: string;
+  href: string;
+  position?: string;
+};
+
 export type FeaturedSacrament = {
   slug: string;
   title: string;
   kicker: string;
   summary: string;
   video?: string;
+  youtube?: string;
+  slides?: SacramentSlide[];
   poster: string;
   body: string[];
 };
@@ -38,6 +48,162 @@ export type SacramentGridCard = {
 };
 
 export const FEATURED_SACRAMENTS: FeaturedSacrament[] = [
+  {
+    slug: "batismo",
+    title: "Sacramento do Batismo",
+    kicker: "Nascer de novo",
+    summary: "O Santo Mistério pelo qual morremos e ressuscitamos com Cristo e nascemos para a vida nova na Igreja.",
+    video: "/videos/sacramentos/batismo.mp4?v=2",
+    poster: "/videos/sacramentos/batismo.jpg?v=2",
+    body: [
+      "No rito ortodoxo, o Batismo se faz por tríplice imersão, em nome do Pai e do Filho e do Espírito Santo. A água é abençoada e o óleo dos catecúmenos unge quem vai ser batizado.",
+      "Antes da imersão, o catecúmeno, ou o padrinho pela criança, renuncia a Satanás e se une a Cristo, confessando o Símbolo da Fé.",
+    ],
+  },
+  {
+    slug: "crisma",
+    title: "Sacramento da Crisma",
+    kicker: "Selo do Espírito Santo",
+    summary: "A unção com o Santo Myron, pela qual o recém-batizado recebe o dom do Espírito Santo: o seu Pentecostes pessoal.",
+    slides: [
+      {
+        src: "/videos/sacramentos/crisma-1.jpg?v=2",
+        alt: "Ícone da Descida do Espírito Santo sobre os Apóstolos (Pentecostes)",
+        credit: "Ícone russo, Museu Hermitage · Domínio público",
+        href: "https://commons.wikimedia.org/wiki/File:0669Ha._Hermitage_Museum_(Hall_143)._Icon_of_the_Descent_of_the_Holy_Spirit_upon_the_Apostles.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/crisma-2.jpg?v=2",
+        alt: "Frasco de Santo Myron com a cruz ortodoxa",
+        credit: "Evtropios-samuel · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:MyrrhOrthodoxChurch.jpg",
+        position: "42% center",
+      },
+      {
+        src: "/videos/sacramentos/crisma-3.jpg?v=2",
+        alt: "Alabastro do século XVI–XVII, vaso para guardar o Santo Myron (Kremlin de Moscou)",
+        credit: "Shakko · CC BY-SA 3.0",
+        href: "https://commons.wikimedia.org/wiki/File:Alavastr_(16-17_c,_Kremlin_museum)_by_shakko_01.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/crisma-4.jpg?v=2",
+        alt: "Caldeirão em que o Santo Myron é preparado pelo Patriarcado (Kremlin de Moscou)",
+        credit: "Shakko · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:Kotel_dlya_miro_01_by_shakko.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/crisma-5.jpg?v=2",
+        alt: "Dossel dourado do forno do Santo Myron, na Sala do Myron do Kremlin de Moscou",
+        credit: "Shakko · CC BY-SA 3.0",
+        href: "https://commons.wikimedia.org/wiki/File:Chrism_boiling_furnace_(Moscow_Kremlin)_by_shakko_04.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/crisma-6.jpg?v=2",
+        alt: "Jarro de prata para o Santo Myron, de 1798 (Kremlin de Moscou)",
+        credit: "Shakko · CC BY-SA 3.0",
+        href: "https://commons.wikimedia.org/wiki/File:Jug_for_Chrism_by_Alexei_Ratkov_(1798,_Moscow_Kremlin)_01_by_shakko.JPG",
+        position: "center",
+      },
+    ],
+    poster: "/videos/sacramentos/crisma-1.jpg?v=2",
+    body: [
+      "Na Igreja Ortodoxa, a Crisma é dada logo após o Batismo, na mesma celebração, também às crianças. O sacerdote unge a fronte, os olhos, as narinas, os lábios, os ouvidos, o peito, as mãos e os pés.",
+      "O Santo Myron é consagrado pelos bispos e enviado às comunidades, sinal da unidade de toda a Igreja em torno da sucessão apostólica.",
+    ],
+  },
+  {
+    slug: "confissao",
+    title: "Sacramento da Confissão",
+    kicker: "Metanoia",
+    summary: "O Santo Mistério da conversão do coração, no qual o fiel recebe o perdão dos pecados e é reconciliado com Deus e com a Igreja.",
+    slides: [
+      {
+        src: "/videos/sacramentos/confissao-1.jpg?v=1",
+        alt: "Ícone de Cristo Pantocrator, Mosteiro de Santa Catarina do Sinai, século VI",
+        credit: "Mosteiro de Santa Catarina, Sinai · Domínio público",
+        href: "https://commons.wikimedia.org/wiki/File:Spas_vsederzhitel_sinay.jpg",
+        position: "center 30%",
+      },
+      {
+        src: "/videos/sacramentos/confissao-2.jpg?v=1",
+        alt: "Fiel ajoelhado se confessando a um sacerdote ortodoxo diante do analógio",
+        credit: "Водник · CC BY-SA 3.0",
+        href: "https://commons.wikimedia.org/wiki/File:%D0%98%D1%81%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D1%8C_%D0%B1%D0%B5%D1%80%D0%BD_%D1%81%D0%BE%D0%B1%D0%BE%D1%80.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/confissao-3.jpg?v=1",
+        alt: "Fiéis em confissão numa igreja ortodoxa, com o sacerdote de epitrachílion",
+        credit: "S. Wyspianski · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:Confession_in_Orthodox_Church.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/confissao-4.jpg?v=1",
+        alt: "Sacerdote ortodoxo ouvindo a confissão de uma fiel",
+        credit: "Yanasedova · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:2017-07-23_09-30._%D0%98%D1%81%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D1%8C.jpg",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/confissao-5.jpg?v=1",
+        alt: "Pintura russa «Na confissão», década de 1880",
+        credit: "Alexander Nikanorovich Novoskoltsev · Public domain",
+        href: "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0_%D0%B8%D1%81%D0%BF%D0%BE%D0%B2%D0%B5%D0%B4%D0%B8_1880-%D0%B5.jpg",
+        position: "center",
+      },
+    ],
+    poster: "/videos/sacramentos/confissao-1.jpg?v=1",
+    body: [
+      "A tradição chama a Confissão de «segundo batismo»: ela lava os pecados cometidos depois da fonte batismal. O fiel confessa diante do ícone de Cristo e do Evangelho; o sacerdote é testemunha e pai espiritual.",
+      "Ao final, o sacerdote cobre a cabeça do penitente com o epitrachílion e lê a oração de absolvição. Não é um tribunal: é um hospital da alma.",
+    ],
+  },
+  {
+    slug: "uncao",
+    title: "Sacramento da Unção dos Enfermos",
+    kicker: "Euchélaion",
+    summary: "A oração do óleo: a Igreja pede a Deus a cura do corpo e da alma de quem sofre, segundo a palavra do apóstolo Tiago.",
+    slides: [
+      {
+        src: "/videos/sacramentos/uncao-1.jpg?v=1",
+        alt: "Mesa da Santa Unção com o óleo, o trigo e as velas acesas",
+        credit: "ΙΣΧΣΝΙΚΑ-888 · CC BY-SA 3.0",
+        href: "https://commons.wikimedia.org/wiki/File:2013-08-14--Service_of_the_Sacrament_of_Holy_Unction.JPG",
+        position: "center",
+      },
+      {
+        src: "/videos/sacramentos/uncao-2.jpg?v=1",
+        alt: "Sacerdote ortodoxo lendo as orações da Santa Unção na Quarta-feira Santa",
+        credit: "ΙΣΧΣΝΙΚΑ-888 · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:2017-04-12--Service_of_the_Sacrament_of_Holy_Unction,_on_Holy_Wednesday.jpg",
+        position: "35% center",
+      },
+      {
+        src: "/videos/sacramentos/uncao-3.jpg?v=1",
+        alt: "Sacerdotes celebrando a Santa Unção diante da iconóstase",
+        credit: "ΙΣΧΣΝΙΚΑ-888 · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:2018-04-04--Service_of_the_Sacrament_of_Holy_Unction,_on_Holy_Wednesday.jpg",
+        position: "28% center",
+      },
+      {
+        src: "/videos/sacramentos/uncao-4.jpg?v=1",
+        alt: "Fiéis ajoelhados durante a leitura do Evangelho na Santa Unção da Quarta-feira Santa",
+        credit: "ΙΣΧΣΝΙΚΑ-888 · CC BY-SA 4.0",
+        href: "https://commons.wikimedia.org/wiki/File:Holy_Wednesday_Gospel_Reading_-_Toronto,_2019.jpg",
+        position: "center",
+      },
+    ],
+    poster: "/videos/sacramentos/uncao-1.jpg?v=1",
+    body: [
+      "«Está alguém doente? Chame os presbíteros da Igreja, e estes orem sobre ele, ungindo-o com óleo em nome do Senhor» (Tg 5,14). Na Ortodoxia, a Unção não se reserva à hora da morte.",
+      "O rito completo é celebrado por sete sacerdotes, com sete leituras do Apóstolo, sete Evangelhos e sete unções. Na Quarta-feira Santa, muitas comunidades a celebram para todos os fiéis.",
+    ],
+  },
   {
     slug: "eucaristia",
     title: "Sacramento da Eucaristia",
@@ -165,6 +331,150 @@ export const EUCARISTIA_THEMES: SacramentTheme[] = [
     icon: "church",
     body: [
       "A Comunhão une o fiel a Cristo e, nele, aos demais membros da Igreja. É a participação no Mistério de Cristo e uma expressão da unidade do Corpo de Cristo.",
+    ],
+  },
+];
+
+export const BATISMO_THEMES: SacramentTheme[] = [
+  {
+    slug: "imersao",
+    roman: "I",
+    label: "I · Tríplice imersão",
+    title: "Imersão",
+    summary: "Três vezes na água, em nome da Santíssima Trindade.",
+    icon: "baptism",
+    body: [
+      "O sacerdote mergulha o batizando três vezes na água, dizendo: «Batiza-se o servo de Deus, em nome do Pai, e do Filho, e do Espírito Santo». É a morte e a ressurreição com Cristo (Rm 6,4).",
+    ],
+  },
+  {
+    slug: "renuncia",
+    roman: "II",
+    label: "II · Renúncia e adesão",
+    title: "Renúncia",
+    summary: "Renunciar a Satanás e unir-se a Cristo.",
+    icon: "cross",
+    body: [
+      "Voltado para o ocidente, o catecúmeno renuncia a Satanás e a todas as suas obras; voltado para o oriente, une-se a Cristo e confessa o Símbolo da Fé. Pela criança, quem responde é o padrinho.",
+    ],
+  },
+  {
+    slug: "veste-branca",
+    roman: "III",
+    label: "III · Vida nova",
+    title: "Veste branca",
+    summary: "A túnica branca e a vela acesa do recém-iluminado.",
+    icon: "church",
+    body: [
+      "O recém-batizado é revestido da túnica branca, sinal da pureza recebida, e recebe a vela acesa, porque o Batismo é chamado também de iluminação. Em seguida vêm a Crisma e a Santa Comunhão.",
+    ],
+  },
+];
+
+export const CRISMA_THEMES: SacramentTheme[] = [
+  {
+    slug: "santo-myron",
+    roman: "I",
+    label: "I · Óleo consagrado",
+    title: "Santo Myron",
+    summary: "Óleo perfumado consagrado pelos bispos.",
+    icon: "chrism",
+    body: [
+      "O Santo Myron é preparado com azeite e muitas essências aromáticas e consagrado pelos bispos na Quinta-feira Santa. Ele une cada crisma à oração de toda a Igreja.",
+    ],
+  },
+  {
+    slug: "selo",
+    roman: "II",
+    label: "II · Dom do Espírito",
+    title: "O selo",
+    summary: "«Selo do dom do Espírito Santo.»",
+    icon: "cross",
+    body: [
+      "A cada unção, o sacerdote proclama: «Selo do dom do Espírito Santo». Assim como os apóstolos no Pentecostes, o fiel recebe a força do Espírito para viver e testemunhar a fé.",
+    ],
+  },
+  {
+    slug: "sentidos",
+    roman: "III",
+    label: "III · Todo o ser",
+    title: "Os sentidos",
+    summary: "Fronte, olhos, ouvidos, lábios, peito, mãos e pés.",
+    icon: "liturgy",
+    body: [
+      "São ungidos os sentidos e os membros do corpo: o ser humano inteiro é consagrado a Deus, para pensar, ver, ouvir, falar, agir e caminhar segundo o Espírito.",
+    ],
+  },
+];
+
+export const CONFISSAO_THEMES: SacramentTheme[] = [
+  {
+    slug: "metanoia",
+    roman: "I",
+    label: "I · Conversão",
+    title: "Metanoia",
+    summary: "Mudança do coração e retorno ao Pai.",
+    icon: "confession",
+    body: [
+      "Metanoia significa mudança de mente e de coração. Como o filho pródigo, o fiel reconhece o pecado e volta para a casa do Pai, que o espera de braços abertos.",
+    ],
+  },
+  {
+    slug: "diante-de-cristo",
+    roman: "II",
+    label: "II · Testemunha",
+    title: "Diante de Cristo",
+    summary: "A confissão é feita a Cristo, presente invisivelmente.",
+    icon: "cross",
+    body: [
+      "O fiel se confessa diante do ícone de Cristo e do Evangelho. O sacerdote lembra que Cristo está invisivelmente presente e que ele é apenas testemunha, guardando o segredo da confissão.",
+    ],
+  },
+  {
+    slug: "absolvicao",
+    roman: "III",
+    label: "III · Perdão",
+    title: "Absolvição",
+    summary: "O epitrachílion sobre a cabeça e a oração de perdão.",
+    icon: "church",
+    body: [
+      "Ao final, o sacerdote cobre a cabeça do penitente com o epitrachílion e lê a oração de absolvição. O fiel recebe o perdão e é reconciliado com Deus e com a Igreja.",
+    ],
+  },
+];
+
+export const UNCAO_THEMES: SacramentTheme[] = [
+  {
+    slug: "oleo-santo",
+    roman: "I",
+    label: "I · Oração do óleo",
+    title: "Óleo santo",
+    summary: "O óleo abençoado para a cura do corpo e da alma.",
+    icon: "unction",
+    body: [
+      "Euchélaion significa «oração do óleo». O óleo, abençoado na celebração, é sinal da misericórdia de Deus, que cura o corpo e perdoa os pecados (Tg 5,14-15).",
+    ],
+  },
+  {
+    slug: "sete-leituras",
+    roman: "II",
+    label: "II · Plenitude",
+    title: "Sete leituras",
+    summary: "Sete Epístolas, sete Evangelhos e sete unções.",
+    icon: "liturgy",
+    body: [
+      "O rito completo reúne sete sacerdotes, que leem sete trechos do Apóstolo e sete Evangelhos e fazem sete unções na fronte, nas narinas, nas faces, nos lábios, no peito e nas mãos.",
+    ],
+  },
+  {
+    slug: "quarta-feira-santa",
+    roman: "III",
+    label: "III · Semana Santa",
+    title: "Quarta-feira Santa",
+    summary: "Na Semana Santa, a Unção é oferecida a todos.",
+    icon: "church",
+    body: [
+      "Na Quarta-feira Santa, muitas comunidades ortodoxas celebram a Unção para todos os fiéis, que assim se preparam para a Páscoa. Para os enfermos, o sacerdote também a celebra em casa ou no hospital.",
     ],
   },
 ];
