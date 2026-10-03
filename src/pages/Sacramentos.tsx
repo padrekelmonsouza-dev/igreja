@@ -104,6 +104,7 @@ function Slideshow({ slides, label }: { slides: NonNullable<FeaturedSacrament["s
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (slides.length < 2) return;
     const timer = window.setInterval(() => setIndex((i) => (i + 1) % slides.length), 4500);
     return () => window.clearInterval(timer);
   }, [slides.length]);
@@ -127,7 +128,7 @@ function Slideshow({ slides, label }: { slides: NonNullable<FeaturedSacrament["s
         />
       ))}
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent px-4 pb-3 pt-10">
-        <div className="flex justify-center gap-1.5">
+        <div className={`flex justify-center gap-1.5 ${slides.length < 2 ? "hidden" : ""}`}>
           {slides.map((slide, i) => (
             <button
               key={slide.src}
