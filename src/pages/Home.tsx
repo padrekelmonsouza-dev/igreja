@@ -439,7 +439,7 @@ export function Home() {
       <VaticanNews />
 
       <section className="site-section px-4">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto w-full max-w-site overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
           <p className="kicker">Primeira vez aqui?</p>
           <h2 className="mt-3 font-serif text-4xl">É sua primeira vez conhecendo a Igreja Ortodoxa?</h2>
           <p className="mt-4 max-w-3xl text-lg text-stone">
@@ -524,7 +524,7 @@ export function Home() {
 
       <KnowOrthodoxy />
 
-      <section className="site-section mx-auto max-w-7xl px-4">
+      <section className="site-section mx-auto w-full max-w-site px-4">
         <p className="kicker">Comunidades</p>
         <h2 className="mt-3 font-serif text-4xl">Onde a Igreja reza no Brasil.</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -549,13 +549,13 @@ export function Home() {
       </section>
 
       <section className="site-section px-4">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-12 sm:px-8 sm:py-14">
+        <div className="mx-auto w-full max-w-site overflow-hidden rounded-3xl bg-white px-4 py-12 sm:px-8 sm:py-14">
           <VideoGallery />
         </div>
       </section>
 
       <section className="site-section px-4">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto w-full max-w-site overflow-hidden rounded-3xl bg-white px-4 py-16 sm:px-8 sm:py-20">
           <p className="kicker">Perguntas frequentes</p>
           <h2 className="mt-3 font-serif text-4xl">O que as pessoas perguntam.</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">

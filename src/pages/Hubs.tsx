@@ -9,14 +9,14 @@ export function IgrejaHub() {
         intro="Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/igreja", label: "Igreja" }]}
       />
-      <section className="site-section mx-auto max-w-6xl px-4">
+      <section className="site-section mx-auto w-full max-w-site px-4">
         <HubGrid
           items={[
             { href: "/igreja/arcebispos", title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
             { href: "/mosteiro", title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
             { href: "/paroquias", title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
             { href: "/sacramentos", title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },
-            { href: "/pastorais", title: "Pastorais", text: "Acolhida, família, enfermos e formação." },
+            { href: "/pastorais", title: "Pastorais", text: "Acolhida, família, enfermos, formação e Pastoral Política." },
             { href: "/ordem-de-sao-jose", title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
           ]}
         />
@@ -34,7 +34,7 @@ export function OrtodoxiaHub() {
         intro="O que é a Igreja Ortodoxa, a Divina Liturgia, os ícones, os Santos Mistérios, os santos, o jejum e a oração."
         crumbs={[{ href: "/ortodoxia", label: "Ortodoxia" }]}
       />
-      <section className="site-section mx-auto max-w-6xl px-4">
+      <section className="site-section mx-auto w-full max-w-site px-4">
         <HubGrid
           items={[
             { href: "/ortodoxia/o-que-e-a-ortodoxia", title: "O que é a Ortodoxia?", text: "Guia essencial da fé apostólica em português." },

@@ -23,7 +23,7 @@ export function CommunityPage() {
           { href: community.href, label: community.city },
         ]}
       />
-      <section className="site-section mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[1fr_1fr]">
+      <section className="site-section mx-auto grid w-full max-w-site gap-8 px-4 lg:grid-cols-[1fr_1fr]">
         <div className="space-y-5">
           {community.patron ? <p><strong>Padroeiro:</strong> {community.patron}</p> : null}
           {community.clergy ? (

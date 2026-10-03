@@ -367,7 +367,7 @@ const BASE_ARTICLES: ArticlePage[] = [
     title: "Pastorais",
     kicker: "Cuidado da Igreja",
     intro:
-      "Ação pastoral da Igreja junto às famílias, aos enfermos, aos jovens e a quem busca a fé.",
+      "Ação pastoral da Igreja junto às famílias, aos enfermos, aos jovens, a quem busca a fé e à vida pública.",
     sections: [
       {
         title: "Pastoral familiar",
@@ -391,6 +391,14 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "Pastoral da formação",
         body: [
           "Catequese, grupos de estudo dos Padres, círculos de leitura bíblica e preparação litúrgica.",
+        ],
+      },
+      {
+        title: "Pastoral Política",
+        body: [
+          "Uma das pastorais de grande ação da Igreja. Fundada pelo Padre Kelmon Luís, a Pastoral Política anuncia que o Cristocentrismo é a política que se deve praticar: colocar Cristo no centro para resgatar a verdadeira natureza da política, que é servir o povo.",
+          "Ela forma cristãos para a vida pública à luz do Evangelho e da doutrina dos Santos Padres, com ênfase na dignidade da pessoa humana, na defesa da vida e da família, na liberdade, na justiça e no bem comum. O fiel é chamado a ser sal da terra e luz do mundo também nas decisões que afetam a sociedade.",
+          "O Foro do Brasil é fruto da Pastoral Política. Nasceu para preparar novos líderes e políticos com visão e prática cristocêntrica e reúne frentes como o Foro do Brasil Juventude, o Foro do Brasil Mulher e o Foro do Brasil Indígena, com presença também em outros países da América Latina. Promove formação, encontros, presença nas universidades e ações humanitárias. Saiba mais em forobrasil.org.",
         ],
       },
     ],

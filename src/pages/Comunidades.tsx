@@ -29,7 +29,7 @@ export function Comunidades() {
         intro="Comunidades da Igreja Ortodoxa Grega G.O.C. no Brasil com os dados oficiais já publicados. Novos endereços serão acrescentados somente quando confirmados."
         crumbs={[{ href: "/comunidades", label: "Comunidades" }]}
       />
-      <section className="site-section mx-auto max-w-7xl px-4">
+      <section className="site-section mx-auto w-full max-w-site px-4">
         <form onSubmit={onSubmit} className="mb-8">
           <label className="mb-2 block text-sm font-bold uppercase tracking-[0.16em] text-burgundy" htmlFor="parish-search">
             Buscar comunidade
