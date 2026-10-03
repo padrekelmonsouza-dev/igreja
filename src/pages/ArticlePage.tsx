@@ -30,7 +30,7 @@ export function ArticlePage() {
       <PageHero kicker={page.kicker} title={page.title} intro={page.intro} crumbs={crumbsFor(page.path, page.title)} />
       {page.path === "/ordem-de-sao-jose" ? <FounderSection /> : null}
       {page.path === "/mosteiro" ? <AbbotSection /> : null}
-      {page.path === "/igreja/quem-somos" ? <QuemSomosIntro /> : null}
+      {page.path === "/quem-somos" ? <QuemSomosIntro /> : null}
       <ArticleBody page={page} />
       <Related paths={page.related} />
     </>

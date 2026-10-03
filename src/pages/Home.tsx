@@ -146,7 +146,7 @@ type ShortcutBlock = { title: string; text: string };
 
 function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: string[]; blocks: ShortcutBlock[] } {
   if (item.href === "/igreja") {
-    const article = getArticle("/igreja/quem-somos");
+    const article = getArticle("/quem-somos");
     return {
       kicker: "Igreja",
       paragraphs: [

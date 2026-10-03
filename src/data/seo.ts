@@ -375,7 +375,7 @@ export const PUBLIC_INDEX_PATHS = [
   "/sacramentos",
   "/loja",
   "/clero",
-  "/igreja/quem-somos",
+  "/quem-somos",
   "/igreja/nossa-historia",
   "/igreja/nossa-fe",
   "/igreja/hierarquia",

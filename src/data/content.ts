@@ -119,7 +119,7 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/igreja/quem-somos",
+    path: "/quem-somos",
     title: "Quem Somos",
     kicker: "Tradição viva",
     intro:

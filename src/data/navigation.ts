@@ -14,7 +14,7 @@ export type NavGroup = {
 
 export const MAIN_NAV: NavGroup[] = [
   { id: "inicio", label: "Início", href: "/", icon: "home" },
-  { id: "quem-somos", label: "Quem Somos", href: "/igreja/quem-somos", icon: "church" },
+  { id: "quem-somos", label: "Quem Somos", href: "/quem-somos", icon: "church" },
   { id: "igreja", label: "Igreja", href: "/igreja", icon: "church" },
   { id: "arcebispos", label: "Arcebispos", href: "/arcebispos", icon: "bishop" },
   { id: "clero", label: "Clero", href: "/clero", icon: "clergy" },

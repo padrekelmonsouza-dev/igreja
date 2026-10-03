@@ -55,6 +55,7 @@ export default function App() {
           <Route path="/igreja" element={<IgrejaHub />} />
           <Route path="/arcebispos" element={<Arcebispos />} />
           <Route path="/igreja/arcebispos" element={<Navigate to="/arcebispos" replace />} />
+          <Route path="/igreja/quem-somos" element={<Navigate to="/quem-somos" replace />} />
           <Route path="/paroquias" element={<Paroquias />} />
           <Route path="/sacramentos" element={<Sacramentos />} />
           <Route path="/clero" element={<Hierarquia />} />
