@@ -46,7 +46,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
       "Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
-  "/igreja/arcebispos": {
+  "/arcebispos": {
     title: `Arcebispos | ${SITE.tabTitle}`,
     description:
       "Arcebispos da Igreja Ortodoxa Grega G.O.C.: Dom Eugenios de Atenas e Dom Leontios de Noronha e Valdigem.",
@@ -370,7 +370,7 @@ export function placeJsonLd(slug: string) {
 export const PUBLIC_INDEX_PATHS = [
   "/",
   "/igreja",
-  "/igreja/arcebispos",
+  "/arcebispos",
   "/paroquias",
   "/sacramentos",
   "/loja",

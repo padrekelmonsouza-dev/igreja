@@ -14,9 +14,9 @@ export type NavGroup = {
 
 export const MAIN_NAV: NavGroup[] = [
   { id: "inicio", label: "Início", href: "/", icon: "home" },
-  { id: "quem-somos", label: "Quem Somos", href: "#quem-somos", icon: "church" },
+  { id: "quem-somos", label: "Quem Somos", href: "/igreja/quem-somos", icon: "church" },
   { id: "igreja", label: "Igreja", href: "/igreja", icon: "church" },
-  { id: "arcebispos", label: "Arcebispos", href: "/igreja/arcebispos", icon: "bishop" },
+  { id: "arcebispos", label: "Arcebispos", href: "/arcebispos", icon: "bishop" },
   { id: "clero", label: "Clero", href: "/clero", icon: "clergy" },
   { id: "mosteiros", label: "Mosteiros", href: "/mosteiro", icon: "monastery" },
   { id: "paroquias", label: "Paróquias", href: "/paroquias", icon: "parish" },
@@ -33,7 +33,7 @@ export const FIND_CHURCH_LINK: NavLink = { href: "/paroquias", label: "Encontre 
 export const START_HERE_LINK: NavLink = { href: "/primeira-visita", label: "Comece aqui" };
 
 export const FOOTER_INSTITUTIONAL: NavLink[] = [
-  { href: "/igreja/arcebispos", label: "Arcebispos" },
+  { href: "/arcebispos", label: "Arcebispos" },
   { href: "/mosteiro", label: "Mosteiros" },
   { href: "/paroquias", label: "Paróquias" },
   { href: "/sacramentos", label: "Sacramentos" },

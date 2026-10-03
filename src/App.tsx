@@ -53,7 +53,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/loja" element={<Loja />} />
           <Route path="/igreja" element={<IgrejaHub />} />
-          <Route path="/igreja/arcebispos" element={<Arcebispos />} />
+          <Route path="/arcebispos" element={<Arcebispos />} />
+          <Route path="/igreja/arcebispos" element={<Navigate to="/arcebispos" replace />} />
           <Route path="/paroquias" element={<Paroquias />} />
           <Route path="/sacramentos" element={<Sacramentos />} />
           <Route path="/clero" element={<Hierarquia />} />

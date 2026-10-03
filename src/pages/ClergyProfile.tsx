@@ -31,7 +31,7 @@ export function ClergyProfile() {
           archbishop
             ? [
                 { href: "/igreja", label: "Igreja" },
-                { href: "/igreja/arcebispos", label: "Arcebispos" },
+                { href: "/arcebispos", label: "Arcebispos" },
                 { href: `/igreja/hierarquia/${person.slug}`, label: person.name },
               ]
             : [
@@ -87,7 +87,7 @@ export function ClergyProfile() {
                   <span aria-hidden="true" className="text-burgundy">›</span>
                 </button>
               ))}
-              <Link className="btn btn-burgundy mt-3 w-full text-white no-underline" to={archbishop ? "/igreja/arcebispos" : "/clero"}>
+              <Link className="btn btn-burgundy mt-3 w-full text-white no-underline" to={archbishop ? "/arcebispos" : "/clero"}>
                 {archbishop ? "Ver os arcebispos" : "Ver todo o clero"}
               </Link>
             </nav>
@@ -109,7 +109,7 @@ export function ClergyProfile() {
               ))}
             </section>
           ))}
-          <Link className="btn btn-burgundy text-white no-underline" to={archbishop ? "/igreja/arcebispos" : "/clero"}>
+          <Link className="btn btn-burgundy text-white no-underline" to={archbishop ? "/arcebispos" : "/clero"}>
             {archbishop ? "Ver os arcebispos" : "Ver todo o clero"}
           </Link>
         </div>

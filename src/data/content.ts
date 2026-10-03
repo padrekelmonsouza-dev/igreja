@@ -17,7 +17,7 @@ export const NAV_PRIMARY: NavItem[] = [
 ];
 
 export const NAV_MORE: NavItem[] = [
-  { href: "/igreja/arcebispos", label: "Arcebispos", icon: "bishop" },
+  { href: "/arcebispos", label: "Arcebispos", icon: "bishop" },
   { href: "/mosteiro", label: "Mosteiros", icon: "monastery" },
   { href: "/paroquias", label: "Paróquias", icon: "parish" },
   { href: "/sacramentos", label: "Sacramentos", icon: "liturgy" },
@@ -54,7 +54,7 @@ const EXTRA_PATH_ICONS: Record<string, string> = {
   "/ortodoxia/batismo": "liturgy",
   "/igreja/nossa-historia": "book",
   "/pesquisa": "search",
-  "/igreja/arcebispos": "bishop",
+  "/arcebispos": "bishop",
   "/paroquias": "parish",
   "/clero": "clergy",
   "/formacao/jesus-cristo": "cross",

@@ -12,7 +12,7 @@ export function IgrejaHub() {
       <section className="site-section mx-auto w-full max-w-site px-4">
         <HubGrid
           items={[
-            { href: "/igreja/arcebispos", title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
+            { href: "/arcebispos", title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
             { href: "/mosteiro", title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
             { href: "/paroquias", title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
             { href: "/sacramentos", title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },

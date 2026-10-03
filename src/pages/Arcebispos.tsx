@@ -11,7 +11,7 @@ export function Arcebispos() {
         intro="O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul, conforme já apresentados neste portal."
         crumbs={[
           { href: "/igreja", label: "Igreja" },
-          { href: "/igreja/arcebispos", label: "Arcebispos" },
+          { href: "/arcebispos", label: "Arcebispos" },
         ]}
       />
       <div className="site-section mx-auto grid w-full max-w-site gap-5 px-4 md:grid-cols-2">

@@ -8,7 +8,6 @@ import {
 } from "../data/navigation";
 import { SITE } from "../data/site";
 import { MenuIcon } from "./MenuIcon";
-import { useQuemSomosModal } from "./QuemSomosModal";
 import { useSearchModal } from "./SearchModal";
 import { BagIcon, useCart } from "./StoreCart";
 
@@ -18,7 +17,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { openSearch } = useSearchModal();
-  const { openQuemSomos } = useQuemSomosModal();
   const { count: cartCount } = useCart();
   const menuId = useId();
   const headerRef = useRef<HTMLElement>(null);
@@ -231,21 +229,15 @@ export function Header() {
             <ul className="mx-auto flex w-full max-w-[1280px] items-center justify-between gap-2 px-4">
               {MAIN_NAV.map((item) => (
                 <li key={item.id}>
-                  {item.id === "quem-somos" ? (
-                    <button type="button" className={`${desktopLinkClass} text-ink`} onClick={openQuemSomos}>
-                      {item.label}
-                    </button>
-                  ) : (
-                    <NavLink
-                      to={item.href}
-                      end={item.href === "/" || item.href === "/igreja"}
-                      className={({ isActive }) =>
-                        `${desktopLinkClass} ${isActive ? "text-burgundy after:scale-x-100" : "text-ink"}`
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-                  )}
+                  <NavLink
+                    to={item.href}
+                    end={item.href === "/" || item.href === "/igreja"}
+                    className={({ isActive }) =>
+                      `${desktopLinkClass} ${isActive ? "text-burgundy after:scale-x-100" : "text-ink"}`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -261,24 +253,10 @@ export function Header() {
             <nav className="mx-auto max-w-3xl space-y-2 px-4 py-6" aria-label="Menu móvel">
               {MAIN_NAV.map((item) => (
                 <div key={item.id} className="rounded-2xl bg-ivory ring-1 ring-burgundy/10">
-                  {item.id === "quem-somos" ? (
-                    <button
-                      type="button"
-                      className="flex w-full items-center gap-3 px-4 py-4 text-left text-lg"
-                      onClick={() => {
-                        setOpen(false);
-                        openQuemSomos();
-                      }}
-                    >
-                      <MenuIcon name={item.icon} className="h-5 w-5 text-burgundy" />
-                      {item.label}
-                    </button>
-                  ) : (
-                    <Link to={item.href} className="flex items-center gap-3 px-4 py-4 text-lg" onClick={() => setOpen(false)}>
-                      <MenuIcon name={item.icon} className="h-5 w-5 text-burgundy" />
-                      {item.label}
-                    </Link>
-                  )}
+                  <Link to={item.href} className="flex items-center gap-3 px-4 py-4 text-lg" onClick={() => setOpen(false)}>
+                    <MenuIcon name={item.icon} className="h-5 w-5 text-burgundy" />
+                    {item.label}
+                  </Link>
                 </div>
               ))}
               <Link to={START_HERE_LINK.href} className="flex items-center gap-3 rounded-2xl bg-ivory px-4 py-4 ring-1 ring-burgundy/10" onClick={() => setOpen(false)}>

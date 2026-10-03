@@ -21,7 +21,6 @@ import { Header } from "./Header";
 import { PastoralVocacional } from "./PastoralVocacional";
 import { SupportContact } from "./SupportContact";
 import { SiteHero } from "./SiteHero";
-import { QuemSomosProvider } from "./QuemSomosModal";
 import { SearchProvider } from "./SearchModal";
 import { CartProvider } from "./StoreCart";
 import { Seo } from "./Seo";
@@ -131,7 +130,6 @@ export function Layout() {
 
   return (
     <SearchProvider>
-    <QuemSomosProvider>
     <CartProvider>
     <div className="min-h-screen w-full bg-ivory text-ink">
       <Seo
@@ -173,7 +171,6 @@ export function Layout() {
       ) : null}
     </div>
     </CartProvider>
-    </QuemSomosProvider>
     </SearchProvider>
   );
 }

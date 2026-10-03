@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { ArticleBody, PageHero } from "../components/Article";
 import { AbbotSection, FounderSection } from "../components/FounderSection";
+import { QuemSomosIntro } from "../components/QuemSomosIntro";
 import { Related } from "../components/Related";
 import { getArticle } from "../data/content";
 import type { Crumb } from "../data/seo";
@@ -29,6 +30,7 @@ export function ArticlePage() {
       <PageHero kicker={page.kicker} title={page.title} intro={page.intro} crumbs={crumbsFor(page.path, page.title)} />
       {page.path === "/ordem-de-sao-jose" ? <FounderSection /> : null}
       {page.path === "/mosteiro" ? <AbbotSection /> : null}
+      {page.path === "/igreja/quem-somos" ? <QuemSomosIntro /> : null}
       <ArticleBody page={page} />
       <Related paths={page.related} />
     </>
