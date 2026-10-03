@@ -1,5 +1,3 @@
-import { SITE_CONTACT } from "./site";
-
 export type ProductCategory = "livros" | "oracao";
 
 export type Product = {
@@ -23,7 +21,7 @@ export const STORE_CATEGORIES: { id: ProductCategory | "todos"; label: string }[
 ];
 
 /** Número que recebe os pedidos da loja pelo WhatsApp (só dígitos, com DDI). */
-export const STORE_WHATSAPP = SITE_CONTACT.monasteryWhatsapp;
+export const STORE_WHATSAPP = "5511917202110";
 
 export const PRODUCTS: Product[] = [
   {
