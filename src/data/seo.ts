@@ -58,6 +58,11 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
       "Encontre uma paróquia da Igreja Ortodoxa Grega no Brasil por estado, cidade ou sacerdote.",
     type: "website",
   },
+  "/loja": {
+    title: `Loja | ${SITE.tabTitle}`,
+    description: "Lojinha da Igreja Ortodoxa Grega no Brasil: livros do Padre Kelmon e o komboskini, a corda de oração ortodoxa. Pedido pelo WhatsApp.",
+    type: "website",
+  },
   "/sacramentos": {
     title: `Sacramentos | ${SITE.tabTitle}`,
     description: "Sacramentos ortodoxos: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem — os Santos Mistérios da Igreja.",
@@ -368,6 +373,7 @@ export const PUBLIC_INDEX_PATHS = [
   "/igreja/arcebispos",
   "/paroquias",
   "/sacramentos",
+  "/loja",
   "/clero",
   "/igreja/quem-somos",
   "/igreja/nossa-historia",

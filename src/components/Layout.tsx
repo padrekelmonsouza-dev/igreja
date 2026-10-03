@@ -23,6 +23,7 @@ import { SupportContact } from "./SupportContact";
 import { SiteHero } from "./SiteHero";
 import { QuemSomosProvider } from "./QuemSomosModal";
 import { SearchProvider } from "./SearchModal";
+import { CartProvider } from "./StoreCart";
 import { Seo } from "./Seo";
 
 function labelForHref(href: string, fallback: string) {
@@ -131,6 +132,7 @@ export function Layout() {
   return (
     <SearchProvider>
     <QuemSomosProvider>
+    <CartProvider>
     <div className="min-h-screen w-full bg-ivory text-ink">
       <Seo
         title={seo.title}
@@ -170,6 +172,7 @@ export function Layout() {
         </button>
       ) : null}
     </div>
+    </CartProvider>
     </QuemSomosProvider>
     </SearchProvider>
   );

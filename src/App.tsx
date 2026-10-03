@@ -1,3 +1,4 @@
+import { Loja } from "./pages/Loja";
 import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { ARTICLES } from "./data/content";
@@ -50,6 +51,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/loja" element={<Loja />} />
           <Route path="/igreja" element={<IgrejaHub />} />
           <Route path="/igreja/arcebispos" element={<Arcebispos />} />
           <Route path="/paroquias" element={<Paroquias />} />

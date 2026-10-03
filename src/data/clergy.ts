@@ -174,7 +174,7 @@ export const CLERGY: ClergyProfile[] = [
         period: "Hoje",
         title: "Vida pública",
         text: "Encontros e diálogos na vida pública do Brasil.",
-        photos: kelmonPhotos(97, 100),
+        photos: [...kelmonPhotos(97, 100), ...kelmonPhotos(108, 118)],
       },
       {
         period: "Publicação",

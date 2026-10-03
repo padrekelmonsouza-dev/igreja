@@ -10,6 +10,7 @@ import { SITE } from "../data/site";
 import { MenuIcon } from "./MenuIcon";
 import { useQuemSomosModal } from "./QuemSomosModal";
 import { useSearchModal } from "./SearchModal";
+import { BagIcon, useCart } from "./StoreCart";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -18,6 +19,7 @@ export function Header() {
   const location = useLocation();
   const { openSearch } = useSearchModal();
   const { openQuemSomos } = useQuemSomosModal();
+  const { count: cartCount } = useCart();
   const menuId = useId();
   const headerRef = useRef<HTMLElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -137,7 +139,7 @@ export function Header() {
             scrolled ? "shadow-[0_12px_40px_-24px_rgba(110,18,28,.5)]" : ""
           }`}
         >
-          <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2.5 px-4 py-2.5 xl:flex xl:justify-between xl:gap-6">
+          <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2.5 px-4 py-2.5 xl:flex xl:gap-4">
             <Link to="/" aria-label={SITE.name} className="shrink-0" onClick={() => setOpen(false)}>
               <img
                 src={SITE.logo}
@@ -150,6 +152,7 @@ export function Header() {
 
 
             <div className="flex items-center gap-2 justify-self-end xl:hidden">
+              <StoreButton count={cartCount} compact />
               <button
                 type="button"
                 className={`flex h-11 w-11 items-center justify-center rounded-full border shadow-[0_6px_14px_-8px_rgba(110,18,28,.8)] ${
@@ -194,7 +197,7 @@ export function Header() {
             <form
               id="header-search-panel"
               onSubmit={onSearch}
-              className={`${searchOpen ? "flex" : "hidden"} col-span-2 h-11 w-full min-w-0 items-center gap-2 rounded-full bg-white pl-3.5 pr-1 shadow-[inset_0_1px_0_rgba(255,255,255,.8),0_8px_20px_-16px_rgba(110,18,28,.55)] ring-1 ring-gold/45 transition focus-within:ring-2 focus-within:ring-gold xl:col-auto xl:flex xl:max-w-[18.5rem]`}
+              className={`${searchOpen ? "flex" : "hidden"} col-span-2 h-11 w-full min-w-0 items-center gap-2 rounded-full bg-white pl-3.5 pr-1 shadow-[inset_0_1px_0_rgba(255,255,255,.8),0_8px_20px_-16px_rgba(110,18,28,.55)] ring-1 ring-gold/45 transition focus-within:ring-2 focus-within:ring-gold xl:col-auto xl:ml-auto xl:flex xl:max-w-[18.5rem]`}
             >
               <label className="sr-only" htmlFor="header-search">
                 Pesquisar
@@ -219,6 +222,9 @@ export function Header() {
                 </svg>
               </button>
             </form>
+            <div className="hidden xl:block">
+              <StoreButton count={cartCount} />
+            </div>
           </div>
 
           <nav className="hidden border-t border-burgundy/10 xl:block" aria-label="Principal">
@@ -292,5 +298,27 @@ export function Header() {
       </header>
       <div aria-hidden="true" style={{ height: barHeight }} />
     </>
+  );
+}
+
+function StoreButton({ count, compact = false }: { count: number; compact?: boolean }) {
+  return (
+    <NavLink
+      to="/loja"
+      aria-label={count ? `Loja, ${count} ${count === 1 ? "item" : "itens"} no carrinho` : "Loja"}
+      className={({ isActive }) =>
+        `relative inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#9B2430,#6E121C)] font-semibold text-gold shadow-[0_8px_20px_-10px_rgba(110,18,28,.9)] ring-1 ring-gold/60 transition hover:brightness-110 ${
+          compact ? "h-11 w-11" : "h-11 px-5 text-[13px] uppercase tracking-[0.16em]"
+        } ${isActive ? "ring-2 ring-gold" : ""}`
+      }
+    >
+      <BagIcon className="h-5 w-5" />
+      {compact ? null : "Loja"}
+      {count ? (
+        <span className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[11px] font-bold leading-none tracking-normal text-burgundy ring-2 ring-ivory">
+          {count}
+        </span>
+      ) : null}
+    </NavLink>
   );
 }
