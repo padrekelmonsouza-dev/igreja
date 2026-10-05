@@ -508,6 +508,27 @@ export const CLERGY: ClergyProfile[] = [
       },
     ],
   },
+  {
+    slug: "zinho-joao-uiquissone",
+    name: "Zinho João Uiquissone",
+    role: "Seminarista",
+    category: "seminarista",
+    image: "/media/zinho-joao-uiquissone.jpg",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C., natural de Namarroi, na Zambézia, Moçambique.",
+    facts: [
+      { label: "Nascimento", value: "01/08/1995" },
+      { label: "Naturalidade", value: "Namarroi, Zambézia" },
+      { label: "País", value: "Moçambique" },
+    ],
+    sections: [
+      {
+        title: "Formação",
+        body: [
+          "Zinho João Uiquissone nasceu em 1º de agosto de 1995, no distrito de Namarroi, província da Zambézia, em Moçambique. É seminarista da Igreja Ortodoxa Grega G.O.C.",
+        ],
+      },
+    ],
+  },
 ];
 
 const CLERGY_ALIASES: Record<string, string> = {
