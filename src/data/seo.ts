@@ -426,12 +426,12 @@ export const PUBLIC_INDEX_PATHS = [
     "padre-aquila",
     "padre-pedro",
     "padre-fausto",
-    "dom-jose-vicente-garcia-aguila",
     "jose-augusto-maciel-torres",
     "abade-julio",
     "crispim-souza-silva",
     "max-yuri-fae-silva",
     "mateus-alves-de-oliveira",
+    "andradiano",
   ].map(
     (slug) => `/igreja/hierarquia/${slug}`,
   ),

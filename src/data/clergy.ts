@@ -385,28 +385,6 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
-    slug: "dom-jose-vicente-garcia-aguila",
-    name: "Padre José Vicente Garcia",
-    role: "Padre",
-    category: "presbitero",
-    image: "/media/dom-jose-vicente-garcia-aguila.jpg",
-    summary: "Padre incardinado na Eparquia de São Paulo.",
-    facts: [
-      { label: "Nascimento", value: "17/03/1957" },
-      { label: "Natural", value: "Equador" },
-      { label: "Sagração Episcopal", value: "02/08/2026" },
-      { label: "Incardinado", value: "Eparquia de São Paulo" },
-    ],
-    sections: [
-      {
-        title: "Perfil",
-        body: [
-          "Padre José Vicente Garcia nasceu em 17 de março de 1957, no Equador. Está incardinado na Eparquia de São Paulo. A sagração episcopal ocorreu em 2 de agosto de 2026.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "jose-augusto-maciel-torres",
     name: "José Augusto Maciel Torres",
     role: "Sacerdote Casado",
@@ -505,6 +483,21 @@ export const CLERGY: ClergyProfile[] = [
         body: [
           "Mateus Alves de Oliveira nasceu em 22 de janeiro de 2008. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, no Rio de Janeiro.",
         ],
+      },
+    ],
+  },
+  {
+    slug: "andradiano",
+    name: "Andradiano",
+    role: "Seminarista",
+    category: "seminarista",
+    image: "/media/andradiano.jpg",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, natural de Angola.",
+    facts: [{ label: "Origem", value: "Angola (África)" }],
+    sections: [
+      {
+        title: "Formação",
+        body: ["Andradiano é natural de Angola, na África. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil."],
       },
     ],
   },
