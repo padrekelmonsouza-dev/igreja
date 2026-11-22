@@ -145,7 +145,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       {
         title: "Antes de ir",
         body: [
-          "Confirme endereço e horário com a comunidade. Em dias de festa, a celebração pode começar mais cedo ou ser precedida de Matinas. O Mosteiro de São Basílio, em Nova Iguaçu, pede contato prévio.",
+          "Confirme endereço e horário com a comunidade. Em dias de festa, a celebração pode começar mais cedo ou ser precedida de Matinas.",
         ],
       },
       {

@@ -23,10 +23,6 @@ export const SITE = {
 };
 
 export const SITE_CONTACT = {
-  /** Contato oficial já publicado para o Mosteiro de São Basílio. */
-  monasteryPhone: "(21) 96483-7295",
-  monasteryWhatsapp: "5521964837295",
-  monasteryAddress: "R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045",
   vocationalEmail: "contato@igrejaortodoxagregabrasil.com.br",
 };
 

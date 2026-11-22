@@ -68,7 +68,7 @@ export const CATECHESIS_PATHS: CatechesisPath[] = [
     imageClass: "object-[center_28%] group-hover:scale-105",
     body: [
       "Procure o sacerdote da comunidade mais próxima. A catequese pode ocorrer em encontros presenciais, acompanhamento espiritual e leitura guiada.",
-      "O portal oferece os primeiros passos; a Igreja local completa o caminho. Confirme endereço e horário com a comunidade. O Mosteiro de São Basílio, em Nova Iguaçu, pede contato prévio.",
+      "O portal oferece os primeiros passos; a Igreja local completa o caminho. Confirme endereço e horário com a comunidade.",
       "Bispos, presbíteros, diáconos e fiéis formam um só povo sacerdotal, com ministérios distintos. Sem o povo não há liturgia; sem o bispo não há Igreja local plena.",
     ],
   },

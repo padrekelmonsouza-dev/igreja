@@ -118,25 +118,3 @@ export function FounderSection() {
     />
   );
 }
-
-export function AbbotSection() {
-  return (
-    <FeaturedPerson
-      kicker="Arquimandrita (Abade)"
-      name="Padre Júlio"
-      accent="Abade do Mosteiro"
-      image="/media/padre-julio-cesar-dos-santos.jpg"
-      imageAlt="Arquimandrita Padre Júlio, Abade do Mosteiro de São Basílio"
-      imagePosition="43% center"
-      lead="O Padre Júlio é o atual Abade do Mosteiro de São Basílio, no Rio de Janeiro, onde as vocações são acompanhadas e a formação é recebida."
-      paragraphs={[
-        "Como pai espiritual da comunidade, o Abade guarda a regra monástica, preside a oração e acolhe os que buscam o silêncio de Deus. No mosteiro, quem sente o chamado à vida religiosa ou ao sacerdócio encontra acompanhamento, discernimento e uma formação enraizada na oração, na liturgia e na tradição dos Santos Padres.",
-        "O Mosteiro de São Basílio é também casa de acolhida para os fiéis que desejam rezar, confessar-se e pedir conselho espiritual.",
-      ]}
-      quoteLead="São Basílio Magno,"
-      quote="rogai por nós."
-      profileHref="/igreja/hierarquia/padre-julio-cesar-dos-santos"
-      profileLabel="Ver perfil do Padre Júlio"
-    />
-  );
-}

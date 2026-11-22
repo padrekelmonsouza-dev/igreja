@@ -26,8 +26,7 @@ export function QuemSomosIntro() {
             clérigos e fiéis.
           </p>
           <p className="mt-3 text-[15px] leading-7 text-stone">
-            Há comunidades, missões e o Mosteiro de São Basílio em Marapicu, Nova Iguaçu, com núcleos pastorais em São
-            Paulo e no Rio de Janeiro.
+            Há comunidades e missões, com núcleos pastorais em São Paulo e no Rio de Janeiro.
           </p>
           <p className="mt-5 flex items-start gap-3 font-serif text-[15px] italic leading-6 text-stone">
             <span className="mt-0.5 text-xl not-italic leading-none text-gold" aria-hidden="true">

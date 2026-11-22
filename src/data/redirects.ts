@@ -14,6 +14,9 @@ export const REDIRECTS: Record<string, string> = {
   "/batismo-ortodoxo": "/ortodoxia/batismo",
   "/comece-aqui": "/primeira-visita",
   "/igreja/hierarquia/padre-francisco-angel-e-moran-vida": "/igreja/hierarquia/padre-fausto",
+  "/igreja/hierarquia/dom-leontios": "/arcebispos",
+  "/mosteiro": "/comunidades",
+  "/comunidades/nova-iguacu": "/comunidades",
 };
 
 export const LEGACY_CLERGY_PREFIX = "/hierarquia/";

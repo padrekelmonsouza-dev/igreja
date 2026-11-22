@@ -43,13 +43,13 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/igreja": {
     title: `Igreja | ${SITE.tabTitle}`,
     description:
-      "Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Arcebispos, paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/arcebispos": {
     title: `Arcebispos | ${SITE.tabTitle}`,
     description:
-      "Arcebispos da Igreja Ortodoxa Grega G.O.C.: Dom Eugenios de Atenas e Dom Leontios de Noronha e Valdigem.",
+      "Arcebispos da Igreja Ortodoxa Grega G.O.C.: Dom Eugenios de Atenas.",
     type: "website",
   },
   "/paroquias": {
@@ -411,13 +411,11 @@ export const PUBLIC_INDEX_PATHS = [
   "/politica-de-privacidade",
   "/termos-de-uso",
   "/catequese",
-  "/mosteiro",
   "/santo-sinodo",
   "/pesquisa",
   ...ARTICLES.map((page) => page.path),
   ...[
     "dom-eugenios-de-atenas",
-    "dom-leontios",
     "padre-kelmon-luis",
     "padre-joao-damasceno",
     "padre-jose-sergio-da-silva",

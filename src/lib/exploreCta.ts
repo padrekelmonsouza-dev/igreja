@@ -23,7 +23,6 @@ const PAGE_NAMES: Record<string, string> = {
   "/enciclopedia": "enciclopédia",
   "/paroquias": "paróquias",
   "/sacramentos": "sacramentos",
-  "/mosteiro": "mosteiro",
   "/primeira-visita": "primeira visita",
   "/pedido-de-oracao": "pedido de oração",
   "/pesquisa": "pesquisa",

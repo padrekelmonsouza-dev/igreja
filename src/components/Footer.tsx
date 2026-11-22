@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { COMMUNITIES } from "../data/communities";
 import { FOOTER_INSTITUTIONAL, FOOTER_LEARN, FOOTER_LEGAL, SUPPORT_LINK } from "../data/navigation";
-import { SITE, SITE_CONTACT } from "../data/site";
+import { SITE } from "../data/site";
 
 export function Footer() {
   return (
@@ -23,7 +23,6 @@ export function Footer() {
               Portal institucional de fé, liturgia, história e comunidades da Igreja Ortodoxa Grega no Brasil.
             </p>
             <p className="mt-4 text-sm text-burgundy">{SITE.synod}</p>
-            <p className="mt-3 text-sm text-stone">Mosteiro de São Basílio — {SITE_CONTACT.monasteryAddress}</p>
           </div>
           <div>
             <h3 className="font-serif text-2xl !font-bold text-burgundy">Igreja</h3>

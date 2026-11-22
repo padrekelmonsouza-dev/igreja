@@ -17,12 +17,6 @@ const EPARQUIA_VIDEO = "/videos/igreja-ortodoxa.mp4";
 
 const EPARQUIA_CARDS = [
   {
-    slug: "dom-leontios",
-    title: "Dom Leontios",
-    image: "/media/card-dom-leontios.jpg",
-    imageClass: "object-cover object-[center_18%]",
-  },
-  {
     slug: "dom-eugenios-de-atenas",
     title: "Dom Eugenios de Atenas",
     image: "/media/card-dom-eugenios.jpg",
@@ -52,7 +46,7 @@ const HERO_SHORTCUTS = [
   {
     href: "/comunidades",
     label: "Encontre uma comunidade",
-    description: "Mosteiro em Nova Iguaçu e comunidades em São Paulo e no Rio de Janeiro.",
+    description: "Comunidades em São Paulo e no Rio de Janeiro.",
     icon: "church",
   },
   {
@@ -150,12 +144,11 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
     return {
       kicker: "Igreja",
       paragraphs: [
-        "Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+        "Arcebispos, paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ...(article?.sections.slice(0, 3).flatMap((section) => section.body) || []),
       ],
       blocks: [
         { title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
-        { title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
         { title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
         { title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },
         { title: "Pastorais", text: "Acolhida, família, enfermos e formação." },

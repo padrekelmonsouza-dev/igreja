@@ -60,40 +60,6 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
-    slug: "dom-leontios",
-    name: "Dom Leontios de Noronha e Valdigem",
-    role: "Arcebispo Metropolita da América do Sul",
-    category: "arcebispo",
-    image: "/media/card-dom-leontios.jpg",
-    summary:
-      "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil.",
-    facts: [
-      { label: "Título", value: "Arcebispo Metropolita da América do Sul" },
-      { label: "Atuação", value: "América do Sul e Brasil" },
-      { label: "Página", value: "Hierarquia e memória pastoral" },
-    ],
-    sections: [
-      {
-        title: "Perfil histórico e pastoral",
-        body: [
-          "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil. Como Arcebispo Metropolita da América do Sul, dedicou sua vida ao serviço da Santa Igreja, ao anúncio do Santo Evangelho e à preservação da fé ortodoxa recebida dos Santos Apóstolos e transmitida ao longo dos séculos pelos Santos Padres.",
-        ],
-      },
-      {
-        title: "Atuação na América do Sul",
-        body: [
-          "O cuidado metropolitano abrange o acompanhamento das comunidades, a ordenação e a orientação do clero, a fundação de missões e a guarda da tradição litúrgica em terras sul-americanas.",
-        ],
-      },
-      {
-        title: "Legado no Brasil",
-        body: [
-          "O portal reserva a esta página o relato de visitas, fundações, homilias e registros históricos. A distinção entre memória editorial e documento oficial será sempre observada.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "padre-kelmon-luis",
     name: "Padre Kelmon Luís",
     role: "Eparquia de São Paulo · SP",
@@ -408,26 +374,16 @@ export const CLERGY: ClergyProfile[] = [
   {
     slug: "abade-julio",
     name: "Arquimandrita Abade Júlio",
-    role: "Mosteiro de São Basílio",
+    role: "Arquimandrita",
     category: "monastico",
     image: "/media/brasao-goc.webp",
-    summary: "Vida monástica e paternidade espiritual no Mosteiro de São Basílio.",
-    facts: [
-      { label: "Ministério", value: "Abade" },
-      { label: "Casa", value: "Mosteiro de São Basílio" },
-      { label: "Cidade", value: "Nova Iguaçu / RJ" },
-    ],
+    summary: "Vida monástica e paternidade espiritual.",
+    facts: [{ label: "Ministério", value: "Arquimandrita" }],
     sections: [
       {
         title: "Ministério",
         body: [
           "O Arquimandrita Abade Júlio é apresentado na hierarquia da Igreja em relação à vida monástica. O abade é pai espiritual da comunidade: guarda a regra, preside a oração e acolhe os que buscam o silêncio de Deus.",
-        ],
-      },
-      {
-        title: "Mosteiro",
-        body: [
-          "O Mosteiro de São Basílio, em Marapicu, Nova Iguaçu, é o endereço de referência da vida monástica neste portal. Visitas devem ser combinadas com antecedência.",
         ],
       },
     ],
@@ -544,15 +500,6 @@ export function isArchbishop(slug: string) {
 }
 
 export const PARISHES = [
-  {
-    estado: "RJ",
-    cidade: "Nova Iguaçu",
-    comunidade: "Mosteiro de São Basílio",
-    sacerdote: "Arquimandrita Abade Júlio",
-    endereco: "R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045",
-    contato: "(21) 96483-7295",
-    href: "/comunidades/nova-iguacu",
-  },
   {
     estado: "SP",
     cidade: "São Paulo",

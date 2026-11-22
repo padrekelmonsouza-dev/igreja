@@ -2,15 +2,6 @@ import { Link } from "react-router-dom";
 
 const HIERARCHY_NEWS_CARDS = [
   {
-    slug: "dom-leontios",
-    title: "Dom Leontios de Noronha e Valdigem",
-    kicker: "Sua Eminência Dom Leontios",
-    image: "/media/card-dom-leontios.jpg",
-    imageClass: "object-cover object-[center_18%]",
-    meta: "De bendita e eterna memória",
-    body: "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil. Como Arcebispo Metropolita da América do Sul, dedicou sua vida ao serviço da Santa Igreja, ao anúncio do Santo Evangelho e à preservação da fé ortodoxa recebida dos Santos Apóstolos e transmitida ao longo dos séculos pelos Santos Padres.",
-  },
-  {
     slug: "dom-eugenios-de-atenas",
     title: "O Arcebispo atual: Dom Eugenios de Atenas",
     kicker: "O Santo Sínodo de Sua Beatitude Eugenios de Atenas",

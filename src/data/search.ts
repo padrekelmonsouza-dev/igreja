@@ -119,7 +119,7 @@ const SYNONYMS: Record<string, string[]> = {
   maria: ["theotokos"],
   virgem: ["theotokos"],
   calendario: ["juliano", "velho calendario"],
-  endereco: ["comunidades", "mosteiro"],
+  endereco: ["comunidades", "paroquias"],
   horario: ["liturgia", "comunidades"],
   goc: ["g.o.c.", "genuinos"],
   grega: ["goc", "ortodoxa"],

@@ -20,7 +20,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   { term: "Jejum", definition: "Abstinência alimentar e ascese espiritual segundo o calendário da Igreja.", href: "/ortodoxia/jejum" },
   { term: "Liturgia das Horas", definition: "Ofícios cotidianos (Vésperas, Completas, Matinas, Horas) que santificam o tempo." },
   { term: "Metropolita", definition: "Bispo que preside uma metrópole ou região de eparquias." },
-  { term: "Mosteiro", definition: "Casa de vida monástica, oração e hospitalidade.", href: "/mosteiro" },
+  { term: "Mosteiro", definition: "Casa de vida monástica, oração e hospitalidade." },
   { term: "Myron", definition: "Santo óleo consagrado, usado na Crisma." },
   { term: "Ortodoxia", definition: "Reta fé e reta glória: a fé apostólica confessada e celebrada pela Igreja.", href: "/ortodoxia/o-que-e-a-ortodoxia" },
   { term: "Presbítero", definition: "Sacerdote ordenado pelo bispo para celebrar os Mistérios e pastorear o povo." },

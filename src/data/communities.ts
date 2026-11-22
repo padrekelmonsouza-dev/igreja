@@ -1,5 +1,3 @@
-import { SITE_CONTACT } from "./site";
-
 export type Community = {
   slug: string;
   name: string;
@@ -23,26 +21,6 @@ export type Community = {
 };
 
 export const COMMUNITIES: Community[] = [
-  {
-    slug: "nova-iguacu",
-    name: "Mosteiro de São Basílio",
-    city: "Nova Iguaçu",
-    state: "RJ",
-    stateName: "Rio de Janeiro",
-    address: SITE_CONTACT.monasteryAddress,
-    cep: "26295-045",
-    phone: SITE_CONTACT.monasteryPhone,
-    whatsapp: SITE_CONTACT.monasteryWhatsapp,
-    clergy: "Arquimandrita Abade Júlio",
-    clergyHref: "/igreja/hierarquia/abade-julio",
-    patron: "São Basílio",
-    scheduleNote:
-      "Horários de celebração e normas de visita podem variar segundo o calendário litúrgico. Recomenda-se contato prévio antes da primeira visita.",
-    photos: ["/media/hero-proto.webp"],
-    mapsQuery: SITE_CONTACT.monasteryAddress,
-    href: "/comunidades/nova-iguacu",
-    summary: "Casa de vida monástica, oração e hospitalidade em Marapicu, Nova Iguaçu.",
-  },
   {
     slug: "sao-paulo",
     name: "Eparquia de São Paulo",

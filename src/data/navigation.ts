@@ -18,7 +18,6 @@ export const MAIN_NAV: NavGroup[] = [
   { id: "igreja", label: "Igreja", href: "/igreja", icon: "church" },
   { id: "arcebispos", label: "Arcebispos", href: "/arcebispos", icon: "bishop" },
   { id: "clero", label: "Clero", href: "/clero", icon: "clergy" },
-  { id: "mosteiros", label: "Mosteiros", href: "/mosteiro", icon: "monastery" },
   { id: "paroquias", label: "Paróquias", href: "/paroquias", icon: "parish" },
   { id: "sacramentos", label: "Sacramentos", href: "/sacramentos", icon: "liturgy" },
   { id: "pastorais", label: "Pastorais", href: "/pastorais", icon: "pastoral" },
@@ -34,7 +33,6 @@ export const START_HERE_LINK: NavLink = { href: "/primeira-visita", label: "Come
 
 export const FOOTER_INSTITUTIONAL: NavLink[] = [
   { href: "/arcebispos", label: "Arcebispos" },
-  { href: "/mosteiro", label: "Mosteiros" },
   { href: "/paroquias", label: "Paróquias" },
   { href: "/sacramentos", label: "Sacramentos" },
   { href: "/pastorais", label: "Pastorais" },

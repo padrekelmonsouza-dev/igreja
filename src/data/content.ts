@@ -18,7 +18,6 @@ export const NAV_PRIMARY: NavItem[] = [
 
 export const NAV_MORE: NavItem[] = [
   { href: "/arcebispos", label: "Arcebispos", icon: "bishop" },
-  { href: "/mosteiro", label: "Mosteiros", icon: "monastery" },
   { href: "/paroquias", label: "Paróquias", icon: "parish" },
   { href: "/sacramentos", label: "Sacramentos", icon: "liturgy" },
   { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
@@ -160,60 +159,13 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "Presença no Brasil",
         body: [
-          "Há comunidades, missões e um mosteiro. A Eparquia de São Paulo e a Eparquia do Rio de Janeiro figuram entre os núcleos pastorais já apresentados, além do Mosteiro de São Basílio, em Nova Iguaçu.",
-        ],
-      },
-      {
-        title: "Mosteiro de São Basílio",
-        body: [
-          "O mosteiro é coração de oração da Igreja. Situado em Marapicu, Nova Iguaçu (RJ), é lugar de silêncio, liturgia e acolhida espiritual.",
+          "Há comunidades e missões. A Eparquia de São Paulo e a Eparquia do Rio de Janeiro figuram entre os núcleos pastorais já apresentados.",
         ],
       },
       {
         title: "Missões",
         body: [
           "As missões ortodoxas existem para anunciar o Evangelho, catequizar, formar comunidades e acompanhar quem deseja entrar na vida da Igreja. O convite permanece o mesmo do Evangelho: vinde e vede.",
-        ],
-      },
-    ],
-  },
-  {
-    path: "/mosteiro",
-    title: "Mosteiro de São Basílio",
-    kicker: "Oração e espiritualidade",
-    intro:
-      "R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045. Telefone: (21) 96483-7295.",
-    sections: [
-      {
-        title: "História",
-        body: [
-          "O Mosteiro de São Basílio é apresentado como casa de vida monástica da Igreja Ortodoxa Grega G.O.C. no Brasil. Dedicado ao grande Pai da Igreja, São Basílio, o mosteiro une oração, trabalho e hospitalidade.",
-        ],
-      },
-      {
-        title: "Espiritualidade",
-        body: [
-          "A vida monástica ortodoxa se apoia no Ofício Divino, na regra de oração, no silêncio interior e na obediência evangélica. O mosteiro não é um museu: é um coração que reza pela Igreja e pelo mundo.",
-        ],
-      },
-      {
-        title: "Localização",
-        body: [
-          "Endereço: R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045.",
-          "Recomenda-se contato prévio antes da primeira visita, especialmente para refeições, hospedagem ou participação em ofícios.",
-        ],
-      },
-      {
-        title: "Contato",
-        body: [
-          "Telefone / WhatsApp: (21) 96483-7295.",
-          "Horários de celebração e normas de visita podem variar segundo o calendário litúrgico e a vida da comunidade monástica.",
-        ],
-      },
-      {
-        title: "Celebrações",
-        body: [
-          "A Divina Liturgia e os ofícios cotidianos seguem o calendário patrístico. Confirme datas de festas, vigílias e períodos de retiro com a comunidade.",
         ],
       },
     ],
@@ -352,12 +304,6 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "Dom Eugenios de Atenas",
         body: [
           "Dom Eugenios de Atenas é apresentado por este projeto como referência central do Santo Sínodo de Eugenio de Atenas. Sua autoridade é eclesiástica e sinodal.",
-        ],
-      },
-      {
-        title: "Na América do Sul",
-        body: [
-          "A presença na América do Sul conta com o ministério de Dom Leontios de Noronha e Valdigem, Arcebispo Metropolita, cujo perfil histórico e pastoral é apresentado nas páginas de hierarquia.",
         ],
       },
     ],
@@ -712,7 +658,6 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "No Santo Sínodo e no Brasil",
         body: [
           "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil. Dom Eugenios de Atenas é apresentado como referência central dessa autoridade sinodal.",
-          "A presença na América do Sul conta com o ministério de Dom Leontios de Noronha e Valdigem, Arcebispo Metropolita, cujo perfil histórico e pastoral é apresentado nas páginas de hierarquia.",
         ],
       },
     ],

@@ -177,7 +177,7 @@ export const FORMATION_LINKS: (CatalogItem & { category: string })[] = [
 export const DONATION_PROJECTS = [
   {
     title: "Manutenção",
-    text: "Cuidado dos templos, do mosteiro e das necessidades ordinárias da vida comunitária.",
+    text: "Cuidado dos templos e das necessidades ordinárias da vida comunitária.",
   },
   {
     title: "Obras",

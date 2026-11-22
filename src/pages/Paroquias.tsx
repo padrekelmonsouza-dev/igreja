@@ -86,8 +86,7 @@ export function Paroquias() {
           <h2 className="text-2xl">Mapa de comunidades</h2>
           <p className="mt-3 max-w-3xl text-muted">
             Os endereços oficiais completos, horários da Divina Liturgia, fotos e mapa interativo serão ampliados
-            conforme cada comunidade confirmar seus dados. O Mosteiro de São Basílio já publica endereço e telefone
-            oficiais.
+            conforme cada comunidade confirmar seus dados.
           </p>
         </div>
       </section>

@@ -39,7 +39,6 @@ export const WEBNODE_CARDS: PortalCard[] = [
     summary: "Comunhão com o Santo Sínodo de Atenas, Tradição Apostólica e Calendário Patrístico.",
     body: [
       "Pela graça de Deus e sob a proteção de Nosso Senhor e Salvador Jesus Cristo, a Igreja Ortodoxa Grega G.O.C. no Brasil prossegue sua sagrada missão como parte integrante do Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas, conservando inalterada a fé dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja Ortodoxa.",
-      "A presença desta jurisdição eclesiástica em terras brasileiras teve seu início através dos labores apostólicos de Sua Eminência Dom Leontios, de bendita e eterna memória.",
       "Firmada sobre a Tradição Sagrada e sustentada pela sucessão apostólica, a Igreja permanece em plena comunhão com o Santo Sínodo de Atenas, guardando o depósito da fé e perseverando na celebração dos Santos Mistérios.",
       "Nos dias presentes, a administração e o cuidado pastoral da Igreja no Brasil encontram-se confiados ao Reverendíssimo Arquimandrita Abade Júlio, Superior Eclesiástico da missão brasileira.",
     ],

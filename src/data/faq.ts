@@ -20,7 +20,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Existe Igreja Ortodoxa no Brasil?",
     answer:
-      "Sim. Há paróquias, missões e mosteiros. Este portal apresenta a Igreja Ortodoxa Grega G.O.C. no Brasil, comunidades em São Paulo e Rio de Janeiro, e o Mosteiro de São Basílio em Nova Iguaçu.",
+      "Sim. Há paróquias e missões. Este portal apresenta a Igreja Ortodoxa Grega G.O.C. no Brasil e suas comunidades em São Paulo e no Rio de Janeiro.",
     href: "/comunidades",
   },
   {
