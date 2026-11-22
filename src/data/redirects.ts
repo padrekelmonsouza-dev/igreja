@@ -18,6 +18,7 @@ export const REDIRECTS: Record<string, string> = {
   "/igreja/hierarquia/dom-eugenios-de-atenas": "/clero",
   "/igreja/hierarquia/padre-joao-damasceno": "/clero",
   "/arcebispos": "/clero",
+  "/ordem-de-sao-jose": "/foro-do-brasil",
   "/igreja/hierarquia/abade-julio": "/clero",
   "/igreja/hierarquia/padre-julio-cesar-dos-santos": "/clero",
   "/igreja/arcebispos": "/clero",

@@ -131,14 +131,14 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
     return {
       kicker: "Igreja",
       paragraphs: [
-        "Paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Missão Theotokos.",
+        "Paróquias, sacramentos, pastorais e o Foro do Brasil — a vida institucional da Missão Theotokos.",
         ...(article?.sections.slice(0, 3).flatMap((section) => section.body) || []),
       ],
       blocks: [
         { title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
         { title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },
         { title: "Pastorais", text: "Acolhida, família, enfermos e formação." },
-        { title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
+        { title: "Foro do Brasil", text: "Diálogo plural pela democracia, idealizado pelo Padre Kelmon." },
       ],
     };
   }

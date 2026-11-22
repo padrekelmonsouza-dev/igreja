@@ -29,7 +29,7 @@ const PAGE_NAMES: Record<string, string> = {
   "/catequese": "catequese",
   "/missoes": "missões",
   "/pastorais": "pastorais",
-  "/ordem-de-sao-jose": "ordem de são josé",
+  "/foro-do-brasil": "foro do brasil",
   "/eventos": "eventos",
   "/politica-de-privacidade": "política de privacidade",
   "/termos-de-uso": "termos de uso",

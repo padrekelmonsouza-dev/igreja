@@ -100,21 +100,52 @@ export function FeaturedPerson({
 export function FounderSection() {
   return (
     <FeaturedPerson
-      kicker="Fundador"
+      kicker="Presidente"
       name="Padre Kelmon Luís"
-      accent="fundador da Ordem"
+      accent="idealizador do Foro do Brasil"
       image="/media/padre-kelmon-fundador.png"
-      imageAlt="Padre Kelmon Luís, fundador da Ordem de São José"
+      imageAlt="Padre Kelmon Luís, idealizador e presidente do Foro do Brasil"
       cutout
-      lead="A Ordem de São José foi fundada pelo Padre Kelmon Luís, presbítero da Eparquia de São Paulo."
+      lead="O Foro do Brasil foi idealizado pelo Padre Kelmon Luís, presbítero da Eparquia de São Paulo, que preside o movimento."
       paragraphs={[
-        "Inspirado em São José, guarda do Menino Jesus e da Santíssima Theotokos, o Padre Kelmon reuniu leigos e fiéis dispostos a servir com silêncio, trabalho e fidelidade: proteger a Igreja, a família e os mais frágeis.",
+        "Iniciado em 29 de junho de 2023, o Foro do Brasil reúne pessoas de todo o país em defesa da liberdade, da livre expressão, dos direitos dos cidadãos e da dignidade humana.",
         "Sua caminhada de fé, formação e missão está contada na página de perfil, com a galeria «Minha história em fotos».",
       ]}
-      quoteLead="São José, homem justo,"
-      quote="rogai por nós."
+      quoteLead="Pelo Brasil que acreditamos,"
+      quote="pelos direitos que defendemos."
       profileHref="/igreja/hierarquia/padre-kelmon-luis"
       profileLabel="Conhecer o Padre Kelmon"
     />
+  );
+}
+
+const FORO_LINKS = [
+  { href: "https://forobrasil.org/", label: "Site oficial" },
+  { href: "https://forobrasil.org/contato/", label: "Faça parte" },
+  { href: "https://www.instagram.com/forodobrasilbr", label: "Instagram" },
+  { href: "https://www.youtube.com/@forodobrasil-br", label: "YouTube" },
+] as const;
+
+export function ForoLinks() {
+  return (
+    <section className="mx-auto w-full max-w-site px-4 pb-14">
+      <div className="rounded-3xl border border-burgundy/10 bg-white p-6 sm:p-8">
+        <p className="kicker">Foro do Brasil</p>
+        <h2 className="mt-3 font-serif text-3xl">Acompanhe o movimento.</h2>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {FORO_LINKS.map((link, index) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className={index === 0 ? "btn btn-burgundy" : "btn btn-outline-dark"}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

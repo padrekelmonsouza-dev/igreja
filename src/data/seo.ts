@@ -43,7 +43,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/igreja": {
     title: `Igreja | ${SITE.tabTitle}`,
     description:
-      "Paróquias, sacramentos, pastorais e a Ordem de São José da Missão Theotokos.",
+      "Paróquias, sacramentos, pastorais e o Foro do Brasil da Missão Theotokos.",
     type: "website",
   },
   "/paroquias": {

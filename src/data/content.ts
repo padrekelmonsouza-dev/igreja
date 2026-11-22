@@ -20,7 +20,7 @@ export const NAV_MORE: NavItem[] = [
   { href: "/paroquias", label: "Paróquias", icon: "parish" },
   { href: "/sacramentos", label: "Sacramentos", icon: "liturgy" },
   { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
-  { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
+  { href: "/foro-do-brasil", label: "Foro do Brasil", icon: "joseph" },
   { href: "/pedido-de-oracao", label: "Pedidos de oração", icon: "prayer" },
 ];
 
@@ -340,28 +340,46 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/ordem-de-sao-jose",
-    title: "Ordem de São José",
-    kicker: "Serviço e proteção",
-    intro:
-      "Uma obra de serviço inspirada em São José, guarda do Menino Jesus e da Santíssima Theotokos.",
+    path: "/foro-do-brasil",
+    title: "Foro do Brasil",
+    kicker: "Diálogo plural pela democracia",
+    intro: "Pelo Brasil que acreditamos, pelos direitos que defendemos.",
     sections: [
       {
-        title: "Carisma",
+        title: "O que é",
         body: [
-          "São José ensina silêncio, trabalho, paternidade espiritual e fidelidade. A Ordem de São José é apresentada neste portal como espaço de leigos e fiéis comprometidos com a proteção da Igreja, da família e dos mais frágeis.",
+          "O Foro do Brasil é um movimento de articulação política e social que reúne forças conservadoras de todo o país para defender valores, fortalecer a soberania nacional e promover mudanças estruturais.",
+          "É um espaço de representação e defesa dos valores de uma sociedade livre e justa: liberdade, propriedade, livre expressão e os direitos dos cidadãos, com iniciativas de cultura, educação, saúde e dignidade humana.",
         ],
       },
       {
-        title: "Obras",
+        title: "Valores",
+        body: ["Liberdade, Humanidade, Cristianismo e a União entre povos."],
+      },
+      {
+        title: "História",
         body: [
-          "Apoio a missões, cuidado com templos e mosteiros, assistência caritativa e colaboração nas pastorais. O detalhamento oficial de estatutos e graus será publicado pela hierarquia.",
+          "Idealizado pelo Padre Kelmon, o movimento começou em 29 de junho de 2023 como organização sem fins lucrativos.",
+          "Em fevereiro de 2025 foi constituído o Instituto Foro do Brasil, pessoa jurídica de direito privado, sem cunho político-partidário.",
+        ],
+      },
+      {
+        title: "Organização",
+        body: [
+          "O Foro do Brasil se organiza em um Diretório Nacional e em diretórios estaduais, como os de São Paulo, Rio de Janeiro, Santa Catarina, Minas Gerais e Paraná.",
+          "Conta também com os grupos Foro do Brasil Juventude, Mulher e Indígena, com núcleos no Equador e no Peru, e com comissões de trabalho e regimento interno próprios.",
+        ],
+      },
+      {
+        title: "Liderança nacional",
+        body: [
+          "Padre Kelmon, Presidente. Pastor Odair José Leite da Silva, Vice-presidente. Roderick Navarro, Secretário Geral.",
         ],
       },
       {
         title: "Como participar",
         body: [
-          "Quem desejar conhecer a Ordem deve procurar o clero da comunidade local. Não se trata de um atalho para ministérios ordenados, mas de um caminho de serviço laical e eclesial.",
+          "O cadastro para fazer parte do movimento e receber notícias está no site oficial, forobrasil.org.",
         ],
       },
     ],

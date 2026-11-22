@@ -20,7 +20,7 @@ export const MAIN_NAV: NavGroup[] = [
   { id: "paroquias", label: "Paróquias", href: "/paroquias", icon: "parish" },
   { id: "sacramentos", label: "Sacramentos", href: "/sacramentos", icon: "liturgy" },
   { id: "pastorais", label: "Pastorais", href: "/pastorais", icon: "pastoral" },
-  { id: "ordem-de-sao-jose", label: "Ordem de São José", href: "/ordem-de-sao-jose", icon: "joseph" },
+  { id: "foro-do-brasil", label: "Foro do Brasil", href: "/foro-do-brasil", icon: "joseph" },
   { id: "liturgia", label: "Liturgia", href: "/liturgia", icon: "liturgy" },
   { id: "catequese", label: "Catequese", href: "/catequese", icon: "catechesis" },
   { id: "missoes", label: "Missões", href: "/missoes", icon: "mission" },
@@ -34,7 +34,7 @@ export const FOOTER_INSTITUTIONAL: NavLink[] = [
   { href: "/paroquias", label: "Paróquias" },
   { href: "/sacramentos", label: "Sacramentos" },
   { href: "/pastorais", label: "Pastorais" },
-  { href: "/ordem-de-sao-jose", label: "Ordem de São José" },
+  { href: "/foro-do-brasil", label: "Foro do Brasil" },
   { href: "/pedido-de-oracao", label: "Pedidos de oração" },
 ];
 

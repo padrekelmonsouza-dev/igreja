@@ -6,7 +6,7 @@ export function IgrejaHub() {
       <PageHero
         kicker="Igreja"
         title="Missão Theotokos"
-        intro="Paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Missão Theotokos."
+        intro="Paróquias, sacramentos, pastorais e o Foro do Brasil — a vida institucional da Missão Theotokos."
         crumbs={[{ href: "/igreja", label: "Igreja" }]}
       />
       <section className="site-section mx-auto w-full max-w-site px-4">
@@ -15,7 +15,7 @@ export function IgrejaHub() {
             { href: "/paroquias", title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
             { href: "/sacramentos", title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },
             { href: "/pastorais", title: "Pastorais", text: "Acolhida, família, enfermos, formação e Pastoral Política." },
-            { href: "/ordem-de-sao-jose", title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
+            { href: "/foro-do-brasil", title: "Foro do Brasil", text: "Diálogo plural pela democracia, idealizado pelo Padre Kelmon." },
           ]}
         />
       </section>

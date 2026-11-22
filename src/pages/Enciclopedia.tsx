@@ -63,7 +63,7 @@ export function Enciclopedia() {
                   "/clero": "Bispos e sacerdotes da Igreja no Brasil.",
                   "/paroquias": "Encontre uma paróquia ortodoxa por estado, cidade ou sacerdote.",
                   "/sacramentos": "Os Santos Mistérios: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem.",
-                  "/igreja": "Paróquias, pastorais e a Ordem de São José.",
+                  "/igreja": "Paróquias, pastorais e o Foro do Brasil.",
                 };
                 const titles: Record<string, string> = {
                   "/igreja/hierarquia": "Clero",
