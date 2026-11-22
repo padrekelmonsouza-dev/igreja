@@ -96,7 +96,7 @@ export function Comunidades() {
               />
             ) : (
               <div className="grid h-full place-items-center bg-ivory p-6 text-stone">
-                O mapa é exibido apenas para comunidades com endereço oficial.
+                Fale com a comunidade para combinar sua visita.
               </div>
             )}
           </div>

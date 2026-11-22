@@ -95,7 +95,7 @@ export function Hierarquia() {
       <PageHero
         kicker="Serviço à Igreja"
         title="Clero"
-        intro="Arcebispos, padres e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil."
+        intro="Padres e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/clero", label: "Clero" }]}
       />
 

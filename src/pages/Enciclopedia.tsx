@@ -18,7 +18,7 @@ const GROUPS = [
   },
   {
     title: "Institucional",
-    paths: ["/igreja", "/arcebispos", "/clero", "/missoes"],
+    paths: ["/igreja", "/clero", "/missoes"],
   },
 ];
 
@@ -63,15 +63,13 @@ export function Enciclopedia() {
                   "/clero": "Bispos e sacerdotes da Igreja no Brasil.",
                   "/paroquias": "Encontre uma paróquia ortodoxa por estado, cidade ou sacerdote.",
                   "/sacramentos": "Os Santos Mistérios: Batismo, Crisma, Eucaristia, Confissão, Unção, Matrimônio e Ordem.",
-                  "/arcebispos": "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul.",
-                  "/igreja": "Arcebispos, paróquias, pastorais e a Ordem de São José.",
+                  "/igreja": "Paróquias, pastorais e a Ordem de São José.",
                 };
                 const titles: Record<string, string> = {
                   "/igreja/hierarquia": "Clero",
                   "/clero": "Clero",
                   "/paroquias": "Paróquias",
                   "/sacramentos": "Sacramentos",
-                  "/arcebispos": "Arcebispos",
                   "/igreja": "Igreja",
                 };
                 const title = page?.title || titles[path] || path;

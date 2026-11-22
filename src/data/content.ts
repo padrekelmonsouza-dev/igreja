@@ -17,7 +17,6 @@ export const NAV_PRIMARY: NavItem[] = [
 ];
 
 export const NAV_MORE: NavItem[] = [
-  { href: "/arcebispos", label: "Arcebispos", icon: "bishop" },
   { href: "/paroquias", label: "Paróquias", icon: "parish" },
   { href: "/sacramentos", label: "Sacramentos", icon: "liturgy" },
   { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
@@ -188,7 +187,6 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "Autoridade",
         body: [
           "Na eclesiologia ortodoxa, nenhuma pessoa particular substitui a Igreja. O bispo preside na caridade, em sucessão apostólica, e o sínodo guarda a fé comum.",
-          "Dom Eugenios de Atenas é apresentado neste projeto como referência central dessa autoridade sinodal.",
         ],
       },
       {
@@ -298,12 +296,6 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "O ministério primazial",
         body: [
           "O arcebispo primaz preside o Santo Sínodo, guarda a comunhão entre os bispos e representa a Igreja na caridade. Seu ministério é apostólico: confirmar os irmãos e pastorear com os cânones e o Evangelho.",
-        ],
-      },
-      {
-        title: "Dom Eugenios de Atenas",
-        body: [
-          "Dom Eugenios de Atenas é apresentado por este projeto como referência central do Santo Sínodo de Eugenio de Atenas. Sua autoridade é eclesiástica e sinodal.",
         ],
       },
     ],
@@ -657,7 +649,7 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "No Santo Sínodo e no Brasil",
         body: [
-          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil. Dom Eugenios de Atenas é apresentado como referência central dessa autoridade sinodal.",
+          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
     ],

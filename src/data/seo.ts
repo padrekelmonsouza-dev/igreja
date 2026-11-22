@@ -43,13 +43,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/igreja": {
     title: `Igreja | ${SITE.tabTitle}`,
     description:
-      "Arcebispos, paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
-    type: "website",
-  },
-  "/arcebispos": {
-    title: `Arcebispos | ${SITE.tabTitle}`,
-    description:
-      "Arcebispos da Igreja Ortodoxa Grega G.O.C.: Dom Eugenios de Atenas.",
+      "Paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/paroquias": {
@@ -71,7 +65,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/clero": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
-      "Arcebispos, padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/liturgia": {
@@ -95,7 +89,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/igreja/hierarquia": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
-      "Arcebispos, padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     type: "website",
   },
   "/ortodoxia": {
@@ -370,7 +364,6 @@ export function placeJsonLd(slug: string) {
 export const PUBLIC_INDEX_PATHS = [
   "/",
   "/igreja",
-  "/arcebispos",
   "/paroquias",
   "/sacramentos",
   "/loja",
@@ -415,9 +408,7 @@ export const PUBLIC_INDEX_PATHS = [
   "/pesquisa",
   ...ARTICLES.map((page) => page.path),
   ...[
-    "dom-eugenios-de-atenas",
     "padre-kelmon-luis",
-    "padre-joao-damasceno",
     "padre-jose-sergio-da-silva",
     "padre-riuler-silva-de-jesus",
     "padre-julio-cesar-dos-santos",

@@ -9,7 +9,6 @@ const PAGE_NAMES: Record<string, string> = {
   "/igreja/hierarquia": "clero",
   "/comunidades": "comunidades",
   "/igreja": "igreja",
-  "/arcebispos": "arcebispos",
   "/ortodoxia": "ortodoxia",
   "/calendario": "calendário",
   "/perguntas-frequentes": "perguntas frequentes",

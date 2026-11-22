@@ -26,40 +26,6 @@ function kelmonPhotos(from: number, to: number) {
 
 export const CLERGY: ClergyProfile[] = [
   {
-    slug: "dom-eugenios-de-atenas",
-    name: "Dom Eugenios de Atenas",
-    role: "Santo Sínodo",
-    category: "arcebispo",
-    image: "/media/card-dom-eugenios.jpg",
-    summary:
-      "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C.",
-    facts: [
-      { label: "Ministério", value: "Primazia sinodal" },
-      { label: "Sede", value: "Atenas" },
-      { label: "Referência", value: "Santo Sínodo de Eugenio de Atenas" },
-    ],
-    sections: [
-      {
-        title: "Perfil",
-        body: [
-          "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
-        ],
-      },
-      {
-        title: "Ministério",
-        body: [
-          "Cabe ao primaz convocar, presidir e confirmar a vida sinodal, guardar os cânones e pastorear com os irmãos no episcopado. A Igreja no Brasil se apresenta em referência a este sínodo.",
-        ],
-      },
-      {
-        title: "Comunicados",
-        body: [
-          "Documentos, cartas e orientações oficiais serão publicados na página do Santo Sínodo e nesta biografia à medida que forem disponibilizados.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "padre-kelmon-luis",
     name: "Padre Kelmon Luís",
     role: "Eparquia de São Paulo · SP",
@@ -147,39 +113,6 @@ export const CLERGY: ClergyProfile[] = [
         title: "Meu livro",
         text: "Fé e Política de mãos dadas: breves e essenciais orientações para o jovem político. Momentos de lançamento e divulgação do livro.",
         photos: kelmonPhotos(101, 107),
-      },
-    ],
-  },
-  {
-    slug: "padre-joao-damasceno",
-    name: "Padre João Damasceno",
-    role: "Eparquia do Rio de Janeiro",
-    category: "presbitero",
-    image: "/media/padre-joao-damasceno.jpg",
-    summary: "Presbítero da Eparquia do Rio de Janeiro.",
-    facts: [
-      { label: "Nome civil", value: "Lucas Soares Chagas" },
-      { label: "Nascimento", value: "25/07/1992" },
-      { label: "Eparquia", value: "Rio de Janeiro" },
-    ],
-    sections: [
-      {
-        title: "Biografia",
-        body: [
-          "Padre João Damasceno, no século Lucas Soares Chagas, nasceu em 25 de julho de 1992. Serve na Eparquia do Rio de Janeiro, sob o nome eclesiástico que evoca o grande doutor São João Damasceno, defensor dos Santos Ícones.",
-        ],
-      },
-      {
-        title: "Ministério",
-        body: [
-          "O presbítero dedica-se à vida litúrgica, à formação dos fiéis e ao cuidado das comunidades fluminenses, em comunhão com a hierarquia da Igreja.",
-        ],
-      },
-      {
-        title: "Homilias e catequese",
-        body: [
-          "Registros de homilias, encontros de formação e materiais audiovisuais serão publicados nesta página.",
-        ],
       },
     ],
   },
@@ -505,7 +438,6 @@ export const PARISHES = [
     cidade: "São Paulo",
     comunidade: "Eparquia de São Paulo",
     sacerdote: "Padre Kelmon Luís",
-    endereco: "Rua Oscar Bressane, 311 - Bosque da Saúde, São Paulo - SP",
     contato: "Ver perfil do clero",
     href: "/igreja/hierarquia/padre-kelmon-luis",
   },
@@ -513,9 +445,8 @@ export const PARISHES = [
     estado: "RJ",
     cidade: "Rio de Janeiro",
     comunidade: "Eparquia do Rio de Janeiro",
-    sacerdote: "Padre João Damasceno",
-    endereco: "Endereço litúrgico a confirmar com o pároco",
+    sacerdote: "A confirmar",
     contato: "Ver perfil do clero",
-    href: "/igreja/hierarquia/padre-joao-damasceno",
+    href: "/comunidades/rio-de-janeiro",
   },
 ];

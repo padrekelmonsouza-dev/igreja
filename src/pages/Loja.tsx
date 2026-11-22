@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { CommunitiesSection } from "../components/CommunitiesSection";
 import HoverExpand, { type HoverExpandItem } from "../components/ui/hover-expand";
 import { BagIcon, useCart } from "../components/StoreCart";
 import { formatPrice, PRODUCTS, STORE_CATEGORIES, type Product, type ProductCategory } from "../data/store";
@@ -409,8 +408,6 @@ export function Loja() {
       </section>
 
       <PrayerRope />
-
-      <CommunitiesSection />
 
       {count > 0 ? (
         <button

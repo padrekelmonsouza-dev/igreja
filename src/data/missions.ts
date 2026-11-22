@@ -110,7 +110,7 @@ export const MISSION_TOPICS: MissionTopic[] = [
     summary: "São Paulo e Rio de Janeiro, com os dados já publicados.",
     icon: "church",
     body: [
-      "A Eparquia de São Paulo celebra com Padre Kelmon. A Eparquia do Rio de Janeiro é acompanhada por Padre João Damasceno.",
+      "A Eparquia de São Paulo celebra com Padre Kelmon. A Eparquia do Rio de Janeiro acompanha os fiéis fluminenses.",
       "Endereços, telefones e horários só entram neste portal quando oficiais. O que ainda falta será publicado pela Secretaria da Igreja.",
     ],
   },

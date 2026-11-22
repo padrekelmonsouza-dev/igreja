@@ -22,9 +22,9 @@ export const WEBNODE_CARDS: PortalCard[] = [
     source: "Igreja Ortodoxa Grega G.O.C.",
     origin: "webnode",
     image: WEBNODE_SINODO,
-    summary: "Autoridade suprema da Igreja Ortodoxa Grega G.O.C., sob Sua Beatitude Eugenios de Atenas.",
+    summary: "Autoridade suprema da Igreja Ortodoxa Grega G.O.C.",
     body: [
-      "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
+      "O Santo Sínodo constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
       "Firmemente enraizado na herança espiritual da Ortodoxia Grega Tradicional Velho Calendarista, o Santo Sínodo tem como missão guardar inalterado o depósito da fé, promover a vida litúrgica e sacramental da Igreja e assegurar a continuidade da autêntica tradição ortodoxa através das gerações.",
       "Entre as responsabilidades do Santo Sínodo encontram-se a consagração de bispos, a supervisão da vida eclesiástica, a proteção da disciplina canônica e a promoção da unidade entre as comunidades sob seu omóforio.",
       "“Permanecei firmes e conservai as tradições que vos foram ensinadas” (2 Ts 2,15).",
@@ -38,7 +38,7 @@ export const WEBNODE_CARDS: PortalCard[] = [
     image: WEBNODE_HOME,
     summary: "Comunhão com o Santo Sínodo de Atenas, Tradição Apostólica e Calendário Patrístico.",
     body: [
-      "Pela graça de Deus e sob a proteção de Nosso Senhor e Salvador Jesus Cristo, a Igreja Ortodoxa Grega G.O.C. no Brasil prossegue sua sagrada missão como parte integrante do Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas, conservando inalterada a fé dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja Ortodoxa.",
+      "Pela graça de Deus e sob a proteção de Nosso Senhor e Salvador Jesus Cristo, a Igreja Ortodoxa Grega G.O.C. no Brasil prossegue sua sagrada missão como parte integrante do Santo Sínodo, conservando inalterada a fé dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja Ortodoxa.",
       "Firmada sobre a Tradição Sagrada e sustentada pela sucessão apostólica, a Igreja permanece em plena comunhão com o Santo Sínodo de Atenas, guardando o depósito da fé e perseverando na celebração dos Santos Mistérios.",
       "Nos dias presentes, a administração e o cuidado pastoral da Igreja no Brasil encontram-se confiados ao Reverendíssimo Arquimandrita Abade Júlio, Superior Eclesiástico da missão brasileira.",
     ],

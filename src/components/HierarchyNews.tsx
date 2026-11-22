@@ -2,15 +2,6 @@ import { Link } from "react-router-dom";
 
 const HIERARCHY_NEWS_CARDS = [
   {
-    slug: "dom-eugenios-de-atenas",
-    title: "O Arcebispo atual: Dom Eugenios de Atenas",
-    kicker: "O Santo Sínodo de Sua Beatitude Eugenios de Atenas",
-    image: "/media/card-dom-eugenios.jpg",
-    imageClass: "object-cover object-center",
-    meta: "Santo Sínodo",
-    body: "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
-  },
-  {
     slug: "padre-kelmon-luis",
     title: "Padre Kelmon Luís",
     kicker: "Eparquia de São Paulo",

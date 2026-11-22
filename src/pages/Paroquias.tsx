@@ -75,8 +75,7 @@ export function Paroquias() {
                 {parish.cidade} · {parish.estado}
               </p>
               <h2 className="mt-2 text-2xl">{parish.comunidade}</h2>
-              <p className="mt-3 text-muted">{parish.endereco}</p>
-              <p className="mt-2">{parish.sacerdote}</p>
+              <p className="mt-3">{parish.sacerdote}</p>
               <p className="mt-1 text-sm">{parish.contato}</p>
             </article>
           ))}
