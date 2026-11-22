@@ -170,33 +170,6 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
-    slug: "padre-julio-cesar-dos-santos",
-    name: "Padre Júlio Cesar dos Santos",
-    role: "Padre",
-    category: "presbitero",
-    image: "/media/padre-julio-cesar-dos-santos.jpg",
-    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil. Nome religioso: Padre Jorge.",
-    facts: [
-      { label: "Nome religioso", value: "Padre Jorge" },
-      { label: "Nascimento", value: "03/08/1964" },
-      { label: "Ordenação", value: "25/07/1992" },
-    ],
-    sections: [
-      {
-        title: "Biografia",
-        body: [
-          "Padre Júlio Cesar dos Santos, nome religioso Padre Jorge, nasceu em 3 de agosto de 1964 e foi ordenado em 25 de julho de 1992.",
-        ],
-      },
-      {
-        title: "Ministério",
-        body: [
-          "Dados de eparquia, comunidade e demais registros pastorais serão publicados nesta página quando oficiais.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "padre-aquila",
     name: "Padre Aquila Peroba",
     role: "Padre Diretor Vocacional",
@@ -300,23 +273,6 @@ export const CLERGY: ClergyProfile[] = [
         title: "Perfil",
         body: [
           "José Augusto Maciel Torres nasceu em 20 de fevereiro de 1964. É sacerdote casado, incardinado na Eparquia de São Paulo. Foi ordenado em 20 de janeiro de 2010.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "abade-julio",
-    name: "Arquimandrita Abade Júlio",
-    role: "Arquimandrita",
-    category: "monastico",
-    image: "/media/brasao-goc.webp",
-    summary: "Vida monástica e paternidade espiritual.",
-    facts: [{ label: "Ministério", value: "Arquimandrita" }],
-    sections: [
-      {
-        title: "Ministério",
-        body: [
-          "O Arquimandrita Abade Júlio é apresentado na hierarquia da Igreja em relação à vida monástica. O abade é pai espiritual da comunidade: guarda a regra, preside a oração e acolhe os que buscam o silêncio de Deus.",
         ],
       },
     ],
