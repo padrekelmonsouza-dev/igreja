@@ -27,7 +27,7 @@ const HERO_SHORTCUTS = [
   {
     href: "/igreja",
     label: "Conheça a Igreja",
-    description: "Fé apostólica, história e a vida da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    description: "Fé apostólica, história e a vida da Missão Theotokos.",
     icon: "book",
   },
   {
@@ -131,7 +131,7 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
     return {
       kicker: "Igreja",
       paragraphs: [
-        "Paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+        "Paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Missão Theotokos.",
         ...(article?.sections.slice(0, 3).flatMap((section) => section.body) || []),
       ],
       blocks: [

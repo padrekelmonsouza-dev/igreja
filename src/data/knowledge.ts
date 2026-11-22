@@ -34,7 +34,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       {
         title: "A Igreja Ortodoxa no Brasil",
         body: [
-          "Há comunidades, mosteiros e missões em vários estados. Este portal da Igreja Ortodoxa Grega G.O.C. no Brasil existe para explicar a fé com clareza, indicar comunidades e acompanhar quem deseja dar o primeiro passo.",
+          "Há comunidades, mosteiros e missões em vários estados. Este portal da Missão Theotokos existe para explicar a fé com clareza, indicar comunidades e acompanhar quem deseja dar o primeiro passo.",
           "Se você pesquisou “Igreja Ortodoxa” porque ouviu uma liturgia, viu um ícone ou sente fome de profundidade, comece pelos guias de fé e, quando puder, visite uma comunidade.",
         ],
       },
@@ -73,7 +73,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       {
         title: "Espiritualidade e calendário",
         body: [
-          "A oração de Jesus, o jejum, a esmola e a vida da paróquia educam o coração. A Igreja Ortodoxa Grega G.O.C. neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
+          "A oração de Jesus, o jejum, a esmola e a vida da paróquia educam o coração. A Missão Theotokos neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
         ],
       },
       {
@@ -217,7 +217,7 @@ export const KNOWLEDGE_ARTICLES: ArticlePage[] = [
       {
         title: "No Brasil",
         body: [
-          "A Ortodoxia chegou com imigrantes e se ampliou por conversões, mosteiros e paróquias. Este portal documenta a vida da Igreja Ortodoxa Grega G.O.C. no Brasil, sob a referência do Santo Sínodo de Eugenio de Atenas, e serve de porta de entrada para quem pesquisa a fé ortodoxa em português.",
+          "A Ortodoxia chegou com imigrantes e se ampliou por conversões, mosteiros e paróquias. Este portal documenta a vida da Missão Theotokos e serve de porta de entrada para quem pesquisa a fé ortodoxa em português.",
         ],
       },
     ],

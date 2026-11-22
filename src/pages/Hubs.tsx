@@ -5,8 +5,8 @@ export function IgrejaHub() {
     <>
       <PageHero
         kicker="Igreja"
-        title="Igreja Ortodoxa Grega no Brasil"
-        intro="Paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
+        title="Missão Theotokos"
+        intro="Paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Missão Theotokos."
         crumbs={[{ href: "/igreja", label: "Igreja" }]}
       />
       <section className="site-section mx-auto w-full max-w-site px-4">

@@ -138,14 +138,23 @@ export function Header() {
           }`}
         >
           <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2.5 px-4 py-2.5 xl:flex xl:gap-4">
-            <Link to="/" aria-label={SITE.name} className="shrink-0" onClick={() => setOpen(false)}>
+            <Link
+              to="/"
+              aria-label={SITE.name}
+              className="flex min-w-0 shrink-0 items-center gap-2.5"
+              onClick={() => setOpen(false)}
+            >
               <img
                 src={SITE.logo}
                 alt=""
-                width={286}
-                height={94}
-                className="h-[3.9rem] w-auto max-w-[min(100%,14.95rem)] object-contain object-left sm:h-[4.55rem] sm:max-w-[18.2rem]"
+                width={216}
+                height={224}
+                className="h-[3.4rem] w-auto shrink-0 object-contain sm:h-[4rem]"
               />
+              <span className="min-w-0 font-serif font-bold leading-[0.95] text-burgundy">
+                <span className="block text-[0.95rem] uppercase tracking-[0.18em] sm:text-base">Missão</span>
+                <span className="block text-[1.7rem] sm:text-[2rem]">Theotokos</span>
+              </span>
             </Link>
 
 

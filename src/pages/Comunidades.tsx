@@ -26,7 +26,7 @@ export function Comunidades() {
       <PageHero
         kicker="Comunidades"
         title="Encontre uma Igreja"
-        intro="Comunidades da Igreja Ortodoxa Grega G.O.C. no Brasil com os dados oficiais já publicados. Novos endereços serão acrescentados somente quando confirmados."
+        intro="Comunidades da Missão Theotokos com os dados oficiais já publicados. Novos endereços serão acrescentados somente quando confirmados."
         crumbs={[{ href: "/comunidades", label: "Comunidades" }]}
       />
       <section className="site-section mx-auto w-full max-w-site px-4">

@@ -26,7 +26,7 @@ export function SiteHero() {
 
       <div className="relative mx-auto flex w-full max-w-[1280px] flex-col justify-center px-4 py-12 lg:min-h-[28rem] lg:py-16">
         <p className="sr-only">
-          {SITE.homeHeadline}. {SITE.synod}.
+          {SITE.homeHeadline}.
         </p>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>

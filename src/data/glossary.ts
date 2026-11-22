@@ -14,7 +14,6 @@ export const GLOSSARY: GlossaryTerm[] = [
   { term: "Divina Liturgia", definition: "Celebração eucarística ortodoxa, centro de toda a vida da Igreja.", href: "/liturgia" },
   { term: "Eparquia", definition: "Diocese ortodoxa, território pastoral sob um bispo." },
   { term: "Filioque", definition: "Acréscimo ocidental ao Credo (“e do Filho”), não recebido pela Igreja Ortodoxa.", href: "/ortodoxia/catolica-e-ortodoxa" },
-  { term: "G.O.C.", definition: "Genuine Orthodox Christians: Cristãos Ortodoxos Genuínos, tradição velho-calendarista." },
   { term: "Iconóstase", definition: "Paredes de ícones que separam a nave do altar, com as Portas Reais ao centro." },
   { term: "Ícone", definition: "Imagem sagrada pintada segundo cânones; teologia visível da Encarnação.", href: "/ortodoxia/santos" },
   { term: "Jejum", definition: "Abstinência alimentar e ascese espiritual segundo o calendário da Igreja.", href: "/ortodoxia/jejum" },

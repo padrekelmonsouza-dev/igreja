@@ -115,7 +115,7 @@ export function TermosUso() {
       <PageHero
         kicker="Legal"
         title="Termos de uso"
-        intro="Condições de uso do portal institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
+        intro="Condições de uso do portal institucional da Missão Theotokos."
         crumbs={[{ href: "/termos-de-uso", label: "Termos de uso" }]}
       />
       <article className="prose-church site-section mx-auto w-full max-w-site px-4">

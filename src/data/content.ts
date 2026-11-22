@@ -91,7 +91,7 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "Tradição Apostólica",
         body: [
           "A Igreja Ortodoxa compreende-se como a continuidade viva da Igreja fundada por Nosso Senhor Jesus Cristo e transmitida pelos Santos Apóstolos. A fé não é uma invenção recente, nem um sistema particular de ideias: é a vida da Igreja, conservada na Escritura, nos Santos Concílios, na liturgia e nos Padres.",
-          "No Brasil, a Igreja Ortodoxa Grega G.O.C. apresenta-se como herdeira dessa Tradição Apostólica, na linha do Velho Calendário e em comunhão com o Santo Sínodo de Eugenio de Atenas.",
+          "No Brasil, a Missão Theotokos apresenta-se como herdeira dessa Tradição Apostólica, na linha do Velho Calendário.",
         ],
       },
       {
@@ -121,13 +121,12 @@ const BASE_ARTICLES: ArticlePage[] = [
     title: "Quem Somos",
     kicker: "Tradição viva",
     intro:
-      "Conheça a presença, a história e a missão da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Conheça a presença, a história e a missão da Missão Theotokos.",
     sections: [
       {
         title: "Quem somos",
         body: [
-          "A Igreja Ortodoxa Grega G.O.C. no Brasil é um portal de fé, formação, história e missão. Existe para quem nunca ouviu falar da Ortodoxia e para quem já vive a fé e deseja aprofundá-la.",
-          "G.O.C. refere-se aos Cristãos Ortodoxos Genuínos (Genuine Orthodox Christians), na tradição velho-calendarista grega. O projeto apresenta como referência canônica o Santo Sínodo de Eugenio de Atenas.",
+          "A Missão Theotokos é um portal de fé, formação, história e missão. Existe para quem nunca ouviu falar da Ortodoxia e para quem já vive a fé e deseja aprofundá-la.",
         ],
       },
       {
@@ -152,7 +151,7 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "Santo Sínodo",
         body: [
-          "O Santo Sínodo é o órgão de autoridade episcopal da Igreja. Neste portal, a referência apresentada é o Santo Sínodo de Eugenio de Atenas, com páginas específicas para a hierarquia, documentos e comunicados.",
+          "O Santo Sínodo é o órgão de autoridade episcopal da Igreja. Neste portal há páginas específicas para a hierarquia, documentos e comunicados.",
         ],
       },
       {
@@ -174,13 +173,12 @@ const BASE_ARTICLES: ArticlePage[] = [
     title: "Santo Sínodo",
     kicker: "Autoridade da Igreja",
     intro:
-      "O Santo Sínodo de Eugenio de Atenas, apresentado como referência canônica do projeto.",
+      "A reunião dos bispos que guarda a fé, os cânones e a unidade da Igreja.",
     sections: [
       {
         title: "Apresentação",
         body: [
           "O Santo Sínodo é a reunião dos bispos em concílio permanente. Nele se expressa a unidade da fé, a disciplina canônica e o cuidado pastoral da Igreja.",
-          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
       {
@@ -440,7 +438,7 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "Calendário antigo",
         body: [
-          "A Igreja Ortodoxa Grega G.O.C. neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
+          "A Missão Theotokos neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
         ],
       },
       {
@@ -644,12 +642,6 @@ const BASE_ARTICLES: ArticlePage[] = [
         body: [
           "Na eclesiologia ortodoxa, nenhuma pessoa particular substitui a Igreja. O bispo preside na caridade, em sucessão apostólica, e o sínodo guarda a fé comum.",
           "Bispos, presbíteros, diáconos e fiéis formam um só povo sacerdotal, com ministérios distintos. Sem o povo não há liturgia; sem o bispo não há Igreja local plena.",
-        ],
-      },
-      {
-        title: "No Santo Sínodo e no Brasil",
-        body: [
-          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
     ],

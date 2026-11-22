@@ -8,13 +8,12 @@ export function QuemSomosIntro() {
             Quem somos
           </p>
           <h2 className="mt-5 font-serif text-5xl leading-[1.02] text-ink sm:text-6xl">
-            Igreja Ortodoxa Grega
-            <span className="block text-burgundy">G.O.C. no Brasil</span>
+            Missão
+            <span className="block text-burgundy">Theotokos</span>
           </h2>
           <p className="mt-5 font-serif text-lg leading-7 text-stone">
-            A Igreja Ortodoxa Grega G.O.C. no Brasil apresenta a fé apostólica, a Divina Liturgia e a vida das
-            comunidades em comunhão com o Santo Sínodo de Eugenio de Atenas. G.O.C. refere-se aos Cristãos Ortodoxos
-            Genuínos, na tradição velho-calendarista grega.
+            A Missão Theotokos apresenta a fé apostólica, a Divina Liturgia e a vida das
+            comunidades na tradição do Velho Calendário.
           </p>
           <div
             className="my-5 h-px w-full bg-[linear-gradient(90deg,#D4AF37,rgba(212,175,55,.2),transparent)]"
@@ -38,8 +37,8 @@ export function QuemSomosIntro() {
           </p>
         </div>
         <img
-          src="/media/igreja-ortodoxa-grega-no-brasil.jpg"
-          alt="Igreja Ortodoxa Grega G.O.C. no Brasil, Santo Sínodo de Eugenios de Atenas, Ortodoxia do Velho Calendário"
+          src="/media/hero-iconostase.jpg"
+          alt="Iconóstase ortodoxa"
           width={600}
           height={600}
           className="aspect-square h-auto w-full rounded-[1.75rem] object-cover shadow-card ring-1 ring-gold/40"

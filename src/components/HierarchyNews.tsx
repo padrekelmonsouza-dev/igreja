@@ -18,7 +18,7 @@ export function HierarchyNews() {
       <div className="mx-auto w-full max-w-site px-4">
         <h2 className="font-serif leading-tight">
           <span className="block text-lg text-[#6E121C] sm:text-xl">No Brasil e no mundo</span>
-          <span className="mt-1 block text-3xl text-[#1A0E0C] sm:text-4xl">Igreja Ortodoxa Grega</span>
+          <span className="mt-1 block text-3xl text-[#1A0E0C] sm:text-4xl">Missão Theotokos</span>
         </h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {HIERARCHY_NEWS_CARDS.map((card) => (

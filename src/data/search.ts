@@ -16,7 +16,7 @@ export const SEARCH_INDEX: SearchItem[] = [
   {
     href: "/",
     title: "Igreja Ortodoxa no Brasil",
-    text: "Portal de referência Igreja Ortodoxa Brasil fé liturgia santos ícones catequese paróquias G.O.C.",
+    text: "Portal de referência Igreja Ortodoxa Brasil fé liturgia santos ícones catequese paróquias",
   },
   {
     href: "/perguntas-frequentes",
@@ -121,8 +121,6 @@ const SYNONYMS: Record<string, string[]> = {
   calendario: ["juliano", "velho calendario"],
   endereco: ["comunidades", "paroquias"],
   horario: ["liturgia", "comunidades"],
-  goc: ["g.o.c.", "genuinos"],
-  grega: ["goc", "ortodoxa"],
   imagens: ["icones", "santos"],
   adorar: ["veneracao", "icones"],
 };
@@ -348,8 +346,8 @@ export function answerQuery(query: string, liveExternal: ExternalItem[] = []): S
     query: trimmed,
     title: web?.title || trimmed,
     answer: web
-      ? `${web.text} Fonte: ${web.source}. Este portal G.O.C. também reúne a fé apostólica, a Divina Liturgia e a vida das comunidades no Brasil nas páginas abaixo.`
-      : "A fé ortodoxa grega apresentada neste portal — Tradição Apostólica, Divina Liturgia, ícones, jejum e vida das comunidades G.O.C. no Brasil — está nas páginas abaixo. Consulte também as fontes ortodoxas da internet.",
+      ? `${web.text} Fonte: ${web.source}. Este portal também reúne a fé apostólica, a Divina Liturgia e a vida das comunidades no Brasil nas páginas abaixo.`
+      : "A fé ortodoxa apresentada neste portal — Tradição Apostólica, Divina Liturgia, ícones, jejum e vida das comunidades da Missão Theotokos — está nas páginas abaixo. Consulte também as fontes ortodoxas da internet.",
     sourceHref: pages[0]?.href || "/ortodoxia/o-que-e-a-ortodoxia",
     sourceLabel: web ? web.source : "Portal",
     pages,

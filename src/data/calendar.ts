@@ -13,7 +13,7 @@ export type MajorFeast = {
 };
 
 export const LITURGICAL_NOTE =
-  "A Igreja Ortodoxa Grega G.O.C. neste portal segue o calendário patrístico (velho calendário). Datas civis específicas de cada festa e os horários das celebrações devem ser confirmados com a comunidade local.";
+  "A Missão Theotokos neste portal segue o calendário patrístico (velho calendário). Datas civis específicas de cada festa e os horários das celebrações devem ser confirmados com a comunidade local.";
 
 export const MAJOR_FEASTS: MajorFeast[] = [
   {

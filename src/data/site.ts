@@ -1,21 +1,20 @@
 export const SITE_ORIGIN = "https://igrejaortodoxagregabrasil.com.br";
 
 export const SITE = {
-  name: "Igreja Ortodoxa Grega G.O.C. no Brasil",
-  shortName: "G.O.C. no Brasil",
-  synod: "Santo Sínodo de Eugenio de Atenas",
+  name: "Missão Theotokos",
+  shortName: "Missão Theotokos",
   motto: "Vinde e vede.",
   year: 2026,
   portalName: "Portal da Igreja Ortodoxa no Brasil",
-  tabTitle: "Igreja Ortodoxa Grega no Brasil",
-  homeTitle: "Igreja Ortodoxa Grega no Brasil",
-  homeHeadline: "Igreja Ortodoxa Grega no Brasil",
+  tabTitle: "Missão Theotokos",
+  homeTitle: "Missão Theotokos",
+  homeHeadline: "Missão Theotokos",
   homeSubheadline: "Fé, Tradição Apostólica e Vida Litúrgica",
   homeDescription:
-    "Portal institucional da Igreja Ortodoxa Grega no Brasil: fé, Tradição Apostólica, Divina Liturgia, comunidades, calendário, formação e vida ortodoxa em português.",
+    "Portal institucional da Missão Theotokos: fé, Tradição Apostólica, Divina Liturgia, comunidades, calendário, formação e vida ortodoxa em português.",
   locale: "pt_BR",
   language: "pt-BR",
-  logo: "/logo-gog.webp",
+  logo: "/media/emblema-theotokos.webp",
   ogImage: "/media/og-share.jpg",
   heroImage: "/media/hero-proto.webp",
   heroFallback: "/media/hero-proto.png",

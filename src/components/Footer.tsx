@@ -10,8 +10,8 @@ export function Footer() {
         <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <img
-              src="/media/brasao-goc.webp"
-              alt="Brasão da Igreja Ortodoxa Grega G.O.C. no Brasil"
+              src="/media/emblema-theotokos.webp"
+              alt="Missão Theotokos"
               width={112}
               height={112}
               className="mb-4 h-24 w-24 object-contain"
@@ -20,9 +20,8 @@ export function Footer() {
             />
             <h2 className="font-serif text-2xl leading-tight">{SITE.name}</h2>
             <p className="mt-3 max-w-md text-stone">
-              Portal institucional de fé, liturgia, história e comunidades da Igreja Ortodoxa Grega no Brasil.
+              Portal institucional de fé, liturgia, história e comunidades da Missão Theotokos.
             </p>
-            <p className="mt-4 text-sm text-burgundy">{SITE.synod}</p>
           </div>
           <div>
             <h3 className="font-serif text-2xl !font-bold text-burgundy">Igreja</h3>
@@ -75,7 +74,7 @@ export function Footer() {
       <div className="w-full border-t border-burgundy/10">
         <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-3 px-4 py-6 text-sm text-stone sm:flex-row">
           <p>
-            © {SITE.year} {SITE.name} — {SITE.synod}
+            © {SITE.year} {SITE.name}
           </p>
           <ul className="flex flex-wrap justify-center gap-4">
             {FOOTER_LEGAL.map((link) => (

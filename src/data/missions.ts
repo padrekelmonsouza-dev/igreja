@@ -37,7 +37,7 @@ export const MISSION_PATHS: MissionPath[] = [
     kicker: "Brasil",
     title: "A missão no Brasil",
     summary: "Alcançar cidades sem paróquia, acompanhar famílias e apoiar a catequese.",
-    image: "/media/igreja-ortodoxa-grega-no-brasil.jpg",
+    image: "/media/hero-iconostase.jpg",
     imageClass: "object-cover object-center",
     body: [
       "As missões buscam alcançar cidades sem paróquia estável, acompanhar famílias isoladas e apoiar a catequese a distância quando necessário, sempre sob a bênção da hierarquia.",

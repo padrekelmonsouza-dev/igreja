@@ -123,7 +123,7 @@ export const CLERGY: ClergyProfile[] = [
     category: "presbitero",
     image: "/media/padre-jose-sergio.jpg",
     gallery: ["/media/padre-jose-sergio.png"],
-    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    summary: "Padre da Missão Theotokos.",
     facts: [
       { label: "Nascimento", value: "22/10/1970" },
       { label: "Ordenação", value: "21/11/2016" },
@@ -149,7 +149,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Padre",
     category: "presbitero",
     image: "/media/padre-riuler-silva-de-jesus.jpg",
-    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    summary: "Padre da Missão Theotokos.",
     facts: [
       { label: "Nascimento", value: "17/03/1965" },
       { label: "Ordenação", value: "2000" },
@@ -175,13 +175,13 @@ export const CLERGY: ClergyProfile[] = [
     role: "Padre Diretor Vocacional",
     category: "presbitero",
     image: "/media/padre-aquila.jpg",
-    summary: "Padre Diretor Vocacional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    summary: "Padre Diretor Vocacional da Missão Theotokos.",
     facts: [{ label: "Ministério", value: "Diretor Vocacional" }],
     sections: [
       {
         title: "Biografia",
         body: [
-          "Padre Aquila Peroba é Padre Diretor Vocacional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+          "Padre Aquila Peroba é Padre Diretor Vocacional da Missão Theotokos.",
         ],
       },
       {
@@ -198,7 +198,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Padre",
     category: "presbitero",
     image: "/media/padre-pedro.jpg",
-    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    summary: "Padre da Missão Theotokos.",
     facts: [
       { label: "Nascimento", value: "28/05/1971" },
       { label: "Ordenação", value: "05/09/2022" },
@@ -283,13 +283,13 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/crispim-souza-silva.jpg",
-    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    summary: "Seminarista da Missão Theotokos.",
     facts: [{ label: "Nascimento", value: "01/10/1977" }],
     sections: [
       {
         title: "Formação",
         body: [
-          "Crispim Souza Silva nasceu em 1º de outubro de 1977. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+          "Crispim Souza Silva nasceu em 1º de outubro de 1977. É seminarista da Missão Theotokos.",
         ],
       },
     ],
@@ -300,13 +300,13 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/max-yuri-fae-silva.jpg",
-    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    summary: "Seminarista da Missão Theotokos.",
     facts: [{ label: "Nascimento", value: "21/02/1984" }],
     sections: [
       {
         title: "Formação",
         body: [
-          "Max Yuri Faé Silva nasceu em 21 de fevereiro de 1984. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+          "Max Yuri Faé Silva nasceu em 21 de fevereiro de 1984. É seminarista da Missão Theotokos.",
         ],
       },
     ],
@@ -317,7 +317,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/mateus-alves-de-oliveira.jpg",
-    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, no Rio de Janeiro.",
+    summary: "Seminarista da Missão Theotokos, no Rio de Janeiro.",
     facts: [
       { label: "Nascimento", value: "22/01/2008" },
       { label: "Cidade", value: "Rio de Janeiro" },
@@ -326,7 +326,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Formação",
         body: [
-          "Mateus Alves de Oliveira nasceu em 22 de janeiro de 2008. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, no Rio de Janeiro.",
+          "Mateus Alves de Oliveira nasceu em 22 de janeiro de 2008. É seminarista da Missão Theotokos, no Rio de Janeiro.",
         ],
       },
     ],
@@ -337,12 +337,12 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/andradiano.jpg",
-    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, natural de Angola.",
+    summary: "Seminarista da Missão Theotokos, natural de Angola.",
     facts: [{ label: "Origem", value: "Angola (África)" }],
     sections: [
       {
         title: "Formação",
-        body: ["Andradiano é natural de Angola, na África. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil."],
+        body: ["Andradiano é natural de Angola, na África. É seminarista da Missão Theotokos."],
       },
     ],
   },
@@ -352,7 +352,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/zinho-joao-uiquissone.jpg",
-    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C., natural de Namarroi, na Zambézia, Moçambique.",
+    summary: "Seminarista da Missão Theotokos, natural de Namarroi, na Zambézia, Moçambique.",
     facts: [
       { label: "Nascimento", value: "01/08/1995" },
       { label: "Naturalidade", value: "Namarroi, Zambézia" },
@@ -362,7 +362,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Formação",
         body: [
-          "Zinho João Uiquissone nasceu em 1º de agosto de 1995, no distrito de Namarroi, província da Zambézia, em Moçambique. É seminarista da Igreja Ortodoxa Grega G.O.C.",
+          "Zinho João Uiquissone nasceu em 1º de agosto de 1995, no distrito de Namarroi, província da Zambézia, em Moçambique. É seminarista da Missão Theotokos",
         ],
       },
     ],

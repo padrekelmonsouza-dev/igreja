@@ -31,30 +31,30 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/glossario": {
     title: `Glossário | ${SITE.tabTitle}`,
     description:
-      "Dicionário da Igreja Ortodoxa: liturgia, ícone, Theotokos, sínodo, jejum, G.O.C., velho calendário e outros termos explicados em português.",
+      "Dicionário da Igreja Ortodoxa: liturgia, ícone, Theotokos, sínodo, jejum, velho calendário e outros termos explicados em português.",
     type: "article",
   },
   "/comunidades": {
     title: `Comunidades | ${SITE.tabTitle}`,
     description:
-      "Encontre uma Igreja Ortodoxa Grega no Brasil. Comunidades em Nova Iguaçu, São Paulo e Rio de Janeiro, com os dados oficiais já publicados.",
+      "Encontre uma Missão Theotokos. Comunidades em Nova Iguaçu, São Paulo e Rio de Janeiro, com os dados oficiais já publicados.",
     type: "website",
   },
   "/igreja": {
     title: `Igreja | ${SITE.tabTitle}`,
     description:
-      "Paróquias, sacramentos, pastorais e a Ordem de São José da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Paróquias, sacramentos, pastorais e a Ordem de São José da Missão Theotokos.",
     type: "website",
   },
   "/paroquias": {
     title: `Paróquias | ${SITE.tabTitle}`,
     description:
-      "Encontre uma paróquia da Igreja Ortodoxa Grega no Brasil por estado, cidade ou sacerdote.",
+      "Encontre uma paróquia da Missão Theotokos por estado, cidade ou sacerdote.",
     type: "website",
   },
   "/loja": {
     title: `Loja | ${SITE.tabTitle}`,
-    description: "Lojinha da Igreja Ortodoxa Grega no Brasil: livros do Padre Kelmon e o komboskini, a corda de oração ortodoxa. Pedido pelo WhatsApp.",
+    description: "Lojinha da Missão Theotokos: livros do Padre Kelmon e o komboskini, a corda de oração ortodoxa. Pedido pelo WhatsApp.",
     type: "website",
   },
   "/sacramentos": {
@@ -65,7 +65,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/clero": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
-      "Padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Padres, vida monástica e seminaristas da Missão Theotokos.",
     type: "website",
   },
   "/liturgia": {
@@ -83,13 +83,13 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   "/missoes": {
     title: `Missões | ${SITE.tabTitle}`,
     description:
-      "Missões ortodoxas no Brasil: anunciar Cristo, plantar comunidades, catequese e como ajudar a Igreja Ortodoxa Grega G.O.C.",
+      "Missões ortodoxas no Brasil: anunciar Cristo, plantar comunidades, catequese e como ajudar a Missão Theotokos",
     type: "website",
   },
   "/igreja/hierarquia": {
     title: `Clero | ${SITE.tabTitle}`,
     description:
-      "Padres, vida monástica e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+      "Padres, vida monástica e seminaristas da Missão Theotokos.",
     type: "website",
   },
   "/ortodoxia": {
@@ -105,7 +105,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   },
   "/pedido-de-oracao": {
     title: `Pedido de oração | ${SITE.tabTitle}`,
-    description: "Envie uma intenção de oração para a Igreja Ortodoxa Grega G.O.C. no Brasil. Os pedidos passam por moderação.",
+    description: "Envie uma intenção de oração para a Missão Theotokos. Os pedidos passam por moderação.",
     type: "website",
   },
   "/formacao": {
@@ -116,7 +116,7 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   },
   "/noticias": {
     title: `Notícias | ${SITE.tabTitle}`,
-    description: "Notícias e artigos da Igreja Ortodoxa Grega no Brasil. Conteúdo oficial e editorial em publicação.",
+    description: "Notícias e artigos da Missão Theotokos. Conteúdo oficial e editorial em publicação.",
     type: "website",
   },
   "/biblioteca": {
@@ -126,12 +126,12 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   },
   "/videos": {
     title: `Vídeos | ${SITE.tabTitle}`,
-    description: "Central de vídeos da Igreja Ortodoxa Grega no Brasil: liturgia, homilias, catequese e música bizantina.",
+    description: "Central de vídeos da Missão Theotokos: liturgia, homilias, catequese e música bizantina.",
     type: "website",
   },
   "/eventos": {
     title: `Eventos | ${SITE.tabTitle}`,
-    description: "Agenda de eventos da Igreja Ortodoxa Grega G.O.C. no Brasil. As datas oficiais serão publicadas pela Secretaria.",
+    description: "Agenda de eventos da Missão Theotokos. As datas oficiais serão publicadas pela Secretaria.",
     type: "website",
   },
   "/calendario": {
@@ -142,22 +142,22 @@ const extras: Record<string, Omit<PageSeo, "path">> = {
   },
   "/doacoes": {
     title: `Apoie a Igreja | ${SITE.tabTitle}`,
-    description: "Apoie a Igreja Ortodoxa Grega no Brasil. Espaço institucional para manutenção, obras, evangelização e formação.",
+    description: "Apoie a Missão Theotokos. Espaço institucional para manutenção, obras, evangelização e formação.",
     type: "website",
   },
   "/contato": {
     title: `Contato | ${SITE.tabTitle}`,
-    description: "Fale com a Igreja Ortodoxa Grega G.O.C. no Brasil. Contatos das comunidades já publicadas e pedidos de oração.",
+    description: "Fale com a Missão Theotokos. Contatos das comunidades já publicadas e pedidos de oração.",
     type: "website",
   },
   "/politica-de-privacidade": {
     title: `Política de privacidade | ${SITE.tabTitle}`,
-    description: "Como o portal da Igreja Ortodoxa Grega no Brasil trata dados pessoais, formulários e cookies.",
+    description: "Como o portal da Missão Theotokos trata dados pessoais, formulários e cookies.",
     type: "website",
   },
   "/termos-de-uso": {
     title: `Termos de uso | ${SITE.tabTitle}`,
-    description: "Termos de uso do portal institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
+    description: "Termos de uso do portal institucional da Missão Theotokos.",
     type: "website",
   },
   "/primeira-visita": {
@@ -220,7 +220,7 @@ export function getPageSeo(pathname: string): PageSeo {
   return {
     path: pathname,
     title: `Página não encontrada | ${SITE.tabTitle}`,
-    description: "Esta página não existe no portal da Igreja Ortodoxa Grega no Brasil.",
+    description: "Esta página não existe no portal da Missão Theotokos.",
     type: "website",
     noindex: true,
   };
@@ -231,17 +231,13 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Church",
     name: SITE.name,
-    alternateName: [SITE.shortName, SITE.portalName, "Igreja Ortodoxa Grega no Brasil"],
+    alternateName: [SITE.shortName, SITE.portalName, "Missão Theotokos"],
     url: SITE_ORIGIN,
     inLanguage: SITE.language,
     description: SITE.homeDescription,
     logo: absoluteUrl(SITE.logo),
     image: absoluteUrl(SITE.ogImage),
     motto: SITE.motto,
-    parentOrganization: {
-      "@type": "Organization",
-      name: SITE.synod,
-    },
   };
 }
 
@@ -250,7 +246,7 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE.portalName,
-    alternateName: [SITE.name, "Igreja Ortodoxa", "Igreja Ortodoxa no Brasil", "Igreja Ortodoxa Grega"],
+    alternateName: [SITE.name, "Igreja Ortodoxa", "Igreja Ortodoxa no Brasil", "Missão Theotokos"],
     url: SITE_ORIGIN,
     inLanguage: SITE.language,
     description: SITE.homeDescription,
