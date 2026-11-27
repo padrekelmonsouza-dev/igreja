@@ -17,10 +17,12 @@ export const NAV_PRIMARY: NavItem[] = [
 ];
 
 export const NAV_MORE: NavItem[] = [
+  { href: "/arcebispos", label: "Arcebispos", icon: "bishop" },
+  { href: "/mosteiro", label: "Mosteiros", icon: "monastery" },
   { href: "/paroquias", label: "Paróquias", icon: "parish" },
   { href: "/sacramentos", label: "Sacramentos", icon: "liturgy" },
   { href: "/pastorais", label: "Pastorais", icon: "pastoral" },
-  { href: "/foro-do-brasil", label: "Foro do Brasil", icon: "joseph" },
+  { href: "/ordem-de-sao-jose", label: "Ordem de São José", icon: "joseph" },
   { href: "/pedido-de-oracao", label: "Pedidos de oração", icon: "prayer" },
 ];
 
@@ -91,7 +93,7 @@ const BASE_ARTICLES: ArticlePage[] = [
         title: "Tradição Apostólica",
         body: [
           "A Igreja Ortodoxa compreende-se como a continuidade viva da Igreja fundada por Nosso Senhor Jesus Cristo e transmitida pelos Santos Apóstolos. A fé não é uma invenção recente, nem um sistema particular de ideias: é a vida da Igreja, conservada na Escritura, nos Santos Concílios, na liturgia e nos Padres.",
-          "No Brasil, a Missão Theotokos apresenta-se como herdeira dessa Tradição Apostólica, na linha do Velho Calendário.",
+          "No Brasil, a Igreja Ortodoxa Grega G.O.C. apresenta-se como herdeira dessa Tradição Apostólica, na linha do Velho Calendário e em comunhão com o Santo Sínodo de Eugenio de Atenas.",
         ],
       },
       {
@@ -121,12 +123,13 @@ const BASE_ARTICLES: ArticlePage[] = [
     title: "Quem Somos",
     kicker: "Tradição viva",
     intro:
-      "Conheça a presença, a história e a missão da Missão Theotokos.",
+      "Conheça a presença, a história e a missão da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     sections: [
       {
         title: "Quem somos",
         body: [
-          "A Missão Theotokos é um portal de fé, formação, história e missão. Existe para quem nunca ouviu falar da Ortodoxia e para quem já vive a fé e deseja aprofundá-la.",
+          "A Igreja Ortodoxa Grega G.O.C. no Brasil é um portal de fé, formação, história e missão. Existe para quem nunca ouviu falar da Ortodoxia e para quem já vive a fé e deseja aprofundá-la.",
+          "G.O.C. refere-se aos Cristãos Ortodoxos Genuínos (Genuine Orthodox Christians), na tradição velho-calendarista grega. O projeto apresenta como referência canônica o Santo Sínodo de Eugenio de Atenas.",
         ],
       },
       {
@@ -151,13 +154,19 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "Santo Sínodo",
         body: [
-          "O Santo Sínodo é o órgão de autoridade episcopal da Igreja. Neste portal há páginas específicas para a hierarquia, documentos e comunicados.",
+          "O Santo Sínodo é o órgão de autoridade episcopal da Igreja. Neste portal, a referência apresentada é o Santo Sínodo de Eugenio de Atenas, com páginas específicas para a hierarquia, documentos e comunicados.",
         ],
       },
       {
         title: "Presença no Brasil",
         body: [
-          "Há comunidades e missões. A Eparquia de São Paulo e a Eparquia do Rio de Janeiro figuram entre os núcleos pastorais já apresentados.",
+          "Há comunidades, missões e um mosteiro. A Eparquia de São Paulo e a Eparquia do Rio de Janeiro figuram entre os núcleos pastorais já apresentados, além do Mosteiro de São Basílio, em Nova Iguaçu.",
+        ],
+      },
+      {
+        title: "Mosteiro de São Basílio",
+        body: [
+          "O mosteiro é coração de oração da Igreja. Situado em Marapicu, Nova Iguaçu (RJ), é lugar de silêncio, liturgia e acolhida espiritual.",
         ],
       },
       {
@@ -169,22 +178,65 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
+    path: "/mosteiro",
+    title: "Mosteiro de São Basílio",
+    kicker: "Oração e espiritualidade",
+    intro:
+      "R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045. Telefone: (21) 96483-7295.",
+    sections: [
+      {
+        title: "História",
+        body: [
+          "O Mosteiro de São Basílio é apresentado como casa de vida monástica da Igreja Ortodoxa Grega G.O.C. no Brasil. Dedicado ao grande Pai da Igreja, São Basílio, o mosteiro une oração, trabalho e hospitalidade.",
+        ],
+      },
+      {
+        title: "Espiritualidade",
+        body: [
+          "A vida monástica ortodoxa se apoia no Ofício Divino, na regra de oração, no silêncio interior e na obediência evangélica. O mosteiro não é um museu: é um coração que reza pela Igreja e pelo mundo.",
+        ],
+      },
+      {
+        title: "Localização",
+        body: [
+          "Endereço: R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045.",
+          "Recomenda-se contato prévio antes da primeira visita, especialmente para refeições, hospedagem ou participação em ofícios.",
+        ],
+      },
+      {
+        title: "Contato",
+        body: [
+          "Telefone / WhatsApp: (21) 96483-7295.",
+          "Horários de celebração e normas de visita podem variar segundo o calendário litúrgico e a vida da comunidade monástica.",
+        ],
+      },
+      {
+        title: "Celebrações",
+        body: [
+          "A Divina Liturgia e os ofícios cotidianos seguem o calendário patrístico. Confirme datas de festas, vigílias e períodos de retiro com a comunidade.",
+        ],
+      },
+    ],
+  },
+  {
     path: "/santo-sinodo",
     title: "Santo Sínodo",
     kicker: "Autoridade da Igreja",
     intro:
-      "A reunião dos bispos que guarda a fé, os cânones e a unidade da Igreja.",
+      "O Santo Sínodo de Eugenio de Atenas, apresentado como referência canônica do projeto.",
     sections: [
       {
         title: "Apresentação",
         body: [
           "O Santo Sínodo é a reunião dos bispos em concílio permanente. Nele se expressa a unidade da fé, a disciplina canônica e o cuidado pastoral da Igreja.",
+          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
       {
         title: "Autoridade",
         body: [
           "Na eclesiologia ortodoxa, nenhuma pessoa particular substitui a Igreja. O bispo preside na caridade, em sucessão apostólica, e o sínodo guarda a fé comum.",
+          "Dom Eugenios de Atenas é apresentado neste projeto como referência central dessa autoridade sinodal.",
         ],
       },
       {
@@ -296,6 +348,18 @@ const BASE_ARTICLES: ArticlePage[] = [
           "O arcebispo primaz preside o Santo Sínodo, guarda a comunhão entre os bispos e representa a Igreja na caridade. Seu ministério é apostólico: confirmar os irmãos e pastorear com os cânones e o Evangelho.",
         ],
       },
+      {
+        title: "Dom Eugenios de Atenas",
+        body: [
+          "Dom Eugenios de Atenas é apresentado por este projeto como referência central do Santo Sínodo de Eugenio de Atenas. Sua autoridade é eclesiástica e sinodal.",
+        ],
+      },
+      {
+        title: "Na América do Sul",
+        body: [
+          "A presença na América do Sul conta com o ministério de Dom Leontios de Noronha e Valdigem, Arcebispo Metropolita, cujo perfil histórico e pastoral é apresentado nas páginas de hierarquia.",
+        ],
+      },
     ],
   },
   {
@@ -340,46 +404,28 @@ const BASE_ARTICLES: ArticlePage[] = [
     ],
   },
   {
-    path: "/foro-do-brasil",
-    title: "Foro do Brasil",
-    kicker: "Diálogo plural pela democracia",
-    intro: "Pelo Brasil que acreditamos, pelos direitos que defendemos.",
+    path: "/ordem-de-sao-jose",
+    title: "Ordem de São José",
+    kicker: "Serviço e proteção",
+    intro:
+      "Uma obra de serviço inspirada em São José, guarda do Menino Jesus e da Santíssima Theotokos.",
     sections: [
       {
-        title: "O que é",
+        title: "Carisma",
         body: [
-          "O Foro do Brasil é um movimento de articulação política e social que reúne forças conservadoras de todo o país para defender valores, fortalecer a soberania nacional e promover mudanças estruturais.",
-          "É um espaço de representação e defesa dos valores de uma sociedade livre e justa: liberdade, propriedade, livre expressão e os direitos dos cidadãos, com iniciativas de cultura, educação, saúde e dignidade humana.",
+          "São José ensina silêncio, trabalho, paternidade espiritual e fidelidade. A Ordem de São José é apresentada neste portal como espaço de leigos e fiéis comprometidos com a proteção da Igreja, da família e dos mais frágeis.",
         ],
       },
       {
-        title: "Valores",
-        body: ["Liberdade, Humanidade, Cristianismo e a União entre povos."],
-      },
-      {
-        title: "História",
+        title: "Obras",
         body: [
-          "Idealizado pelo Padre Kelmon, o movimento começou em 29 de junho de 2023 como organização sem fins lucrativos.",
-          "Em fevereiro de 2025 foi constituído o Instituto Foro do Brasil, pessoa jurídica de direito privado, sem cunho político-partidário.",
-        ],
-      },
-      {
-        title: "Organização",
-        body: [
-          "O Foro do Brasil se organiza em um Diretório Nacional e em diretórios estaduais, como os de São Paulo, Rio de Janeiro, Santa Catarina, Minas Gerais e Paraná.",
-          "Conta também com os grupos Foro do Brasil Juventude, Mulher e Indígena, com núcleos no Equador e no Peru, e com comissões de trabalho e regimento interno próprios.",
-        ],
-      },
-      {
-        title: "Liderança nacional",
-        body: [
-          "Padre Kelmon, Presidente. Pastor Odair José Leite da Silva, Vice-presidente. Roderick Navarro, Secretário Geral.",
+          "Apoio a missões, cuidado com templos e mosteiros, assistência caritativa e colaboração nas pastorais. O detalhamento oficial de estatutos e graus será publicado pela hierarquia.",
         ],
       },
       {
         title: "Como participar",
         body: [
-          "O cadastro para fazer parte do movimento e receber notícias está no site oficial, forobrasil.org.",
+          "Quem desejar conhecer a Ordem deve procurar o clero da comunidade local. Não se trata de um atalho para ministérios ordenados, mas de um caminho de serviço laical e eclesial.",
         ],
       },
     ],
@@ -456,7 +502,7 @@ const BASE_ARTICLES: ArticlePage[] = [
       {
         title: "Calendário antigo",
         body: [
-          "A Missão Theotokos neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
+          "A Igreja Ortodoxa Grega G.O.C. neste portal segue o calendário patrístico, também chamado velho calendário. Ele organiza o ano em torno da Páscoa, das grandes festas do Senhor e da Theotokos, e da memória cotidiana dos Santos.",
         ],
       },
       {
@@ -660,6 +706,13 @@ const BASE_ARTICLES: ArticlePage[] = [
         body: [
           "Na eclesiologia ortodoxa, nenhuma pessoa particular substitui a Igreja. O bispo preside na caridade, em sucessão apostólica, e o sínodo guarda a fé comum.",
           "Bispos, presbíteros, diáconos e fiéis formam um só povo sacerdotal, com ministérios distintos. Sem o povo não há liturgia; sem o bispo não há Igreja local plena.",
+        ],
+      },
+      {
+        title: "No Santo Sínodo e no Brasil",
+        body: [
+          "Este portal apresenta o Santo Sínodo de Eugenio de Atenas como referência de autoridade eclesiástica da Igreja Ortodoxa Grega G.O.C. no Brasil. Dom Eugenios de Atenas é apresentado como referência central dessa autoridade sinodal.",
+          "A presença na América do Sul conta com o ministério de Dom Leontios de Noronha e Valdigem, Arcebispo Metropolita, cujo perfil histórico e pastoral é apresentado nas páginas de hierarquia.",
         ],
       },
     ],

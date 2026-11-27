@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/Article";
 import { OfficialNotice } from "../components/ShareBar";
-import { COMMUNITIES } from "../data/communities";
+import { COMMUNITIES, whatsappUrl } from "../data/communities";
 import { DONATION_PROJECTS } from "../data/collections";
 import { SITE, SITE_CONTACT } from "../data/site";
+import { trackEvent } from "../lib/analytics";
 
 export function Doacoes() {
   return (
@@ -36,6 +37,7 @@ export function Doacoes() {
 }
 
 export function Contato() {
+  const monastery = COMMUNITIES[0];
   return (
     <>
       <PageHero
@@ -46,19 +48,24 @@ export function Contato() {
       />
       <section className="site-section mx-auto grid w-full max-w-site gap-6 px-4 md:grid-cols-2">
         <article className="rounded-3xl border border-burgundy/10 bg-white p-6">
-          <h2 className="font-serif text-2xl">Comunidades</h2>
-          <p className="mt-3 text-stone">
-            {COMMUNITIES.map((community) => community.name).join(" · ")}
-          </p>
+          <h2 className="font-serif text-2xl">{monastery.name}</h2>
+          <p className="mt-3">{SITE_CONTACT.monasteryAddress}</p>
           <p className="mt-2">
-            E-mail:{" "}
-            <a className="underline underline-offset-4" href={`mailto:${SITE_CONTACT.vocationalEmail}`}>
-              {SITE_CONTACT.vocationalEmail}
+            Telefone / WhatsApp:{" "}
+            <a className="underline underline-offset-4" href={`tel:5521964837295`} onClick={() => trackEvent("click_phone", { community: monastery.slug })}>
+              {SITE_CONTACT.monasteryPhone}
             </a>
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link className="btn btn-outline-dark" to="/comunidades">
-              Ver comunidades
+            <a
+              className="btn btn-burgundy"
+              href={whatsappUrl(monastery.whatsapp || SITE_CONTACT.monasteryWhatsapp)}
+              onClick={() => trackEvent("click_whatsapp", { community: monastery.slug })}
+            >
+              WhatsApp
+            </a>
+            <Link className="btn btn-outline-dark" to={monastery.href}>
+              Ver comunidade
             </Link>
           </div>
         </article>
@@ -102,7 +109,8 @@ export function PoliticaPrivacidade() {
         </p>
         <h2>Contato</h2>
         <p>
-          Para questões sobre dados, utilize os contatos oficiais da página de contato.
+          Para questões sobre dados, utilize os contatos oficiais da página de contato, em especial o Mosteiro de São
+          Basílio.
         </p>
       </article>
     </>
@@ -115,7 +123,7 @@ export function TermosUso() {
       <PageHero
         kicker="Legal"
         title="Termos de uso"
-        intro="Condições de uso do portal institucional da Missão Theotokos."
+        intro="Condições de uso do portal institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/termos-de-uso", label: "Termos de uso" }]}
       />
       <article className="prose-church site-section mx-auto w-full max-w-site px-4">

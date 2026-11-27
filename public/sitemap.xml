@@ -5,11 +5,12 @@
   <url><loc>https://igrejaortodoxagregabrasil.com.br/primeira-visita</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/comunidades</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/arcebispos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/paroquias</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/clero</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/liturgia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/pastorais</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://igrejaortodoxagregabrasil.com.br/foro-do-brasil</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/ordem-de-sao-jose</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/missoes</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/quem-somos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/nossa-historia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -37,11 +38,16 @@
   <url><loc>https://igrejaortodoxagregabrasil.com.br/perguntas-frequentes</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/enciclopedia</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/glossario</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/mosteiro</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/santo-sinodo</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/catequese</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/politica-de-privacidade</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/termos-de-uso</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/dom-eugenios-de-atenas</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/dom-leontios</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-kelmon-luis</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-joao-damasceno</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/abade-julio</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/loja</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/sacramentos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/ortodoxia/batismo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -49,6 +55,7 @@
   <url><loc>https://igrejaortodoxagregabrasil.com.br/pedido-de-oracao</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-jose-sergio-da-silva</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-riuler-silva-de-jesus</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-julio-cesar-dos-santos</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-aquila</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-pedro</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://igrejaortodoxagregabrasil.com.br/igreja/hierarquia/padre-fausto</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>

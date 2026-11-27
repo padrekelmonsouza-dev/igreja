@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { SITE_CONTACT } from "../data/site";
+import { trackEvent } from "../lib/analytics";
 
 export function SupportContact() {
   return (
@@ -19,16 +20,19 @@ export function SupportContact() {
         <p className="kicker">Contato</p>
         <h2 className="mt-3 font-serif text-3xl">Fale com uma comunidade.</h2>
         <p className="mt-4 text-stone">
-          Encontre a comunidade mais próxima ou escreva para {SITE_CONTACT.vocationalEmail}. Pedidos de oração passam
-          por moderação.
+          Telefone do Mosteiro de São Basílio: {SITE_CONTACT.monasteryPhone}. Pedidos de oração passam por moderação.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link className="btn btn-burgundy" to="/contato">
             Contato
           </Link>
-          <Link className="btn btn-outline-dark" to="/comunidades">
-            Comunidades
-          </Link>
+          <a
+            className="btn btn-outline-dark"
+            href={`https://wa.me/${SITE_CONTACT.monasteryWhatsapp}`}
+            onClick={() => trackEvent("click_whatsapp", { community: "nova-iguacu" })}
+          >
+            WhatsApp do mosteiro
+          </a>
         </div>
       </div>
     </section>

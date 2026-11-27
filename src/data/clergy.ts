@@ -26,6 +26,74 @@ function kelmonPhotos(from: number, to: number) {
 
 export const CLERGY: ClergyProfile[] = [
   {
+    slug: "dom-eugenios-de-atenas",
+    name: "Dom Eugenios de Atenas",
+    role: "Santo Sínodo",
+    category: "arcebispo",
+    image: "/media/card-dom-eugenios.jpg",
+    summary:
+      "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C.",
+    facts: [
+      { label: "Ministério", value: "Primazia sinodal" },
+      { label: "Sede", value: "Atenas" },
+      { label: "Referência", value: "Santo Sínodo de Eugenio de Atenas" },
+    ],
+    sections: [
+      {
+        title: "Perfil",
+        body: [
+          "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "Cabe ao primaz convocar, presidir e confirmar a vida sinodal, guardar os cânones e pastorear com os irmãos no episcopado. A Igreja no Brasil se apresenta em referência a este sínodo.",
+        ],
+      },
+      {
+        title: "Comunicados",
+        body: [
+          "Documentos, cartas e orientações oficiais serão publicados na página do Santo Sínodo e nesta biografia à medida que forem disponibilizados.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "dom-leontios",
+    name: "Dom Leontios de Noronha e Valdigem",
+    role: "Arcebispo Metropolita da América do Sul",
+    category: "arcebispo",
+    image: "/media/card-dom-leontios.jpg",
+    summary:
+      "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil.",
+    facts: [
+      { label: "Título", value: "Arcebispo Metropolita da América do Sul" },
+      { label: "Atuação", value: "América do Sul e Brasil" },
+      { label: "Página", value: "Hierarquia e memória pastoral" },
+    ],
+    sections: [
+      {
+        title: "Perfil histórico e pastoral",
+        body: [
+          "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil. Como Arcebispo Metropolita da América do Sul, dedicou sua vida ao serviço da Santa Igreja, ao anúncio do Santo Evangelho e à preservação da fé ortodoxa recebida dos Santos Apóstolos e transmitida ao longo dos séculos pelos Santos Padres.",
+        ],
+      },
+      {
+        title: "Atuação na América do Sul",
+        body: [
+          "O cuidado metropolitano abrange o acompanhamento das comunidades, a ordenação e a orientação do clero, a fundação de missões e a guarda da tradição litúrgica em terras sul-americanas.",
+        ],
+      },
+      {
+        title: "Legado no Brasil",
+        body: [
+          "O portal reserva a esta página o relato de visitas, fundações, homilias e registros históricos. A distinção entre memória editorial e documento oficial será sempre observada.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "padre-kelmon-luis",
     name: "Padre Kelmon Luís",
     role: "Eparquia de São Paulo · SP",
@@ -117,13 +185,46 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
+    slug: "padre-joao-damasceno",
+    name: "Padre João Damasceno",
+    role: "Eparquia do Rio de Janeiro",
+    category: "presbitero",
+    image: "/media/padre-joao-damasceno.jpg",
+    summary: "Presbítero da Eparquia do Rio de Janeiro.",
+    facts: [
+      { label: "Nome civil", value: "Lucas Soares Chagas" },
+      { label: "Nascimento", value: "25/07/1992" },
+      { label: "Eparquia", value: "Rio de Janeiro" },
+    ],
+    sections: [
+      {
+        title: "Biografia",
+        body: [
+          "Padre João Damasceno, no século Lucas Soares Chagas, nasceu em 25 de julho de 1992. Serve na Eparquia do Rio de Janeiro, sob o nome eclesiástico que evoca o grande doutor São João Damasceno, defensor dos Santos Ícones.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "O presbítero dedica-se à vida litúrgica, à formação dos fiéis e ao cuidado das comunidades fluminenses, em comunhão com a hierarquia da Igreja.",
+        ],
+      },
+      {
+        title: "Homilias e catequese",
+        body: [
+          "Registros de homilias, encontros de formação e materiais audiovisuais serão publicados nesta página.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "padre-jose-sergio-da-silva",
     name: "Padre José Sérgio da Silva",
     role: "Padre",
     category: "presbitero",
     image: "/media/padre-jose-sergio.jpg",
     gallery: ["/media/padre-jose-sergio.png"],
-    summary: "Padre da Missão Theotokos.",
+    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     facts: [
       { label: "Nascimento", value: "22/10/1970" },
       { label: "Ordenação", value: "21/11/2016" },
@@ -149,7 +250,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Padre",
     category: "presbitero",
     image: "/media/padre-riuler-silva-de-jesus.jpg",
-    summary: "Padre da Missão Theotokos.",
+    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     facts: [
       { label: "Nascimento", value: "17/03/1965" },
       { label: "Ordenação", value: "2000" },
@@ -170,18 +271,45 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
+    slug: "padre-julio-cesar-dos-santos",
+    name: "Padre Júlio Cesar dos Santos",
+    role: "Padre",
+    category: "presbitero",
+    image: "/media/padre-julio-cesar-dos-santos.jpg",
+    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil. Nome religioso: Padre Jorge.",
+    facts: [
+      { label: "Nome religioso", value: "Padre Jorge" },
+      { label: "Nascimento", value: "03/08/1964" },
+      { label: "Ordenação", value: "25/07/1992" },
+    ],
+    sections: [
+      {
+        title: "Biografia",
+        body: [
+          "Padre Júlio Cesar dos Santos, nome religioso Padre Jorge, nasceu em 3 de agosto de 1964 e foi ordenado em 25 de julho de 1992.",
+        ],
+      },
+      {
+        title: "Ministério",
+        body: [
+          "Dados de eparquia, comunidade e demais registros pastorais serão publicados nesta página quando oficiais.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "padre-aquila",
     name: "Padre Aquila Peroba",
     role: "Padre Diretor Vocacional",
     category: "presbitero",
     image: "/media/padre-aquila.jpg",
-    summary: "Padre Diretor Vocacional da Missão Theotokos.",
+    summary: "Padre Diretor Vocacional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     facts: [{ label: "Ministério", value: "Diretor Vocacional" }],
     sections: [
       {
         title: "Biografia",
         body: [
-          "Padre Aquila Peroba é Padre Diretor Vocacional da Missão Theotokos.",
+          "Padre Aquila Peroba é Padre Diretor Vocacional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
       {
@@ -198,7 +326,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Padre",
     category: "presbitero",
     image: "/media/padre-pedro.jpg",
-    summary: "Padre da Missão Theotokos.",
+    summary: "Padre da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     facts: [
       { label: "Nascimento", value: "28/05/1971" },
       { label: "Ordenação", value: "05/09/2022" },
@@ -278,18 +406,45 @@ export const CLERGY: ClergyProfile[] = [
     ],
   },
   {
+    slug: "abade-julio",
+    name: "Arquimandrita Abade Júlio",
+    role: "Mosteiro de São Basílio",
+    category: "monastico",
+    image: "/media/brasao-goc.webp",
+    summary: "Vida monástica e paternidade espiritual no Mosteiro de São Basílio.",
+    facts: [
+      { label: "Ministério", value: "Abade" },
+      { label: "Casa", value: "Mosteiro de São Basílio" },
+      { label: "Cidade", value: "Nova Iguaçu / RJ" },
+    ],
+    sections: [
+      {
+        title: "Ministério",
+        body: [
+          "O Arquimandrita Abade Júlio é apresentado na hierarquia da Igreja em relação à vida monástica. O abade é pai espiritual da comunidade: guarda a regra, preside a oração e acolhe os que buscam o silêncio de Deus.",
+        ],
+      },
+      {
+        title: "Mosteiro",
+        body: [
+          "O Mosteiro de São Basílio, em Marapicu, Nova Iguaçu, é o endereço de referência da vida monástica neste portal. Visitas devem ser combinadas com antecedência.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "crispim-souza-silva",
     name: "Crispim Souza Silva",
     role: "Seminarista",
     category: "seminarista",
     image: "/media/crispim-souza-silva.jpg",
-    summary: "Seminarista da Missão Theotokos.",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     facts: [{ label: "Nascimento", value: "01/10/1977" }],
     sections: [
       {
         title: "Formação",
         body: [
-          "Crispim Souza Silva nasceu em 1º de outubro de 1977. É seminarista da Missão Theotokos.",
+          "Crispim Souza Silva nasceu em 1º de outubro de 1977. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
     ],
@@ -300,13 +455,13 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/max-yuri-fae-silva.jpg",
-    summary: "Seminarista da Missão Theotokos.",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     facts: [{ label: "Nascimento", value: "21/02/1984" }],
     sections: [
       {
         title: "Formação",
         body: [
-          "Max Yuri Faé Silva nasceu em 21 de fevereiro de 1984. É seminarista da Missão Theotokos.",
+          "Max Yuri Faé Silva nasceu em 21 de fevereiro de 1984. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ],
       },
     ],
@@ -317,7 +472,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/mateus-alves-de-oliveira.jpg",
-    summary: "Seminarista da Missão Theotokos, no Rio de Janeiro.",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, no Rio de Janeiro.",
     facts: [
       { label: "Nascimento", value: "22/01/2008" },
       { label: "Cidade", value: "Rio de Janeiro" },
@@ -326,7 +481,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Formação",
         body: [
-          "Mateus Alves de Oliveira nasceu em 22 de janeiro de 2008. É seminarista da Missão Theotokos, no Rio de Janeiro.",
+          "Mateus Alves de Oliveira nasceu em 22 de janeiro de 2008. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, no Rio de Janeiro.",
         ],
       },
     ],
@@ -337,12 +492,12 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/andradiano.jpg",
-    summary: "Seminarista da Missão Theotokos, natural de Angola.",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil, natural de Angola.",
     facts: [{ label: "Origem", value: "Angola (África)" }],
     sections: [
       {
         title: "Formação",
-        body: ["Andradiano é natural de Angola, na África. É seminarista da Missão Theotokos."],
+        body: ["Andradiano é natural de Angola, na África. É seminarista da Igreja Ortodoxa Grega G.O.C. no Brasil."],
       },
     ],
   },
@@ -352,7 +507,7 @@ export const CLERGY: ClergyProfile[] = [
     role: "Seminarista",
     category: "seminarista",
     image: "/media/zinho-joao-uiquissone.jpg",
-    summary: "Seminarista da Missão Theotokos, natural de Namarroi, na Zambézia, Moçambique.",
+    summary: "Seminarista da Igreja Ortodoxa Grega G.O.C., natural de Namarroi, na Zambézia, Moçambique.",
     facts: [
       { label: "Nascimento", value: "01/08/1995" },
       { label: "Naturalidade", value: "Namarroi, Zambézia" },
@@ -362,7 +517,7 @@ export const CLERGY: ClergyProfile[] = [
       {
         title: "Formação",
         body: [
-          "Zinho João Uiquissone nasceu em 1º de agosto de 1995, no distrito de Namarroi, província da Zambézia, em Moçambique. É seminarista da Missão Theotokos",
+          "Zinho João Uiquissone nasceu em 1º de agosto de 1995, no distrito de Namarroi, província da Zambézia, em Moçambique. É seminarista da Igreja Ortodoxa Grega G.O.C.",
         ],
       },
     ],
@@ -390,10 +545,20 @@ export function isArchbishop(slug: string) {
 
 export const PARISHES = [
   {
+    estado: "RJ",
+    cidade: "Nova Iguaçu",
+    comunidade: "Mosteiro de São Basílio",
+    sacerdote: "Arquimandrita Abade Júlio",
+    endereco: "R. Gomes Freire, 64 - Marapicu, Nova Iguaçu - RJ, 26295-045",
+    contato: "(21) 96483-7295",
+    href: "/comunidades/nova-iguacu",
+  },
+  {
     estado: "SP",
     cidade: "São Paulo",
     comunidade: "Eparquia de São Paulo",
     sacerdote: "Padre Kelmon Luís",
+    endereco: "Rua Oscar Bressane, 311 - Bosque da Saúde, São Paulo - SP",
     contato: "Ver perfil do clero",
     href: "/igreja/hierarquia/padre-kelmon-luis",
   },
@@ -401,8 +566,9 @@ export const PARISHES = [
     estado: "RJ",
     cidade: "Rio de Janeiro",
     comunidade: "Eparquia do Rio de Janeiro",
-    sacerdote: "A confirmar",
+    sacerdote: "Padre João Damasceno",
+    endereco: "Endereço litúrgico a confirmar com o pároco",
     contato: "Ver perfil do clero",
-    href: "/comunidades/rio-de-janeiro",
+    href: "/igreja/hierarquia/padre-joao-damasceno",
   },
 ];

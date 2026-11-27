@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { COMMUNITIES } from "../data/communities";
 import { BibleCard } from "./BibleCard";
 
 const TOPICS = [
@@ -29,7 +30,8 @@ export function KnowOrthodoxy() {
           <p className="mt-8 text-[11px] font-bold uppercase tracking-[0.28em] text-[#6E121C]">Próximas celebrações</p>
           <h3 className="mt-3 font-serif text-3xl leading-tight text-[#6E121C]">A vida da Igreja se mede pela liturgia.</h3>
           <p className="mt-3 text-[#6E121C]">
-            Horários e datas específicas devem ser confirmados com cada comunidade.
+            Horários e datas específicas devem ser confirmados com cada comunidade. O Mosteiro de São Basílio pede
+            contato prévio: {COMMUNITIES[0].phone}.
           </p>
           <div className="mt-5 rounded-2xl bg-ivory p-5 ring-1 ring-burgundy/10">
             <p className="text-sm uppercase tracking-[0.2em] text-[#6E121C]">Próxima celebração</p>

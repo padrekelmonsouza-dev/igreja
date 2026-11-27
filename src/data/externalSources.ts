@@ -7,6 +7,12 @@ export type ExternalItem = {
 
 export const EXTERNAL_SOURCES: ExternalItem[] = [
   {
+    href: "https://igreja-ortodoxa-ea4fd5.webnode.page/servicos/",
+    title: "Santo Sínodo de Eugenios de Atenas",
+    source: "Igreja Ortodoxa Grega G.O.C.",
+    text: "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja. Firmemente enraizado na herança espiritual da Ortodoxia Grega Tradicional Velho Calendarista, o Santo Sínodo tem como missão guardar inalterado o depósito da fé, promover a vida litúrgica e sacramental da Igreja e assegurar a continuidade da autêntica tradição ortodoxa. Entre as responsabilidades do Santo Sínodo encontram-se a consagração de bispos, a supervisão da vida eclesiástica, a proteção da disciplina canônica e a promoção da unidade entre as comunidades sob seu omóforio.",
+  },
+  {
     href: "https://news.ecclesia.org.br/patriarca-bartolomeu-a-primazia-na-igreja-deve-ser-exercida-dentro-e-nunca-acima-da-comunhao/",
     title: "A primazia na Igreja deve ser exercida dentro, e nunca acima, da comunhão",
     source: "ECCLESIA NEWS",
@@ -95,4 +101,5 @@ export const EXTERNAL_SOURCES: ExternalItem[] = [
 export const EXTERNAL_PORTALS = [
   { href: "https://news.ecclesia.org.br/", label: "ECCLESIA NEWS" },
   { href: "https://www.vaticannews.va/pt.html", label: "Vatican News" },
+  { href: "https://igreja-ortodoxa-ea4fd5.webnode.page/servicos/", label: "Santo Sínodo G.O.C." },
 ] as const;

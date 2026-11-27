@@ -7,6 +7,7 @@ import { getArticle } from "../data/content";
 import { FAQ_ITEMS, type FaqItem } from "../data/faq";
 import { EcclesiaNews } from "../components/EcclesiaNews";
 import { HierarchyNews } from "../components/HierarchyNews";
+import { CommunitiesSection } from "../components/CommunitiesSection";
 import { KnowOrthodoxy } from "../components/KnowOrthodoxy";
 import { LatestEvents } from "../components/LatestEvents";
 import { VaticanNews } from "../components/VaticanNews";
@@ -16,10 +17,28 @@ const EPARQUIA_VIDEO = "/videos/igreja-ortodoxa.mp4";
 
 const EPARQUIA_CARDS = [
   {
+    slug: "dom-leontios",
+    title: "Dom Leontios",
+    image: "/media/card-dom-leontios.jpg",
+    imageClass: "object-cover object-[center_18%]",
+  },
+  {
+    slug: "dom-eugenios-de-atenas",
+    title: "Dom Eugenios de Atenas",
+    image: "/media/card-dom-eugenios.jpg",
+    imageClass: "object-cover object-center",
+  },
+  {
     slug: "padre-kelmon-luis",
     title: "Padre Kelmon",
     image: "/media/padre-kelmon-luis.jpg",
     imageClass: "object-cover object-[center_20%]",
+  },
+  {
+    slug: "padre-joao-damasceno",
+    title: "Padre João Damasceno",
+    image: "/media/padre-joao-damasceno.jpg",
+    imageClass: "object-cover object-top",
   },
 ] as const;
 
@@ -27,13 +46,13 @@ const HERO_SHORTCUTS = [
   {
     href: "/igreja",
     label: "Conheça a Igreja",
-    description: "Fé apostólica, história e a vida da Missão Theotokos.",
+    description: "Fé apostólica, história e a vida da Igreja Ortodoxa Grega G.O.C. no Brasil.",
     icon: "book",
   },
   {
     href: "/comunidades",
     label: "Encontre uma comunidade",
-    description: "Comunidades em São Paulo e no Rio de Janeiro.",
+    description: "Mosteiro em Nova Iguaçu e comunidades em São Paulo e no Rio de Janeiro.",
     icon: "church",
   },
   {
@@ -131,14 +150,16 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
     return {
       kicker: "Igreja",
       paragraphs: [
-        "Paróquias, sacramentos, pastorais e o Foro do Brasil — a vida institucional da Missão Theotokos.",
+        "Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil.",
         ...(article?.sections.slice(0, 3).flatMap((section) => section.body) || []),
       ],
       blocks: [
+        { title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
+        { title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
         { title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
         { title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },
         { title: "Pastorais", text: "Acolhida, família, enfermos e formação." },
-        { title: "Foro do Brasil", text: "Diálogo plural pela democracia, idealizado pelo Padre Kelmon." },
+        { title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
       ],
     };
   }
@@ -147,13 +168,14 @@ function shortcutContent(item: ShortcutItem): { kicker: string; paragraphs: stri
     return {
       kicker: "Comunidades",
       paragraphs: [
-        "Horários e datas específicas devem ser confirmados com cada comunidade.",
+        "Onde a Igreja reza no Brasil. Horários e datas específicas devem ser confirmados com cada comunidade.",
       ],
       blocks: COMMUNITIES.map((community) => ({
         title: `${community.name} · ${community.city}`,
         text: [
           community.summary,
           community.clergy ? `Celebrante: ${community.clergy}.` : "",
+          community.address || "",
           community.scheduleNote || "",
           community.phone ? `Telefone: ${community.phone}.` : community.pendingOfficial?.length
             ? `Ainda não publicados: ${community.pendingOfficial.join(", ")}.`
@@ -502,6 +524,8 @@ export function Home() {
       </section>
 
       <KnowOrthodoxy />
+
+      <CommunitiesSection />
 
       <section className="site-section px-4">
         <div className="mx-auto w-full max-w-site overflow-hidden rounded-3xl bg-white px-4 py-12 sm:px-8 sm:py-14">

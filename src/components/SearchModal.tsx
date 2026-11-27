@@ -175,7 +175,7 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
                   Fontes da internet {loadingWeb ? "· buscando…" : ""}
                 </p>
                 <p className="mt-2 text-sm leading-6 text-stone">
-                  ECCLESIA NEWS é a referência ortodoxa. O Vatican News
+                  ECCLESIA NEWS e o Santo Sínodo G.O.C. de Eugenios de Atenas são as referências ortodoxas. O Vatican News
                   entra só como noticiário cristão complementar, sem substituir o ensinamento deste portal.
                 </p>
                 <ul className="mt-3 space-y-2">

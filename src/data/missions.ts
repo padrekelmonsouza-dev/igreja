@@ -37,7 +37,7 @@ export const MISSION_PATHS: MissionPath[] = [
     kicker: "Brasil",
     title: "A missão no Brasil",
     summary: "Alcançar cidades sem paróquia, acompanhar famílias e apoiar a catequese.",
-    image: "/media/hero-iconostase.jpg",
+    image: "/media/igreja-ortodoxa-grega-no-brasil.jpg",
     imageClass: "object-cover object-center",
     body: [
       "As missões buscam alcançar cidades sem paróquia estável, acompanhar famílias isoladas e apoiar a catequese a distância quando necessário, sempre sob a bênção da hierarquia.",
@@ -49,12 +49,12 @@ export const MISSION_PATHS: MissionPath[] = [
     slug: "comunidades",
     kicker: "Presença",
     title: "Plantar comunidades",
-    summary: "Eparquias e o cuidado de quem ainda não tem templo próximo.",
+    summary: "Mosteiro, eparquias e o cuidado de quem ainda não tem templo próximo.",
     image: "/media/hero-iconostase.jpg",
     imageClass: "object-cover object-[center_20%]",
     body: [
       "Plantar uma comunidade é mais do que abrir um endereço. É celebrar a Divina Liturgia, formar catecúmenos, guardar a Tradição e viver a hospitalidade.",
-      "A Eparquia de São Paulo e a Eparquia do Rio de Janeiro acompanham o povo já reunido.",
+      "O Mosteiro de São Basílio, em Nova Iguaçu, é casa de oração e hospitalidade. A Eparquia de São Paulo e a Eparquia do Rio de Janeiro acompanham o povo já reunido.",
       "Onde ainda não há paróquia estável, a missão visita, reza e espera a hora de constituir vida eclesial plena, sempre em comunhão com o bispo e o Santo Sínodo.",
     ],
   },
@@ -107,10 +107,10 @@ export const MISSION_TOPICS: MissionTopic[] = [
   {
     slug: "comunidades-brasil",
     title: "Comunidades no Brasil",
-    summary: "São Paulo e Rio de Janeiro, com os dados já publicados.",
+    summary: "Nova Iguaçu, São Paulo e Rio de Janeiro, com os dados já publicados.",
     icon: "church",
     body: [
-      "A Eparquia de São Paulo celebra com Padre Kelmon. A Eparquia do Rio de Janeiro acompanha os fiéis fluminenses.",
+      "O Mosteiro de São Basílio, em Nova Iguaçu, pede contato prévio. A Eparquia de São Paulo celebra com Padre Kelmon. A Eparquia do Rio de Janeiro é acompanhada por Padre João Damasceno.",
       "Endereços, telefones e horários só entram neste portal quando oficiais. O que ainda falta será publicado pela Secretaria da Igreja.",
     ],
   },

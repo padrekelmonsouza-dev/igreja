@@ -1,12 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { ArticleBody, PageHero } from "../components/Article";
-import { FounderSection, ForoLinks } from "../components/FounderSection";
+import { AbbotSection, FounderSection } from "../components/FounderSection";
 import { QuemSomosIntro } from "../components/QuemSomosIntro";
 import { Related } from "../components/Related";
 import { getArticle } from "../data/content";
 import type { Crumb } from "../data/seo";
 
-const IGREJA_PAGES = new Set(["/pastorais", "/foro-do-brasil", "/paroquias"]);
+const IGREJA_PAGES = new Set(["/mosteiro", "/pastorais", "/ordem-de-sao-jose", "/paroquias"]);
 
 function crumbsFor(path: string, title: string): Crumb[] {
   const crumbs: Crumb[] = [];
@@ -28,10 +28,10 @@ export function ArticlePage() {
   return (
     <>
       <PageHero kicker={page.kicker} title={page.title} intro={page.intro} crumbs={crumbsFor(page.path, page.title)} />
-      {page.path === "/foro-do-brasil" ? <FounderSection /> : null}
+      {page.path === "/ordem-de-sao-jose" ? <FounderSection /> : null}
+      {page.path === "/mosteiro" ? <AbbotSection /> : null}
       {page.path === "/quem-somos" ? <QuemSomosIntro /> : null}
       <ArticleBody page={page} />
-      {page.path === "/foro-do-brasil" ? <ForoLinks /> : null}
       <Related paths={page.related} />
     </>
   );

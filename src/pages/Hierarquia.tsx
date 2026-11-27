@@ -35,7 +35,7 @@ const SECTIONS: {
     id: "seminaristas",
     kicker: "Seminaristas",
     title: "Formação para o ministério.",
-    intro: "Quem se prepara para o ministério na Missão Theotokos.",
+    intro: "Quem se prepara para o ministério na Igreja Ortodoxa Grega G.O.C. no Brasil.",
     layout: "grid",
   },
 ];
@@ -95,7 +95,7 @@ export function Hierarquia() {
       <PageHero
         kicker="Serviço à Igreja"
         title="Clero"
-        intro="Padres e seminaristas da Missão Theotokos."
+        intro="Arcebispos, padres e seminaristas da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/clero", label: "Clero" }]}
       />
 

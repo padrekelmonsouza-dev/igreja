@@ -26,7 +26,7 @@ export function Comunidades() {
       <PageHero
         kicker="Comunidades"
         title="Encontre uma Igreja"
-        intro="Comunidades da Missão Theotokos com os dados oficiais já publicados. Novos endereços serão acrescentados somente quando confirmados."
+        intro="Comunidades da Igreja Ortodoxa Grega G.O.C. no Brasil com os dados oficiais já publicados. Novos endereços serão acrescentados somente quando confirmados."
         crumbs={[{ href: "/comunidades", label: "Comunidades" }]}
       />
       <section className="site-section mx-auto w-full max-w-site px-4">
@@ -96,7 +96,7 @@ export function Comunidades() {
               />
             ) : (
               <div className="grid h-full place-items-center bg-ivory p-6 text-stone">
-                Fale com a comunidade para combinar sua visita.
+                O mapa é exibido apenas para comunidades com endereço oficial.
               </div>
             )}
           </div>

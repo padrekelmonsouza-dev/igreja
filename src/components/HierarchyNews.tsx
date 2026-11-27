@@ -2,6 +2,24 @@ import { Link } from "react-router-dom";
 
 const HIERARCHY_NEWS_CARDS = [
   {
+    slug: "dom-leontios",
+    title: "Dom Leontios de Noronha e Valdigem",
+    kicker: "Sua Eminência Dom Leontios",
+    image: "/media/card-dom-leontios.jpg",
+    imageClass: "object-cover object-[center_18%]",
+    meta: "De bendita e eterna memória",
+    body: "De bendita e eterna memória, Sua Eminência Dom Leontios ocupou lugar de destaque na história da Ortodoxia Tradicional no Brasil. Como Arcebispo Metropolita da América do Sul, dedicou sua vida ao serviço da Santa Igreja, ao anúncio do Santo Evangelho e à preservação da fé ortodoxa recebida dos Santos Apóstolos e transmitida ao longo dos séculos pelos Santos Padres.",
+  },
+  {
+    slug: "dom-eugenios-de-atenas",
+    title: "O Arcebispo atual: Dom Eugenios de Atenas",
+    kicker: "O Santo Sínodo de Sua Beatitude Eugenios de Atenas",
+    image: "/media/card-dom-eugenios.jpg",
+    imageClass: "object-cover object-center",
+    meta: "Santo Sínodo",
+    body: "O Santo Sínodo presidido por Sua Beatitude Eugenios de Atenas constitui a autoridade suprema da Igreja Ortodoxa Grega G.O.C., exercendo a responsabilidade de preservar a integridade da fé ortodoxa, a sucessão apostólica e a sagrada tradição recebida dos Santos Apóstolos, dos Santos Padres e dos Santos Concílios da Igreja.",
+  },
+  {
     slug: "padre-kelmon-luis",
     title: "Padre Kelmon Luís",
     kicker: "Eparquia de São Paulo",
@@ -18,7 +36,7 @@ export function HierarchyNews() {
       <div className="mx-auto w-full max-w-site px-4">
         <h2 className="font-serif leading-tight">
           <span className="block text-lg text-[#6E121C] sm:text-xl">No Brasil e no mundo</span>
-          <span className="mt-1 block text-3xl text-[#1A0E0C] sm:text-4xl">Missão Theotokos</span>
+          <span className="mt-1 block text-3xl text-[#1A0E0C] sm:text-4xl">Igreja Ortodoxa Grega</span>
         </h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {HIERARCHY_NEWS_CARDS.map((card) => (

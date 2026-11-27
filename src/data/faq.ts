@@ -20,7 +20,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Existe Igreja Ortodoxa no Brasil?",
     answer:
-      "Sim. Há paróquias e missões. Este portal apresenta a Missão Theotokos e suas comunidades em São Paulo e no Rio de Janeiro.",
+      "Sim. Há paróquias, missões e mosteiros. Este portal apresenta a Igreja Ortodoxa Grega G.O.C. no Brasil, comunidades em São Paulo e Rio de Janeiro, e o Mosteiro de São Basílio em Nova Iguaçu.",
     href: "/comunidades",
   },
   {
@@ -76,6 +76,18 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer:
       "Procure um sacerdote, participe da liturgia e inicie a catequese. Adultos são recebidos segundo os cânones e a orientação pastoral da comunidade.",
     href: "/ortodoxia/batismo",
+  },
+  {
+    question: "A Igreja Ortodoxa é a mesma que a Igreja Grega?",
+    answer:
+      "A Igreja Ortodoxa é una na fé, com várias igrejas locais (grega, russa, antioquena, etc.). Este portal apresenta a tradição grega G.O.C., velho-calendarista, no Brasil.",
+    href: "/igreja",
+  },
+  {
+    question: "O que significa G.O.C.?",
+    answer:
+      "G.O.C. refere-se aos Genuine Orthodox Christians, os Cristãos Ortodoxos Genuínos, na linha do velho calendário. A referência canônica deste projeto é o Santo Sínodo de Eugenio de Atenas.",
+    href: "/santo-sinodo",
   },
   {
     question: "Quem é a Theotokos?",

@@ -5,17 +5,19 @@ export function IgrejaHub() {
     <>
       <PageHero
         kicker="Igreja"
-        title="Missão Theotokos"
-        intro="Paróquias, sacramentos, pastorais e o Foro do Brasil — a vida institucional da Missão Theotokos."
+        title="Igreja Ortodoxa Grega no Brasil"
+        intro="Arcebispos, mosteiros, paróquias, sacramentos, pastorais e a Ordem de São José — a vida institucional da Igreja Ortodoxa Grega G.O.C. no Brasil."
         crumbs={[{ href: "/igreja", label: "Igreja" }]}
       />
       <section className="site-section mx-auto w-full max-w-site px-4">
         <HubGrid
           items={[
+            { href: "/arcebispos", title: "Arcebispos", text: "O primaz do Santo Sínodo e o Arcebispo Metropolita da América do Sul." },
+            { href: "/mosteiro", title: "Mosteiros", text: "O Mosteiro de São Basílio, casa de oração em Nova Iguaçu." },
             { href: "/paroquias", title: "Paróquias", text: "Encontre uma comunidade por estado, cidade ou sacerdote." },
             { href: "/sacramentos", title: "Sacramentos", text: "Os Santos Mistérios da Igreja Ortodoxa." },
             { href: "/pastorais", title: "Pastorais", text: "Acolhida, família, enfermos, formação e Pastoral Política." },
-            { href: "/foro-do-brasil", title: "Foro do Brasil", text: "Diálogo plural pela democracia, idealizado pelo Padre Kelmon." },
+            { href: "/ordem-de-sao-jose", title: "Ordem de São José", text: "Serviço laical inspirado em São José." },
           ]}
         />
       </section>

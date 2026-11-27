@@ -56,7 +56,7 @@ export const FEATURED_SACRAMENTS: FeaturedSacrament[] = [
     slides: [
       {
         src: "/videos/sacramentos/batismo-imagem.jpg?v=1",
-        alt: "Pia batismal diante dos ícones na Missão Theotokos da Transfiguração",
+        alt: "Pia batismal diante dos ícones na Igreja Ortodoxa Grega da Transfiguração",
         credit: "Emw · CC BY-SA 3.0",
         href: "https://commons.wikimedia.org/wiki/File:Baptismal_font;_Transfiguration_Greek_Orthodox_Church;_Lowell,_MA;_2012-05-19.jpg",
         position: "center",
@@ -191,7 +191,7 @@ export const FEATURED_SACRAMENTS: FeaturedSacrament[] = [
     video: "/videos/sacramentos/matrimonio.mp4?v=2",
     poster: "/videos/sacramentos/matrimonio.jpg?v=2",
     body: [
-      "Na tradição ortodoxa, o casamento não é contrato nem só instituição social: é vocação cristã. Marido e mulher crescem juntos em direção a Deus, na vida da Igreja.",
+      "Na tradição ortodoxa grega, o casamento não é contrato nem só instituição social: é vocação cristã. Marido e mulher crescem juntos em direção a Deus, na vida da Igreja.",
       "Celebra-se no Noivado e na Coroação: anéis, coroas, o cálice comum e a Dança de Isaías, três voltas em torno da mesa sacramental.",
     ],
   },
@@ -454,7 +454,7 @@ export const MATRIMONIO_THEMES: SacramentTheme[] = [
     icon: "rings",
     body: [
       "O Mistério do Matrimônio é celebrado em dois momentos principais: o Rito do Noivado e o Rito da Coroação. No primeiro, os anéis são abençoados e trocados como sinal do compromisso voluntário do casal.",
-      "O casal troca os anéis para viver juntos em fé, harmonia, verdade e amor. Na tradição ortodoxa, os anéis são tradicionalmente colocados na mão direita.",
+      "O casal troca os anéis para viver juntos em fé, harmonia, verdade e amor. Na tradição ortodoxa grega, os anéis são tradicionalmente colocados na mão direita.",
     ],
   },
   {
@@ -602,7 +602,7 @@ export const MATRIMONIO_GRID_CARDS: SacramentGridCard[] = [
     slug: "preparacao-pastoral",
     title: "Preparação pastoral",
     kicker: "Com o sacerdote",
-    image: "/media/hero-iconostase.jpg",
+    image: "/media/igreja-ortodoxa-grega-no-brasil.jpg",
     body: [
       "A preparação faz-se com o sacerdote da comunidade: fé, liberdade dos noivos, vida sacramental e o que os cânones pedem para este Mistério. Não se improvisa no dia da festa.",
       "O padrinho ou madrinha (koumbaros / koumbara), quando a tradição local o pede, deve ser ortodoxo em paz com a Igreja: testemunha da fé, não apenas da festa.",
@@ -688,7 +688,7 @@ export const SACRAMENT_TOPICS: SacramentTopic[] = [
     icon: "chrism",
     body: [
       "A Crisma (unção com o Santo Myron) é o Pentecostes pessoal do recém-batizado. O sacerdote unge os sentidos e proclama: «Selo do dom do Espírito Santo». Assim o fiel é marcado como membro pleno do povo de Deus.",
-      "Na prática ortodoxa, a Crisma não se separa do Batismo: é dada na mesma celebração, inclusive às crianças. O Myron é o santo óleo consagrado pelos bispos e enviado às comunidades.",
+      "Na prática ortodoxa grega, a Crisma não se separa do Batismo: é dada na mesma celebração, inclusive às crianças. O Myron é o santo óleo consagrado pelos bispos e enviado às comunidades.",
       "A Eucaristia completa esta iniciação. Batismo, Crisma e Comunhão formam um só nascimento na vida da Igreja, não três etapas tardias.",
     ],
   },

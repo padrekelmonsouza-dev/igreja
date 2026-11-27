@@ -8,6 +8,7 @@ import { Enciclopedia } from "./pages/Enciclopedia";
 import { Faq } from "./pages/Faq";
 import { Glossario } from "./pages/Glossario";
 import { Hierarquia } from "./pages/Hierarquia";
+import { Arcebispos } from "./pages/Arcebispos";
 import { Paroquias } from "./pages/Paroquias";
 import { ClergyProfile } from "./pages/ClergyProfile";
 import { PedidoOracao } from "./pages/PedidoOracao";
@@ -52,6 +53,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/loja" element={<Loja />} />
           <Route path="/igreja" element={<IgrejaHub />} />
+          <Route path="/arcebispos" element={<Arcebispos />} />
+          <Route path="/igreja/arcebispos" element={<Navigate to="/arcebispos" replace />} />
           <Route path="/igreja/quem-somos" element={<Navigate to="/quem-somos" replace />} />
           <Route path="/paroquias" element={<Paroquias />} />
           <Route path="/sacramentos" element={<Sacramentos />} />
